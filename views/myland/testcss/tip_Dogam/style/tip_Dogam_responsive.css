@@ -1,0 +1,83 @@
+/* 모바일 */
+@media all and (max-width: 932px) and (orientation: landscape) {
+    .tipDogam_bg {
+        width: 264px; padding: 39px 10px 10px 10px;
+        top:50%; left: 50%;     
+        transform: translate(-50%,-50%);
+        border-radius: 20px;
+    }
+    .tipDogam_bg .tipDogam {width: 244px; height: 162px; border-radius: 20px;}
+    .tipDogam_bg .tipDogam h1 {
+        width: 129px;
+        height: 42px;
+        background-image:url(../image/Mtd_h1.png);
+        font-size: 16px;
+        padding-top: 12px;
+        top:-11px; left: 68px;
+    }
+    .tipDogam_bg .tipDogam #tdClose {
+        width: 25px; height: 25px;
+        top:8px; right: 10px;
+    }
+    .tipDogam_bg .tipDogam #tdClose img {width: 10px; padding-top: 1px;}
+    .tipDogam_bg .tipDogam #tdClose::after {
+        width: 2px; height: 2px;
+        top:4px; left: 8px;
+    }
+    .tipDogam_bg .tipDogam .tipcon_bg .conRing {
+        position: absolute; top:28px; left: 42px;
+    }
+    .tipDogam_bg .tipDogam .tipcon_bg .conRing img:first-child {margin-right: 150px;}
+    .tipDogam_bg .tipDogam .tipcon_bg .conRing img {
+        width: 15px; height: 22px;
+    }
+    .tipDogam_bg .tipDogam .tipcon_bg {
+        border-radius: 20px;
+        height: 162px;
+        padding: 22px 0;
+    }
+    .tipDogam_bg .tipDogam .tipcon_bg .tdconDiv .tdcon{
+        border-radius: 10px;
+        padding:10px 15px;
+        width: 212px; height: 31px;
+        font-size: 10px;
+        margin-bottom:10px ;
+    }
+    .tipDogam_bg .tipDogam .tipcon_bg .tdconDiv .tdyet {
+        width: 212px; height: 31px;
+        border-radius: 10px;
+        padding-top:7px ;
+        margin-bottom:10px ;
+    }
+    /* 스크롤바 디자인 */
+    /* Firefox */
+    .tipDogam_bg .tipDogam .tipcon_bg {scrollbar-width: 5px; scrollbar-color: #CEF; border:5px solid transparent;}
+    /* Opera */
+    .tipDogam_bg .tipDogam .tipcon_bg::-o-scrollbar {width: 5px; }/*스크롤바 크기*/
+    .tipDogam_bg .tipDogam .tipcon_bg::-o-scrollbar-thumb {background-color: #CEF;border-radius: 10px; border:5px solid transparent;}/*스크롤 드래그바*/
+    /* html::-o-scrollbar-thumb:hover {background-color:;} */
+    /* Chrome, Safari, Edge 등 웹킷 기반 브라우저 */
+    .tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar {width: 5px;}/*스크롤바 크기*/
+    .tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-track {}/*스크롤바 배경*/
+    .tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-thumb {background-color: #CEF ;border-radius:10px;
+        border:8px solid transparent;
+    }/*스크롤 드래그바*/
+    .tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-button:vertical:start:decrement,
+    .tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-button:vertical:start:increment{
+        display:block;
+        height: 15px;
+        /* 스크롤바 위 공간여백 */
+    }
+    .tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-button:vertical:end:decrement{
+        display: block; width:10px;
+    }
+    /* 팁 팝업 */
+    .ms_bg {width: 150px; padding:10px 25px;
+        top:50%; left: 50%;     
+        transform: translate(-50%,-50%);
+    }
+    .ms_bg .ms_con {font-size: 10px; line-height: 18px;}
+    .ms_bg .ms_sticker{width: 15px; height: 25px;}
+    .ms_bg #ms_close {cursor: pointer; width:35px; height: 25px; margin-left: 32px; margin-top: 0; padding-top:5px ;}
+    .ms_bg #ms_close img {width:35px; height: 12px;}
+} 

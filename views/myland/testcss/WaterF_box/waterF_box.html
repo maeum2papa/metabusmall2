@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>사용하기</title>
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/waterF_box.css">
+    <link rel="stylesheet" href="./style/waterF_box_responsive.css">
+    <link rel="stylesheet" href="./style/box.css">
+</head>
+<body>
+    <div id="game">
+    <div id="box">
+        <div class="waterF_box_bg">
+            <button id="waterF_popup_close"><img src="./image/close_icon.svg" alt="닫기"></button>
+            <div class="waterF_box">
+                <div class="waterBox_bg">
+                    <div class="waterBox">
+                        <p><img src="./image/box_water2_icon.png" alt=""></p>
+                        <div class="waterBoxTop">
+                            <div class="waterBox_content">
+                                <div class="waterBox_conTop">
+                                    <p>물<span>남은 개수</span></p>
+                                    <p><em id="waterBox_count">0</em>개</p> <!-- 카운트 -->
+                                </div>
+                                <p class="conVar"></p>
+                                <div class="waterBox_conBtm">
+                                    <p>아이템을 사용하면<br>열매수확시간이 1시간 줄어들어요.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 물 사용하기 버튼 -->
+                        <div class="useBox">
+                            <img id="W_none_icon" src="./image/use_n_icon.png" alt=""> <!-- 회색버튼 -->
+                            <img id="W_use_icon" src="./image/use_o_icon.png" alt=""> <!-- 사용(파랑)버튼 -->
+                            <img id="W_use_icon-hover" src="./image/use_h_icon.png" alt=""> <!-- 눌렀을때 효과 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="fertilizerBox_bg">
+                    <div class="fertilizerBox">
+                        <p><img src="./image/box_fertilizer2_icon.png" alt=""></p>
+                        <div class="fertilizerBoxTop">
+                            <div class="fertilizerBox_content">
+                                <div class="fertilizerBox_conTop">
+                                    <p>비료<span>남은 개수</span></p>
+                                    <p><em id="fertilizerBox_count">0</em>개</p> <!-- 카운트 -->
+                                </div>
+                                <p class="conVar"></p>
+                                <div class="fertilizerBox_conBtm">
+                                    <p>아이템을 사용하면<br>남은 열매 수확 시간의 50%가 감소해요.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 비료 사용하기 버튼 -->
+                        <div class="useBox">
+                            <img id="W_none_icon" src="./image/use_n_icon.png" alt=""> <!-- 회색버튼 -->
+                            <img id="W_use_icon" src="./image/use_o_icon.png" alt=""> <!-- 사용(파랑)버튼 -->
+                            <img id="W_use_icon-hover" src="./image/use_h_icon.png" alt=""> <!-- 눌렀을때 효과 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        // 물
+        const waterbox = document.querySelector('#W_use_icon-hover');
+        waterbox.addEventListener('mousedown' ,(e) => {
+            waterbox.style.opacity = '1';
+        })
+        waterbox.addEventListener('mouseup' ,(e) => {
+            const waterbox = document.querySelector('#W_use_icon-hover');
+            waterbox.style.opacity = '0';
+        })
+        waterbox.addEventListener('mouseover',function(){
+            const waterbox = document.querySelector('#W_use_icon');
+            waterbox.style.opacity= '1';
+        })
+        waterbox.addEventListener('mouseout',function(){
+            const waterbox = document.querySelector('#W_use_icon');
+            waterbox.style.opacity= '0';
+        })
+        // 비료
+        /*const fertilizerBox = document.querySelector('.fertilizerBox > .useBox > #W_use_icon-hover');
+        fertilizerBox.addEventListener('mousedown',function(){
+            fertilizerBox.style.opacity = '1';
+        })
+        fertilizerBox.addEventListener('mouseup',function(){
+            const fertilizerBox = document.querySelector('.fertilizerBox > .useBox > #W_use_icon-hover');
+            fertilizerBox.style.opacity = '0';
+        })
+        fertilizerBox.addEventListener('mouseover',function(){
+            const fertilizerBox = document.querySelector('.fertilizerBox > .useBox > #W_use_icon');
+            fertilizerBox.style.opacity = '1'
+        })
+        fertilizerBox.addEventListener('mouseout',function(){
+            const fertilizerBox = document.querySelector('.fertilizerBox > .useBox > #W_use_icon');
+            fertilizerBox.style.opacity = '0'
+        })*/
+    </script>
+</body>
+</html>

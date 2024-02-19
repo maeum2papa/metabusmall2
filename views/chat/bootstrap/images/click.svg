@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="이동하기" transform="translate(16967 15759)" opacity="0.8">
+    <g id="사각형_4244" data-name="사각형 4244" transform="translate(-16967 -15759)" fill="#fff" stroke="#707070" stroke-width="1" opacity="0">
+      <rect width="16" height="16" stroke="none"/>
+      <rect x="0.5" y="0.5" width="15" height="15" fill="none"/>
+    </g>
+    <g id="사각형_4245" data-name="사각형 4245" transform="translate(-16964 -15756)" fill="none" stroke="#707070" stroke-width="1" opacity="0">
+      <rect width="10" height="10" stroke="none"/>
+      <rect x="0.5" y="0.5" width="9" height="9" fill="none"/>
+    </g>
+    <g id="그룹_994" data-name="그룹 994" transform="translate(-13.214 -0.25)">
+      <path id="패스_1496" data-name="패스 1496" d="M-16556.705-16865.527h0l-1.723,3.186-1.205-7.223,6.646,3.822Z" transform="translate(-389.936 1114.629)" fill="#fff"/>
+      <path id="패스_1496_-_윤곽선" data-name="패스 1496 - 윤곽선" d="M-16558.492-16861.461a.924.924,0,0,1-.1-.008.61.61,0,0,1-.5-.5l-1.281-7.633a.607.607,0,0,1,.254-.6.618.618,0,0,1,.654-.029l7.055,4.035a.606.606,0,0,1,.291.666.61.61,0,0,1-.557.467l-3.611.213-1.664,3.07A.617.617,0,0,1-16558.492-16861.461Zm-.465-7.076.773,4.621.982-1.811a.61.61,0,0,1,.5-.316l1.906-.111Z" transform="translate(-390 1114.561)" fill="#fff"/>
+      <path id="패스_1497" data-name="패스 1497" d="M4.563,6.631a.807.807,0,0,1-.651-.325l-3.75-5a.814.814,0,1,1,1.3-.974l3.748,5a.813.813,0,0,1-.651,1.3Z" transform="matrix(0.999, -0.052, 0.052, 0.999, -16949.002, -15753.372)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

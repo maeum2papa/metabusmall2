@@ -1,0 +1,217 @@
+#fishing_popup {
+    max-width: 374px;
+    border-radius: 75px;
+    background: linear-gradient(144deg, #D3F1FF 9.53%, #6FD0FF 25.16%, #00A8FA 92.32%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px -2px 4px 0px #CBEEFF inset;
+    padding:13px;
+    position: absolute;
+    top:50%; left:50%; transform: translate(-50%,-50%);    
+}
+
+#fishing_popup .fishing_popup_box::after {
+    content: '';
+    display: block;
+    background-color: #fff;
+    width:5px; height:5px; border-radius: 10px;
+    position: absolute; top:0; left: 25px;
+}
+#fishing_popup .fishing_popup_box {
+    max-width:348px;
+    background-color: #F6FCFF;
+    border-radius: 67px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50), 0px -1px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    position: relative;
+    padding: 22px;
+    display: flex;
+    flex-flow: column nowrap; align-items: center; justify-content: center;
+    text-align: center;
+}
+
+#fishing_popup .fishing_popup_box .fishing_popup_title {}
+
+/* 유리병이 떴을 때 */
+#fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass {}
+#fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass h1 {
+    background-image: url(/seum_img/ui/fishing_btn.png);
+    background-repeat: no-repeat;
+    height: 54px; width: 190px;
+    text-align: center;
+    padding: 18px 45px;
+    font-size: 18px;
+    font-weight: 700; color: #fff;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.25);
+    position: absolute; left:80px; top:-30px;
+}
+#fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass img {
+    display: inline-block;
+    width: 80px; height: 80px;
+    padding: 10px;
+    background-color: #fff; border-radius: 10px; border:1px solid #00A8FA;
+    box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    margin: 11px 0 15px 0;
+
+}
+
+#fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass p {line-height: 22px; font-size: 14px;}
+#fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass p em {
+    font-size: 14px; color:#00A8FA;
+    line-height: 22px; font-weight: 700;
+}
+
+/* 유리병 팝업 */
+#fishing_popup .fishing_popup_text {
+    background: #E2EEF4;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 25px;
+    padding:10px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+#fishing_popup .fishing_popup_text h2 {font-weight: 700; margin-bottom: 10px;}
+#fishing_popup .fishing_popup_text p {line-height: 22px; font-size: 14px;}
+
+/* 물고기 떴을 때 */
+#fishing_popup_etc {
+    width: 267px;
+    background: linear-gradient(144deg, #D3F1FF 9.53%, #6FD0FF 25.16%, #00A8FA 92.32%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px -2px 4px 0px #CBEEFF inset;
+    border-radius: 65px;
+    padding: 13px;
+    position: absolute;
+    top:50%; left:50%; transform: translate(-50%,-50%);
+}
+#fishing_popup_etc .fishing_fish::after {
+    content: '';
+    display: block;
+    background-color: #fff;
+    width:5px; height:5px; border-radius: 10px;
+    position: absolute; top:20px; left: 21px;
+}
+#fishing_popup_etc .fishing_fish {
+    margin: 0 auto;
+    width: 243px;
+    background-color: #F6FCFF;
+    border-radius: 55px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50), 0px -1px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    flex-flow: column nowrap; justify-content: center; align-items: center;
+}
+#fishing_popup_etc .fishing_fish img {
+    width:80px; width: 80px;
+    border:1px solid #00A8FA; border-radius: 10px;
+    box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    background-color: #fff;
+    margin: 50px 0 20px 0;
+}
+#fishing_popup_etc .fishing_fish p:first-child {
+    background-image: url(/seum_img/ui/fishing_btn.png);
+    background-repeat: no-repeat;
+    height: 54px; width: 190px;
+    text-align: center;
+    padding: 18px 45px;
+    font-size: 18px;
+    font-weight: 700; color: #fff;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.25);
+    position: absolute; left:38px; top:-19px;
+}
+#fishing_popup_etc .fishing_fish h1 {font-size: 14px; line-height: 22px;}
+#fishing_popup_etc .fishing_fish h1 #fishName {font-weight: 700; color: #00A8FA; font-size: 14px;}
+#fishing_popup_etc .fishing_fish p:last-child {
+    font-size: 14px; line-height: 22px;font-weight: 700; color: #00A8FA;
+    margin-bottom:32px ;
+}
+/* 쓰레기 떴을 때 */
+#fishing_popup_etc2 {
+    width: 267px;
+    background: linear-gradient(144deg, #D3F1FF 9.53%, #6FD0FF 25.16%, #00A8FA 92.32%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px -2px 4px 0px #CBEEFF inset;
+    border-radius: 65px;
+    padding: 13px;
+    position: absolute;
+    top:50%; left:50%; transform: translate(-50%,-50%);
+}
+#fishing_popup_etc2 .fishing_trash::after {
+    content: '';
+    display: block;
+    background-color: #fff;
+    width:5px; height:5px; border-radius: 10px;
+    position: absolute; top:20px; left: 21px;
+}
+#fishing_popup_etc2 .fishing_trash {
+    margin: 0 auto;
+    width: 243px;
+    background-color: #F6FCFF;
+    border-radius: 55px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50), 0px -1px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    flex-flow: column nowrap; justify-content: center; align-items: center;
+}
+#fishing_popup_etc2 .fishing_trash img {
+    width:80px; width: 80px; padding: 17px 5px;
+    border:1px solid #00A8FA; border-radius: 10px;
+    box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    background-color: #fff;
+    margin: 50px 0 20px 0;
+}
+#fishing_popup_etc2 .fishing_trash h1 {
+    background-image: url(/seum_img/ui/fishing_btn.png);
+    background-repeat: no-repeat;
+    height: 54px; width: 190px;
+    text-align: center;
+    padding: 18px 45px;
+    font-size: 18px;
+    font-weight: 700; color: #fff;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.25);
+    position: absolute; left:38px; top:-19px;
+}
+#fishing_popup_etc2 .fishing_trash p {font-size: 14px; line-height: 22px; margin-bottom:32px;}
+#fishing_popup_etc2 .fishing_trash p em {color:#00A8FA; font-size: 14px; font-weight: 700;}
+/* 코인 떴을 때 */
+#fishing_popup_etc3 {
+    width: 267px;
+    background: linear-gradient(144deg, #D3F1FF 9.53%, #6FD0FF 25.16%, #00A8FA 92.32%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px -2px 4px 0px #CBEEFF inset;
+    border-radius: 65px;
+    padding: 13px;
+    position: absolute;
+    top:50%; left:50%; transform: translate(-50%,-50%);
+}
+#fishing_popup_etc3 .fishing_coin::after {
+    content: '';
+    display: block;
+    background-color: #fff;
+    width:5px; height:5px; border-radius: 10px;
+    position: absolute; top:20px; left: 21px;
+}
+#fishing_popup_etc3 .fishing_coin {
+    margin: 0 auto;
+    width: 243px;
+    background-color: #F6FCFF;
+    
+    border-radius: 55px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50), 0px -1px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    flex-flow: column nowrap; justify-content: center; align-items: center;
+}
+#fishing_popup_etc3 .fishing_coin img {
+    width:80px; width: 80px; padding: 10px 10px;
+    border:1px solid #00A8FA; border-radius: 10px;
+    box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    background-color: #fff;
+    margin: 50px 0 20px 0;
+}
+#fishing_popup_etc3 .fishing_coin p {
+    background-image: url(/seum_img/ui/fishing_btn.png);
+    background-repeat: no-repeat;
+    height: 54px; width: 190px;
+    text-align: center;
+    padding: 18px 45px;
+    font-size: 18px;
+    font-weight: 700; color: #fff;
+    text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.25);
+    position: absolute; left:38px; top:-19px;
+}
+#fishing_popup_etc3 .fishing_coin h1 {font-size: 14px; line-height: 22px; margin-bottom:32px;}
+#fishing_popup_etc3 .fishing_coin h1 span {color:#00A8FA; font-size: 14px; font-weight: 700;}
+#fishing_popup_etc3 .fishing_coin h1 em {color:#00A8FA; font-size: 14px; font-weight: 700;}

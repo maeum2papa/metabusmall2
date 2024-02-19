@@ -1,0 +1,166 @@
+/* 팁 도감 */
+.tipDogam_bg {
+    width: 435px;
+    border-radius: 30px;
+    background: linear-gradient(166deg, #D3F0FF 1.54%, #5FCAFE 17.46%, #01A7F9 90.01%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px -2px 4px 0px #CBEEFF inset, 0px 4px 8px 0px rgba(0, 168, 250, 0.50) inset, 0px 1px 0px 0px rgba(255, 255, 255, 0.90) inset;
+    padding:64px 17px 17px 17px;
+    position: absolute;
+    top:50%; left: 50%;
+    transform: translate(-50%,-50%);
+}
+.tipDogam_bg .tipDogam::after {
+    content: '';
+    display: block;
+    width: 4px; height: 10px; border-radius: 50%;
+    background-color: #fff;
+    transform: rotate(60.4deg);
+    position: absolute; top: 7px; left: 16px;
+}
+.tipDogam_bg .tipDogam {
+    margin:0 auto;
+    width:400px;
+    border-radius: 30px;
+    background:#f6fcff;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25), 0px -2px 2px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.tipDogam_bg .tipDogam h1 {
+    background-image:url(../image/td_h1.png);
+    background-repeat: no-repeat;
+    width:190px; height: 54px;
+    font-size: 20px;
+    font-weight: 700;
+    color:#fff; text-align: center; padding-top:15px ;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+    position: absolute; top:-20px; left:120px;
+}
+.tipDogam_bg .tipDogam #tdClose {
+    width:42px; height: 42px;
+    background: linear-gradient(180deg, #00A8FA 0%, #0CC0FB 77%, #23F0FD 100%);
+    box-shadow: 0px 3px 7px 0px #1259E3 inset, -1px -1px 2px 0px #0C93D4 inset, 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    position: absolute; top:12px; right: 17px;
+}
+.tipDogam_bg .tipDogam #tdClose::after {
+    content: '';
+    display: block;
+    width: 4px; height: 4px;
+    background-color: #fff; border-radius:10px;
+    filter: blur(0.25px) drop-shadow(1px 0px 4px #0B7EED);
+    position: absolute; top:4px; left: 12px;
+}
+.tipDogam_bg .tipDogam #tdClose img {
+    padding-top:5px ;
+    display: inline-block;
+    width: 25px; height: 25px;
+}
+.tipDogam_bg .tipDogam .tipcon_bg {
+    overflow-y: scroll;
+    border-radius: 30px;
+    height: 400px;
+    padding:35px 0;
+}
+.tipDogam_bg .tipDogam .tipcon_bg .conRing {
+    position: absolute; top:46px; left: 85px;
+    z-index: 1;
+}
+.tipDogam_bg .tipDogam .tipcon_bg .conRing img:first-child {margin-right: 210px; display: inline-block;}
+.tipDogam_bg .tipDogam .tipcon_bg .conRing img {
+    width: 25px; height: 37px; display: inline-block;
+}
+.tipDogam_bg .tipDogam .tipcon_bg .tdconDiv {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap; align-items: center;
+    
+}
+.tipDogam_bg .tipDogam .tipcon_bg .tdconDiv .tdcon:first-child {}
+.tipDogam_bg .tipDogam .tipcon_bg .tdconDiv .tdcon::after {
+    content: '';
+    display: block;
+    background-color: #fff;
+    width: 4px; height: 6px;
+    border-radius: 50%;
+    transform: rotate(60.25deg);
+    position: absolute; top: 4px; left: 5px;
+}
+.tipDogam_bg .tipDogam .tipcon_bg .tdconDiv .tdcon {
+    cursor: pointer;
+    width:341px; height: 48px; padding: 15px 25px;
+    background-color: #FFEED9;
+    text-overflow: ellipsis; overflow: hidden;
+    white-space: nowrap;
+    border-radius: 15px;
+    border: 1px solid #C1A287;
+    box-shadow: 0px -3px 0px 0px rgba(217, 157, 106, 0.65) inset, 0px -4px 0px 0px #fff inset, 0px 2px 0px 0px #FFF inset;
+    margin-bottom: 20px;
+    position: relative;
+}
+.tipDogam_bg .tipDogam .tipcon_bg .tdconDiv .tdyet:last-child {margin-bottom: 0;}
+.tipDogam_bg .tipDogam .tipcon_bg .tdconDiv .tdyet {
+    width: 341px; 
+    height: 48px; 
+    padding: 15px 25px;
+    border-radius: 15px;
+    background: rgba(221, 221, 221, 0.87);
+    color:#989898; font-weight: 700;
+    margin-bottom: 20px;
+}
+/* 스크롤바 디자인 */
+/* Firefox */
+.tipDogam_bg .tipDogam .tipcon_bg {scrollbar-width: 8px; scrollbar-color: #CEF; border:8px solid transparent;}
+/* Opera */
+.tipDogam_bg .tipDogam .tipcon_bg::-o-scrollbar {width: 8px; }/*스크롤바 크기*/
+.tipDogam_bg .tipDogam .tipcon_bg::-o-scrollbar-thumb {background-color: #CEF;border-radius: 10px; border:8px solid transparent;}/*스크롤 드래그바*/
+/* html::-o-scrollbar-thumb:hover {background-color:;} */
+/* Chrome, Safari, Edge 등 웹킷 기반 브라우저 */
+.tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar {width: 8px;}/*스크롤바 크기*/
+.tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-track {}/*스크롤바 배경*/
+.tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-thumb {background-color: #CEF ;border-radius:10px;
+    border:8px solid transparent;
+}/*스크롤 드래그바*/
+.tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-button:vertical:start:decrement,
+.tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-button:vertical:start:increment{
+    display:block;
+    height: 15px;
+    /* 스크롤바 위 공간여백 */
+}
+.tipDogam_bg .tipDogam .tipcon_bg::-webkit-scrollbar-button:vertical:end:decrement{
+    display: block; width:10px;
+}
+
+/* 팁 팝업 */
+.ms_bg {
+    width: 317px; background-color:#FFEED9;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding:30px 40px;
+    position: absolute; 
+    top:50%; left:50%;
+    transform: translate(-50%,-50%);
+}
+.ms_bg .ms_sticker {width: 20px; height: 36px;}
+.ms_bg .ms_sticker:nth-child(1) {
+    background-color:rgba(0, 168, 250, 0.30);
+    position: absolute; top:-10px; left: -5px;
+    transform: rotate(-52.986deg);
+}
+.ms_bg .ms_sticker:nth-child(2) {
+    background-color:rgba(0, 168, 250, 0.30);
+    position: absolute; bottom: -10px; left: -5px;
+    transform: rotate(41.718deg);
+}
+.ms_bg .ms_sticker:nth-child(3) {
+    background-color:rgba(0, 168, 250, 0.30);
+    position: absolute; bottom: -10px; right: -5px;
+    transform: rotate(130.543deg);
+}
+.ms_bg .ms_sticker:nth-child(4) {
+    background-color:rgba(0, 168, 250, 0.30);
+    position: absolute; top: -10px; right: -5px;
+    transform: rotate(-130.543deg);
+}
+.ms_bg .ms_con {font-size: 18px; line-height: 30px; text-align: center;}
+.ms_bg #ms_close {text-align: center; cursor: pointer; margin-top: 15px;}
+/* 팝업 투명도 */
+.tipActive {display: block !important;}

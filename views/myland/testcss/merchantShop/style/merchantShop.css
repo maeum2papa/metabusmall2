@@ -1,0 +1,141 @@
+.merchantShop {
+    width: 550px;
+    position: absolute;
+    top:20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.merchantShop .mShopTop {
+    width: 550px;
+    height: 39px;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex; 
+    align-items: center;
+    padding: 7px 17px;
+    position: relative;
+    top:3px;
+    box-shadow: 0px 4px 5px rgba(0,0,0,0.1);
+}
+.merchantShop .mShopTop h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FB8C00;
+    margin-left: 3px;
+}
+.merchantShop .mShopTop #mShopCloseBtn {
+    background-color: transparent;
+    position: absolute; right: 17px;
+}
+.merchantShop .mShopTop #mShopCloseBtn img {}
+.merchantShop .mShop_wrap {
+    width: 550px;
+    border-radius: 15px;
+    background: rgba(241,241,241,0.8);
+    padding: 18px 15px;
+    display: flex; flex-flow: column nowrap;
+    justify-content: space-between;
+}
+.merchantShop .mShop_wrap .mShop_contentsTop {
+    
+}
+.merchantShop .mShop_wrap .mShop_contentsTop .mShopTalk_merchant {
+    display: flex; justify-content: space-between;
+}
+.merchantShop .mShop_wrap .mShop_contentsTop .mShopTalk_merchant .merchantTalk_wrap::after {
+    content: '';
+    position: absolute; /* 삼각형을 부모 요소 위에 올리기 위해 절대 위치로 설정 */
+    transform: translateY(-50%); /* 수직 중앙 정렬 */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent; /* 위쪽 선을 투명색으로 */
+    border-bottom: 5px solid transparent; /* 아래쪽 선을 투명색으로 */
+    border-right: 10px solid #FFEFD9; /* 오른쪽 선을 검은색으로 */
+    top:50%; left: -10px;
+
+}
+.merchantShop .mShop_wrap .mShop_contentsTop .mShopTalk_merchant .merchantTalk_wrap {
+    background-color: #FFEFD9;
+    width: 418px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    position: relative;
+}
+.merchantShop .mShop_wrap .mShop_contentsTop .mShopTalk_merchant .merchantTalk_wrap #merchantTalk_before {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+
+}
+.merchantShop .mShop_wrap .mShop_contentsTop .mShopTalk_merchant .merchantTalk_wrap #merchantTalk_after {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    display: none;
+}
+
+.merchantShop .mShop_wrap .mShop_contentsBtm {
+    width: 518px; height: 160px;
+    border:1px solid #B1B1B1;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    display: flex; justify-content: space-around;
+    align-items: center;
+    margin-top: 17px;
+}
+.merchantShop .mShop_wrap .mShop_contentsBtm .mshop_product {
+    width: 103px; height: 123px;
+    border: 1px solid #FB8C00;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.merchantShop .mShop_wrap .mShop_contentsBtm .mshop_product img {width: 75px; margin:5px 14px 0 14px;}
+.merchantShop .mShop_wrap .mShop_contentsBtm .mshop_product .mshop_productName {
+    font-size: 12px; font-weight: 500; text-align: center;
+    margin-bottom: 3px;
+}
+.merchantShop .mShop_wrap .mShop_contentsBtm .mshop_product .mshopSeed_price {
+    display: flex; 
+    align-items: center;
+    width: 83px; height: 17px;
+    background-color: #FFDCAF;
+    border-radius: 9px;
+    margin:0 auto;
+}
+.merchantShop .mShop_wrap .mShop_contentsBtm .mshop_product .mshopSeed_price .mShop_seedprice {font-size: 12px; font-weight: 700;}
+.merchantShop .mShop_wrap .mShop_contentsBtm .mshop_product .mshopSeed_price img {width: 20px; margin-right: 13px; padding-bottom: 4px;}
+
+/* 팝업창 */
+.mShop_popup {
+    width: 433px; height: 182px;
+    background: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0px 3px 6px #22222240;
+    padding-top: 28px;
+    position: absolute;
+    top:30%; left:50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+.mShop_popup p {font-size: 22px; line-height: 35px; text-align: center;}
+.mShop_popup p span {font-size: 22px; line-height: 35px; text-align: center;}
+.mShop_popup .mShopBtn {
+    width: 333px;
+    display: flex; justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+.mShop_popup .mShopBtn #mShop_cancelBtn {
+    width: 158px; height: 35px;
+    background-color:#707070; border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+.mShop_popup .mShopBtn #mShop_ExchangeBtn {
+    width: 158px; height: 35px;
+    background-color:#FB8C00; border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}

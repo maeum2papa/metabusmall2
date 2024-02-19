@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/mobile_listBox.css">
+    <link rel="stylesheet" href="./style/chat_box_reseponsive.css">
+    <title>모바일 채팅</title>
+</head>
+<body>
+    <div class="mobile_chat">
+        <div class="mobile_chatList">
+            <h1>직원목록 <img src="./image/hu_icon.svg" alt=""></h1>
+            <ul class="m_ChList">
+                <li>
+                    <p class="ch_work">디자인팀</p>
+                    <p class="ch_name">홍길동</p>
+                </li>
+                <li>
+                    <p class="ch_work">디자인팀</p>
+                    <p class="ch_name">홍길동</p>
+                </li>
+                <li>
+                    <p class="ch_work">디자인팀</p>
+                    <p class="ch_name">홍길동</p>
+                </li>
+                <li>
+                    <p class="ch_work">디자인팀</p>
+                    <p class="ch_name">홍길동</p>
+                </li>
+                <li>
+                    <p class="ch_work">디자인팀</p>
+                    <p class="ch_name">홍길동</p>
+                </li>
+                <li>
+                    <p class="ch_work">디자인팀</p>
+                    <p class="ch_name">홍길동</p>
+                </li>
+                <li>
+                    <p class="ch_work">디자인팀</p>
+                    <p class="ch_name">홍길동</p>
+                </li>
+                <li>
+                    <p class="ch_work">디자인팀</p>
+                    <p class="ch_name">홍길동</p>
+                </li>
+            </ul>
+        </div>
+        <div class="mobile_chatBox">
+            <h1 id="mobile_chatName">닉네임</h1>
+            <button id="moChat_close"><img src="./image/close.svg" alt="닫기"></button>
+            <div class="mochTxt">
+                <div class="moChat chtxt1">
+                    <p class="moChat_con">정말요? 저도 낚시 중이었는데 신기하네요~ 몇마리 낚으셨어요? 저는 한 마리밖에ㅠㅠ...</p>
+                    <p class="moChat_time"><span>2023.12.27</span> <em>14:01</em></p>
+                </div>
+                <div class="moChat chtxt1">
+                    <p class="moChat_con">정말요? 저도 낚시 중이었는데 신기하네요~ 몇마리 낚으셨어요? 저는 한 마리밖에ㅠㅠ...</p>
+                    <p class="moChat_time"><span>2023.12.27</span> <em>14:01</em></p>
+                </div>
+                <div class="moChat chtxt1">
+                    <p class="moChat_con">정말요? 저도 낚시 중이었는데 신기하네요~ 몇마리 낚으셨어요? 저는 한 마리밖에ㅠㅠ...</p>
+                    <p class="moChat_time"><span>2023.12.27</span> <em>14:01</em></p>
+                </div>
+                <div class="moChat chtxt1">
+                    <p class="moChat_con">정말요? 저도 낚시 중이었는데 신기하네요~ 몇마리 낚으셨어요? 저는 한 마리밖에ㅠㅠ...</p>
+                    <p class="moChat_time"><span>2023.12.27</span> <em>14:01</em></p>
+                </div>
+                <div class="moChat chtxt2">
+                    <p class="moChat_con">길동님 랜드 놀러가도 되나요?</p>
+                    <p class="moChat_time"><span>2023.12.27</span> <em>14:03</em></p>
+                </div>
+                <div class="moChat chtxt2">
+                    <p class="moChat_con">길동님 랜드 놀러가도 되나요?</p>
+                    <p class="moChat_time"><span>2023.12.27</span> <em>14:03</em></p>
+                </div>
+            </div>
+            <div class="mobile_chatting">
+                <form action="#" method="get" id="mobile_ChatFrm">
+                    <fieldset>
+                        <!-- <legend>채팅 양식</legend> -->
+                        <input type="text" placeholder="채팅을 입력해주세요." name="chatting" id="mobileChatting">
+                        <button id="mchat_send"><img src="./image/M_Send_icon.png" alt="보내기"></button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+    //가로형 모바일 웹
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    let vw = window.innerWidth * 0.01;
+    document.documentElement.style.setProperty("--vw", `${vw}px`);
+
+    // 채팅창
+    const moChList = document.querySelectorAll('.mobile_chat > .mobile_chatList > .m_ChList > li')
+    const moClose = document.querySelector('#moChat_close')
+    // console.log(moChList,moChatting)
+    moChList.forEach(function(t,i){
+        t.addEventListener('click',function(e){
+            const moChatting = document.querySelector('.mobile_chat > .mobile_chatBox')
+            moChatting.style.display = 'block'
+        })
+    })
+    moClose.addEventListener('click',function(e){
+        const moChatting = document.querySelector('.mobile_chat > .mobile_chatBox')
+        moChatting.style.display = 'none'
+    })
+</script>
+</body>
+</html>

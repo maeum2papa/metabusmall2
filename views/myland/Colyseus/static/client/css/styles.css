@@ -1,0 +1,302 @@
+@font-face {
+	font-family: 'NexonLv2Gothic';
+	src: url(/font/NEXON_Lv2_Gothic_otf.woff) format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NexonLv2Gothic';
+	src: url(/font/NEXON_Lv2_Gothic_Medium_otf.woff) format('woff');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NexonLv2Gothic';
+	src: url(/font/NEXON_Lv2_Gothic_Bold_otf.woff) format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font: inherit;
+	font-family: 'NexonLv2Gothic';
+	letter-spacing: -0.02em;
+}
+
+header {
+	display: none;
+}
+
+.navbar {
+	display: none;
+}
+
+.sidebar {
+	display: none;
+}
+
+footer {
+	display: none !important;
+}
+
+button {
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+address,
+span,
+strong,
+em,
+q,
+sub,
+sup,
+del,
+s,
+a,
+img,
+div,
+header,
+nav,
+aside,
+main,
+footer,
+article,
+figure,
+figcaption,
+section,
+video,
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+form,
+fieldset,
+legend,
+input,
+select,
+option,
+button,
+label,
+textarea {
+	margin: 0;
+	padding: 0;
+	line-height: 1.0;
+	text-decoration: none;
+	letter-spacing: -0.02em;
+}
+
+th {
+	text-align: left;
+}
+
+table,
+tr,
+th,
+td {
+	border-collapse: collapse;
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+a {
+	color: #000;
+}
+
+input {
+	outline: none;
+	border: 0;
+}
+
+fieldset {
+	border: 0;
+}
+
+.skip {
+	display: none;
+}
+
+
+:root {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	cursor: default;
+	line-height: 1.5;
+	overflow-wrap: break-word;
+	word-break: break-word;
+	tab-size: 4;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	letter-spacing: -0.02em;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none
+}
+
+/* * {
+    margin: 0;
+    padding: 0;
+} */
+
+canvas {
+	position: absolute;
+	margin-top: 0;
+	border: 0;
+	/*1px solid gray*/
+}
+
+img,
+picture,
+video,
+svg {
+	/* display: block; */
+	max-width: 100%;
+}
+
+img {
+	border: 0 none;
+}
+
+a {
+	text-decoration: none;
+}
+
+input {
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+	line-height: 1.5;
+}
+
+#gamecontainer {
+	/* display: flex;
+    justify-content: center;
+    align-items: center;  */
+	position: relative;
+}
+
+.dn {
+	display: none !important;
+}
+
+#loading {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	display: block;
+	z-index: 10000;
+}
+
+#loadingDog {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	bottom: 0;
+	transform: translate(-50%, -50%);
+	width: 250px;
+	height: 250px;
+}
+
+.emoji{
+	position: absolute;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 30px;
+	color: #000;
+	transform: translate(-50%, -50%);
+	/* transition: transform 0.8s linear, opacity 0.8s linear , font-size 0.8s linear;  */
+	z-index: 150;
+}
+
+.emojistart{
+	transform: translate(-50%, -70px); 
+	font-size: 24px;
+	opacity: 0;
+}
+
+.youtube {
+	position: absolute;
+	transform: translate(-50%,-50%);
+	z-index: 999;
+	display: none;
+}
+
+.navCounter {
+	display: none;
+	position:absolute;
+	top: -1px;
+	right: 1px;
+	min-width: 8px;
+	height: 20px;
+	line-height: 20px;
+	margin-top: -11px;
+	padding: 0 6px;
+	font-weight: normal;
+	font-size: small;
+	color: white;
+	text-align: center;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+	background: rgba(100,100,100,1);
+	border: 1px solid #777777;
+	border-radius: 11px;
+	/* background-image: -webkit-linear-gradient(top, #e8616c, #dd202f);
+	background-image: -moz-linear-gradient(top, #e8616c, #dd202f);
+	background-image: -o-linear-gradient(top, #e8616c, #dd202f);
+	background-image: linear-gradient(to bottom, #e8616c, #dd202f);
+	-webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12); */
+	box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.1), 0 1px rgba(0, 0, 0, 0.12);
+	z-index: 1;
+}
+
+.testPopup {
+	display: none;
+	position: absolute;
+	font-size: 50px;
+	text-align: center;
+	transform: translate(-50%,-50%);
+	left: 50%;
+	top: 20%;
+	color: #ff4;
+}
+

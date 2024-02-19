@@ -1,0 +1,7 @@
+<svg id="cancel_icon" data-name="cancel icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect id="사각형_3929" data-name="사각형 3929" width="32" height="32" fill="none"/>
+  <g id="그룹_561" data-name="그룹 561" transform="translate(8.476 8.408)">
+    <path id="패스_1187" data-name="패스 1187" d="M0,0V21.378" transform="translate(0 0) rotate(-45)" fill="none" stroke="#00a8fa" stroke-linecap="round" stroke-width="3"/>
+    <path id="패스_1188" data-name="패스 1188" d="M0,0V21.378" transform="translate(15.116 0.001) rotate(45)" fill="none" stroke="#00a8fa" stroke-linecap="round" stroke-width="3"/>
+  </g>
+</svg>

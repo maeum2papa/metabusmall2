@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="410" height="88" viewBox="0 0 410 88">
+  <defs>
+    <filter id="graphic" x="-28" y="-27" width="470" height="148" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feFlood flood-color="#00a8fa" flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#graphic)">
+        <rect id="graphic-2" data-name="graphic" width="410" height="88" rx="9" transform="translate(1477 686)" fill="#fb8c00"/>
+      </g>
+    </clipPath>
+    <filter id="타원_91" x="-8" y="13" width="171" height="171" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-2"/>
+      <feFlood flood-color="#222" flood-opacity="0.059"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="타원_92" x="310" y="31" width="112" height="112" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-3"/>
+      <feFlood flood-color="#222" flood-opacity="0.059"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="타원_93" x="-40" y="-59" width="90" height="90" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-4"/>
+      <feFlood flood-color="#222" flood-opacity="0.059"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="FAQ" transform="translate(-1477 -686)" clip-path="url(#clip-path)">
+    <g id="타원_88" data-name="타원 88" transform="translate(1750 653)" fill="none" stroke="#fff" stroke-width="3" opacity="0.2">
+      <circle cx="30" cy="30" r="30" stroke="none"/>
+      <circle cx="30" cy="30" r="28.5" fill="none"/>
+    </g>
+    <g id="타원_89" data-name="타원 89" transform="translate(1506 702)" fill="none" stroke="#fff" stroke-width="1" opacity="0.2">
+      <circle cx="15.5" cy="15.5" r="15.5" stroke="none"/>
+      <circle cx="15.5" cy="15.5" r="15" fill="none"/>
+    </g>
+    <g id="타원_90" data-name="타원 90" transform="translate(1780 760)" fill="none" stroke="#fff" stroke-width="1" opacity="0.2">
+      <circle cx="15.5" cy="15.5" r="15.5" stroke="none"/>
+      <circle cx="15.5" cy="15.5" r="15" fill="none"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 1477, 686)" filter="url(#타원_91)">
+      <circle id="타원_91-2" data-name="타원 91" cx="70.5" cy="70.5" r="70.5" transform="translate(5 25)" fill="#fff" opacity="0.2"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 1477, 686)" filter="url(#타원_92)">
+      <circle id="타원_92-2" data-name="타원 92" cx="41" cy="41" r="41" transform="translate(323 43)" fill="#fff" opacity="0.2"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 1477, 686)" filter="url(#타원_93)">
+      <circle id="타원_93-2" data-name="타원 93" cx="30" cy="30" r="30" transform="translate(-25 -47)" fill="#fff" opacity="0.5"/>
+    </g>
+    <circle id="타원_94" data-name="타원 94" cx="52" cy="52" r="52" transform="translate(1568 665)" fill="#fb8c00" opacity="0.4"/>
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="heart_icon" opacity="0.6">
+    <rect id="사각형_4063" data-name="사각형 4063" width="16" height="16" fill="#fff" opacity="0"/>
+    <rect id="사각형_4064" data-name="사각형 4064" width="12" height="12" transform="translate(2 2)" fill="#ffa7a7" opacity="0"/>
+    <path id="패스_1204" data-name="패스 1204" d="M5.491,10.722,1.235,6.4c-.07-.061-.139-.123-.206-.191a3.513,3.513,0,0,1,0-4.968,3.531,3.531,0,0,1,4.976.228h0c.057-.066.116-.13.179-.193a3.52,3.52,0,0,1,4.968-.221,3.513,3.513,0,0,1,0,4.969,3.61,3.61,0,0,1-.285.256L6.451,10.722a.678.678,0,0,1-.96,0Z" transform="translate(1.818 2.883)" fill="none" stroke="#fb8c00" stroke-width="1"/>
+  </g>
+</svg>

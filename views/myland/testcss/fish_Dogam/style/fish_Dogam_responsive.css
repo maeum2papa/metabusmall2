@@ -1,0 +1,51 @@
+/* 모바일 */
+@media all and (max-width: 932px) and (orientation: landscape) {
+    /* 480px 이하이면서 가로모드일때의 css 적용 */
+    .fishDogam_bg {
+        width:355.6px; height: 213.95px;
+    }
+    .fishDogam_bg .fishDogam { width: 355.6px; height: 190px; margin-top: 5px;}
+    .fishDogam_bg h1 {font-size: 14px;}
+    .fishDogam_bg #fishDogam_popup_close {right: 10px; top:10px;}
+    .fishDogam_bg #fishDogam_popup_close img {width: 15px;}
+    .fishDogam_bg .fishDogam .fishBook h2 {font-size: 12px; width: 96px; height: 18px;}
+    .fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon img {width: 60px; height: 60px; border-radius: 5px;}
+    .fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook {height: 72px; width: 300px;}
+    .fishDogam_bg .fishDogam .fishBook:first-child {margin-top:0px;}
+    .fishDogam_bg .fishDogam .fishBook:last-child {margin-bottom:20px;}
+    /* after */
+    .fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon .after {width: 60px; height: 60px; border-radius: 5px;}
+    .fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon p {width: 60px; top:23px;}
+    .fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon p span {font-size: 13px;}
+    /* 보상획득 버튼 */
+    .fishDogam_bg .fishDogam .fishBook .fdBtn {margin-top: 15px;}
+    .fishDogam_bg .fishDogam .fishBook .fdBtn #fd_Rewards {
+        width: 223px; height: 23px; font-size: 12px; border-radius: 3px;
+        margin-left: 102px;
+    }
+    /* 보상획득 완료 */
+    .fishDogam_bg .fishDogam .fishBook .fdBtn #fd_Complete {
+        width: 223px; height: 23px; font-size: 12px; border-radius: 3px;
+        margin-left: 102px; display: block; margin-top: 35px;
+        display: none;
+    }
+    /* 이전버튼 */
+    #prevfdBtn {top:43px; left:80px;}
+    #prevfdBtn img {width: 18px;}
+    /* 다음버튼 */
+    #nextfdBtn {margin-top: 24px;}
+    #nextfdBtn img {width: 18px;}
+    /* 팝업 창 */
+    .fdCoin {display: none;
+        width:266px; height: 130px; border-radius: 10px; border:1px solid #00A8FA;
+        background-color: #FFF;
+        position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+    }
+    .fdCoin .fdCoin_popup {}
+    .fdCoin .fdCoin_popup .fdCoin_txt {font-size:15px; font-weight: 700; text-align: center; margin-top:49px;}
+    .fdCoin .fdCoin_popup .fdCoin_close {background-color: #00A8FA; color:#fff; width:140px; height: 25px; border-radius: 15px; margin:20px 63px; font-size: 15px;}
+    .fishDogam_bg .fishDogam .fishBook:last-child {margin-bottom: 80px;}
+    /* 스크롤바 */
+    .fishDogam_bg .fishDogam::-webkit-scrollbar {width: 6px;}/*스크롤바 세로*/
+    .fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook::-webkit-scrollbar {height: 5px;} /* 스크롤바 가로 */
+}

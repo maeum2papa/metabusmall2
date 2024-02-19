@@ -1,0 +1,319 @@
+/* 쪽지함 */
+.message_popup {
+    position: absolute;
+    width: 718px;
+    left:50%;
+    top:10%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.message_popup h1::before {
+    content: '';
+    display: block;
+    position: absolute; top:6px; left: 7px;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    width: 7px; height: 5px;
+    transform: matrix(0.87, -0.5, 0.5, 0.87, 0, 0);
+}
+.message_popup h1::after {
+    content: '';
+    width: 112px; height: 40px;
+    border: 2px solid #FB8C00;
+    position: absolute; left: 0px; top: 0px;
+    border-radius: 7px 7px 0 0;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.2);
+}
+.message_popup h1 {
+    color:#fff;
+    font-weight: 700;
+    font-size: 18px;
+    width: 120px; height: 47px;
+    background: linear-gradient(to bottom, #FB8C00 50%, #EF8500  50%);
+    border-radius: 8px 8px 0 0;
+    border:2px solid #DD7B00;
+    text-align: center;
+    padding-top: 11px;
+    margin-left: 30px;
+    position: relative;
+}
+.message_popup #closebtn::after {
+    content: '';
+    width: 8px; height: 2px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.7);
+    position: absolute;
+    left: 6px; top:5px;
+    transform: matrix(0.83, -0.56, 0.56, 0.83, 0, 0);
+}
+.message_popup #closebtn {
+    background-color: #FB8C00;
+    border:2px solid #DD7B00;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+    position: absolute;
+    top:3px; right: 0;
+}
+.message_popup #closebtn img {margin-top: 2px;}
+.message_popup .messageBox {
+    background-color: #FFFFFF;
+    width: 718px;
+    height: 420px;
+    border-radius: 15px;
+    border:2px solid #DD7B00;
+}
+.message_popup .messageBox .MSmenu {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 2px solid #FFDCAF;
+    width: 653px;
+    margin: 0 auto;
+    margin-bottom: 18px;
+}
+.message_popup .messageBox .MSmenu .msmenuLeft {
+    display: flex;
+    margin: 20px 0 8px 0;
+}
+.message_popup .messageBox .MSmenu .msmenuLeft #receiveMS {
+    font-weight: 500;
+    color: #707070;
+    width: 139px; height: 18px;
+    border-right: 1px solid #70707080;
+    text-align: center;
+    cursor: pointer;
+}
+.message_popup .messageBox .MSmenu .msmenuLeft #spendMs {
+    font-weight: 500;
+    color: #707070;
+    width: 139px;
+    text-align: center;
+    cursor: pointer;
+}
+.message_popup .messageBox .MSmenu .MsmenuRight {
+    display: flex;
+}
+.message_popup .messageBox .MSmenu .MsmenuRight #sendMs {
+    font-weight: 500; color: #FB8C00;
+    display: flex; align-items: center;
+    margin-right: 22px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+.message_popup .messageBox .MSmenu .MsmenuRight #sendMs img {
+    width: 25px;
+    filter: invert(53%) sepia(48%) saturate(1847%) hue-rotate(3deg) brightness(102%) contrast(104%);
+    margin-right: 3px;
+}
+/* 받은 쪽지함 */
+.message_popup .messageBox .messageWrap {}
+.message_popup .messageBox .message-receiveWrap {
+    display: none;
+    margin: 0 auto;
+    width: 653px;
+    height: 330px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    padding-bottom: 10px;
+}
+.message_popup .messageBox .message-receiveWrap .msContents {
+    width: 638px; height: 107px;
+    border:1px solid #BCBCBC;
+    border-radius: 8px;
+    display: flex;
+    align-items: center; justify-content: space-between;
+    padding: 8px 11px;
+    margin-bottom: 11px;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConimg {
+    width: 151px; height: 90px; border-radius: 5px;
+    margin-right:13px;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop {}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop h3 > * {line-height: 19px; font-size: 12px;}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop h3 {
+    display: flex; align-items: center;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop h3 .nameMS {color: #00A8FA; margin-right: 13px;}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop h3 .nameMS_c {color: #FB8C00; margin-right: 13px;}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop h3 .dateMs {color:#707070;}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop h3 .timeMs {color:#707070;}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop h3 .Nread_img {
+    width: 15px; height: 100%;
+    filter: invert(75%) sepia(53%) saturate(5637%) hue-rotate(321deg) brightness(104%) contrast(93%);
+    margin-left: 12px;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop h3 .read_img {
+    width: 13px; height: 100%;
+    margin-left: 12px;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop .titleMs {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    margin:5px 0;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConTop .conMs {
+    font-size: 12px;
+    color: #707070;
+    line-height: 19px;
+    width: 330px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConRight {
+    display: flex; flex-flow: column nowrap;
+    align-items: flex-end; justify-content: space-betweend;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConRight .deleteMs {
+    width: 26px; height: 26px;
+    background: transparent linear-gradient(180deg, #FCFCFC 0%, #DBDBDB 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 1px #00000029;
+    border: 0.36px solid #707070;
+    border-radius: 3px;
+    padding: 3px;
+    box-shadow: 0px 0px 1px #00000029;
+    margin-bottom: 35px;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConRight .deleteMs .delete_img {
+    width: 19px; height: 100%;
+    filter: invert(43%) sepia(18%) saturate(20%) hue-rotate(102deg) brightness(96%) contrast(86%);
+    cursor: pointer;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConRight .viewMs {
+    width: 116px; height: 30px;
+    border: 2px solid #DD7B00; border-radius: 20px;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.3);
+    background: transparent linear-gradient(180deg, #FFDCAF 0%, #FDBD6B 46%, #FB8C00 100%) 0% 0% no-repeat padding-box;
+    font-weight: 600;
+    font-size: 14px;
+    color:#fff;
+}
+.message_popup .messageBox .message-receiveWrap .msContents .msConRight .viewMs img { width: 5px;}
+.message_popup .messageBox .msbar {
+    position: absolute;
+    left: 23px; bottom: 2px;
+    background: transparent linear-gradient(180deg, #FFFFFF00 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;
+    width: 650px;
+    height: 57px;
+}
+/* 보낸쪽지함 */
+.message_popup .messageBox .message-SpendWrap {
+    display: none;
+    margin: 0 auto;
+    width: 653px;
+    height: 330px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    padding-bottom: 10px;
+}
+.message_popup .messageBox .message-SpendWrap .msContents {
+    width: 638px; height: 107px;
+    border:1px solid #BCBCBC;
+    border-radius: 8px;
+    display: flex;
+    align-items: center; justify-content: space-between;
+    padding: 8px 11px;
+    margin-bottom: 11px;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConimg {
+    width: 151px; height: 90px; border-radius: 5px;
+    margin-right:13px;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop {}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop h3 > * {line-height: 19px; font-size: 12px;}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop h3 {
+    display: flex; align-items: center;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop h3 .nameMS {color: #00A8FA; margin-right: 13px;}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop h3 .nameMS_c {color: #FB8C00; margin-right: 13px;}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop h3 .dateMs {color:#707070;}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop h3 .timeMs {color:#707070;}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop h3 .Nread_img {
+    width: 15px; height: 100%;
+    filter: invert(75%) sepia(53%) saturate(5637%) hue-rotate(321deg) brightness(104%) contrast(93%);
+    margin-left: 12px;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop h3 .read_img {
+    width: 13px; height: 100%;
+    margin-left: 12px;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop .titleMs {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    margin:5px 0;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConTop .conMs {
+    font-size: 12px;
+    color: #707070;
+    line-height: 19px;
+    width: 330px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConRight {
+    display: flex; flex-flow: column nowrap;
+    align-items: flex-end; justify-content: space-betweend;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConRight .deleteMs {
+    width: 26px; height: 26px;
+    background: transparent linear-gradient(180deg, #FCFCFC 0%, #DBDBDB 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 1px #00000029;
+    border: 0.36px solid #707070;
+    border-radius: 3px;
+    padding: 3px;
+    box-shadow: 0px 0px 1px #00000029;
+    margin-bottom: 35px;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConRight .deleteMs .delete_img {
+    width: 19px; height: 100%;
+    filter: invert(43%) sepia(18%) saturate(20%) hue-rotate(102deg) brightness(96%) contrast(86%);
+    cursor: pointer;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConRight .viewMs {
+    width: 116px; height: 30px;
+    border: 2px solid #DD7B00; border-radius: 20px;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.3);
+    background: transparent linear-gradient(180deg, #FFDCAF 0%, #FDBD6B 46%, #FB8C00 100%) 0% 0% no-repeat padding-box;
+    font-weight: 600;
+    font-size: 14px;
+    color:#fff;
+}
+.message_popup .messageBox .message-SpendWrap .msContents .msConRight .viewMs img { width: 5px;}
+.message_popup .messageBox .msbar {
+    position: absolute;
+    left: 23px; bottom: 2px;
+    background: transparent linear-gradient(180deg, #FFFFFF00 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box;
+    width: 650px;
+    height: 57px;
+}
+
+/* 보낸쪽지함 스크롤바 */
+.message_popup .messageBox .message-SpendWrap::-webkit-scrollbar {width: 6px;}
+.message_popup .messageBox .message-SpendWrap::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #FB8C00 50%, #DD7B00 50%);
+	border:1px solid #DD7B00;
+	border-radius: 4px;
+	position: relative;
+}
+.message_popup .messageBox .message-SpendWrap::-webkit-scrollbar-track {
+    background: #2222221A;
+    border-radius: 5px;
+}
+/* 받은쪽지함 스크롤바 */
+.message_popup .messageBox .message-receiveWrap::-webkit-scrollbar {width: 6px;}
+.message_popup .messageBox .message-receiveWrap::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #FB8C00 50%, #DD7B00 50%);
+	border:1px solid #DD7B00;
+	border-radius: 4px;
+	position: relative;
+}
+.message_popup .messageBox .message-receiveWrap::-webkit-scrollbar-track {
+    background: #2222221A;
+    border-radius: 5px;
+}

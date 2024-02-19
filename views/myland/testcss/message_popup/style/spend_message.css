@@ -1,0 +1,137 @@
+.spend_message {
+    display: none;
+    width: 594px;
+    height: 370px;
+    border:2px solid #DD7B00;
+    background-color: #fff;
+    border-radius: 5px;
+    position: absolute; top: 15%; left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+}
+.spend_message h1 {
+    width: 100%;
+    height: 33px;
+    background: linear-gradient(180deg, rgba(251,140,0,1) 50%, rgba(221,123,0,1) 100%);
+    color:#fff;
+    font-weight: 600;
+    padding: 8px 11px;
+}
+.spend_message .mspWrap {
+    padding: 17px 20px;
+}
+.spend_message .mspWrap div h2 {font-size: 14px; font-weight: 500; margin-right: 12px;}
+.spend_message .mspWrap .Recipient_wrap {
+    display: flex; align-items: center;
+    margin-bottom: 20px;
+}
+.spend_message .mspWrap .Recipient_wrap #RecipientCon {
+    width: 474px;
+    height: 26px;
+    background-color: #FFDCAF4D;
+    border-radius: 5px;
+    border:0.5px solid #707070;
+    padding: 3px;
+}
+.spend_message .mspWrap .title_wrap {
+    display: flex; align-items: center;
+    margin-bottom: 25px;
+}
+.spend_message .mspWrap .title_wrap #mspTitle {
+    width: 474px;
+    height: 26px;
+    background-color: #FFDCAF4D;
+    border-radius: 5px;
+    border:0.5px solid #707070;
+    padding: 3px;
+}
+.spend_message .mspWrap .contents_wrap {}
+.spend_message .mspWrap .contents_wrap .conwrapTop {
+    display: flex; align-items: center;
+    margin-bottom: 15px;
+}
+.spend_message .mspWrap .contents_wrap .conwrapTop #imgAdd {
+    width: 94px; height: 22px;
+    background-color: #707070;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+.spend_message .mspWrap .contents_wrap #mspContents {
+    width: 541px;
+    height: 159px;
+    background-color: #FFDCAF4D;
+    border-radius: 5px;
+    border:0.5px solid #707070;
+    padding: 5px;
+    line-height: 22px;
+    resize: none;
+}
+
+/* 스크롤바 */
+.spend_message .mspWrap .contents_wrap #mspContents::-webkit-scrollbar {width: 6px;}
+.spend_message .mspWrap .contents_wrap #mspContents::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #FB8C00 50%, #DD7B00 50%);
+	border:1px solid #DD7B00;
+	border-radius: 4px;
+	position: relative;
+}
+.spend_message .mspWrap .contents_wrap #mspContents::-webkit-scrollbar-track {
+    background: #2222221A;
+    border-radius: 5px;
+}
+.spend_message .mspWrap .contents_wrap #mspContents::-webkit-scrollbar-button:vertical:start:decrement,
+.spend_message .mspWrap .contents_wrap #mspContents::-webkit-scrollbar-button:vertical:start:increment{
+    display:block;
+    height: 3px;
+    /* 스크롤바 위 공간여백 */
+}
+.spend_message .mspWrap .contents_wrap #mspContents::-webkit-scrollbar-button:vertical:end:decrement{
+    display: block; height: 3px;
+}
+
+.spend_message .sendBtn {
+    display: flex;
+    justify-content: center;
+    width:312px; height: 38px;
+    margin: 0 auto;
+    margin-top:25px;
+}
+.spend_message .sendBtn #sendMsg_btn::after {
+    content: '';
+    display: block;
+    background: rgba(255,255,255,0.7);
+    width: 9px; height: 4px;
+    border-radius: 50%;
+    transform: matrix(0.83, -0.56, 0.56, 0.83, 0, 0);
+    position: absolute; top:7px; left: 4px;
+}
+.spend_message .sendBtn #sendMsg_btn {
+    width: 136px; height: 38px;
+    background-color: #FB8C00;
+    border-radius: 20px;
+    border:2px solid #DD7B00;
+    font-size: 18px; color: #fff; font-weight: 600;
+    position: relative;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4);
+    margin-right: 40px;
+}
+.spend_message .sendBtn #sendMs_close::after {
+    content: '';
+    display: block;
+    background: rgba(255,255,255,0.7);
+    width: 9px; height: 4px;
+    border-radius: 50%;
+    transform: matrix(0.83, -0.56, 0.56, 0.83, 0, 0);
+    position: absolute; top:7px; left: 4px;
+}
+.spend_message .sendBtn #sendMs_close {
+    width: 136px; height: 38px;
+    background-color: #B2B1B1;
+    border-radius: 20px;
+    border:2px solid #707070;
+    font-size: 18px; color: #000; font-weight: 600;
+    position: relative;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4);
+}

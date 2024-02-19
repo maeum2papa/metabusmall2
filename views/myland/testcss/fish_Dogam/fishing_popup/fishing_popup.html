@@ -1,0 +1,60 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="./style/fishing_popup.css"> 
+</head>
+<body>
+    <div id="fishing_popup">
+        <div class="fishing_popup_box">
+            <div class="fishing_popup_title">
+                <!-- 유리병 팝업 -->
+                <div class="fishing_glass">
+                    <img src="./image/glass.png">
+                    <h1>유리병 획득</h1> 
+                    <p>유리병에서 편지를 발견했습니다.</p>
+                </div>
+            </div>
+            <div class="fishing_popup_text">  <!-- 이부분은 유리병일때만 적용 -->
+                <h2>직장인 생활 TIP.</h2>
+                <p>컴퓨터 바탕화면의 업무 폴더를 카테고리별이나 우선순위 중심으로 정리하면 효율성이 올라갑니다.</p>
+            </div>
+        </div>
+    </div>
+    <!-- 유리외 나머지 -->
+    <div id="fishing_popup_etc">
+        <!-- 물고기 팝업 -->
+        <div class="fishing_fish">
+            <img src="./image/Fsea01.png" alt="넙치"> <!-- 물고기 사진 -->
+            <h1><span id="fishName">넙치</span>를/을 획득</h1> <!-- 물고기 이름 -->
+        </div>
+    </div>
+    <div id="fishing_popup_etc2">
+        <!-- 쓰레기 팝업 -->
+        <div class="fishing_trash">
+            <img src="./image/trash.png" alt="쓰레기">
+            <h1>쓰레기 획득</h1>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", (e) => {
+
+            let fishing_fish =document.querySelector("#fishing_popup_etc");
+            fishing_fish.style.opacity = 1;
+
+            setTimeout(() => {
+                fishing_fish.style.transition = 'opacity .3s';
+                fishing_fish.style.opacity = 0;
+                
+                setTimeout(() => {
+                    fishing_fish.style.display = 'none';
+                }, 200)
+            }, 2000);
+        })
+    </script>    
+</body>
+

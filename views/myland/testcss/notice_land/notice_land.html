@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/notice_land.css">
+    <link rel="stylesheet" href="./style/notice_land_responsive.css">
+</head>
+<body>
+    <div class="noticeLand">
+        <h1>공지사항</h1>
+        <div id="noticeContents">
+            <p id="notice_con">
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+                공지사항 내용입니다. 공지사항 내용입니다.
+            </p>
+            <button id="nLbtn"><img src="./image/nl_down_icon.png" alt="더보기"></button>
+        </div>
+    </div>
+    <script>
+            var noticeContents = document.getElementById('noticeContents');
+            var notice_con = document.getElementById('notice_con');
+            var nLbtn = document.getElementById('nLbtn');
+
+            if (notice_con.offsetHeight > noticeContents.offsetHeight){
+                nLbtn.style.display = 'block';
+            }
+
+            nLbtn.addEventListener('click', function() {
+                if (noticeContents.style.maxHeight === 'none'){
+                    noticeContents.style.maxHeight = '120px';
+                } else {
+                    noticeContents.style.maxHeight = 'none';
+                }
+                nLbtn.classList.toggle('rotate')
+            });
+    </script>
+</body>
+</html>  

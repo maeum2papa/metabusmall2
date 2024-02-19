@@ -1,0 +1,114 @@
+.waterF_box_bg {
+    width:529px; height: 300px;
+    background-image: url(/seum_img/waterF_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position:relative;
+    top:150px;
+    left:50%; transform:translateX(-50%);
+    z-index: 999;
+    display: none;
+    pointer-events: auto;
+}
+.waterF_box_bg #waterF_popup_close {background-color:transparent; position: absolute; top:23px; right:25px;}
+.waterF_box_bg .waterF_box {
+    width:451px; height:97px;
+    background-color: #fff;
+    border-radius: 50px;
+    border:1px solid rgba(149,97, 52, 0.5); 
+    position: absolute; top:45px; left:39px;
+    box-shadow: 1px -1px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    margin-left:-1px;
+}
+/* 닫기버튼 */
+.waterF_box_bg .waterF_box #waterF_popup_close img {width: 100%;}
+/* 물 */
+.waterF_box_bg .waterF_box .waterBox {
+    /* background-color:rgba(0,0,0,0.25); */
+    display: flex; flex-flow: row nowrap; align-items: center;
+    padding:6.5px 1px 0 9px; 
+    
+}
+.waterF_box_bg .waterF_box .waterBox p img {}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop {margin-left:14px;}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content {margin-right: 30px;}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content .waterBox_conTop {}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content .waterBox_conTop p {
+    font-size: 25px; font-weight: 500; position:fixed; top:57px; left:141px; /* 1/3 수정 */
+}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content .waterBox_conTop p span {
+    padding:0 65px 0 10px; letter-spacing: -0.05em; font-size: 16px; font-weight: 400;
+}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content .waterBox_conTop p:last-child {
+    position:fixed; top:58px; left:212px;
+    display: inline-block;
+    width: 120px;
+    text-align:right;
+} /* 1/3 수정 */
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content .waterBox_conTop p:last-child em {font-weight: 500; font-size: 25px;}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content .waterBox_conTop p:last-child #waterBox_count {
+    font-size: 25px; color:#00A8FA;
+}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content .conVar {border-bottom:1px solid rgba(221, 221, 221, 0.87); display: block; width:190px; margin:30px 0 6px 0; /* 1/3 수정 */
+    /* position:absolute; top:43px; */
+}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content .waterBox_conBtm {}
+.waterF_box_bg .waterF_box .waterBox .waterBoxTop .waterBox_content .waterBox_conBtm p {font-size:0.8rem; line-height: 18px;}
+
+/* 물 사용하기 버튼 */
+.waterF_box_bg .waterF_box .waterBox .useBox {position:relative; width:110px; height: 43px; cursor: pointer; top:-3px;}
+.waterF_box_bg .waterF_box .waterBox .useBox {}
+.waterF_box_bg .waterF_box .waterBox .useBox img {position:absolute; width:100%; height: 100%; left:-5px; top:3px;} /* 1/3 수정 */
+.waterF_box_bg .waterF_box .waterBox .useBox #W_none_icon {opacity:1;}
+.waterF_box_bg .waterF_box .waterBox .useBox #W_use_icon:hover {opacity: 1;}
+.waterF_box_bg .waterF_box .waterBox .useBox #W_use_icon {opacity:0;}
+.waterF_box_bg .waterF_box .waterBox .useBox #W_use_icon-hover {opacity:0;}
+/* 비료 */
+.waterF_box_bg .waterF_box .fertilizerBox_bg {
+    width:451px; height:97px;
+    background-color: #fff;
+    border-radius: 50px;
+    border:1px solid rgba(149,97, 52, 0.5);
+    position:relative;
+    margin-top:23px; margin-left:-1px;
+    box-shadow: 1px -1px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox {
+    /* background-color: rgba(5,5,5,0.5); */
+    display: flex; flex-flow: row nowrap; align-items: center;
+    position:absolute; top:7px; left:8px;
+}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop {
+    margin:0 -5px 0 15px;
+}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop .fertilizerBox_content {
+    margin-right: 30px;
+}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop .fertilizerBox_content .fertilizerBox_conTop {/* background-color: red; */}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop .fertilizerBox_content .fertilizerBox_conTop p {
+    font-size: 1.5rem; font-weight: 500; letter-spacing: -0.05em;
+    position: fixed;
+    bottom:105px;
+    left:139px;
+}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox p img {}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop .fertilizerBox_content .fertilizerBox_conTop p span {padding:0 46px 0 10px; font-size:16px; font-weight: 400;}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop .fertilizerBox_content .fertilizerBox_conTop p:last-child {
+    position: fixed; left:212px; bottom:104px;
+    display: inline-block; 
+    width: 120px; text-align: right;  /* 1/3 수정 */
+} /* 카운트 */ 
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop .fertilizerBox_content .fertilizerBox_conTop p:last-child em {font-weight: 500; font-size: 1.5rem;}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop .fertilizerBox_content .fertilizerBox_conTop p #fertilizerBox_count {font-size: 25px; color:#00A8FA;}
+.fertilizerBox_bg .fertilizerBox .fertilizerBox_content .conVar {border-bottom:1px solid rgba(221, 221, 221, 0.87); display: block; width:190px; margin:30px 0 6px 0; /* 12/27 고침 */
+}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop .fertilizerBox_content .fertilizerBox_conBtm {/* margin-top:40px; */}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .fertilizerBoxTop .fertilizerBox_content .fertilizerBox_conBtm p{font-size:0.8rem; line-height: 18px;}
+/* 비료 사용하기 버튼 */
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .useBox {position:relative; width:110px; height: 43px; cursor: pointer; top:-3px;}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .useBox {}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .useBox img {position:absolute; width:100%; height: 100%; left:-6.5px; top:3px;}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .useBox #W_none_icon {opacity: 1;}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .useBox #W_use_icon:hover {opacity: 0;}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .useBox #W_use_icon {opacity: 0;}
+.waterF_box_bg .waterF_box .fertilizerBox_bg .fertilizerBox .useBox #W_use_icon-hover {opacity:0;}

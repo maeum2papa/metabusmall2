@@ -1,0 +1,151 @@
+.messageView {
+    width: 594px; height: 358px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    border:2px solid #DD7B00;
+    top:15%; left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+}
+.messageView h1 {
+    width: 100%;
+    height: 33px;
+    background: linear-gradient(180deg, rgba(251,140,0,1) 50%, rgba(221,123,0,1) 100%);
+    color:#fff;
+    font-weight: 600;
+    padding: 8px 11px;
+}
+.messageView .msViewcon {
+    width: 570px;
+    height: 300px;
+    overflow-y:scroll ;
+    background-color: #FFF7EC;
+    margin:0 auto;
+    margin: 10px;
+    padding-bottom: 25px;
+}
+.messageView .msViewcon .mvc_top {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #FB8C00;
+    width: 537px;
+    margin: 0 auto;
+}
+.messageView .msViewcon .mvc_top .mvc_title {
+    font-size: 14px;
+    font-weight: 500;
+
+}
+.messageView .msViewcon .mvc_top .mvc_topRight {display: flex; align-items: center;}
+.messageView .msViewcon .mvc_top .mvc_topRight p {}
+.messageView .msViewcon .mvc_top .mvc_topRight p > * {color: #707070; font-size: 12px;}
+.messageView .msViewcon .mvc_top .mvc_topRight p .mvcDate {}
+.messageView .msViewcon .mvc_top .mvc_topRight p .mvctime {}
+.messageView .msViewcon .mvc_top .mvc_topRight .mvc_delete {
+    width: 28px; height: 28px;
+    border:0.3px solid #707070;
+    border-radius: 3px;
+    background: transparent linear-gradient(180deg, #FCFCFC 0%, #DBDBDB 100%) 0% 0% no-repeat padding-box;
+    margin-left: 14px;
+    margin-bottom: 3px;
+}
+.messageView .msViewcon .mvc_top .mvc_topRight .mvc_delete img {
+    width: 20px; height: 100%;
+    filter: invert(43%) sepia(18%) saturate(20%) hue-rotate(102deg) brightness(96%) contrast(86%);
+}
+.messageView .msViewcon .mvc_Con {}
+.messageView .msViewcon .mvc_Con .mvconTop { margin-left: 13px;}
+.messageView .msViewcon .mvc_Con .mvconTop .mvc_sender {font-size: 12px;}
+.messageView .msViewcon .mvc_Con .mvconTop .mvc_receive {font-size: 12px;}
+.messageView .msViewcon .mvc_Con .mvconTop .mvc_path {font-size: 12px;}
+.messageView .msViewcon .mvc_Con .mvcontents {
+    text-align: center;
+}
+.messageView .msViewcon .mvc_Con .mvcontents .mvccimg {
+    width: 287px; height: 159px;
+    margin:25px 0;
+}
+.messageView .msViewcon .mvc_Con .mvcontents .mvcP {
+    margin:0 auto;
+    width: 358px;
+    line-height: 25px;
+    font-size: 14px;
+}
+.messageView .msViewcon .mvc_Con .mvcontents #giftR_Btn span {
+    font-size: 24px;
+    color:#fff;
+    font-weight: 600;
+}
+.messageView .msViewcon .mvc_Con .mvcontents #giftR_Btn img {
+    width: 30px;
+    filter: invert(100%) sepia(0%) saturate(7404%) hue-rotate(90deg) brightness(109%) contrast(100%);
+    margin-right: 3px;
+}
+.messageView .msViewcon .mvc_Con .mvcontents #giftR_Btn {
+    width: 250px; height: 41px;
+    background: linear-gradient(180deg, rgba(251,140,0,1) 50%, rgba(221,123,0,1) 100%);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.messageView .sendBtn {
+    display: flex;
+    justify-content: center;
+    width:312px; height: 38px;
+    margin: 0 auto;
+    margin-top:25px;
+}
+.messageView .sendBtn #sendMs_btn::after {
+    content: '';
+    display: block;
+    background: rgba(255,255,255,0.7);
+    width: 9px; height: 4px;
+    border-radius: 50%;
+    transform: matrix(0.83, -0.56, 0.56, 0.83, 0, 0);
+    position: absolute; top:7px; left: 4px;
+}
+.messageView .sendBtn #sendMs_btn {
+    width: 136px; height: 38px;
+    background-color: #FB8C00;
+    border-radius: 20px;
+    border:2px solid #DD7B00;
+    font-size: 18px; color: #fff; font-weight: 600;
+    position: relative;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4);
+    margin-right: 40px;
+    /* left: 135px; bottom:-55px; */
+}
+.messageView .sendBtn #sendMs_close::after {
+    content: '';
+    display: block;
+    background: rgba(255,255,255,0.7);
+    width: 9px; height: 4px;
+    border-radius: 50%;
+    transform: matrix(0.83, -0.56, 0.56, 0.83, 0, 0);
+    position: absolute; top:7px; left: 4px;
+}
+.messageView .sendBtn #sendMs_close {
+    width: 136px; height: 38px;
+    background-color: #B2B1B1;
+    border-radius: 20px;
+    border:2px solid #707070;
+    font-size: 18px; color: #000; font-weight: 600;
+    position: relative;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4);
+}
+/* 스크롤바 */
+.messageView .msViewcon::-webkit-scrollbar {width: 6px;}
+.messageView .msViewcon::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #FB8C00 50%, #DD7B00 50%);
+	border:1px solid #DD7B00;
+	border-radius: 4px;
+	position: relative;
+}
+.messageView .msViewcon::-webkit-scrollbar-track {
+    background: #2222221A;
+    border-radius: 5px;
+}

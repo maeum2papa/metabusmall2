@@ -1,0 +1,94 @@
+.messageAllWrap {}
+/*쪽지 삭제했을 때 팝업*/
+.messageAllWrap .message_deletePopup {
+    width: 433px; height: 182px;
+    background-color: #fff;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0px 3px 6px #22222240;
+    padding: 35px 0;
+    z-index: 30;
+    position:absolute;
+    top:30%; left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+.messageAllWrap .message_deletePopup h1 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.messageAllWrap .message_deletePopup p {color:#707070;}
+.messageAllWrap .message_deletePopup .wrapPopup_btn {
+    margin-top: 22px;
+}
+.messageAllWrap .message_deletePopup #dp_cancelBtn {
+    width: 158px; height: 35px;
+    background-color: #707070;
+    border-radius: 5px;
+    font-weight: 600;
+    color:#fff;
+}
+.messageAllWrap .message_deletePopup #dp_checkBtn {
+    width: 158px; height: 35px;
+    background-color: #FB8C00;
+    border-radius: 5px;
+    font-weight: 600;
+    color:#fff;
+}
+
+/* 쪽지 발송했을 때 팝업 */
+.messageAllWrap .message_spendPopup {
+    width: 433px; height: 182px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 3px 6px #22222240;
+    text-align: center;
+    padding-top:54px ;
+    display: none;
+    position: absolute;
+    top:30%; left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+
+}
+.messageAllWrap .message_spendPopup h1 {
+    font-size: 22px;
+    margin-bottom: 34px;
+}
+.messageAllWrap .message_spendPopup .wrapPopup_btn {}
+.messageAllWrap .message_spendPopup .wrapPopup_btn #dp_checkBtn {
+    width: 158px; height: 35px;
+    background-color: #FB8C00;
+    border-radius: 5px;
+    font-weight: 600;
+    color:#fff;
+}
+
+/* 선물 받았을 때 팝업 */
+.messageAllWrap .message_giftPopup {
+    width: 433px; height: 182px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 3px 6px #22222240;
+    text-align: center;
+    padding-top:54px ;
+    position: absolute;
+    display: none;
+    z-index: 30;
+    top:30%; left: 50%;
+    transform: translateX(-50%);
+}
+.messageAllWrap .message_giftPopup h1 {
+    font-size: 22px;
+    margin-bottom: 34px;
+}
+.messageAllWrap .message_giftPopup .wrapPopup_btn {}
+.messageAllWrap .message_giftPopup .wrapPopup_btn #dp_checkBtn {
+    width: 158px; height: 35px;
+    background-color: #FB8C00;
+    border-radius: 5px;
+    font-weight: 600;
+    color:#fff;
+}

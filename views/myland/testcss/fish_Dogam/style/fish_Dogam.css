@@ -1,0 +1,150 @@
+/* 스크롤바 디자인 */
+/* Firefox */
+.fishDogam_bg .fishDogam {scrollbar-width: 10px; scrollbar-color: #d9d9d9 #f1f1f1;}
+/* Opera */
+.fishDogam_bg .fishDogam::-o-scrollbar {width: 10px;}/*스크롤바 크기*/
+.fishDogam_bg .fishDogam::-o-scrollbar-thumb {background-color: #D9D9D9;border-radius: 5px;}/*스크롤 드래그바*/
+/* html::-o-scrollbar-thumb:hover {background-color:;} */
+/* Chrome, Safari, Edge 등 웹킷 기반 브라우저 */
+.fishDogam_bg .fishDogam::-webkit-scrollbar {width: 10px;}/*스크롤바 크기*/
+.fishDogam_bg .fishDogam::-webkit-scrollbar-track {/* box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); border-radius: 30px; */}/*스크롤바 배경*/
+.fishDogam_bg .fishDogam::-webkit-scrollbar-thumb {background-color: #D9D9D9 ;border-radius:3px;}/*스크롤 드래그바*/
+.fishDogam_bg .fishDogam::-webkit-scrollbar-button:vertical:start:decrement,.fishDogam::-webkit-scrollbar-button:vertical:start:increment{
+    display:block;
+    height: 5px;
+    /* 스크롤바 위 공간여백 */
+}
+.fishDogam::-webkit-scrollbar-button:vertical:end:decrement{
+    display: block; width:10px;
+}
+
+/* 물고기도감 */
+.fishDogam_bg {
+    background-color: silver;
+    width:600px; height: 361px;
+    border-radius: 15px;
+    background-color: #00A8FA;
+    position: absolute;
+    left:50%; transform:translate(-50%,-50%);
+    top: 50%; /* 1/4 수정 */
+}
+.fishDogam_bg h1 {color:#FFF; font-weight: 700; font-size: 1.125rem; /* font-size:18px; */
+    padding:13px 0 0 17px;
+}
+.fishDogam_bg #fishDogam_popup_close {background-color:transparent; position:absolute; top:13px; right:23px;}
+.fishDogam_bg #fishDogam_popup_close img {}
+.fishDogam_bg .fishDogam {
+    overflow-y: auto;
+    margin-top:11px;
+    background-color: #FFF; border:2px solid #00A8FA; border-radius: 15px;
+    width:600px; height: 319px;
+    overflow-x: hidden;
+}
+.fishDogam_bg .fishDogam .fishBook:first-child {margin-top: 10px;}
+.fishDogam_bg .fishDogam .fishBook {display: flex; flex-flow: column nowrap;
+    position: relative; margin-top: 35px;}
+.fishDogam_bg .fishDogam .fishBook h2 {color:#474747; font-size: 0.9rem; font-weight: 700; letter-spacing: -0.03em;
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0.20) 0%, #CBCACA 99.48%);
+    width:107px; height: 22px; border-radius: 50px; padding-top:3px ; margin:19px 0 0 10px;
+    text-align: right; padding-right:9px;}
+    .fishDogam_bg .fishDogam .fishBook .fishBookTop {display: flex; flex-flow: row nowrap;}
+    .fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook {
+        width:445px; height: 94px;
+        display: flex; flex-flow: row nowrap; position: relative; margin-top: 18px; margin-left: 10px; margin-bottom: -10px;
+    }
+/* 물고기 목록 */
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon:hover::after {opacity: 1;}
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon .after {
+    content:'';
+    z-index: 11; display: block; width:80px; height: 80px;
+    background: rgba(0,0,0,0.5); border-radius: 10px; position: absolute; top:0;
+    opacity: 0; /*js에서*/
+}
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon:nth-of-type(1) img {opacity: 0.2;}
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon:nth-of-type(2) img {opacity: 0.2;}
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon {text-align: center; cursor: pointer; position: relative;}
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon:hover p {opacity: 1;}
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon p {
+    position:absolute; z-index: 12; color: #fff;
+    top:32px;
+    width:80px; text-align: center;
+    opacity: 0;
+}
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon p span {opacity: 1; font-size: 0.9rem; font-weight: 700;}
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon p em {opacity: 1; font-size: 0.7rem;} 
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook .fd_fish_li .fishCon img {width:80px; height: 80px; background-color: #fff; border-radius:10px; border:1px solid #00A8FA; margin-right:9px;}
+/* 획득 버튼 */
+.fishDogam_bg .fishDogam .fishBook .fdBtn {margin-top: 18px; position:relative;}
+.fishDogam_bg .fishDogam .fishBook .fdBtn #fd_Rewards {width:436px; height:30px; border-radius: 5px; background-color: #FB8C00; font-weight: 700; margin-left:126px; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25); color:#fff; position: absolute;
+    opacity:1;}
+.fishDogam_bg .fishDogam .fishBook .fdBtn #fd_Complete {width:436px; height:30px; border-radius: 5px; background-color: #D9D9D9; font-weight: 700; margin-left:126px; position: absolute;
+    opacity: 0;}
+.fishDogam_bg .fishDogam .fishBook h2 {color:#474747; font-size: 0.9rem; font-weight: 700; letter-spacing: -0.03em;
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0.20) 0%, #CBCACA 99.48%);
+    width:107px; height: 22px; border-radius: 50px; padding-top:3px ; margin:19px 0 0 10px;
+    text-align: right; padding-right:9px;}
+/* 획득 버튼 */
+.fishDogam_bg .fishDogam .fishBook .fdBtn  {margin-top: 18px;}
+.fishDogam_bg .fishDogam .fishBook .fdBtn #fd_Rewards {width:436px; height:30px; border-radius: 5px; background-color: #FB8C00; font-weight: 700; margin-left:126px; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25); color:#fff; position: absolute;
+}
+
+.fishDogam_bg .fishDogam .fishBook .fdBtn {margin-top: 18px;}
+.fishDogam_bg .fishDogam .fishBook .fdBtn #fd_Rewards {width:436px; height:30px; border-radius: 5px; background-color: #FB8C00; font-weight: 700; margin-left:126px; box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25); color:#fff; position: absolute;}
+
+/* 팝업 창 */
+.fdCoin {display: none;
+    width:316px; height: 156px; border-radius: 15px; border:1px solid #00A8FA;
+    background-color: #FFF;
+    position:absolute; top:30%; left:50%; transform: translateX(-50%);
+}
+.fdCoin .fdCoin_popup {}
+.fdCoin .fdCoin_popup .fdCoin_txt {font-size:1.125rem; font-weight: 700; text-align: center; margin-top:49px;}
+.fdCoin .fdCoin_popup .fdCoin_close {background-color: #00A8FA; color:#fff; width:140px; height: 25px; border-radius: 15px; margin:44px 0 0 88px;}
+.fishDogam_bg .fishDogam .fishBook:last-child {margin-bottom: 80px;}
+
+/* 물고기 투명도 */
+.fishDogam_opacity {opacity:0.2;}
+
+/* 보상획득완료 버튼 */
+.fishDogam_bg .fishDogam .fishBook .fdBtn #fd_Complete {
+    width:436px; height:30px; border-radius: 5px; background-color: #D9D9D9; 
+    font-weight: 700; margin-left:126px; position: absolute; color:#000;
+    opacity: 1; top:102px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    position: absolute; top:-35px;
+    display: none;
+}
+
+/* 다음버튼 */
+#nextfdBtn {
+    background: transparent; margin: 19px 0 0 0px;
+}
+/* 이전버튼 */
+#prevfdBtn {
+    background: transparent;
+    position: absolute; top:49px; left: 104px;
+    display: inline-block;
+}
+
+.fd_fish_li {display:-webkit-box;}
+
+/* 물고기 스크롤 */
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook {
+    /* background-color: pink; */
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook::-webkit-scrollbar {
+    border-radius: 5px;
+    height: 6px;
+    width: 4px;
+}
+
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+
+.fishDogam_bg .fishDogam .fishBook .fishBookTop #fd_fishBook::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #dddd;
+}

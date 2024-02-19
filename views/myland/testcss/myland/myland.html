@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이랜드</title>
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/myland.css">
+</head>
+<body>
+    <div class="myland">
+        <div class="mylandTop_wrap">
+            <div class="mlt_left">
+                <div class="mltProfile">
+                    <p class="mltP_img"><img src="" alt="프로필사진"></p> <!-- 캐릭터 프로필 사진 -->
+                    <div class="mltP_status">
+                        <p class="mltP_join"><img src="./image/case_icon.svg" alt=""><span>입사 <span id="join_date">320</span>일째</span></p> <!-- 입사 일수 -->
+                        <p class="mltP_twrap"><span id="mltP_dpm">사업본부</span> | <em id="mltP_team">디자인팀</em></p> <!-- 부서/팀 -->
+                        <p class="mltP_btm"><span id="mltP_name">홍길동</span> <em id="mltP_position">대리</em></p> <!-- 이름/직급 -->
+                    </div>
+                </div>
+                <div class="mltFP_status">
+                    <div class="mlFruits_status"><img src="./image/fruits_icon.png" alt="열매"><p class="mltF-number">85</p></div> <!-- 열매 개수 -->
+                    <div class="mlPoint_status"><img src="./image/point_icon.png" alt="포인트"><p class="mltP-number">10</p></div> <!-- 포인트 개수 -->
+                </div>
+            </div>
+            <div class="mlt_right">
+                <div class="mlt_statusList">
+                    <!-- 메뉴 -->
+                    <p class="mlt-reward"><img src="./image/statusList_01.png" alt=""> <span>활동보상</span></p>
+                    <p class="mlt-inventory"><img src="./image/statusList_02.png" alt=""><span>인벤토리</span></p>
+                    <p class="mlt-messageBox"><img src="./image/statusList_05.png" alt=""><span>쪽지함</span></p>
+                    <p class="mlt-staffList"><img src="./image/statusList_04.png" alt=""><span>직원목록</span></p>
+                    <p class="mlt-setting"><img src="./image/statusList_03.png" alt=""><span>설정</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="VMD_listmenuWrap">
+            <div class="video_setting_box">
+                <div class="toggle_camera"> <!-- 비디오 활성화/비활성화 버튼 -->
+                    <div class="camera_off"><img src="./image/video_off.svg" alt=""><span>비디오 꺼짐</span></div><!-- 비활성화 -->
+                    <div class="camera_on"><img src="./image/video.svg" alt=""><span>비디오 켜짐</span></div><!-- 활성화 -->
+                </div>
+                <div class="VMD_wrapbar"></div>
+                <div class="toggle_mic"> <!-- 마이크 활성화/비활성화 버튼 -->
+                    <div class="mic_off"><img src="./image/mic_off.svg" alt=""><span>마이크 꺼짐</span></div><!-- 비활성화 -->
+                    <div class="mic_on"><img src="./image/mic.svg" alt=""><span>마이크 켜짐</span></div><!-- 활성화 -->
+                </div>
+                <div class="VMD_wrapbar"></div>
+                <div class="VMD_share">
+                    <p><img src="./image/screen_share.svg" alt=""><span>화면공유</span></p>
+                </div>
+            </div>
+            <div class="video_call_box_wrap">
+                <!-- 영통 비디오 -->
+                <div class="video_call_box" id="video_call_box-Active"> <!-- 활성화 -->
+                    <video></video>
+                    <audio autoplay></audio>
+                    <span id="video_call_box_nameA">김영희</span> <!-- 스포트라이트 -->
+                    <img src="./image/logo.png" alt="">
+                </div>
+                <div class="video_call_box"> <!-- 비활성화 -->
+                    <video></video>
+                    <audio autoplay></audio>
+                    <span id="video_call_box_nameMe">홍길동</span> <!-- 본인 -->
+                    <img src="./image/logo.png" alt="">
+                </div>
+                <div class="video_call_box">
+                    <video></video>
+                    <audio autoplay></audio>
+                    <span>김철수</span> <!-- 다른사람 -->
+                    <img src="./image/logo.png" alt="">
+                </div>
+                <div class="video_call_box">
+                    <video></video>
+                    <audio autoplay></audio>
+                    <span id="video_call_box_name">김철수</span>
+                    <img src="./image/logo.png" alt="">
+                </div>
+                <div class="video_call_box">
+                    <video></video>
+                    <audio autoplay></audio>
+                    <span id="video_call_box_name">김철수</span>
+                    <img src="./image/logo.png" alt="">
+                </div>
+                <div class="video_call_box">
+                    <video></video>
+                    <audio autoplay></audio>
+                    <span id="video_call_box_name">김철수</span>
+                    <img src="./image/logo.png" alt="">
+                </div>
+                <div class="video_call_box">
+                    <video></video>
+                    <audio autoplay></audio>
+                    <span id="video_call_box_name">김철수</span>
+                    <img src="./image/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="myland_chatbox">
+            <div class="chatWrap">
+                <div class="chatboxTop">
+                    <div class="chatTabs">
+                        <button id="chatAll">전체 채팅</button>
+                        <button id="chatHistory">활동 내역</button>
+                    </div>
+                    <div class="chatbox_right">
+                        <div class="chatScale">
+                            <button class="chatScale_spread"><img src="./image/scale_spread.svg" alt="펼치기"></button> <!-- 채팅창 펼치기 -->
+                            <button class="chatScale_folding"><img src="./image/scale_folding.svg" alt="접기"></button> <!-- 채팅창 접기 -->
+                        </div>
+                        <button id="chatbox_close_btn"><img src="./image/cancel.svg" alt="닫기"></button> <!-- 닫기 버튼 -->
+                    </div>
+                </div>
+                <div id="tbox"> <!-- 채팅창 내용 -->
+                    <div class="chat_myself"> <!-- 본인 -->
+                        <h3>홍길동</h3>
+                        <p>안녕하세요~!! </p>
+                    </div>
+                    <div class="chat_myself">
+                        <h3>홍길동</h3>
+                        <p>안녕하세요~!! </p>
+                    </div>
+                    <div class="chat_myself">
+                        <h3>홍길동</h3>
+                        <p>안녕하세요~!! </p>
+                    </div>
+                    <div class="chat_myself">
+                        <h3>홍길동</h3>
+                        <p>안녕하세요~!! </p>
+                    </div>
+                    <div class="chat_myself">
+                        <h3>홍길동</h3>
+                        <p>안녕하세요~!! </p>
+                    </div>
+                    <div class="chat_myself">
+                        <h3>홍길동</h3>
+                        <p>안녕하세요~!! </p>
+                    </div>
+                    <div class="chat_other"> <!-- 다른 사람 -->
+                        <h3>김민수</h3>
+                        <p>길동님 안녕하세요^^</p>
+                    </div>
+                    <div class="chat_other"> <!-- 다른 사람 -->
+                        <h3>김영희</h3>
+                        <p>길동님 안녕하세요! 출근하셨나요?</p>
+                    </div>
+                    <div class="chat_myself">
+                        <h3>홍길동</h3>
+                        <p>넵 출근했어요</p>
+                    </div>
+                    <div class="chat_other"> <!-- 다른 사람 -->
+                        <h3>김민수</h3>
+                        <p>오늘도 파이팅해요</p>
+                    </div>
+                </div>
+            </div>
+            <div id="chatbox_footer_input">
+                <input id="chatinput" type="text" placeholder="텍스트 입력"> <!-- 채팅창 텍스트 -->
+            </div>
+        </div>
+    </div>
+    <script>
+        // 카메라
+        const toggle_camera = document.querySelector ('.myland > .VMD_listmenuWrap > .video_setting_box > .toggle_camera')
+        const toggle_cameraP = document.querySelectorAll ('.myland > .VMD_listmenuWrap > .video_setting_box > .toggle_camera > div')
+        // 마이크
+        const toggle_mic = document.querySelector ('.myland > .VMD_listmenuWrap > .video_setting_box > .toggle_mic')
+        const toggle_micP = document.querySelectorAll ('.myland > .VMD_listmenuWrap > .video_setting_box > .toggle_mic > div')
+        // 카메라 활성화
+        toggle_cameraP[0].style.display = 'none'
+        toggle_cameraP[1].style.display = 'none'
+        toggle_cameraP[0].classList.toggle('VMDactiveF')
+        toggle_camera.addEventListener('click',function(){
+            toggle_cameraP[0].classList.toggle('VMDactiveF')
+            toggle_cameraP[1].classList.toggle('VMDactiveF')
+            })
+        //마이크 활성화
+        toggle_micP[0].style.display = 'none'
+        toggle_micP[1].style.display = 'none'
+        toggle_micP[0].classList.toggle('VMDactiveF')
+        toggle_mic.addEventListener('click',function(){
+            toggle_micP[0].classList.toggle('VMDactiveF')
+            toggle_micP[1].classList.toggle('VMDactiveF')
+            })
+        // 전체 채팅
+        const chatTabsAll = document.querySelectorAll('.myland > .myland_chatbox > .chatWrap > .chatboxTop > .chatTabs > button')
+        const chatTabs = document.querySelector('.myland > .myland_chatbox > .chatWrap > .chatboxTop > .chatTabs')
+        // console.log(chatTabsAll,chatTabs)
+        chatTabsAll[0].classList.toggle('chatTabactive')
+        chatTabsAll.forEach(function(t,i){
+            t.addEventListener('click',function(){
+                for(let j of chatTabsAll){j.classList.remove('chatTabactive')}
+                chatTabsAll[i].classList.toggle('chatTabactive')
+            })
+        })
+        // 펼치기, 접기
+        const chatScale = document.querySelector('.myland > .myland_chatbox > .chatWrap > .chatboxTop > .chatbox_right > .chatScale')
+        const chatScaleAll = document.querySelectorAll('.myland > .myland_chatbox > .chatWrap > .chatboxTop > .chatbox_right > .chatScale > button')
+        console.log(chatScaleAll,chatScale)
+
+        chatScaleAll[0].classList.toggle('VMDactiveF')
+        chatScale.addEventListener('click',function(){
+            chatScaleAll[0].classList.toggle('VMDactiveF')
+            chatScaleAll[1].classList.toggle('VMDactiveF')
+            })
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Path: _layout/mobile/css/seum_responsive.css */
+
+/* responsive css 입니다. */
+
+
+@media (max-width:812px) {
+
+    .asmo_dash_qa_wrap ul li a { font-size: 1.2rem; }
+
+}
+
+
+@media (max-width:741px) {
+
+    .asmo_dash_qa_wrap ul li a { font-size: 1rem; }
+
+}

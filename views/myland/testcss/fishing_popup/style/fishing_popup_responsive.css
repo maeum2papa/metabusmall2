@@ -1,0 +1,71 @@
+/* 모바일 */
+@media all and (max-width: 932px) and (orientation: landscape) {
+    /* 유리병 */
+    #fishing_popup{width: 238px; border-radius: 43px;}
+    #fishing_popup .fishing_popup_box {border-radius: 36px; padding:15px;}
+    #fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass h1{
+        background-image: url(../image/fishing_Mbtn.png);
+        background-repeat: no-repeat;
+        width: 163px; height: 50px;
+        font-size: 16px;
+        padding:16px 45px;
+        left:27px; top:-28px;
+    }
+    #fishing_popup .fishing_popup_box::after {top:-3px; left:7px; width: 3px; height: 3px;}
+    #fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass img {width: 60px; height: 60px; margin-bottom: 5px;}
+    #fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass p {font-size: 10px; line-height: 13px;}
+    #fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass p em {font-size: 10px; line-height: 13px;}
+    #fishing_popup .fishing_popup_text {margin-top: 5px; border-radius: 10px; padding: 5px;}
+    #fishing_popup .fishing_popup_text h2 {font-size: 10px; margin-bottom: 3px;}
+    #fishing_popup .fishing_popup_text p {font-size: 9px; line-height: 13px;}
+
+    /* 코인 */
+    #fishing_popup_etc3{width: 186px; border-radius: 43px; }
+    #fishing_popup_etc3 .fishing_coin{width: 158px; border-radius:37px; padding:0 28px;}
+    #fishing_popup_etc3 .fishing_coin::after{ width: 3px; height: 3px; top:25px; left: 10px;}
+    #fishing_popup_etc3 .fishing_coin p {
+        background-image: url(../image/fishing_Mbtn.png);
+        background-repeat: no-repeat;
+        width: 163px; height: 50px;
+        left:13px; top:-14px;
+        font-size: 16px;
+        padding: 16px 45px;
+    }
+    #fishing_popup_etc3 .fishing_coin img {margin: 32px 0 10px 0;}
+    #fishing_popup_etc3 .fishing_coin h1 {font-size: 10px; margin-bottom: 22px;}
+    #fishing_popup_etc3 .fishing_coin h1 em {font-size: 10px;}
+    #fishing_popup_etc3 .fishing_coin h1 span {font-size: 10px;}
+    
+    /* 물고기 */
+    #fishing_popup_etc {width: 186px; border-radius: 43px;}
+    #fishing_popup_etc .fishing_fish {width: 158px; border-radius:37px; padding:0 19px;}
+    #fishing_popup_etc .fishing_fish::after {width: 3px; height: 3px; top:25px; left: 10px;}
+    #fishing_popup_etc .fishing_fish img {margin: 32px 0 10px 0;}
+    #fishing_popup_etc .fishing_fish p:first-child {
+        background-image: url(../image/fishing_Mbtn.png);
+        background-repeat: no-repeat;
+        width: 163px; height: 50px;
+        left:13px; top:-14px;
+        font-size: 16px;
+        padding:16px 45px;
+    }
+    #fishing_popup_etc .fishing_fish h1 {font-size: 10px; line-height: 13px;}
+    #fishing_popup_etc .fishing_fish h1 #fishName {font-size: 10px;}
+    #fishing_popup_etc .fishing_fish p:last-child{font-size: 10px; line-height: 13px;}
+    
+    /* 쓰레기 */
+    #fishing_popup_etc2 {width: 186px; border-radius: 43px;}
+    #fishing_popup_etc2 .fishing_trash {width: 158px; border-radius:37px; padding:0 19px;}
+    #fishing_popup_etc2 .fishing_trash::after {width: 3px; height: 3px; top:25px; left: 10px;}
+    #fishing_popup_etc2 .fishing_trash img {margin: 32px 0 10px 0;}
+    #fishing_popup_etc2 .fishing_trash h1 {
+        background-image: url(../image/fishing_Mbtn.png);
+        background-repeat: no-repeat;
+        width: 163px; height: 50px;
+        left:13px; top:-14px;
+        font-size: 16px;
+        padding:16px 45px;
+    }
+    #fishing_popup_etc2 .fishing_trash p {font-size: 10px; line-height: 13px;}
+    #fishing_popup_etc2 .fishing_trash p em {font-size: 10px;}
+}

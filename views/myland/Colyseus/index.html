@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>asd</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+	<link rel="stylesheet" href="static/client/css/styles.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/infoBox.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/pc.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/video-js.css" type="text/css">
+
+	<!-- <link rel="stylesheet" href="static/client/css/mo_test.css" type="text/css"> -->
+	<link rel="stylesheet" href="static/client/css/waterF_box.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/status_box.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/fish_Dogam.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/fishing_popup.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/fkey.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/tip_Dogam.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/notice_land.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/collisionName.css" type="text/css">
+	<link rel="stylesheet" href="static/client/css/myland.css" type="text/css">
+
+
+	<!-- =========================Plugin_script=========================-->
+
+	<form method="get" action="/info">
+
+	</form>
+
+
+	<script src="rtc/OLD_GlobalTransPort.js"></script>
+	<!--<script src="rtc/GlobalTransPort.js"></script>-->
+
+	<script>
+
+		var currentUrl = window.location.href;
+		let parameter = decodeURIComponent(currentUrl.split('?')[1]).split('=')[1];
+
+		/* TODO: user_info 사용중이라 2 붙임 */
+
+		var user_Info2 = JSON.parse(parameter);
+
+		if (user_Info2.type === "mobile") {
+			let link = document.createElement("link");
+			let statusBoxlink = document.createElement("link");
+			let waterBoxlink = document.createElement("link");
+			let fishDogamlink = document.createElement("link");
+			let fishPopuplink = document.createElement("link");
+			let tipDogamlink = document.createElement("link");
+			let mobileButtonlink = document.createElement("link");
+			let noticelink = document.createElement("link");
+
+			link.rel = "stylesheet";
+			link.href = "mobile/mo_test.css";
+			link.type = "text/css";
+
+			statusBoxlink.rel = "stylesheet";
+			statusBoxlink.href = "mobile/status_box_responsive.css";
+			statusBoxlink.type = "text/css";
+
+			waterBoxlink.rel = "stylesheet";
+			waterBoxlink.href = "mobile/waterF_box_responsive.css";
+			waterBoxlink.type = "text/css";
+
+			fishDogamlink.rel = "stylesheet";
+			fishDogamlink.href = "mobile/fish_Dogam_responsive.css";
+			fishDogamlink.type = "text/css";
+
+			fishPopuplink.rel = "stylesheet";
+			fishPopuplink.href = "mobile/fishing_popup_responsive.css";
+			fishPopuplink.type = "text/css";
+
+			tipDogamlink.rel = "stylesheet";
+			tipDogamlink.href = "mobile/tip_Dogam_responsive.css";
+			tipDogamlink.type = "text/css";
+
+			mobileButtonlink.rel = "stylesheet";
+			mobileButtonlink.href = "mobile/mobileButton.css";
+			mobileButtonlink.type = "text/css";
+
+			noticelink.rel = "stylesheet";
+			noticelink.href = "mobile/notice_land_responsive.css";
+			noticelink.type = "text/css";
+
+			document.head.appendChild(link);
+			document.head.appendChild(statusBoxlink);
+			document.head.appendChild(waterBoxlink);
+			document.head.appendChild(fishDogamlink);
+			document.head.appendChild(fishPopuplink);
+			document.head.appendChild(tipDogamlink);
+			document.head.appendChild(mobileButtonlink);
+			document.head.appendChild(noticelink);
+		}
+
+
+
+	</script>
+
+	<script type="text/javascript" src="static/plugins/jquery.min.js"></script>
+	<script src="static/plugins/phaser.min.js"></script>
+	<script src="static/plugins/rexoutlinepipelineplugin.js"></script>
+	<script src="static/plugins/rexuiplugin.js"></script>
+	<script src="static/plugins/colyseus.js"></script>
+	<script src="static/plugins/dat.gui.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
+	<script src="static/plugins/html2canvas.js"></script>
+	<script src="static/plugins/nipplejs.min.js"></script>
+	<script src="static/plugins/video.min.js"></script>
+
+	<!-- <script src="static/plugins/requireJS.js"></script> -->
+
+	<!-- =========================Plugin_script=========================-->
+
+
+	<!-- =========================Shared_script=========================-->
+
+	<script src="static/shared/mysqlConnect.js"></script>
+	<script src="static/shared/ClientConfig.js"></script>
+
+	<!-- =========================Shared_script=========================-->
+
+	<!-- =============================Utils=============================-->
+
+	<script src="static/client/utils/AlignGrid.js"></script>
+	<script src="static/client/utils/AnimCreate.js"></script>
+	<script src="static/client/utils/Utils.js"></script>
+
+	<!-- =============================Utils=============================-->
+
+	<!-- ============================Manager============================-->
+
+	<script src="static/client/manager/RoomManager.js"></script>
+	<script src="static/client/manager/SendManager.js"></script>
+	<script src="static/client/manager/ObjectManager.js"></script>
+	<script src="static/client/manager/MissionManager.js"></script>
+	<script src="static/client/manager/PopUpManager.js"></script>
+	<script src="static/client/manager/UIManager.js"></script>
+	<script src="static/client/manager/GameManager.js"></script>
+	<!-- ============================Manager============================-->
+
+	<!-- ==============================common============================ -->
+
+	<script src="static/client/assets/assets.js"></script>
+	<script src="static/client/background/Background.js"></script>
+	<script src="static/client/objects/Furniture.js"></script>
+	<script src="static/client/objects/room/Bed.js"></script>
+	<script src="static/client/objects/room/Closet.js"></script>
+	<script src="static/client/objects/room/Desk.js"></script>
+	<script src="static/client/objects/room/Door.js"></script>
+	<script src="static/client/objects/room/LandEtc.js"></script>
+	<script src="static/client/objects/room/Sofa.js"></script>
+	<script src="static/client/objects/room/TableSet.js"></script>
+	<script src="static/client/objects/room/WallFloor.js"></script>
+	<script src="static/client/objects/room/TipTable.js"></script>
+	<script src="static/client/objects/outer/OuterHouse.js"></script>
+	<script src="static/client/objects/outer/OuterDoor.js"></script>
+	<script src="static/client/objects/interactionObj/InteractionObj.js"></script>
+	<script src="static/client/objects/ai/secretary/Secretary.js"></script>
+	<script src="static/client/objects/field/Field.js"></script>
+	<script src="static/client/objects/well/Well.js"></script>
+	<script src="static/client/objects/groundFruit/GroundFruit.js"></script>
+	<script src="static/client/objects/House.js"></script>
+	<script src="static/client/objects/Portal.js"></script>
+	<script src="static/client/objects/Fruits.js"></script>
+	<script src="static/client/objects/Player.js"></script>
+	<script src="static/client/inventory/Inventory.js"></script>
+	<script src="static/client/inventory/Fish.js"></script>
+	<script src="static/client/elementVideo/ElementVideo.js"></script>
+	<script src="static/client/tilenode/TileNode.js"></script>
+	<script src="static/client/objects/Fishing/Fishing.js"></script>
+	<script src="static/client/ui/FruitCount.js"></script>
+	<script src="static/client/ui/StatusCount.js"></script>
+	<script src="static/client/ui/FruitGauge.js"></script>
+	<script src="static/client/ui/FishingUI.js"></script>
+	<script src="static/client/ui/FruitUI.js"></script>
+	<script src="static/client/MapEdit/MapInfo.js"></script>
+	<script src="static/client/MapEdit/MapObject.js"></script>
+	<script src="static/client/MapEdit/MapSheetObj.js"></script>
+	<script src="static/client/scene/BoostrapScene.js"></script>
+	<script src="static/client/scene/GameScene.js"></script>
+	<script src="static/client/scene/GameEducationScene.js"></script>
+	<script src="static/client/scene/MapMakeScene.js"></script>
+
+	<!-- ==============================common============================ -->
+
+
+	<!-- ==============================RTC============================ -->
+	<link rel="stylesheet" href="rtc/style/land_rtc.css">
+
+	<script src="rtc/library/settings.js"></script>
+	<script src="rtc/library/adapter.js"></script>
+	<script src="rtc/library/janus_correct.js"></script>
+	<script src="rtc/videolist.js"></script>
+	<script src="rtc/socket_package.js"></script>
+	<script src="rtc/webrtc_client.js"></script>
+	<!--<script src="rtc/WebRTCClient.js"></script>-->
+	<script src="rtc/LogUtil.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+	<script>
+
+		// DOMContentLoaded 끝날 때 처리해야 하는 부분
+		document.addEventListener("DOMContentLoaded", async (event) => {
+
+			//  #land_top_box_wrap swiperjs 스크립트 영역 -> 모바일 스크롤
+			const swiper = new Swiper('.swiper-container', {
+				loop: false,
+				centeredSlides: false,
+				slidesPerView: 'auto',
+				slideToClickedSlide: true,
+			});
+		})
+
+	</script>
+
+	<!-- ==============================RTC============================ -->
+
+
+
+
+</head>
+
+<body>
+
+	<!-- <input type="text" name="chatcontent" id="chatinput" placeholder="Type something..."
+    style="outline: none;"> -->
+
+	<div id="loading">
+		<div id="loadingDog">
+			<img src="static/client/assets/Images/loading.gif">
+		</div>
+	</div>
+
+	<div id="gamecontainer" oncontextmenu="return false">
+
+		<div id='box' class="box">
+			<!-- ========================================RTC======================================== -->
+
+			<!-- 세팅화면 -->
+			<div id="device_setting_bg">
+				<div id="device_setting">
+					<div class="setting_header">
+						<div class="setting_header_left">
+							<div class="setting_header_left_img">
+								<svg id="settings_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+									viewBox="0 0 24 24">
+									<rect id="사각형_3936" data-name="사각형 3936" width="24" height="24" fill="none" />
+									<g id="그룹_579" data-name="그룹 579">
+										<path id="패스_1193" data-name="패스 1193"
+											d="M21,9.014a.906.906,0,0,1-.509.679,3.053,3.053,0,0,1-.669.191.293.293,0,0,0-.217.167.54.54,0,0,0,.064.686,1.024,1.024,0,0,1-.122,1.478c-.145.145-.286.294-.44.429a1.011,1.011,0,0,1-1.176.121.625.625,0,0,1-.175-.115c-.239-.277-.492-.178-.745-.034a.232.232,0,0,0-.086.133c-.036.147-.053.3-.091.446a1,1,0,0,1-.947.774c-.245.01-.491.01-.736,0a1.014,1.014,0,0,1-.958-.786.534.534,0,0,1-.031-.155c.015-.316-.161-.464-.443-.546a.261.261,0,0,0-.255.038,1.575,1.575,0,0,1-.727.366.964.964,0,0,1-.785-.221,7.108,7.108,0,0,1-.6-.594,1,1,0,0,1-.111-1.162.892.892,0,0,1,.135-.2.457.457,0,0,0,.069-.61.328.328,0,0,0-.278-.215,1.28,1.28,0,0,1-.841-.345.987.987,0,0,1-.289-.658c-.006-.24-.01-.48,0-.72a1.02,1.02,0,0,1,.843-1,1.8,1.8,0,0,1,.242-.04.381.381,0,0,0,.341-.258.487.487,0,0,0-.087-.579,1.05,1.05,0,0,1,.132-1.534c.133-.132.262-.268.4-.392a1.017,1.017,0,0,1,1.221-.113.569.569,0,0,1,.145.1c.237.276.491.177.743.034a.233.233,0,0,0,.089-.135c.031-.118.043-.241.068-.361a1.021,1.021,0,0,1,.761-.831.26.26,0,0,0,.056-.035h1.018a1.084,1.084,0,0,1,.782.662,2.334,2.334,0,0,1,.1.477.346.346,0,0,0,.215.276.466.466,0,0,0,.622-.076.886.886,0,0,1,.175-.116,1,1,0,0,1,1.177.1,6.055,6.055,0,0,1,.593.595A1,1,0,0,1,19.775,6.1c-.078.13-.171.251-.256.377-.022.033-.06.079-.051.105a1.9,1.9,0,0,0,.194.447c.043.062.174.072.268.086a1.13,1.13,0,0,1,.791.365A1.108,1.108,0,0,1,21,8ZM19.017,5.573a.87.87,0,0,0-.089-.13c-.117-.122-.241-.238-.358-.361a.174.174,0,0,0-.262-.021c-.171.124-.346.241-.516.364a.516.516,0,0,1-.56.051c-.265-.121-.536-.23-.808-.334a.5.5,0,0,1-.342-.406c-.035-.208-.075-.414-.107-.622-.02-.129-.077-.2-.219-.194-.164.008-.328,0-.492,0a.174.174,0,0,0-.2.171c-.031.2-.074.4-.1.605a.525.525,0,0,1-.364.449c-.267.1-.533.207-.792.327a.51.51,0,0,1-.559-.048c-.161-.116-.329-.224-.487-.345a.2.2,0,0,0-.318.021c-.1.113-.211.22-.322.323a.19.19,0,0,0-.024.291c.121.165.233.337.353.5a.512.512,0,0,1,.053.559c-.122.265-.233.535-.337.807a.494.494,0,0,1-.4.342c-.207.036-.414.076-.622.108-.13.02-.2.08-.189.221.007.163,0,.327,0,.491a.173.173,0,0,0,.17.2c.2.031.4.074.6.1a.535.535,0,0,1,.457.38c.095.256.2.511.315.759a.531.531,0,0,1-.053.591c-.118.159-.226.327-.344.487a.19.19,0,0,0,.019.291q.174.161.335.335a.19.19,0,0,0,.291.021c.159-.118.327-.226.487-.344a.528.528,0,0,1,.59-.053c.247.118.5.22.759.314a.54.54,0,0,1,.384.473c.027.2.072.391.1.587a.173.173,0,0,0,.2.171c.164,0,.328-.006.491,0a.189.189,0,0,0,.222-.189c.031-.2.074-.4.1-.6a.513.513,0,0,1,.359-.432c.267-.1.532-.21.791-.328a.514.514,0,0,1,.56.051c.166.12.339.231.5.354a.2.2,0,0,0,.3-.031,3.942,3.942,0,0,1,.31-.31.2.2,0,0,0,.022-.319c-.114-.148-.211-.309-.324-.457a.545.545,0,0,1-.056-.622,7.385,7.385,0,0,0,.308-.742.538.538,0,0,1,.472-.385c.19-.027.379-.073.57-.1.135-.018.2-.08.191-.218-.006-.158-.007-.316,0-.474a.192.192,0,0,0-.19-.223c-.208-.033-.415-.073-.622-.107a.494.494,0,0,1-.408-.339c-.1-.272-.213-.543-.335-.808a.515.515,0,0,1,.048-.56q.178-.249.352-.5c.029-.042.051-.089.083-.145"
+											fill="#222" />
+										<path id="패스_1194" data-name="패스 1194"
+											d="M6.192,8.692a1.075,1.075,0,0,1,.738.283.72.72,0,0,0,.941.131c.207-.115.335-.207.348-.445a2.072,2.072,0,0,1,.072-.4A.466.466,0,0,1,8.8,7.933a.45.45,0,0,1,.373.48c-.046.347-.114.692-.18,1.036a.445.445,0,0,1-.311.328c-.362.147-.724.293-1.082.449a.5.5,0,0,1-.529-.044c-.234-.166-.468-.331-.7-.493a.3.3,0,0,0-.465.042c-.163.16-.325.321-.484.485a.291.291,0,0,0-.038.437c.156.227.312.453.476.674a.562.562,0,0,1,.04.638,8.671,8.671,0,0,0-.387.937.573.573,0,0,1-.5.426c-.266.04-.531.089-.794.14-.211.04-.281.126-.284.333,0,.234,0,.469,0,.7,0,.212.083.3.3.34.27.048.541.1.812.141a.541.541,0,0,1,.451.385c.123.34.264.673.415,1a.538.538,0,0,1-.044.591q-.247.341-.484.689a.291.291,0,0,0,.034.438c.167.172.336.343.509.509a.286.286,0,0,0,.424.031c.237-.161.471-.326.7-.494a.53.53,0,0,1,.576-.042c.334.152.673.3,1.017.423a.529.529,0,0,1,.375.439q.069.406.141.812c.042.234.128.306.369.307.216,0,.433,0,.649,0,.236,0,.317-.065.362-.292.049-.247.1-.493.132-.742a.607.607,0,0,1,.476-.555,5.913,5.913,0,0,0,.887-.37.567.567,0,0,1,.653.042c.215.162.438.313.66.465a.294.294,0,0,0,.451-.038q.245-.24.484-.484a.3.3,0,0,0,.042-.452c-.158-.231-.32-.461-.484-.689a.539.539,0,0,1-.041-.592c.152-.327.29-.662.415-1a.532.532,0,0,1,.436-.379c.265-.046.529-.1.8-.138a.835.835,0,0,1,.3,0,.442.442,0,0,1,.34.436.46.46,0,0,1-.345.434c-.188.044-.378.078-.569.1a.191.191,0,0,0-.187.15.81.81,0,0,1-.107.276.5.5,0,0,0,.076.708,1.713,1.713,0,0,1,.3.511,1.082,1.082,0,0,1-.19,1.121,7.273,7.273,0,0,1-.714.723,1.147,1.147,0,0,1-1.427.115,4.939,4.939,0,0,1-.447-.31.258.258,0,0,0-.329-.035,1.777,1.777,0,0,1-.42.175.26.26,0,0,0-.206.26,4.9,4.9,0,0,1-.1.551,1.174,1.174,0,0,1-1.139.918c-.252.007-.5,0-.755,0a1.205,1.205,0,0,1-1.26-1.058,3.706,3.706,0,0,1-.07-.415.253.253,0,0,0-.208-.257c-.166-.052-.321-.14-.486-.2a.245.245,0,0,0-.186.016c-.193.12-.372.264-.568.381a1.142,1.142,0,0,1-1.354-.124,8.752,8.752,0,0,1-.7-.692,1.143,1.143,0,0,1-.126-1.4c.111-.185.249-.354.361-.539a.262.262,0,0,0,.02-.2,4.074,4.074,0,0,0-.222-.533.293.293,0,0,0-.169-.14c-.192-.049-.391-.068-.585-.112a1.183,1.183,0,0,1-.949-1.169c0-.252,0-.5,0-.755a1.2,1.2,0,0,1,1.028-1.231c.2-.038.446-.016.59-.127s.167-.359.268-.532a.316.316,0,0,0-.042-.406,3.7,3.7,0,0,1-.325-.479,1.133,1.133,0,0,1,.115-1.311A9.671,9.671,0,0,1,5.4,8.967a1.087,1.087,0,0,1,.793-.275"
+											fill="#222" />
+										<path id="패스_1195" data-name="패스 1195"
+											d="M9.934,17.2a3.051,3.051,0,1,1-.114-6.1.47.47,0,0,1,.49.428.448.448,0,0,1-.435.475,2.265,2.265,0,0,0-1.416.531,2.136,2.136,0,1,0,3.525,1.773.681.681,0,0,1,.146-.474.45.45,0,0,1,.486-.1.464.464,0,0,1,.292.441,3.073,3.073,0,0,1-1.918,2.814,2.962,2.962,0,0,1-1.056.215"
+											fill="#222" />
+										<path id="패스_1196" data-name="패스 1196"
+											d="M15.517,10.671A2.18,2.18,0,1,1,17.7,8.5a2.173,2.173,0,0,1-2.18,2.174m-.027-.916A1.265,1.265,0,1,0,14.253,8.47,1.269,1.269,0,0,0,15.49,9.755"
+											fill="#222" />
+									</g>
+								</svg>
+
+							</div>
+							<div class="setting_header_left_info">
+								<p>기기 설정</p>
+							</div>
+						</div>
+
+						<div class="setting_header_right">
+							<!--<button id="device_setting_close">
+							<svg id="cancel_icon" data-name="cancel icon" xmlns="http://www.w3.org/2000/svg" width="32"
+								height="32" viewBox="0 0 32 32">
+								<rect id="사각형_3929" data-name="사각형 3929" width="32" height="32" fill="none" />
+								<g id="그룹_561" data-name="그룹 561" transform="translate(8.476 8.408)">
+									<path id="패스_1187" data-name="패스 1187" d="M0,0V21.378"
+										transform="translate(0 0) rotate(-45)" fill="none" stroke="#00a8fa"
+										stroke-linecap="round" stroke-width="3" />
+									<path id="패스_1188" data-name="패스 1188" d="M0,0V21.378"
+										transform="translate(15.116 0.001) rotate(45)" fill="none" stroke="#00a8fa"
+										stroke-linecap="round" stroke-width="3" />
+								</g>
+							</svg>
+						</button>-->
+						</div>
+
+					</div>
+					<div class="setting_main">
+						<div class="setting_main_top">
+							<p>카메라/마이크 확인하기</p>
+							<span>랜드에서 직접 카메라와 마이크를 켜지 않으면 다른 사용자들은 보거나 들을 수 없습니다.</span>
+						</div>
+						<div class="setting_main_mid">
+							<div class="setting_video">
+
+								<!-- 비디오 들어갈 자리 -->
+								<video autoplay playsinline>
+									<source src="" type="">
+									비디오 들어갈 자리 입니다.
+								</video>
+								<!-- 비디오 들어갈 자리 -->
+								<audio></audio>
+							</div>
+
+							<div class="setting_video_reversal">
+								<span>비디오 좌우 반전</span>
+								<div class="reversal_btn">
+									<input type="checkbox" id="reversal" hidden>
+									<label for="reversal" class="toggleSwitch">
+										<span class="toggleButton"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="setting_main_bot">
+							<div class="camera_setting">
+								<span>카메라</span>
+
+								<select name="camera" id="camera_set">
+									<!--<option value="0">카메라 1</option>
+											<option value="1">카메라 2</option>
+											<option value="2">카메라 3</option>-->
+								</select>
+							</div>
+
+							<div class="mic_setting">
+								<span>마이크</span>
+
+								<select name="mic" id="mic_set">
+								</select>
+							</div>
+
+							<div class="mic_test">
+								<span>마이크 테스트</span>
+								<div class="mic_test_bar_bg">
+									<div id="mic_test_bar" class="mic_test_bar"></div>
+								</div>
+							</div>
+
+							<div class="speaker_setting">
+								<span>스피커</span>
+
+								<select name="speaker" id="speaker_set">
+
+								</select>
+							</div>
+
+						</div>
+					</div>
+					<div class="device_setting_close_box">
+						<button id="device_setting_close">적용</button>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- 여기 -->
+			<div id="land_rtc_wrap">
+				<div class="setting_btn_box">
+					<!--<button id="employee_list_btn">직원 목록</button>-->
+					<!--<button id="device_setting_btn">기기 설정</button>-->
+				</div>
+
+				<div class="video_setting_box">
+					<button id="toggle_camera">
+						<div class="camera_on_box">
+							<div class="camera_on">
+								<img src="/seum_img/video_off.svg" alt="video_off" title="video_off" />
+								카메라 켜기
+							</div>
+						</div>
+
+						<div class="camera_off_box">
+							<div class="camera_off">
+								<img src="/seum_img/video.svg" alt="video" title="video" />
+								카메라 끄기
+							</div>
+						</div>
+					</button>
+					<button id="toggle_mic">
+						<div class="mic_on_box">
+							<div class="mic_on">
+								<img src="/seum_img/mic_off.svg" alt="mic_off" title="mic_off" />
+								마이크 켜기
+							</div>
+						</div>
+
+						<div class="mic_off_box">
+							<div class="mic_off">
+								<img src="/seum_img/mic.svg" alt="mic" title="mic" />
+								마이크 끄기
+							</div>
+						</div>
+					</button>
+					<button id="share_screen">
+						<img src="/seum_img/screen_share.svg" alt="screen_share" title="screen_share" />
+						화면 공유
+					</button>
+					<button id="add_media">
+						<img src="/seum_img/media_share.svg" alt="media_share" title="media_share" />
+						미디어 추가
+					</button>
+				</div>
+
+				<div class="video_call_box_wrap">
+				</div>
+			</div>
+
+			<div id="land_rtc_popup">
+
+				<div class="land_rtc_popup_wrap">
+					<!-- 비디오 들어갈 자리 -->
+					<video id="" autoplay playsinline>
+						<source src="" type="">
+						비디오 들어갈 자리 입니다.
+					</video>
+					<!-- 비디오 들어갈 자리 -->
+					<div class="rtc_popup_button">
+						<button class="rtc_popup_close">
+							<span>최소화</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- 끝 -->
+
+			<!-- ========================================RTC======================================== -->
+
+			<div class="tipDogam_bg">
+				<div class="tipDogam">
+					<h1>TIP 도감</h1>
+					<button id="tdClose"><img src="/seum_img/ui/tip_close_icon.svg" alt="닫기"></button>
+					<div class="tipcon_bg">
+						<div class="conRing">
+							<img src="/seum_img/ui/td_Ring.png" alt="">
+							<img src="/seum_img/ui/td_Ring.png" alt="">
+						</div>
+						<div class="tdconDiv">
+							<!-- <p class="tdcon">책상을 정리해보세요. 집중력과 효율성을 높일 수 있습니다.</p>
+							<p class="tdcon">컴퓨터 바탕화면의 업무 폴더를 카테고리별이나 우선순위 중심으로 정리하면 효율성이 올라갑니다.</p>
+							<p class="tdcon">집중이 흐트러지면 잠시 멈추고 시원한 공기를 마시며 휴식하세요. </p>
+							<p class="tdyet">?</p>
+							<p class="tdyet">?</p>
+							<p class="tdyet">?</p>
+							<p class="tdyet">?</p>
+							<p class="tdyet">?</p> -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ms_bg">
+				<p class="ms_sticker"></p>
+				<p class="ms_sticker"></p>
+				<p class="ms_sticker"></p>
+				<p class="ms_sticker"></p>
+				<p class="ms_con"></p>
+				<p id="ms_close"><img src="/seum_img/ui/close2_icon.png" alt=""></p>
+			</div>
+
+
+
+			<div class="fishDogam_bg">
+				<h1>물고기 도감</h1>
+				<button id="fishDogam_popup_close"><img src="/seum_img/whiteclose_icon.svg" alt="닫기"></button>
+				<div class="fishDogam">
+				</div>
+			</div>
+			<div class="fdCoin">
+				<div class="fdCoin_popup">
+					<p class="fdCoin_txt">컬래버코인 1개를 획득했습니다.</p>
+					<button class="fdCoin_close">닫기</button>
+				</div>
+			</div>
+
+			<div class="waterF_box_bg">
+				<button id="waterF_popup_close"><img src="/seum_img/close_icon.svg" alt="닫기"></button>
+				<div class="waterF_box">
+					<div class="waterBox_bg">
+						<div class="waterBox">
+							<p><img src="/seum_img/box_water2_icon.png" alt=""></p>
+							<div class="waterBoxTop">
+								<div class="waterBox_content">
+									<div class="waterBox_conTop">
+										<p>물<span>남은 개수</span></p>
+										<p><em id="waterBox_count">0</em>개</p> <!-- 카운트 -->
+									</div>
+									<p class="conVar"></p>
+									<div class="waterBox_conBtm">
+										<p>아이템을 사용하면<br>열매수확시간이 1시간 줄어들어요.</p>
+									</div>
+								</div>
+							</div>
+							<!-- 물 사용하기 버튼 -->
+							<div class="useBox">
+								<img id="W_none_icon" src="/seum_img/use_n_icon.png" alt=""> <!-- 회색버튼 -->
+								<img id="W_use_icon" src="/seum_img/use_o_icon.png" alt=""> <!-- 사용(파랑)버튼 -->
+								<img id="W_use_icon-hover" src="/seum_img/use_h_icon.png" alt=""> <!-- 눌렀을때 효과 -->
+							</div>
+						</div>
+					</div>
+					<div class="fertilizerBox_bg">
+						<div class="fertilizerBox">
+							<p><img src="/seum_img/box_fertilizer2_icon.png" alt=""></p>
+							<div class="fertilizerBoxTop">
+								<div class="fertilizerBox_content">
+									<div class="fertilizerBox_conTop">
+										<p>비료<span>남은 개수</span></p>
+										<p><em id="fertilizerBox_count">0</em>개</p> <!-- 카운트 -->
+									</div>
+									<p class="conVar"></p>
+									<div class="fertilizerBox_conBtm">
+										<p>아이템을 사용하면<br>남은 열매 수확 시간의 50%가 감소해요.</p>
+									</div>
+								</div>
+							</div>
+							<!-- 비료 사용하기 버튼 -->
+							<div class="useBox">
+								<img id="W_none_icon" src="/seum_img/use_n_icon.png" alt=""> <!-- 회색버튼 -->
+								<img id="W_use_icon" src="/seum_img/use_o_icon.png" alt=""> <!-- 사용(파랑)버튼 -->
+								<img id="W_use_icon-hover" src="/seum_img/use_h_icon.png" alt=""> <!-- 눌렀을때 효과 -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ********* #game_start_popup ********* -->
+			<div id="game_start_popup">
+				<div class="game_popup">
+					<div class="game_start_popup">
+						<div class="game_popup_header">
+							<strong>[게임 방법]</strong>
+						</div>
+						<div class="game_popup_main">
+							<div class="game_popup_main_cont">
+								<p></p>
+							</div>
+							<button id="game_start_btn">게임 시작하기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- ********* #game_wait_popup ********* -->
+			<div id="game_wait_popup">
+				<div class="game_wait_popup">
+					<div class="game_wait_popup_bg">
+						<strong id="game_wait_num">3</strong>
+					</div>
+
+					<div class="game_wait_popup_bottom">
+						<p>잠시 후 게임이 시작됩니다.</p>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- ********* #game_test_btn_popup ********* -->
+			<div id="game_test_btn_popup">
+				<div class="game_popup game_btn">
+					<!-- <div class="game_test_popup">
+						<div class="game_popup_header">
+							<strong>[문제 <span id="game_test_num">1</span>]</strong>
+						</div>
+						<div class="game_popup_main">
+							<div class="game_popup_main_cont">
+								<p id="game_test_title">2023년도 MMA(멜론 뮤직 어워드) 올해의 레코드를 받은 그룹은 누구일까요?</p>
+							</div>
+
+							<div class="game_test_answer_wrap">
+								<div class="game_test_answer_box">
+									<button class="game_test_answer_btn" id="game_test_answer_btn1">[1] 엔시티 드림</button>
+								</div>
+								<div class="game_test_answer_box">
+									<button class="game_test_answer_btn" id="game_test_answer_btn2">[2] 샤이니</button>
+								</div>
+								<div class="game_test_answer_box">
+									<button class="game_test_answer_btn" id="game_test_answer_btn3">[3] 아이브</button>
+								</div>
+								<div class="game_test_answer_box">
+									<button class="game_test_answer_btn" id="game_test_answer_btn4">[4] 뉴진스</button>
+								</div>
+							</div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+
+			<!-- ********* #game_test_input_popup ********* -->
+			<!-- <div id="game_test_input_popup">
+				<div class="game_popup game_input">
+					<div class="game_test_popup">
+						<div class="game_popup_header">
+							<strong>[문제 <span id="game_test_num">2</span>]</strong>
+						</div>
+						<div class="game_popup_main">
+							<div class="game_popup_main_cont">
+								<p id="game_test_title">2023년도 MMA(멜론 뮤직 어워드) 올해의 레코드를 받은 그룹은 누구일까요?</p>
+							</div>
+
+							<div class="game_test_input_wrap">
+
+								<div class="game_test_input_box">
+									<input type="text" id="game_test_input" placeholder="정답을 입력해주세요.">
+								</div>
+
+								<div class="game_test_input_btn_box">
+									<button class="game_test_input_btn" id="game_test_input_btn">입력</button>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+
+			<!-- ********* #game_top_fixed_box ********* -->
+			<div id="game_top_fixed_box">
+				<div class="game_top_fixed_box">
+					<div class="game_top_fixed_test_num_box">
+						<p class="game_top_fixed_test_num"><span id="game_top_test_num">1</span> / <span
+								id="game_top_test_entire_num">10</span></p>
+					</div>
+
+					<div class="game_top_fixed_test_time_box">
+						<p class="game_top_fixed_test_time"><span id="game_top_test_time">00:00</span></p>
+					</div>
+				</div>
+
+				<div class="game_top_fixed_box_bg"></div>
+				<div class="game_top_fixed_box_bg_2"></div>
+			</div>
+
+			<!-- ********* #game_over_box ********* -->
+			<div id="game_over_box">
+				<div class="game_popup border_box">
+					<div class="game_over_box">
+						<p>제한 시간이 종료되었습니다. <br> 다시 도전하시겠습니까?</p>
+
+						<div class="game_over_box_btn ">
+							<button class="game_over_box_btn1" id="game_restart_btn">다시 도전하기</button>
+							<button class="game_over_box_btn2" id="game_quit_btn">그만하기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ********* #game_ing_box ********* -->
+			<div id="game_ing_box">
+				<div class="game_popup border_box">
+					<div class="game_over_box">
+						<p class="game_ing_box_p">문제를 다 풀지 않았습니다.</p>
+
+						<div class="game_over_box_btn game_ing_box_btn">
+							<button id="game_ing_btn">확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- ********* #game_complete_box ********* -->
+			<div id="game_complete_box">
+				<div class="game_popup border_box">
+					<div class="game_over_box">
+						<p class="game_ing_box_p">게임 학습을 완료했습니다.</p>
+
+						<div class="game_over_box_btn game_complete_box_btn">
+							<button id="game_complete_btn">확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ********* #game_correct_answer_popup ********* -->
+			<!-- <div class="game_answer_popup" id="game_correct_answer_popup">
+				<div class="game_answer_popup_box correct_answer">
+					<div class="game_answer_popup_img">
+
+					</div>
+
+					<div class="game_answer_popup_bottom">
+						<p id="game_answer">2023 MMA 올해의 레코드 상은 엔시티 드림, 올해의 아티스트는 뉴진스, 올해의 앨범은 아이브가 수상했습니다.</p>
+					</div>
+				</div>
+
+				<div class="answer_btn">
+					<button id="correct_answer_btn">확인</button>
+				</div>
+			</div> -->
+
+			<!-- ********* #game_incorrect_answer_popup ********* -->
+			<!-- <div class="game_answer_popup" id="game_incorrect_answer_popup">
+				<div class="game_answer_popup_box incorrect_answer">
+					<div class="game_answer_popup_img">
+
+					</div>
+
+					<div class="game_answer_popup_bottom">
+						<p id="game_answer">2023 MMA 올해의 레코드 상은 엔시티 드림, 올해의 아티스트는 뉴진스, 올해의 앨범은 아이브가 수상했습니다.</p>
+					</div>
+
+					<div class="incorrect_answer_bg"></div>
+					<div class="answer_btn">
+						<button id="game_incorrect_answer_btn">확인</button>
+					</div>
+				</div>
+			</div> -->
+
+
+			<!-- <div id="fruit_btn">
+				<div class="fruit_icon">
+					<img src="/seum_img/fruit.png" alt="fruit">
+				</div>
+			</div>
+
+			<div id="inventory_btn">
+				<div class="inventory_icon">
+					<img src="/seum_img/inventory.png" alt="inventory">
+				</div>
+			</div> -->
+
+			<div class="game_popup_bg" id="profile_card">
+				<div class="profile_card">
+					<div class="card_top">
+						<div class="card_top_flex_box">
+							<div class="card_top_left">
+								<div class="card_top_left_img">
+									<svg id="profile_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+										viewBox="0 0 24 24">
+										<rect id="사각형_3951" data-name="사각형 3951" width="24" height="24" fill="none" />
+										<g id="그룹_597" data-name="그룹 597">
+											<path id="패스_1197" data-name="패스 1197"
+												d="M19.492,18.375A6.373,6.373,0,0,0,16.28,12.89a1.443,1.443,0,0,0-1.473-.08A6.048,6.048,0,0,1,9.179,12.8a1.416,1.416,0,0,0-1.432.072A6.367,6.367,0,0,0,4.509,18.3,2.481,2.481,0,0,0,7.136,21c1.624,0,3.248,0,4.872,0,1.64,0,3.279.007,4.919,0a2.469,2.469,0,0,0,2.565-2.62M16.856,19.5c-1.608,0-3.217,0-4.825,0s-3.217,0-4.825,0c-.855,0-1.25-.393-1.2-1.24a4.954,4.954,0,0,1,2.224-3.925.524.524,0,0,1,.593-.051,7.342,7.342,0,0,0,6.337.01.525.525,0,0,1,.6.03,4.963,4.963,0,0,1,2.236,4.014A1.006,1.006,0,0,1,16.856,19.5"
+												fill="#fff" />
+											<path id="패스_1198" data-name="패스 1198"
+												d="M12.018,3A4.5,4.5,0,1,0,16.5,7.516,4.5,4.5,0,0,0,12.018,3m-.034,7.5A3,3,0,1,1,15,7.5a3.007,3.007,0,0,1-3.016,3"
+												fill="#fff" />
+										</g>
+									</svg>
+								</div>
+								<div class="card_top_left_info">
+									<p>프로필 카드</p>
+								</div>
+							</div>
+							<div class="card_top_right">
+								<button id="profile_card_close">
+									<svg id="cancel_icon" data-name="cancel icon" xmlns="http://www.w3.org/2000/svg"
+										width="32" height="32" viewBox="0 0 32 32">
+										<rect id="사각형_3929" data-name="사각형 3929" width="32" height="32" fill="none" />
+										<g id="그룹_561" data-name="그룹 561" transform="translate(8.476 8.408)">
+											<path id="패스_1187" data-name="패스 1187" d="M0,0V21.378"
+												transform="translate(0 0) rotate(-45)" fill="none" stroke="#00a8fa"
+												stroke-linecap="round" stroke-width="3" />
+											<path id="패스_1188" data-name="패스 1188" d="M0,0V21.378"
+												transform="translate(15.116 0.001) rotate(45)" fill="none"
+												stroke="#00a8fa" stroke-linecap="round" stroke-width="3" />
+										</g>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<div class="card_char_img">
+							<img src="" alt="">
+						</div>
+
+						<div class="card_char_info">
+							<div class="card_char_info_name">
+								<strong id="card_info_name">홍길동 </strong>
+							</div>
+
+							<div class="card_char_info_department">
+								<span id="info_department">디자인팀/사업본부 </span>
+							</div>
+						</div>
+
+						<a href="">랜드 방문하기 </a>
+
+					</div>
+
+					<div class="card_bottom">
+
+						<p>이건 상태명 입니다.</p>
+
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="statusBox">
+				<h1>활동보상</h1>
+				<button id="status_popup_close"><img src="/seum_img/ui/statusbox/close2_icon.svg" alt="닫기"></button>
+				<div class="status_save_box">
+					<div class="status_icon">
+						<div class="icon_g Fruit">
+							<p>
+								<span>열매</span>
+								<img src="/seum_img/ui/statusbox/st_fruit_05.png" alt="열매">
+							</p>
+							<p><span id="fruit_count">20</span>개</p>
+						</div>
+						<div class="icon_g Seed">
+							<p>
+								<span>씨앗</span>
+								<img src="/seum_img/ui/statusbox/st_seed_03.png" alt="씨앗">
+							</p>
+							<p><span id="seed_count">20</span>개</p>
+						</div>
+						<div class="icon_g Water">
+							<p>
+								<span>물</span>
+								<img src="/seum_img/ui/statusbox/st_water_01.png" alt="물">
+							</p>
+							<p><span id="water_count">20</span>개</p>
+						</div>
+						<div class="icon_g fertilizer">
+							<p>
+								<span>비료</span>
+								<img src="/seum_img/ui/statusbox/st_fertilizer_02.png" alt="비료">
+							</p>
+							<p><span id="fertilizer_count">20</span>개</p>
+						</div>
+						<div class="icon_g earthworm">
+							<p>
+								<span>지렁이</span>
+								<img src="/seum_img/ui/statusbox/st_earthworm_04.png" alt="지렁이">
+							</p>
+							<p><span id="earthworm_count">20</span>개</p>
+						</div>
+					</div>
+				</div>
+				<button id="statusBtn">활동내역</button>
+			</div>
+
+
+
+			<div id="save_char_popup">
+				<div class="save_char_box">
+					<p>저장이 완료되었습니다.</p>
+				</div>
+			</div>
+
+			<div id="save_land_popup">
+				<div class="save_land_box">
+					<p>적용이 완료되었습니다.</p>
+					<button id="save_land_popup_close">닫기</button>
+				</div>
+			</div>
+
+
+			<!-- <div class="chatbox">
+
+				<div class="chatbox_wrap"> -->
+			<!-- 채팅 박스 상단 -->
+			<!-- <div class="chatbox_header">
+						<div class="chatbox_header_icon">
+							<button id="chatbox_size_btn">
+
+								<svg id="scale_icon" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"
+									viewBox="0 0 16 16">
+									<defs>
+										<clipPath id="clip-path">
+											<rect id="사각형_4148" data-name="사각형 4148" width="16" height="16"
+												fill="none" />
+										</clipPath>
+									</defs>
+									<g id="scale_icon-2" data-name="scale_icon" opacity="0.8">
+										<rect id="사각형_4147" data-name="사각형 4147" width="16" height="16" fill="none" />
+										<g id="그룹_782" data-name="그룹 782">
+											<g id="그룹_781" data-name="그룹 781" clip-path="url(#clip-path)">
+												<path id="합치기_25" data-name="합치기 25"
+													d="M-11433.578-4521.8a.234.234,0,0,1-.045-.007.64.64,0,0,1-.367-.371.1.1,0,0,1-.01-.045v-5.77a.084.084,0,0,1,.01-.044.622.622,0,0,1,.229-.295.469.469,0,0,1,.1-.035.043.043,0,0,0,.021,0,.117.117,0,0,0,.034-.014.427.427,0,0,1,.168-.038.432.432,0,0,1,.065,0h.008c.044,0,.1,0,.161,0v-4.98a.528.528,0,0,1,.6-.6h10.208a.689.689,0,0,1,.351.086.542.542,0,0,1,.247.508v10.207a.546.546,0,0,1-.251.515.687.687,0,0,1-.354.086h-4.979a1.232,1.232,0,0,0,0,.161.574.574,0,0,1-.381.628.2.2,0,0,1-.045.007Zm.625-1.037h4.527v-4.538h-4.527Zm.795-5.581h4.185a.2.2,0,0,1,.1.027h0a.508.508,0,0,1,.485.56v4.187h4.54v-9.312h-9.315Zm5.311-.182a.527.527,0,0,1-.348-.333.52.52,0,0,1,.072-.466,1.312,1.312,0,0,1,.106-.117l.653-.652,1.2-1.2h-.7a.525.525,0,0,1-.559-.515.505.505,0,0,1,.414-.5l.024-.007a.494.494,0,0,1,.12-.017h2.272l.078,0a.118.118,0,0,1,.109.1l0,.014v.014a.05.05,0,0,1,0,.021.158.158,0,0,1,.008.048v.655c0,.536,0,1.091,0,1.633a.536.536,0,0,1-.134.354.013.013,0,0,0,0,.007c-.007.006-.018.02-.032.034a.466.466,0,0,1-.288.134.125.125,0,0,1-.055.014.592.592,0,0,1-.147-.021.489.489,0,0,1-.333-.344.2.2,0,0,0-.011-.031.365.365,0,0,1-.033-.13c0-.213,0-.429,0-.635v-.1l-1.137,1.137c-.246.247-.49.494-.734.738a.66.66,0,0,1-.217.144.271.271,0,0,1-.065.017.024.024,0,0,0-.013,0l-.014,0a.285.285,0,0,1-.09.017A.565.565,0,0,1-11426.848-4528.6Z"
+													transform="translate(11435.899 4535.9)" fill="#fff" />
+											</g>
+										</g>
+									</g>
+								</svg>
+
+							</button>
+							<button id="chatbox_close_btn">
+
+								<svg id="cancel_icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+									viewBox="0 0 16 16">
+									<g id="cancel_icon-2" data-name="cancel_icon" transform="translate(-1242 -797.387)"
+										opacity="0.8">
+										<rect id="사각형_4140" data-name="사각형 4140" width="16" height="16"
+											transform="translate(1242 797.387)" fill="none" />
+										<g id="그룹_775" data-name="그룹 775" transform="translate(1242 797)">
+											<rect id="사각형_3929" data-name="사각형 3929" width="16" height="16"
+												transform="translate(0 0.387)" fill="none" />
+											<g id="그룹_561" data-name="그룹 561" transform="translate(3.115 3.114)">
+												<path id="패스_1187" data-name="패스 1187" d="M0,0V14.365"
+													transform="translate(0 0) rotate(-45)" fill="none" stroke="#fff"
+													stroke-linecap="round" stroke-width="1.5" />
+												<path id="패스_1188" data-name="패스 1188" d="M0,0V14.365"
+													transform="translate(10.158 0) rotate(45)" fill="none" stroke="#fff"
+													stroke-linecap="round" stroke-width="1.5" />
+											</g>
+										</g>
+									</g>
+								</svg>
+
+							</button>
+						</div>
+					</div> -->
+			<!-- 채팅 박스 상단 -->
+			<!-- 채팅 박스 메인 -->
+			<!-- <div id="tbox"> -->
+
+			<!-- 전체 채팅 -->
+			<!-- <div id="tbox_chat"> -->
+
+			<!--  -->
+			<!-- <div class="chat_myself">
+								<h3>마이랜드에 오신 것을 환영합니다.</h3>
+							</div> -->
+
+			<!-- 채팅 자기자신일 때 -->
+			<!-- <div class="chat_myself">
+								<h3>세움웹</h3>
+								<p>어서오세요</p>
+							</div> -->
+
+			<!-- 채팅 상대방일 때 -->
+			<!-- <div class="chat_other">
+								<h3 >관리자</h3>
+								<p>안녕하세요</p>
+							</div> -->
+
+			<!-- </div> -->
+
+			<!-- 활동 내역 -->
+			<!-- <div id="tbox_activity"> -->
+			<!-- 열매를 획득했을 때 -->
+			<!-- <div class="activity_farm">
+								<h3>씨앗이 모두 자라났습니다. 열매를 수확해 주세요.</h3>
+							</div> -->
+
+			<!-- 나머지 활동 내역일 때 -->
+			<!-- <div class="activity_other">
+								<h3 >열매 5개를 획득하였습니다.</h3>
+							</div> -->
+
+			<!-- </div>
+					</div> -->
+			<!-- 채팅 박스 메인 -->
+
+			<!-- <div class="chatbox_button_wrap">
+						<button class="selected">전체 채팅</button>
+						<button>활동 내역</button>
+					</div>
+				</div> -->
+
+			<!-- 채팅 박스 하단 -->
+			<!-- <div class="chatbox_footer">
+					<div class="chatbox_footer_input">
+						<input type="text" name="chatcontent" id="chatinput" placeholder="문장을 입력하세요." autocomplete="off"
+							style="outline: none;">
+					</div>
+				</div> -->
+
+			<!-- 채팅내역 열기 버튼  -->
+			<!-- <button id="chatbox_open_btn">
+					채팅내역 열기
+					<svg id="scale_icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						width="16" height="16" viewBox="0 0 16 16">
+						<defs>
+							<clipPath id="clip-path">
+								<rect id="사각형_4148" data-name="사각형 4148" width="16" height="16" fill="#fb8c00" />
+							</clipPath>
+						</defs>
+						<rect id="사각형_4147" data-name="사각형 4147" width="16" height="16" fill="none" />
+						<g id="그룹_782" data-name="그룹 782">
+							<g id="그룹_781" data-name="그룹 781" clip-path="url(#clip-path)">
+								<path id="합치기_25" data-name="합치기 25"
+									d="M-11433.578-4521.8a.234.234,0,0,1-.045-.007.64.64,0,0,1-.367-.371.1.1,0,0,1-.01-.045v-5.77a.084.084,0,0,1,.01-.044.622.622,0,0,1,.229-.295.469.469,0,0,1,.1-.035.043.043,0,0,0,.021,0,.117.117,0,0,0,.034-.014.427.427,0,0,1,.168-.038.432.432,0,0,1,.065,0h.008c.044,0,.1,0,.161,0v-4.98a.528.528,0,0,1,.6-.6h10.208a.689.689,0,0,1,.351.086.542.542,0,0,1,.247.508v10.207a.546.546,0,0,1-.251.515.687.687,0,0,1-.354.086h-4.979a1.232,1.232,0,0,0,0,.161.574.574,0,0,1-.381.628.2.2,0,0,1-.045.007Zm.625-1.037h4.527v-4.538h-4.527Zm.795-5.581h4.185a.2.2,0,0,1,.1.027h0a.508.508,0,0,1,.485.56v4.187h4.54v-9.312h-9.315Zm5.311-.182a.527.527,0,0,1-.348-.333.52.52,0,0,1,.072-.466,1.312,1.312,0,0,1,.106-.117l.653-.652,1.2-1.2h-.7a.525.525,0,0,1-.559-.515.505.505,0,0,1,.414-.5l.024-.007a.494.494,0,0,1,.12-.017h2.272l.078,0a.118.118,0,0,1,.109.1l0,.014v.014a.05.05,0,0,1,0,.021.158.158,0,0,1,.008.048v.655c0,.536,0,1.091,0,1.633a.536.536,0,0,1-.134.354.013.013,0,0,0,0,.007c-.007.006-.018.02-.032.034a.466.466,0,0,1-.288.134.125.125,0,0,1-.055.014.592.592,0,0,1-.147-.021.489.489,0,0,1-.333-.344.2.2,0,0,0-.011-.031.365.365,0,0,1-.033-.13c0-.213,0-.429,0-.635v-.1l-1.137,1.137c-.246.247-.49.494-.734.738a.66.66,0,0,1-.217.144.271.271,0,0,1-.065.017.024.024,0,0,0-.013,0l-.014,0a.285.285,0,0,1-.09.017A.565.565,0,0,1-11426.848-4528.6Z"
+									transform="translate(11435.899 4535.9)" fill="#fb8c00" />
+							</g>
+						</g>
+					</svg>
+
+				</button>
+			</div> -->
+
+			<div class="mylandTop_wrap">
+				<div class="mlt_left">
+					<div class="mltProfile">
+						<p class="mltP_img"><img src="" alt="프로필사진"></p> <!-- 캐릭터 프로필 사진 -->
+						<div class="mltP_status">
+							<p class="mltP_join"><img src="/seum_img/ui/screen/case_icon.svg" alt=""><span>입사 <span
+										id="join_date">365</span>일째</span></p> <!-- 입사 일수 -->
+							<p class="mltP_twrap"><span id="mltP_dpm">사업본부</span> | <em id="mltP_team">경영지원팀</em></p>
+							<!-- 부서/팀 -->
+							<p class="mltP_btm"><span id="mltP_name">홍길동</span> <em id="mltP_position">대리</em></p>
+							<!-- 이름/직급 -->
+						</div>
+					</div>
+					<div class="mltFP_status">
+						<div class="mlFruits_status"><img src="/seum_img/ui/screen/fruits_icon.png" alt="열매">
+							<p class="mltF-number">85</p>
+						</div> <!-- 열매 개수 -->
+						<div class="mlPoint_status"><img src="/seum_img/ui/screen/point_icon.png" alt="포인트">
+							<p class="mltP-number">7</p>
+						</div> <!-- 포인트 개수 -->
+					</div>
+				</div>
+				<div class="mlt_right">
+					<div class="mlt_statusList">
+						<!-- 메뉴 -->
+						<p class="mlt-reward"><img src="/seum_img/ui/screen/statusList_01.png" alt=""> <span>활동보상</span>
+						</p>
+						<p class="mlt-inventory"><img src="/seum_img/ui/screen/statusList_02.png"
+								alt=""><span>인벤토리</span></p>
+						<p class="mlt-messageBox"><img src="/seum_img/ui/screen/statusList_05.png"
+								alt=""><span>쪽지함</span></p>
+						<p class="mlt-staffList"><img src="/seum_img/ui/screen/statusList_04.png"
+								alt=""><span>직원목록</span></p>
+						<p class="mlt-setting"><img src="/seum_img/ui/screen/statusList_03.png" alt=""><span>설정</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="myland_chatbox">
+				<div class="chatWrap">
+					<div class="chatboxTop">
+						<div class="chatTabs">
+							<button id="chatAll" class="chatTabactive">전체 채팅<span class="navCounter"></span></button>
+							<button id="chatPrivate" >프라이빗 채팅<span class="navCounter"></span></button>
+							<button id="chatHistory">활동 내역<span class="navCounter"></span></button>
+						</div>
+						<div class="chatbox_right">
+							<div class="chatScale">
+								<button class="chatScale_spread VMDactiveF"><img
+										src="/seum_img/ui/screen/scale_spread.svg" alt="펼치기"></button> <!-- 채팅창 펼치기 -->
+								<button class="chatScale_folding"><img src="/seum_img/ui/screen/scale_folding.svg"
+										alt="접기"></button> <!-- 채팅창 접기 -->
+							</div>
+							<button id="chatbox_close_btn"><img src="/seum_img/ui/screen/cancel.svg" alt="닫기"></button>
+							<!-- 닫기 버튼 -->
+						</div>
+					</div>
+					<div id="tbox"> <!-- 채팅창 내용 -->
+						<div id="tbox_chat">
+						</div>
+						<div id="tbox_private">
+						</div>
+						<div id="tbox_activity">
+						</div>
+					</div>
+				</div>
+				<div id="chatbox_footer_input">
+					<input id="chatinput" type="text" placeholder="텍스트 입력" autocomplete="off"> <!-- 채팅창 텍스트 -->
+				</div>
+				<button id="chatbox_open_btn">
+					<p>채팅내역 열기</p>
+					<svg id="scale_icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+						width="16" height="16" viewBox="0 0 16 16">
+						<defs>
+							<clipPath id="clip-path">
+								<rect id="사각형_4148" data-name="사각형 4148" width="16" height="16" fill="#fb8c00" />
+							</clipPath>
+						</defs>
+						<rect id="사각형_4147" data-name="사각형 4147" width="16" height="16" fill="none" />
+						<g id="그룹_782" data-name="그룹 782">
+							<g id="그룹_781" data-name="그룹 781" clip-path="url(#clip-path)">
+								<path id="합치기_25" data-name="합치기 25"
+									d="M-11433.578-4521.8a.234.234,0,0,1-.045-.007.64.64,0,0,1-.367-.371.1.1,0,0,1-.01-.045v-5.77a.084.084,0,0,1,.01-.044.622.622,0,0,1,.229-.295.469.469,0,0,1,.1-.035.043.043,0,0,0,.021,0,.117.117,0,0,0,.034-.014.427.427,0,0,1,.168-.038.432.432,0,0,1,.065,0h.008c.044,0,.1,0,.161,0v-4.98a.528.528,0,0,1,.6-.6h10.208a.689.689,0,0,1,.351.086.542.542,0,0,1,.247.508v10.207a.546.546,0,0,1-.251.515.687.687,0,0,1-.354.086h-4.979a1.232,1.232,0,0,0,0,.161.574.574,0,0,1-.381.628.2.2,0,0,1-.045.007Zm.625-1.037h4.527v-4.538h-4.527Zm.795-5.581h4.185a.2.2,0,0,1,.1.027h0a.508.508,0,0,1,.485.56v4.187h4.54v-9.312h-9.315Zm5.311-.182a.527.527,0,0,1-.348-.333.52.52,0,0,1,.072-.466,1.312,1.312,0,0,1,.106-.117l.653-.652,1.2-1.2h-.7a.525.525,0,0,1-.559-.515.505.505,0,0,1,.414-.5l.024-.007a.494.494,0,0,1,.12-.017h2.272l.078,0a.118.118,0,0,1,.109.1l0,.014v.014a.05.05,0,0,1,0,.021.158.158,0,0,1,.008.048v.655c0,.536,0,1.091,0,1.633a.536.536,0,0,1-.134.354.013.013,0,0,0,0,.007c-.007.006-.018.02-.032.034a.466.466,0,0,1-.288.134.125.125,0,0,1-.055.014.592.592,0,0,1-.147-.021.489.489,0,0,1-.333-.344.2.2,0,0,0-.011-.031.365.365,0,0,1-.033-.13c0-.213,0-.429,0-.635v-.1l-1.137,1.137c-.246.247-.49.494-.734.738a.66.66,0,0,1-.217.144.271.271,0,0,1-.065.017.024.024,0,0,0-.013,0l-.014,0a.285.285,0,0,1-.09.017A.565.565,0,0,1-11426.848-4528.6Z"
+									transform="translate(11435.899 4535.9)" fill="#fb8c00" />
+							</g>
+						</g>
+					</svg>
+
+				</button>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div class="box_wrap">
+				<div class="box_top">
+					<div class="box_btn_wrap">
+						<button class="selected">캐릭터</button>
+						<button>랜드</button>
+					</div>
+					<div class="cancle_box">
+						<button class="cancle_btn">
+							<img src="seum_img/ui/inventory/close2_icon.svg" alt="닫기">
+							<!-- <svg id="cancel_icon" data-name="cancel icon" xmlns="http://www.w3.org/2000/svg" width="32"
+								height="32" viewBox="0 0 32 32">
+								<rect id="사각형_3929" data-name="사각형 3929" width="32" height="32" fill="none" />
+								<g id="그룹_561" data-name="그룹 561" transform="translate(8.476 8.408)">
+									<path id="패스_1187" data-name="패스 1187" d="M0,0V21.378"
+										transform="translate(0 0) rotate(-45)" fill="none" stroke="#00a8fa"
+										stroke-linecap="round" stroke-width="3" />
+									<path id="패스_1188" data-name="패스 1188" d="M0,0V21.378"
+										transform="translate(15.116 0.001) rotate(45)" fill="none" stroke="#00a8fa"
+										stroke-linecap="round" stroke-width="3" />
+								</g>
+							</svg> -->
+
+						</button>
+					</div>
+				</div>
+
+				<div class="box_bot character">
+					<div class="selection_box">
+						<ul>
+							<!-- <li class="selected" id="hair">헤어</li>
+							<li id="face">얼굴</li>
+							<li id="hat">모자</li>
+							<li id="suit">한벌옷</li>
+							<li id="top">상의</li>
+							<li id="bottom">하의</li>
+							<li id="shoes">신발</li>
+							<li id="prop">소품</li> -->
+						</ul>
+					</div>
+					<div class="character_info_box">
+
+						<div class="product_wrap_bottom_bar"></div>
+
+						<div class="fixed_info">
+							<div class="character_img">
+								<!-- <img src="img/default/player.png" alt="reset_img"> -->
+								<!-- <img src="img/hair.svg" alt="hair"> -->
+							</div>
+							<div class="character_button">
+								<button id="reset" onClick=""><img src="seum_img/ui/inventory/reset_icon.svg"
+										alt="reset_icon"></button>
+								<button id="back" onClick=""><img src="seum_img/ui/inventory/back_icon.svg"
+										alt="back_icon"></button>
+								<button id="save" onClick=""><img src="seum_img/ui/inventory/save_icon.svg"
+										alt="save_icon"></button>
+							</div>
+						</div>
+
+						<!-- <div id="hairWrap" class="product_wrap">
+
+							 캐릭터 상품 등록 하는 곳입니다. -->
+						<!-- <div class="product_box">
+								<div class="box_border">
+									<div class="product_img">
+										<img src="img/icon/hair_rainbow.svg" alt="hair_rainbow">
+									</div>
+									<div class="product_name">
+										<p>무지개 빛깔 헤어</p>
+									</div>
+								</div>
+							</div> -->
+
+						<!-- 만약 아이템이 없을 경우 -->
+						<!-- <div class="nodata">
+								<p>인벤토리에 아이템이 없습니다.</p>
+							</div> 
+
+						</div> -->
+
+						<!-- <div id="faceWrap" class="product_wrap">
+						</div>
+
+						<div id="hatWrap" class="product_wrap">
+						</div>
+
+						<div id="suitWrap" class="product_wrap">
+						</div>
+
+						<div id="topWrap" class="product_wrap">
+						</div>
+
+						<div id="bottomWrap" class="product_wrap">
+						</div>
+
+						<div id="shoesWrap" class="product_wrap">
+						</div>
+
+						<div id="propWrap" class="product_wrap">
+						</div> -->
+
+					</div>
+				</div>
+
+				<div class="box_bot land">
+					<div class="selection_box">
+						<ul>
+							<!-- <li class="selected" id="furniture">가구</li>
+							<li id="floor">벽지/바닥</li>
+							<li id="garden">텃밭</li>
+							<li id="etc">기타</li> -->
+						</ul>
+					</div>
+					<div class="character_info_box">
+
+						<div class="product_wrap_bottom_bar land"></div>
+
+						<!-- <div id="furnitureWrap" class="product_wrap">
+
+							< 랜드 상품 등록 하는 곳입니다. -->
+						<!-- <div class="product_box">
+								<div class="product_img">
+									<img src="img/icon/office_sofa.svg" alt="office_sofa">
+								</div>
+								<div class="product_name">
+									<p>사무실 용 소파</p>
+								</div>
+							</div> -->
+
+						<!-- 만약 아이템이 없을 경우 -->
+						<!-- <div class="nodata">
+								<p>인벤토리에 아이템이 없습니다.</p>
+							</div> 
+						</div>
+
+						<div id="floorWrap" class="product_wrap">
+						</div>
+
+						<div id="gardenWrap" class="product_wrap">
+						</div>
+
+						<div id="etcWrap" class="product_wrap">
+						</div> -->
+
+					</div>
+				</div>
+			</div>
+
+			<!-- ********* #land_top_box_wrap ********* -->
+			<div id="land_top_box_wrap">
+				<div class="land_top_box">
+
+					<!-- 디자인 상 슬라이드 swiperjs 추가 -->
+					<div class="land_top_left_box swiper-container">
+
+						<div class="video_call_box_wrap swiper-wrapper">
+							<!--<div class="video_call_box swiper-slide mic_on">
+							<span>닉네임</span>
+							<img src="/seum_img/character_100px.png" alt="character_100px">
+						</div>
+						<div class="video_call_box swiper-slide ">
+							<span>1</span>
+							<img src="/seum_img/character_100px.png" alt="character_100px">
+						</div>-->
+
+						</div>
+
+					</div>
+
+					<div class="land_top_right_box">
+						<div class="video_setting_box">
+
+							<!-- 클릭 시 toggle 클래스를 추가 및 삭제하면 됩니다. -->
+							<button id="mo_toggle_mic" class="toggle">
+
+							</button>
+
+							<!-- 클릭 시 toggle 클래스를 추가 및 삭제하면 됩니다. -->
+							<button id="mo_toggle_camera" class="toggle">
+
+							</button>
+
+						</div>
+
+						<div class="land_top_btn_box"><button id="mo_user_list"></button></div>
+						<div class="land_top_btn_box"><button id="mo_device_setting"></button></div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- ********* #land_bot_box_wrap ********* -->
+			<div id="land_bot_box_wrap">
+				<div class="land_bot_btn_box">
+
+					<div class="land_bot_btn"><button class="mo_fruit_btn"><img src="/seum_img/fruit.png"
+								alt="fruit"></button></div>
+					<div class="land_bot_btn"><button class="mo_inven_btn"><img src="/seum_img/inventory.png"
+								alt="inventory"></button></div>
+
+					<div class="land_bot_btn"><button id="mo_sidebar" class="mo_sidebar_btn">
+							<!-- 클릭 시 toggle 클래스 추가 해야함 -->
+						</button></div>
+					<div class="land_bot_btn"><button id="mo_chat_btn"></button></div>
+				</div>
+
+				<div class="land_bot_chat_box_wrap dn">
+					<div class="land_chat_box_btn_box_wrap">
+						<div class="land_bot_btn"><button class="mo_fruit_btn"><img src="/seum_img/fruit.png"
+									alt="fruit"></button></div>
+						<div class="land_bot_btn"><button class="mo_inven_btn"><img src="/seum_img/inventory.png"
+									alt="inventory"></button></div>
+					</div>
+
+					<div class="land_chat_box_top">
+						<div id="mo_tbox">
+
+							<!-- 전체 채팅 -->
+							<div id="mo_tbox_chat">
+
+							</div>
+
+							<!-- 활동 내역 -->
+							<div id="mo_tbox_activity" class="dn">
+
+							</div>
+						</div>
+
+						<div class="chatbox_button_wrap">
+							<button class="selected">전체 채팅</button>
+							<button>활동 내역</button>
+						</div>
+
+						<div class="land_chat_box_btn_wrap">
+
+							<div class="land_chat_box_btn">
+								<button id="mo_chat_close"></button>
+							</div>
+						</div>
+
+					</div>
+					<div class="land_chat_box_bot">
+						<div class="land_bot_btn"><button id="mo_sidebar_v" class="mo_sidebar_btn"></button></div>
+						<div class="land_bot_btn asmo_close_btn"><button id="mo_chat_btn_close"></button></div>
+
+						<div class="chatbox_footer_input">
+							<input class="form-control" type="text" name="chatcontent" id="mo_chatinput"
+								placeholder="채팅을 입력해 주세요." autocomplete="off" style="outline: none;">
+						</div>
+
+						<div class="land_bot_btn"><button id="mo_chat_submit_btn"></button></div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+		<!-- <canvas id="UICanvas" width="0" height="0" style="image-rendering: pixelated; margin-left: 0px; margin-top: 0px;"></canvas> -->
+		<div id="username"></div>
+		<div id="fkeyui">
+			<div class="fkey_massge">
+				<img src="static/client/assets/Images/ui/fkey.png">
+				<p>를 눌러 상호작용</p>
+			</div>
+		</div>
+
+		<div class="game_popup_bg" id="updatebox" tabindex="0">
+			<div class="infoBox">
+				<p class="infoBox_text">맵이 업데이트 되었습니다.
+					<span class="infoBox_text">확인 버튼을 눌러 다시 입장해 주세요.</span>
+				</p>
+				<div class="checkbuttonbox">
+					<button class="checkbutton">
+						<span>확인</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="game_popup_bg" id="infobox" tabindex="0">
+			<div class="infoBox">
+				<p class="infoBox_text">준비중입니다.
+					<span class="infoBox_text"></span>
+				</p>
+				<div class="checkbuttonbox">
+					<button class="checkbutton">
+						<span>확인</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="collisionname">
+			<div class="collisionname_left"></div>
+			<span class="collisionname_text">우체통</span>
+			<div class="collisionname_right"></div>
+		</div> -->
+	</div>
+
+
+
+	<!-- =========================Shared_script=========================-->
+	<script src="static/shared/Element.js"></script>
+	<!-- =========================Shared_script=========================-->
+
+	<script src="static/client/chat/ChatManager.js"></script>
+	<script src="static/client/index.js"></script>
+</body>
+
+</html>

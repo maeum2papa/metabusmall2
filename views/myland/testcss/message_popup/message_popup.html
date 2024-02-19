@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쪽지함</title>
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/message_popup.css"> <!-- 쪽지함 팝업 css -->
+    <link rel="stylesheet" href="./style/messageView.css"> <!-- 쪽지내용보기 팝업 css -->
+    <link rel="stylesheet" href="./style/spend_message.css"> <!-- 쪽지보내기 팝업 css -->
+    <link rel="stylesheet" href="./style/messageAllWrap.css"> <!-- 삭제했을 때/ 쪽지발송 팝업/ 선물 받았을때 팝업 css -->
+    <style>
+        .messageBg {
+        background-color: rgba(0,0,0,0.5);
+        width: 100%; height: 100vh;
+        position: fixed; top:0;
+        z-index: 20;
+        }
+        /* js css */
+        .messageColor{color:#FB8C00 !important;}
+        .messageActive {display: block !important;}
+        .msActiveNone {display: none !important;}
+        .messageBg {display: none;}
+
+    </style>
+</head>
+<body>
+    <div class="message_popup"> <!-- 쪽지함 팝업-->
+        <h1>쪽지함</h1>
+        <button id="closebtn"><img src="./image/close2_icon.svg" alt="닫기"></button>
+        <div class="messageBox">
+            <div class="MSmenu">
+                <div class="msmenuLeft">
+                    <h2 id="receiveMS">받은 쪽지함</h2> <!-- 받은쪽지함 버튼 -->
+                    <h2 id="spendMs">보낸 쪽지함</h2> <!-- 보낸쪽지함 버튼 -->
+                </div>
+                <div class="MsmenuRight">
+                    <h2 id="sendMs"><img src="./image/spend_icon.svg" alt="">쪽지 보내기</h2> <!-- 쪽지보내기 버튼 -->
+                </div>
+            </div>
+            <div class="messageWrap">
+                <div class="message-receiveWrap"> <!-- 받은쪽지함 -->
+                    <div class="msContents">
+                        <img class="msConimg" src="./image/card01.png" alt=""> <!-- 쪽지 썸네일 이미지 -->
+                        <div class="msConTop">
+                            <h3><span class="nameMS From">From. 김영희</span> <!-- 개인/기업에서 보낸 메일일 때 (이름색이 달라집니다!)-->
+                                <!-- 이름/ 날짜/ 시간 / 안읽음 아이콘-->
+                                <span class="dateMs">2024-01-05</span> <span class="timeMs">09:15</span> <img class="Nread_img" src="./image/Nread_icon.svg" alt="안읽음"><!-- 쪽지를 안읽었을때 아이콘입니다 --></h3>
+                            <p class="titleMs">1월 생일자</p> <!-- 쪽지 제목 -->
+                            <p class="conMs">생일을 축하합니다!<br>1월 생일자를 위한 특별한 선물을 전달드립니다.</p> <!-- 쪽지 간략한 내용 -->
+                        </div>
+                        <div class="msConRight">
+                            <p class="deleteMs"><img class="delete_img" src="./image/delete_icon.svg" alt="삭제하기"></p> <!-- 쪽지 삭제하기 버튼 -->
+                            <button class="viewMs">내용보기 <img src="./image/arrowRight_icon.svg" alt=""></button> <!-- 쪽지 내용 더보기 버튼 -->
+                        </div>
+                    </div>
+                    <div class="msContents">
+                        <img class="msConimg" src="./image/card01.png" alt="">
+                        <div class="msConTop">
+                            <h3><span class="nameMS_c">From. 컬래버랜드</span> <!-- 컬래버랜드에서 보낸 메일일 때 -->
+                                <!-- 이름/ 날짜/ 시간 / 읽음 아이콘-->
+                                <span class="dateMs">2024-01-05</span> <span class="timeMs">09:15</span> <img class="read_img" src="./image/read_icon.svg" alt="읽음"><!-- 쪽지를 읽었을때 아이콘입니다 --></h3>
+                            <p class="titleMs">정기 업데이트 안내</p> <!-- 쪽지 제목 -->
+                            <p class="conMs">안녕하세요. 컬래버랜드 입니다. <br>원활한 컬래버랜드 서비스를 위해 2024년 3월 26일 22시 00분 컬래버랜드</p> <!-- 쪽지 간략한 내용 -->
+                        </div>
+                        <div class="msConRight">
+                            <p class="deleteMs"><img class="delete_img" src="./image/delete_icon.svg" alt="삭제하기"></p> <!-- 쪽지 삭제하기 버튼 -->
+                            <button class="viewMs">내용보기 <img src="./image/arrowRight_icon.svg" alt=""></button> <!-- 쪽지 내용 더보기 버튼 -->
+                        </div>
+                    </div>
+                    <div class="msContents">
+                        <div class="msConTop">
+                            <!-- 쪽지 이미지 썸네일 없을 때 -->
+                            <h3><span class="nameMS">From. 김철수</span> <span class="dateMs">2024-01-05</span> <span class="timeMs">09:15</span> <img class="read_img" src="./image/read_icon.svg" alt="읽음"></h3>
+                            <p class="titleMs">홍길동 대리님 안녕하세요</p>
+                            <p class="conMs">홍길동 대리님 안녕하세요! 개발팀 김철수 대리입니다. <br>사내 볼링 동호회 모임이 18일 오후 7시 제 마이랜드에서 진행됩니다.</p>
+                        </div>
+                        <div class="msConRight">
+                            <p class="deleteMs"><img class="delete_img" src="./image/delete_icon.svg" alt="삭제하기"></p>
+                            <button class="viewMs">내용보기 <img src="./image/arrowRight_icon.svg" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="msContents">
+                        <div class="msConTop">
+                            <h3><span class="nameMS">From. 김철수</span> <span class="dateMs">2024-01-05</span> <span class="timeMs">09:15</span> <img class="read_img" src="./image/read_icon.svg" alt="읽음"></h3>
+                            <p class="titleMs">홍길동 대리님 안녕하세요</p>
+                            <p class="conMs">홍길동 대리님 안녕하세요! 개발팀 김철수 대리입니다. <br>사내 볼링 동호회 모임이 18일 오후 7시 제 마이랜드에서 진행됩니다.</p>
+                        </div>
+                        <div class="msConRight">
+                            <p class="deleteMs"><img class="delete_img" src="./image/delete_icon.svg" alt="삭제하기"></p>
+                            <button class="viewMs">내용보기 <img src="./image/arrowRight_icon.svg" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="msContents">
+                        <div class="msConTop">
+                            <h3><span class="nameMS">From. 김철수</span> <span class="dateMs">2024-01-05</span> <span class="timeMs">09:15</span> <img class="read_img" src="./image/read_icon.svg" alt="읽음"></h3>
+                            <p class="titleMs">홍길동 대리님 안녕하세요</p>
+                            <p class="conMs">홍길동 대리님 안녕하세요! 개발팀 김철수 대리입니다. <br>사내 볼링 동호회 모임이 18일 오후 7시 제 마이랜드에서 진행됩니다.</p>
+                        </div>
+                        <div class="msConRight">
+                            <p class="deleteMs"><img class="delete_img" src="./image/delete_icon.svg" alt="삭제하기"></p>
+                            <button class="viewMs">내용보기 <img src="./image/arrowRight_icon.svg" alt=""></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-SpendWrap"> <!-- 보낸쪽지함 -->
+                    <div class="msContents">
+                        <img class="msConimg" src="./image/card01.png" alt=""> <!-- 쪽지 썸네일 이미지 -->
+                        <div class="msConTop">
+                            <h3><span class="nameMS To">To. 김영희</span> <!-- 개인/기업에서 보낸 메일일 때 (이름색이 달라집니다!)-->
+                                <!-- 이름/ 날짜/ 시간 / 안읽음 아이콘-->
+                                <span class="dateMs">2024-01-05</span> <span class="timeMs">09:15</span></h3>
+                            <p class="titleMs">1월 생일자</p> <!-- 쪽지 제목 -->
+                            <p class="conMs">생일을 축하합니다!<br>1월 생일자를 위한 특별한 선물을 전달드립니다.</p> <!-- 쪽지 간략한 내용 -->
+                        </div>
+                        <div class="msConRight">
+                            <p class="deleteMs"><img class="delete_img" src="./image/delete_icon.svg" alt="삭제하기"></p> <!-- 쪽지 삭제하기 버튼 -->
+                            <button class="viewMs">내용보기 <img src="./image/arrowRight_icon.svg" alt=""></button> <!-- 쪽지 내용 더보기 버튼 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="msbar"></div>
+        </div>
+    </div>
+    <div class="messageBg"></div> <!-- js배경 -->
+    <div class="messageView"> <!-- 쪽지내용보기 팝업-->
+        <h1>쪽지 내용보기</h1>
+        <div class="msViewcon Receive"> <!-- 받은 쪽지 -->
+            <div class="mvc_top">
+                <h2 class="mvc_title">1월 생일자</h2> <!-- 쪽지 제목 칸 -->
+                <div class="mvc_topRight">
+                    <!-- 날짜/시간 -->
+                    <p><span class="mvcDate">2024-01-05</span> <span class="mvctime">09:15</span></p>
+                    <button class="mvc_delete"><img src="./image/delete_icon.svg" alt="삭제하기"></button> <!-- 삭제버튼 -->
+                </div>
+            </div>
+            <div class="mvc_Con">
+                <!-- 보낸사람 표시 -->
+                <p class="mvconTop"><span class="mvc_sender">보낸사람 :</span> <span class="mvc_path">직원경험관리부 &gt; 인사팀 &gt; 김영희</span></p>
+                <div class="mvcontents">
+                    <img class="mvccimg" src="./image/card01.png" alt=""> <!-- 첨부된 이미지 -->
+                    <p class="mvcP"> <!-- 쪽지 내용입니다 -->
+                        생일축하합니다! <br>
+                        회사에서 당신과 같은 훌륭한 동료가 있어서 정말로 행운입니다.
+                        당신의 미소와 긍정적인 에너지가 항상 주변을 밝게 만들어줍니다.
+                        새로운 한 해가 당신에게 행복과 성공으로 가득하길 기원합니다. <br><br>
+                        모두의 축하와 함께, 주식회사 팀메타
+                    </p>
+                    <button id="giftR_Btn"><img src="./image/gift_icon.svg" alt=""><span>선물받기</span></button> <!-- 선물받기 버튼 -->
+                </div>
+            </div>
+        </div>
+        <div class="msViewcon Spend"> <!-- 보낸 쪽지 -->
+            <div class="mvc_top">
+                <h2 class="mvc_title">감사합니다.</h2><!-- 쪽지 제목 칸 -->
+                <div class="mvc_topRight">
+                    <!-- 날짜/시간 -->
+                    <p><span class="mvcDate">2024-01-05</span> <span class="mvctime">09:15</span></p>
+                    <button class="mvc_delete"><img src="./image/delete_icon.svg" alt="삭제하기"></button> <!-- 삭제버튼 -->
+                </div>
+            </div>
+            <div class="mvc_Con">
+                <p class="mvconTop"><span class="mvc_receive">받는사람 :</span> <span class="mvc_path">직원경험관리부 &gt; 인사팀 &gt; 김영희</span></p>
+                <div class="mvcontents">
+                    <img class="mvccimg" src="./image/card01.png" alt=""> <!-- 첨부된 이미지 -->
+                    <p class="mvcP"> <!-- 쪽지 내용입니다 -->
+                        안녕하세요. 디자인팀 홍길동 대리입니다. <br>
+                        보내주신 선물 확인하였습니다. <br>
+                        감사합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="sendBtn">
+            <!-- 이미 보낸쪽지 일때는 "답장보내기"를 없애고 "닫기"만 보여주세요! -->
+            <button id="sendMs_btn">답장 보내기</button>
+            <button id="sendMs_close">닫기</button>
+        </div>
+    </div>
+    <div class="spend_message"> <!-- 쪽지보내기 팝업 -->
+        <h1>쪽지 보내기</h1>
+        <div class="mspWrap">
+            <div class="Recipient_wrap">
+                <h2>받는사람</h2>
+                <input type="text" id="RecipientCon" name="recipentTxt"></input> <!-- 받는사람 입력칸 -->
+            </div>
+            <div class="title_wrap">
+                <h2>제목입력</h2>
+                <input type="text" id="mspTitle" name="mspTitleTxt"> <!-- 제목 입력칸 -->
+            </div>
+            <div class="contents_wrap">
+                <div class="conwrapTop">
+                    <h2>내용입력</h2>
+                    <button id="imgAdd">이미지 첨부</button> <!-- 이미지 첨부 버튼 -->
+                </div>
+                <textarea type="text" id="mspContents" name="mspContentsTxt"></textarea> <!-- 내용 입력칸 -->
+            </div>
+        </div>
+        <div class="sendBtn">
+            <button id="sendMsg_btn">쪽지 보내기</button> <!-- 쪽지보내기 버튼 -->
+            <button id="sendMs_close">닫기</button> <!-- 닫기 버튼 -->
+        </div>
+    </div>
+    <div class="messageAllWrap">
+        <div class="message_deletePopup"> <!-- 쪽지 삭제했을 때 팝업 -->
+            <h1>쪽지를 삭제하시겠습니까?</h1>
+            <p>&#8251; 상대방의 쪽지함에서는 삭제되지 않습니다.</p>
+            <div class="wrapPopup_btn">
+                <button id="dp_cancelBtn">취소</button>
+                <button id="dp_checkBtn">확인</button>
+            </div>
+        </div>
+        <div class="message_spendPopup"> <!-- 쪽지 발송했을 때 팝업 -->
+            <h1>쪽지를 발송하였습니다.</h1>
+            <div class="wrapPopup_btn">
+                <button id="dp_checkBtn">확인</button>
+            </div>
+        </div>
+        <div class="message_giftPopup"> <!-- 선물받았을 때 팝업 -->
+            <h1>선물을 받았습니다.</h1>
+            <div class="wrapPopup_btn">
+                <button id="dp_checkBtn">확인</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const messageBg = document.querySelector('.messageBg') /* 배경 */
+        const msmenuh2 = document.querySelectorAll('.message_popup > .messageBox > .MSmenu > .msmenuLeft > h2') /* 받은/보낸 쪽지함 메뉴 */
+        const messageWrap = document.querySelectorAll('.message_popup > .messageBox > .messageWrap > div') /* 쪽지함 받은/보낸 wrap */
+        // console.log(messageBg,msmenuh2,messageWrap)
+
+        // 쪽지함 js
+        messageWrap[0].classList.toggle('messageActive')
+        msmenuh2[0].classList.toggle('messageColor')
+        msmenuh2.forEach(function(t,i){
+            t.addEventListener('click',function(){
+                for(let j of messageWrap){j.classList.remove('messageActive')}
+                messageWrap[i].classList.toggle('messageActive')
+
+                for(let j of msmenuh2){j.classList.remove('messageColor')}
+                msmenuh2[i].classList.toggle('messageColor')
+            })
+        })
+
+        //쪽지 보내기
+        const sendMs = document.querySelector('.message_popup > .messageBox > .MSmenu > .MsmenuRight > h2') /* 쪽지보내기 버튼 */
+        const spend_message = document.querySelector ('.spend_message') /* 쪽지보내기 팝업 */
+        const sendMs_close = document.querySelector ('.spend_message > .sendBtn > #sendMs_close') /* 닫기버튼 */
+        const sendMsg_btn = document.querySelector ('.spend_message > .sendBtn > #sendMsg_btn') /* 쪽지보내기팝업 안에 버튼 */
+        const message_Allpopup = document.querySelectorAll('.messageAllWrap > div') /* 발송완료,선물받음 완료, 삭제하시겟슴까 */
+
+        sendMs.addEventListener('click',function(){
+            spend_message.classList.toggle('messageActive')
+            messageBg.style.display = 'block'
+        });
+
+        sendMs_close.addEventListener('click', function(){ /* 쪽지보내기 팝업 */
+            spend_message.classList.remove('messageActive');
+            spend_message.style.display = 'none'
+            messageBg.style.display = 'none'
+        });
+
+        sendMsg_btn.addEventListener('click',function(){ /* 쪽지발송완료 */
+            spend_message.classList.remove('messageActive');
+            message_Allpopup[1].style.display = 'block'
+            spend_message.style.display = 'none'
+        });
+        const dp_checkBtn = document.querySelector('.messageAllWrap > .message_spendPopup > .wrapPopup_btn > #dp_checkBtn') /* 발송완료 확인버튼 */
+        dp_checkBtn.addEventListener('click',function(){
+            message_Allpopup[1].style.display = 'none'
+            messageBg.style.display = 'none'
+        });
+
+        // 보낸 쪽지함
+        const spendViewBtn = document.querySelector ('.message_popup > .messageBox > .messageWrap > .message-SpendWrap > .msContents > .msConRight > .viewMs')
+        // console.log (spendView) 보낸쪽지 내용보기 버튼
+        spendViewBtn.addEventListener('click',function(){
+            messageView.style.display = 'block'
+            messageView_div[0].style.display = 'none'
+            messageView_div[1].style.display = 'block'
+            msViewBtn[0].style.display = 'none'
+            messageBg.style.display = 'block'
+        })
+
+        // 쪽지내용보기 팝업
+        const messageView = document.querySelector('.messageView') /* 쪽지내용보기 팝업 */
+        const messageView_div = document.querySelectorAll('.messageView > div') /* 쪽지내용보기 팝업 개별 내용 */
+        const viewMs = document.querySelector('.messageWrap > .message-receiveWrap > .msContents > .msConRight > .viewMs') /* 내용보기 버튼 */
+        const giftR_Btn = document.querySelector('.messageView > .msViewcon > .mvc_Con > .mvcontents > #giftR_Btn') /* 선물받기 버튼 */
+
+        messageView.style.display = 'none'
+        viewMs.addEventListener('click',function(){
+            messageView.style.display = 'block'
+            messageBg.style.display = 'block'
+            messageView_div[0].style.display = 'block'
+            messageView_div[1].style.display = 'none'
+            msViewBtn[0].style.display = 'block'
+        });
+        // 선물받았을 때
+        const checkBtn = document.querySelectorAll('.messageAllWrap > div > .wrapPopup_btn > #dp_checkBtn')
+        const msViewBtn = document.querySelectorAll('.messageView > .sendBtn > button')
+        giftR_Btn.addEventListener('click',function(){
+            message_Allpopup[2].style.display = 'block'
+        });
+
+        checkBtn[2].addEventListener('click',function(){
+            message_Allpopup[2].style.display ='none'
+        });
+
+        msViewBtn[0].addEventListener('click',function(){
+            spend_message.style.display = 'block'
+            messageView.style.display = 'none'
+        });
+        msViewBtn[1].addEventListener('click',function(){
+            messageView.style.display = 'none'
+            messageBg.style.display = 'none'
+        });
+        
+        // 삭제하기 버튼
+        const deleteBtn = document.querySelectorAll('.message_popup > .messageBox > .messageWrap > .message-receiveWrap > .msContents > .msConRight > .deleteMs')
+        // 삭제하기 버튼 > 취소/ 확인
+        const wrapPopup_btn = document.querySelectorAll('.messageAllWrap > .message_deletePopup > .wrapPopup_btn > button')
+        // 받은 쪽지함 삭제하기
+        deleteBtn.forEach(function(t,i){
+            t.addEventListener('click',function(){
+                message_Allpopup[0].style.display = 'block'
+                messageBg.style.display = 'block'
+            })
+        });
+        const messageWrap_con = document.querySelectorAll('.message_popup > .messageBox > .messageWrap > div > div')
+        wrapPopup_btn.forEach(function(t,i){
+            t.addEventListener('click',function(){
+                message_Allpopup[0].style.display = 'none'
+                messageBg.style.display = 'none'
+                messageWrap_con[i].style.display = 'none'
+            })
+        });
+        // 보낸 쪽지함 삭제하기
+        const deleteBtn2 = document.querySelectorAll('.message_popup > .messageBox > .messageWrap > .message-SpendWrap > .msContents > .msConRight > .deleteMs')
+        console.log(deleteBtn2)
+        deleteBtn2.forEach(function(t,i){
+            t.addEventListener('click',function(){
+                message_Allpopup[0].style.display = 'block'
+                messageBg.style.display = 'block'
+            })
+        });
+    </script>
+</body>
+</html>

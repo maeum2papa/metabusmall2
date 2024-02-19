@@ -1,0 +1,28 @@
+@charset "UTF-8";
+@media all {
+    .mo_sphere_button {
+        display: block;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: #3b4ba3;
+        border-radius: 50%;
+        opacity: 0.5;
+        transform: translate(-50%, -50%);
+        transition: all 0.1s linear;
+    }
+
+    .mo_sphere_button.clicked {
+        opacity: 0.8;
+    }
+
+    .mo_sphere_button p {
+        position: relative;
+        font-size: 14px;
+        color: white;
+        text-align: center;
+        justify-content: center;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

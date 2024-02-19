@@ -1,0 +1,51 @@
+.com_list {
+    background-color: #fff;
+    width:300px; height: 440px;
+    border-radius: 15px;
+    box-shadow: 2px 3px 20px #00A8FA14;
+    position: relative;
+    bottom:0; left:82%; 
+    transform: translateY(120%);
+    transition:all 0.2s ease-in-out;
+    pointer-events: auto;
+}
+.com_list:hover {transform: translateY(100%);}
+.com_list h2 {display: flex; flex-flow: row nowrap;}
+.com_list h2 img {margin:16px 4px 0 16px;}
+.com_list h2 span {font-size: 20px; font-weight: 500; margin-top:18px;}
+.com_list #list_box_close {background-color:transparent; position:absolute; top:16px; right:16px;}
+/* 나의 프로필 */
+.com_list .listTop_box {margin:32px 0 0 16px;}
+.com_list .listTop_box .Myprofile {margin-bottom: 13px;}
+.com_list .listTop_box .Myprofile .pfwork {font-size: 15px; opacity: 0.8; margin-bottom:4px;}
+.com_list .listTop_box .Myprofile .pfwork span {opacity: 0.8; font-size: 15px; transition:all 0.2s ease-in-out;}
+.com_list .listTop_box .Myprofile .pfwork em {opacity: 0.8; font-size: 15px;}
+.com_list .listTop_box .Myprofile .pfName {font-size: 18px; margin-top: 5px; font-weight: 700;}
+.com_list .listTop_box .pfVar { border:1px solid #A9A9A9; width:200px; display: block; opacity: 0.5;}
+/* 직원 목록 */
+/* 스크롤바 */
+.Mylist::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.Mylist {}
+.com_list .Mylist {
+    margin-left:16px; overflow-y:auto; height: 315px;}
+.com_list .Mylist .Fdprofile {margin-top:23px; display: flex; justify-content: space-between;}
+.com_list .Mylist .fd6 {margin-bottom: 23px;}
+.com_list .Mylist .Fdprofile .pf {cursor: pointer;}
+.com_list .Mylist .Fdprofile .pf .pfwork {margin-bottom: 5px;}
+.com_list .Mylist .Fdprofile .pf .pfwork span {opacity: 0.8; font-size: 15px;}
+.com_list .Mylist .Fdprofile .pf .pfwork em {opacity: 0.8; font-size: 15px;}
+.com_list .Mylist .Fdprofile .pf .pfName {font-size: 18px; margin-top: 5px; font-weight: 700;}
+/* 대화버튼 */
+.com_list .Mylist .Fdprofile .Fdchatting {background-color:#00A8FA; color:#fff;
+    font-weight: 400; width: 52px; height: 30px; border-radius: 8px; font-size: 14px; margin-right: 16px;
+    display: block;
+    transition: all 0.1s linear;
+}
+.com_list .Mylist .Fdprofile .Fdchatting span {display: block; padding-bottom: 2px;
+    transition: all 0.1s linear;}
+.com_list .Mylist .Fdprofile .Fdchatting:hover {transform: scale(0.95); width:70px; background-color: #FB8C00;}
+.com_list .Mylist .Fdprofile .Fdchatting:hover span {padding-bottom: 0;}

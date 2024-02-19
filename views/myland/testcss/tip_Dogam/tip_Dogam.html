@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>팁 도감</title>
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/tip_Dogam.css">
+    <link rel="stylesheet" href="./style/tip_Dogam_responsive.css">
+</head>
+<body>
+    <!-- 팁 도감 -->
+    <div class="tipDogam_bg">
+        <div class="tipDogam">
+            <h1>TIP 도감</h1>
+            <button id="tdClose"><img src="./image/close_icon.svg" alt="닫기"></button>
+            <div class="tipcon_bg">
+                <div class="conRing">
+                    <img src="./image/td_Ring.png" alt="">
+                    <img src="./image/td_Ring.png" alt="">
+                </div>
+                <div class="tdconDiv">
+                    <p class="tdcon">책상을 정리해보세요. 집중력과 효율성을 높일 수 있습니다.</p>
+                    <p class="tdcon">컴퓨터 바탕화면의 업무 폴더를 카테고리별이나 우선순위 중심으로 정리하면 효율성이 올라갑니다.</p>
+                    <p class="tdcon">집중이 흐트러지면 잠시 멈추고 시원한 공기를 마시며 휴식하세요. </p>
+                    <p class="tdyet">?</p>
+                    <p class="tdyet">?</p>
+                    <p class="tdyet">?</p>
+                    <p class="tdyet">?</p>
+                    <p class="tdyet">?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 팁 팝업 -->
+    <div class="ms_bg">
+        <p class="ms_sticker"></p>
+        <p class="ms_sticker"></p>
+        <p class="ms_sticker"></p>
+        <p class="ms_sticker"></p>
+        <p class="ms_con">책상을 정리해보세요. 집중력과 효율성을 높일 수 있습니다.</p>
+        <p id="ms_close"><img src="./image/close2_icon.png" alt=""></p>
+    </div>
+    <div class="ms_bg">
+        <p class="ms_sticker"></p>
+        <p class="ms_sticker"></p>
+        <p class="ms_sticker"></p>
+        <p class="ms_sticker"></p>
+        <p class="ms_con">컴퓨터 바탕화면의 업무 폴더를 카테고리별이나 우선순위 중심으로 정리하면 효율성이 올라갑니다.</p>
+        <p id="ms_close"><img src="./image/close2_icon.png" alt=""></p>
+    </div>
+    <div class="ms_bg">
+        <p class="ms_sticker"></p>
+        <p class="ms_sticker"></p>
+        <p class="ms_sticker"></p>
+        <p class="ms_sticker"></p>
+        <p class="ms_con">집중이 흐트러지면 잠시 멈추고 시원한 공기를 마시며 휴식하세요. </p>
+        <p id="ms_close"><img src="./image/close2_icon.png" alt=""></p>
+    </div>
+</body>
+<script>
+
+    const tdcon = document.querySelectorAll ('.tdcon')
+    const ms_bg = document.querySelectorAll ('.ms_bg')
+    const ms_close = document.querySelectorAll ('#ms_close')
+    for(let i of ms_bg){i.style.display='none'}
+    tdcon.forEach(function(t,i){
+        t.addEventListener('click',function(){
+            ms_bg[i].style.display='block'
+    })
+})
+ms_close.forEach(function(t,i){
+    t.addEventListener('click',function(){
+        ms_bg[i].style.display='none'
+    })
+})
+
+</script>
+</html>

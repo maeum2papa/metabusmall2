@@ -1,0 +1,10 @@
+class FertilizerPopUp {
+    constructor() {
+
+    }
+
+    init() {
+
+    }
+
+}

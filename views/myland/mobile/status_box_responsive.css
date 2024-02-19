@@ -1,0 +1,74 @@
+/* 모바일 */
+@media all and (max-width: 932px) and (orientation: landscape) {
+    .statusBox {
+        width:270px; height: 250px;
+        top:15%; /* 1/4 수정 */ margin:0;
+        border-radius: 15px;
+    }
+    .statusBox #status_popup_close {width: 32px; height: 29px; top:-31px; right:30px; border-radius:8px 8px 0 0; }
+    .statusBox #status_popup_close img {width: 21px;}
+    .statusBox h1 {font-size: 14px; padding:12px 0 12px 0;}
+    .statusBox .status_save_box .status_icon {width: 187px;}
+    .statusBox .status_save_box .status_icon .status_iconTop {
+        margin-top:0px; margin-bottom: 10px; justify-content: space-between;
+    }
+    .statusBox .status_save_box .status_icon .status_iconBtm {margin-top:0; width:120px; justify-content: space-between;}
+    .statusBox .status_save_box .status_icon .icon_g {}
+    .statusBox .status_save_box .status_icon .status_iconBtm .earthworm {padding-left:0px;}
+
+    .statusBox .status_save_box .status_icon .Fruit img {width: 40px;}
+    .statusBox .status_save_box .status_icon .Seed img {width: 40px; top:8px; left: 8px;}
+    .statusBox .status_save_box .status_icon .Water img {width: 47px; left:3px;}
+    .statusBox .status_save_box .status_icon .fertilizer img {width: 47px; top:5px; left: 5px;}
+    .statusBox .status_save_box .status_icon .earthworm img {width: 47px; top:5px; left: 5px;}
+
+    .statusBox .status_save_box .status_icon .icon_g p:first-child {width: 55px; height: 55px;}
+    .statusBox .status_save_box .status_icon .icon_g p:first-child::after {width: 55px; height: 55px;}
+    .statusBox .status_save_box .status_icon .icon_g p:first-child span {font-size: 14px;}
+    .statusBox .status_save_box .status_icon .icon_g p:last-child {padding-top: 5px; font-size: 14px;}
+    .statusBox .status_save_box .status_icon .icon_g p:last-child span {font-size: 14px;}
+
+    .statusBox a {font-size: 14px; width: 210px; padding:7px; border-radius: 5px; height:28px; bottom: 4px;}
+    .statusBox .status_save_box .status_icon .icon_g p:first-child span {top:23px; left:14px;}
+    .statusBox .status_save_box .status_icon .icon_g:nth-of-type(3) p:first-child span {left:23px;}
+    .statusBox .status_save_box .status_icon .earthworm p:first-child span {left:8px;}
+}
+
+/* @media all and (max-width: 844px) and (orientation: landscape) {
+    .statusBox {width:500px; height: 251px; top:14%; margin:40px 0 45px 0;}
+} */
+
+/* @media all and (max-width:500px) and (orientation: landscape) {
+    .statusBox{
+        top:14%;
+        margin-top: 10px; margin-bottom: 45px;
+        width:401px; height: 194px;
+    }
+    .statusBox .status_save_box .status_icon {width: 360px;}
+    .statusBox .status_save_box .status_icon .icon_g p:first-child {
+        width: 60px;height: 60px;
+    }
+    .statusBox .status_save_box .status_icon .icon_g img {width: 50px;}
+    .statusBox .status_save_box .status_icon .icon_g:first-child p {margin-left:12.5px ;}
+    .statusBox a {width: 235px; height: 26px; font-size: 14px; padding-top: 5px; bottom: 10px;}
+    .statusBox h1 {font-size: 14px;}
+    .statusBox .status_save_box .status_icon .status_iconBtm {width:175px; margin-left:-13px;}
+    .statusBox .status_save_box .status_icon .icon_g p{font-size: 14px;}
+    .statusBox .status_save_box .status_icon .icon_g p span {font-size: 14px;}
+    .statusBox .status_save_box .status_icon .icon_g p:first-child span {top:0; left: 0;}
+    .statusBox .status_save_box .status_icon .Fruit p:first-child span {
+        left: 18px; top: 25px;
+    }
+    .statusBox .status_save_box .status_icon .Fruit {margin-left:-12px;}
+    .statusBox .status_save_box .status_icon .icon_g:nth-of-type(3) p:first-child span {position: absolute; left:24px; top:25px;}
+    .statusBox .status_save_box .status_icon .Seed p:first-child span {
+        left: 18px; top: 25px;
+    }
+    .statusBox .status_save_box .status_icon .fertilizer p:first-child span {
+        left: 18px; top: 25px;
+    }
+    .statusBox .status_save_box .status_icon .earthworm p:first-child span {
+        top:25px; left: 10px;
+    }
+    .statusBox .status_save_box .status_icon .Seed img {top:5px; left: 5px;}
+} */

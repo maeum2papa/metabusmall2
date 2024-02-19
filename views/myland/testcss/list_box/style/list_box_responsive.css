@@ -1,0 +1,47 @@
+@media ( orientation : portrait ) {
+    body {
+        display : block;
+        transform : translateY(100vh) rotate(-90deg);
+        transform : translateY(calc(var(--vh, 1vh) * 100)) rotate(-90deg);
+        transform-origin : top left;
+        width : 100vh;
+        width: calc(var(--vh, 1vh) * 100);
+        height : 100vw;
+        height: calc(var(--vw, 1vw) * 100);
+        overflow-y : hidden;
+    }
+    /* 모바일 직원목록 
+    .mobile_chat {}
+    .mobile_chat .mobile_chatList {}
+    .mobile_chat .mobile_chatList h1 {}
+    .mobile_chat .mobile_chatList h1 img {}
+    .mobile_chat .mobile_chatList .m_ChList {}
+    .mobile_chat .mobile_chatList .m_ChList li {}
+    .mobile_chat .mobile_chatList .m_ChList li p {}
+    .mobile_chat .mobile_chatList .m_ChList li .ch_work {}
+    .mobile_chat .mobile_chatList .m_ChList li .ch_name {}
+    /* 모바일 채팅창 
+    .mobile_chat .mobile_chatBox {}
+    .mobile_chat .mobile_chatBox h1 {}
+    .mobile_chat .mobile_chatBox .moChat {}
+    .mobile_chat .mobile_chatBox .chtxt1 {}
+    .mobile_chat .mobile_chatBox .chtxt1 .moChat_con {}
+    .mobile_chat .mobile_chatBox .chtxt1 .moChat_time {}
+    .mobile_chat .mobile_chatBox .chtxt1 .moChat_time span {}
+    .mobile_chat .mobile_chatBox .chtxt1 .moChat_time em {}
+    .mobile_chat .mobile_chatBox .chtxt2 {}
+    .mobile_chat .mobile_chatBox .chtxt2 .moChat_con {}
+    .mobile_chat .mobile_chatBox .chtxt2 .moChat_time {}
+    .mobile_chat .mobile_chatBox .chtxt2 .moChat_time span {}
+    .mobile_chat .mobile_chatBox .chtxt2 .moChat_time em {}
+    /* 채팅창 입력칸 
+    .mobile_chat .mobile_chatting {}
+    .mobile_chat .mobile_chatting #mobile_ChatFrm {}
+    .mobile_chat .mobile_chatting #mobile_ChatFrm fieldset {}
+    .mobile_chat .mobile_chatting #mobile_ChatFrm fieldset #mobileChatting {}*/
+}
+
+/* @media all and (max-width: 480px) and (orientation: landscape) {
+    //480px 이하이면서 가로모드일때의 css 적용
+    .mobile_chat {background-color: black;}
+} */

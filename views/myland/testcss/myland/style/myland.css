@@ -1,0 +1,528 @@
+.myland {}
+.myland .mylandTop_wrap {}
+.myland .mylandTop_wrap .mlt_left {
+    display: flex;
+    position: absolute;
+    top:23px; left: 89px;
+}
+.myland .mylandTop_wrap .mlt_left .mltProfile {
+    background-color: #222222CC;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    width: 309px;
+    height: 94px;
+    border-radius: 47px;
+    display: flex; flex-flow: row nowrap; align-items: center;
+    padding:0 5px;
+}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_img {
+    background-color: #222;
+    width: 84px; height: 84px;
+    border-radius: 50%;
+}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_img img {
+    width: 100%;
+    border-radius: 50%;
+}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status {margin-left: 14px;}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status .mltP_join {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status .mltP_join img {width: 20px;}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status .mltP_join span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status .mltP_join span #join_date  {}
+
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status .mltP_twrap {font-size: 12px; color: #fff; margin-bottom: 7px;}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status .mltP_twrap #mltP_dpm {font-size: 12px; color: #fff;}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status .mltP_twrap #mltP_team {font-size: 12px;}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status .mltP_btm #mltP_name {font-size: 18px; font-weight: 700; color: #fff;}
+.myland .mylandTop_wrap .mlt_left .mltProfile .mltP_status .mltP_btm #mltP_position {font-size: 12px; color: #fff;}
+
+.myland .mylandTop_wrap .mlt_left .mltFP_status {margin-left: 25px; margin-top: 5px;}
+.myland .mylandTop_wrap .mlt_left .mltFP_status .mlFruits_status {
+    width: 125px; height: 35px;
+    background-color: #222222CC;
+    border-radius: 0px 50px 50px 0px;
+    position: relative;
+    margin-bottom: 13px;
+    /* 0214수정 */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+.myland .mylandTop_wrap .mlt_left .mltFP_status .mlFruits_status img {
+    width: 55px;
+    position: absolute;
+    top:-13px; left: -25px;
+}
+.myland .mylandTop_wrap .mlt_left .mltFP_status .mlFruits_status .mltF-number {
+    font-size: 22px;
+    font-weight: 600;
+    color:#fff;
+    width: 120px; text-align: right;
+    position: absolute;
+    top:7px; right: 17px;
+}
+.myland .mylandTop_wrap .mlt_left .mltFP_status .mlPoint_status {
+    width: 125px; height: 35px;
+    background-color: #222222CC;
+    border-radius: 0px 50px 50px 0px;
+    position: relative;
+    /* 0214수정 */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+.myland .mylandTop_wrap .mlt_left .mltFP_status .mlPoint_status img {
+    width:55px;
+    position: absolute;
+    top:-10px; left: -25px;
+}
+.myland .mylandTop_wrap .mlt_left .mltFP_status .mlPoint_status .mltP-number {
+    font-weight: 600;
+    color: #fff;
+    font-size: 22px;
+    position: absolute;
+    width: 120px; text-align: right;
+    top:7px; right: 17px;
+}
+
+.myland .mylandTop_wrap .mlt_right {
+    position: absolute;
+    top:23px; right: 33px;
+}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList > * {margin-right: 25px;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList > p:hover > img {transform: scale(0.8);}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList > p {cursor: pointer;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList > p > img {transition: all 0.3s ease-out;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList {
+    display: flex; flex-flow: row nowrap;
+}
+/* 활동보상 */
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-reward {
+    position: relative;
+}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-reward:hover img {}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-reward img {
+    width: 72px;
+}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-reward span {
+    font-weight: 600; font-size: 17px;
+    color: #fff;
+    background-color: rgba(2,2,2,0.75);
+    width: 75px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 15px;
+    position: absolute;
+    top:56px; left: 0px;
+    /* 0214수정 */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+/* 인벤토리 */
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-inventory {position: relative;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-inventory img {width: 72px;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-inventory span {
+    font-weight: 600; font-size: 17px;
+    color: #fff;
+    background-color: rgba(2,2,2,0.75);
+    width: 75px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 15px;
+    position: absolute;
+    top:56px; left: 0px;
+    /* 0214수정 */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+/* 쪽지함 */
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-messageBox {position: relative;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-messageBox img {width: 72px;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-messageBox span {
+    font-weight: 600; font-size: 17px;
+    color: #fff;
+    background-color: rgba(2,2,2,0.75);
+    width: 75px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 15px;
+    position: absolute;
+    top:56px; left: 0px;
+    /* 0214수정 */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+/* 직원목록 */
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-staffList {position: relative;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-staffList img {width: 72px;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-staffList span {
+    font-weight: 600; font-size: 17px;
+    color: #fff;
+    background-color: rgba(2,2,2,0.75);
+    width: 75px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 15px;
+    position: absolute;
+    top:56px; left: 0px;
+    /* 0214수정 */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+/* 설정 */
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-setting {position: relative; margin-right:0;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-setting img {width: 72px;}
+.myland .mylandTop_wrap .mlt_right .mlt_statusList .mlt-setting span {
+    font-weight: 600; font-size: 17px;
+    color: #fff;
+    background-color: rgba(2,2,2,0.75);
+    width: 75px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 15px;
+    position: absolute;
+    top:56px; left: 0px;
+    /* 0214수정 */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.myland .VMD_listmenuWrap {}
+.myland .VMD_listmenuWrap .video_setting_box {
+    background-color: #222222CC;
+    border-radius: 5px;
+    width: 240px;
+    height: 55px;
+    backdrop-filter: blur(15px);
+    display: flex; flex-flow: row wrap;
+    position: absolute; right:25px; top:120px;
+    -webkit-backdrop-filter: blur(15px);
+}
+.myland .VMD_listmenuWrap .video_setting_box .VMD_wrapbar {
+    width: 1px; height:42px;
+    top:6px;
+    position: relative;
+    background-color: #fff;
+}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_camera {}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_camera .camera_off {
+    display: flex; flex-flow: column nowrap; align-items: center;
+    height: 42px; width: 79px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_camera .camera_off img {width: 31px;}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_camera .camera_off span {color: #FF7777; font-size: 10px;  margin-top:3px;}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_camera .camera_on {
+    display: flex; flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 42px; width: 79px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_camera .camera_on img {width: 31px;}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_camera .camera_on span {color: #fff; font-size: 10px; margin-top:3px;}
+
+.myland .VMD_listmenuWrap .video_setting_box .toggle_mic {}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_mic .mic_off {
+    height: 42px; width: 79px;
+    display: flex; flex-flow: column nowrap;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 2px;
+}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_mic .mic_off img {width: 31px;}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_mic .mic_off span {color: #FF7777; font-size: 10px; margin-top:3px;}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_mic .mic_on {
+    display: flex; flex-flow: column nowrap; align-items: center;
+    height: 42px; width: 79px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_mic .mic_on img {width: 31px;}
+.myland .VMD_listmenuWrap .video_setting_box .toggle_mic .mic_on span {font-size: 10px; color:#fff;  margin-top:3px;}
+
+.myland .VMD_listmenuWrap .video_setting_box .VMD_share {cursor: pointer;}
+.myland .VMD_listmenuWrap .video_setting_box .VMD_share p {
+    display: flex; flex-flow: column nowrap; align-items: center;
+    height: 42px; width: 79px;
+}
+.myland .VMD_listmenuWrap .video_setting_box .VMD_share p img {width: 31px;}
+.myland .VMD_listmenuWrap .video_setting_box .VMD_share p span {font-size: 10px; color:#fff;  margin-top:3px;}
+
+.myland .VMD_listmenuWrap .video_call_box_wrap {
+    width: 241px; height: 750px;
+    position: absolute;
+    right: 25px;
+    top:200px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+/* 스크롤바 */
+.myland .VMD_listmenuWrap .video_call_box_wrap ::-webkit-scrollbar {display: none;} 
+.myland .VMD_listmenuWrap .video_call_box_wrap ::-webkit-scrollbar-track {}
+.myland .VMD_listmenuWrap .video_call_box_wrap ::-webkit-scrollbar-thumb {}
+/* 화면공유 활성화 */
+.myland .VMD_listmenuWrap .video_call_box_wrap #video_call_box-Active {
+    width: 240px;
+    height: 140px;
+    border-radius: 5px;
+    border:3px solid #FF3838;
+    background: #222222B3 0% 0%;
+    position: relative;
+}
+.myland .VMD_listmenuWrap .video_call_box_wrap #video_call_box-Active video {
+    width: 240px;
+    height: 140px;
+    border-radius: 5px;
+}
+.myland .VMD_listmenuWrap .video_call_box_wrap #video_call_box-Active #video_call_box_nameA {
+    color:#42E213;
+    background-color: #222;
+    border-radius: 15px;
+    text-align: center;
+    padding: 5px 10px;
+    position: absolute;
+    top:5px; left: 5px;
+    font-size: 12px;
+}
+.myland .VMD_listmenuWrap .video_call_box_wrap #video_call_box-Active img {
+    width: 50px;
+    position: absolute;
+    top:45px; left: 92px;
+}
+/* 화면공유 비활성화 */
+.myland .VMD_listmenuWrap .video_call_box_wrap .video_call_box {
+    width: 240px;
+    height: 140px;
+    border-radius: 5px;
+    background: #222222B3 0% 0% ;
+    position: relative;
+    margin-top: 12px;
+}
+.myland .VMD_listmenuWrap .video_call_box_wrap .video_call_box video {
+    width: 240px;
+    height: 140px;
+}
+.myland .VMD_listmenuWrap .video_call_box_wrap .video_call_box #video_call_box_nameMe {
+    color:#FB8C00;
+    background-color: #222;
+    border-radius: 15px;
+    text-align: center;
+    padding: 5px 10px;
+    position: absolute;
+    top:5px; left: 5px;
+    font-size: 12px;
+}
+.myland .VMD_listmenuWrap .video_call_box_wrap .video_call_box span {
+    color:#fff;
+    background-color: #222;
+    border-radius: 15px;
+    text-align: center;
+    padding: 5px 10px;
+    position: absolute;
+    top:5px; left: 5px;
+    font-size: 12px;
+}
+.myland .VMD_listmenuWrap .video_call_box_wrap .video_call_box img {
+    width: 50px;
+    position: absolute;
+    top:45px; left: 92px;
+}
+
+/* 채팅창 */
+.myland .myland_chatbox {
+    position: absolute;
+    bottom: 23px;
+    left:50%;
+    transform: translateX(-50%);
+}
+.myland .myland_chatbox .chatWrap {
+    background-color: rgba(2,2,2,0.7);
+    width: 550px;
+    height: 212px;
+    border-radius: 5px;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop {position: relative;}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatTabs {
+    padding:7px 0 7px 16px ;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    width: 100%;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatTabs #chatAll::before {
+    content: '';
+    display: block;
+    height: 4px; width: 7px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.6;
+    transform: rotate(-40deg);
+    position: absolute;
+    left:2px;
+    top:3px;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatTabs #chatAll::after {
+    content: '';
+    display: block;
+    width: 96px; height: 26px;
+    border:1px solid #fff;
+    border-radius: 7px;
+    position: absolute; top:0; left: 0;
+    opacity: 0.4;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatTabs #chatHistory:hover {
+    background: linear-gradient(to bottom, #FB8C00 50%, #DD7B00 50%);
+    color: #fff;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatTabs #chatAll:hover {
+    background: linear-gradient(to bottom, #FB8C00 50%, #DD7B00 50%);
+    color: #fff;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatTabs #chatAll {
+    background: #FFFFFFCC;
+    color: #FB8C00;
+    width: 100px; height: 30px;
+    border-radius: 8px;
+    border: 1px solid #FB8C00;  
+    position: relative;
+    font-weight: 600;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatTabs #chatHistory {
+    background: #FFFFFFCC;
+    color: #FB8C00;
+    width: 100px; height: 30px;
+    border-radius: 8px;
+    border: 1px solid #FB8C00;
+    position: relative;
+    margin-left: 12px;
+    font-weight: 600;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatTabs #chatHistory::after {
+    content: '';
+    display: block;
+    width: 96px; height: 26px;
+    border:1px solid #fff;
+    border-radius: 7px;
+    position: absolute; top:0; left: 0;
+    opacity: 0.4;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatTabs #chatHistory::before {
+    content: '';
+    display: block;
+    height: 4px; width: 7px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.6;
+    transform: rotate(-40deg);
+    position: absolute;
+    left:2px;
+    top:3px;
+}
+
+.myland .myland_chatbox .chatWrap .chatboxTop .chatbox_right {
+    position: absolute;
+    top:10px; right:10px;
+    display: flex;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatbox_right .chatScale {display: flex; margin-right: 15px;}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatbox_right .chatScale .chatScale_spread {
+    background-color: transparent;
+    display: none;
+    width: 21px;
+    /* 펼치기 */
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatbox_right .chatScale .chatScale_spread img {width: 100%;}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatbox_right .chatScale .chatScale_folding {
+    background-color: transparent;
+    display: none;
+    width: 21px;
+    /* 접기 */
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatbox_right .chatScale .chatScale_folding img {width: 100%;}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatbox_right #chatbox_close_btn {
+    background-color: transparent;
+    display: block;
+}
+.myland .myland_chatbox .chatWrap .chatboxTop .chatbox_right #chatbox_close_btn img {width: 100%;}
+
+.myland .myland_chatbox .chatWrap #tbox {
+    margin: 7px 0 0 16px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 95%;
+    height: 146px;
+}
+/* 채팅-myself */
+.myland .myland_chatbox .chatWrap #tbox > div {margin-bottom: 5px;}
+.myland .myland_chatbox .chatWrap #tbox .chat_myself > * {line-height: 20px;}
+.myland .myland_chatbox .chatWrap #tbox .chat_myself {
+    
+}
+.myland .myland_chatbox .chatWrap #tbox .chat_myself h3 {
+    color:#FB8C00;
+    font-weight: 600;
+    margin-right: 10px;
+    display: inline;
+}
+.myland .myland_chatbox .chatWrap #tbox .chat_myself p {
+    color: #fff;
+    display: inline;
+    white-space: pre-line;
+}
+/* 채팅-other */
+.myland .myland_chatbox .chatWrap #tbox .chat_other {}
+.myland .myland_chatbox .chatWrap #tbox .chat_other > * {line-height: 20px;}
+.myland .myland_chatbox .chatWrap #tbox .chat_other h3 {
+    color:#fff;
+    display: inline;
+    font-weight: 600;
+    margin-right: 10px;
+}
+.myland .myland_chatbox .chatWrap #tbox .chat_other p {
+    display: inline;
+    color:#fff;
+    white-space: pre-line;
+}
+.myland .myland_chatbox #chatbox_footer_input {
+    margin-top: 5px;
+    width: 550px;
+    height: 40px;
+    background-color: rgba(2,2,2,0.7);
+    border-radius: 5px;
+    padding: 11px 16px;
+}
+.myland .myland_chatbox #chatbox_footer_input input::placeholder {
+    color:rgba(255,255,255,0.6);
+}
+.myland .myland_chatbox #chatbox_footer_input input {
+    width: 100%;
+    background-color: transparent;
+    color:#fff;
+}
+/* 채팅창 스크롤 */
+/* Chrome, Safari, Edge 등 웹킷 기반 브라우저 */
+.myland .myland_chatbox .chatWrap #tbox::-webkit-scrollbar {width: 7px;}/*스크롤바 크기*/
+.myland .myland_chatbox .chatWrap #tbox::-webkit-scrollbar-track {
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 5px;
+}/*스크롤바 배경*/
+
+.myland .myland_chatbox .chatWrap #tbox::-webkit-scrollbar-thumb {
+    background-color: #FB8C00;border-radius: 5px;
+    border:1px solid #FB8C00;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+}/*스크롤 드래그바*/
+
+.VMDactiveF{display: flex !important;}
+.chatTabactive{
+    background: linear-gradient(to bottom, #FB8C00 50%, #DD7B00 50%) !important;
+    color: #fff !important;
+}

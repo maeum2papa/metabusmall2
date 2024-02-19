@@ -1,0 +1,45 @@
+.collisionname {
+	display: flex;
+	position: absolute;
+	background-color: rgba(80, 80, 80, 0.7);
+	justify-content: center;
+	overflow: hidden;
+	padding: 5px 10px;
+
+    z-index: 1000;
+}
+
+
+.collisionname .collisionname_text {
+	font-size: 12px;
+	font-weight: 500;
+	color: #fff;
+	 text-align: center; 
+	vertical-align: middle;
+}
+
+
+.collisionname .collisionname_left {
+	width: 5px;
+	height: 100%;
+	left: 0;
+	top: 0;
+	position: absolute;
+	border-bottom: 2px solid white;
+	border-left: 2px solid white;
+	border-top: 2px solid white;
+	opacity: 0.8;
+}
+
+.collisionname .collisionname_right {
+	width: 5px;
+	height: 100%;
+	position: absolute;
+	left: 100%;
+	top: 0;
+	transform: translateX(-100%);
+	border-bottom: 2px solid white;
+	border-right: 2px solid white;
+	border-top: 2px solid white;
+	opacity: 0.8;
+}

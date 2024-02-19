@@ -1,0 +1,35 @@
+{
+  "name": "hh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "Server": "node server.js",
+    "dev": "NODE_ENV=development node server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@colyseus/monitor": "^0.15.4",
+    "@colyseus/schema": "^2.0.20",
+    "@colyseus/ws-transport": "^0.15.1",
+    "axios": "^1.6.0",
+    "body-parser": "^1.20.2",
+    "colyseus": "^0.15.13",
+    "colyseus.js": "^0.15.14",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
+    "install": "^0.13.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "npm": "^10.2.1",
+    "path": "^0.12.7",
+    "phaser3": "^0.4.34",
+    "pm2": "^5.3.1"
+  }
+}

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="410" height="88" viewBox="0 0 410 88">
+  <defs>
+    <filter id="graphic" x="-28" y="-27" width="470" height="148" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feFlood flood-color="#00a8fa" flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#graphic)">
+        <rect id="graphic-2" data-name="graphic" width="410" height="88" rx="9" transform="translate(1477 686)" fill="#fb8c00"/>
+      </g>
+    </clipPath>
+    <filter id="타원_84" x="-8" y="13" width="171" height="171" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-2"/>
+      <feFlood flood-color="#222" flood-opacity="0.059"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="타원_85" x="310" y="31" width="112" height="112" filterUnits="userSpaceOnUse">
+      <feOffset dx="2" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-3"/>
+      <feFlood flood-color="#222" flood-opacity="0.059"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="타원_86" x="-40" y="-59" width="90" height="90" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-4"/>
+      <feFlood flood-color="#222" flood-opacity="0.059"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="company" transform="translate(-1477 -686)" clip-path="url(#clip-path)">
+    <g id="타원_81" data-name="타원 81" transform="translate(1750 653)" fill="none" stroke="#fff" stroke-width="3" opacity="0.2">
+      <circle cx="30" cy="30" r="30" stroke="none"/>
+      <circle cx="30" cy="30" r="28.5" fill="none"/>
+    </g>
+    <g id="타원_82" data-name="타원 82" transform="translate(1506 702)" fill="none" stroke="#fff" stroke-width="1" opacity="0.2">
+      <circle cx="15.5" cy="15.5" r="15.5" stroke="none"/>
+      <circle cx="15.5" cy="15.5" r="15" fill="none"/>
+    </g>
+    <g id="타원_83" data-name="타원 83" transform="translate(1780 760)" fill="none" stroke="#fff" stroke-width="1" opacity="0.2">
+      <circle cx="15.5" cy="15.5" r="15.5" stroke="none"/>
+      <circle cx="15.5" cy="15.5" r="15" fill="none"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 1477, 686)" filter="url(#타원_84)">
+      <circle id="타원_84-2" data-name="타원 84" cx="70.5" cy="70.5" r="70.5" transform="translate(5 25)" fill="#fff" opacity="0.2"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 1477, 686)" filter="url(#타원_85)">
+      <circle id="타원_85-2" data-name="타원 85" cx="41" cy="41" r="41" transform="translate(323 43)" fill="#fff" opacity="0.2"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 1477, 686)" filter="url(#타원_86)">
+      <circle id="타원_86-2" data-name="타원 86" cx="30" cy="30" r="30" transform="translate(-25 -47)" fill="#fff" opacity="0.5"/>
+    </g>
+    <circle id="타원_87" data-name="타원 87" cx="52" cy="52" r="52" transform="translate(1568 665)" fill="#fb8c00" opacity="0.4"/>
+    <path id="패스_320" data-name="패스 320" d="M309.386,0h-.453V5.889H305.3V17.232H303.54V70.808H285.812V24.926h.459v-.453h-1.818v-3.14h-1.812v-1.39h.465v-.881H282.2v-.931h-.912V12.243h-.453v2.718h-.453v3.171h-.906v.906h-.912v.918h.465v1.353h-1.818v3.158h-1.824v.453h.354V70.808H262.257V26.285h.441V25.4h-.9V24.027h-8.141v-1.8h-2.712v-.918h-.472v-.453h-.906V18.132h-.906v2.724h-.9V21.3H247.3v2.736h-.9v1.34H244.92v.912h.714V70.808H211.97V75.22H445.249V70.907H399.5V16.773l-20.316-4.586,1.682,58.621H321.61V34.458h-1.359V17.232h-2.705V12.7h-.906V5.895h-5.889V.918h-.459v4.97h-.906V0" transform="translate(1545.989 700.268)" fill="#99dcfd"/>
+    <path id="패스_321" data-name="패스 321" d="M338.757,18.27H338.3v5h-.453v2.693h-1.806v3.189h-2.712v8.607h-.894V79.689H312.025V40.478h1.359v-.465h-1.378V39.56h-1.328V38.207H297.492v1.347h-1.806v.465h-1.353v.447h1.812V57.251h-2.408V53.938H273.013V41.85h-1.781V40.472h-.912V35.93h-.459v4.561h-.453V35.024h-.459V40.46H268.5v1.421h-.354V62.892H258.53V50.45h-2.712V47.739h-1.365v2.724H253.1V47.739h-1.365v2.749h-2.674V47.739h-7.744v2.277h-1.8v.912h1.334v4.983h-2.985v11.8h-3.81v-3.2h-4.493v4.939h-5.4v4.8H216.75v7.918H447.063V77.834h-2.749v-3.8H441.1v-4.48H428.931V54.974h-.441V53.2h-.472V50.9h-.453V49.085h-.9V51.35h-.441v-.894h-.918v.894h-1.818V49.1h-.453v-.918h-4.077v.9h-.453v2.271h-.453V62.228h-3.165V34.211h-.912V28.229h-.906V34.2h-.453V25.518h-.453V34.2h-.459V29.6h-.925v4.61H405.01v41.1H385.817v-8.42H355.064V47.279h-8.607v.9h.9v5.9H346V55.9h-.447v1.8h-.441v3.208h-.478V37.761h-.894V29.129h-2.724v-3.14h-1.824V23.24h-.434V18.27" transform="translate(1544.175 693.335)" fill="#33b9fb"/>
+    <path id="패스_322" data-name="패스 322" d="M211.97,95.2V90.6h5.436V83.84h6.379v7.819h4.877V85.242h6.379V75.32h7.738V87.879h9.035V70.846h2.761v-1.08h3.556v1.061h1.34V75.86h6.9v8.514h3.152V60.409h4.728v.41h-.732v.856h6.826v30.4h5.138l2.736-9.252h4.741V75.4h5.057V71.746h4.617V85.317h7.217V73.6h7.217V92.037h2.3V58.144h3.543V56.7h1.44v.422h2.693V55.519h1.371v.689h2.73V54.992h4.015v-1.08h1.44v34.91h1.849V77.442H350.2V92.918h3.158V88.891h-1.284v-.67h1.284V83.852H351.73v-.881h1.626V78.559h-1.117V77.9h1.117v-9.81h-.714v-.621h.714V57.188H351.5V55.743h2.265v-.85h-.5v-.98h5.045v.931h-.465v.875h8.625v1.471h-1.359V88.9h3.667V71.659h-.956v-.943h3.189V68h1.365v2.73h1.34V68h1.353v2.749h2.749V68.445h7.682v2.29h1.855v.881h-1.378V83.877l6.578,3.109V73.98h5.634V61.222h-.447V59.857h.881v-.906h6.764V56.971h2.749V55.9h.937V52.64h.472V55.9h1.328v3.084h.478v.856h.441V81.147h4.126V88.9h8.185V70.747h-.962V70.3h6.826V67.123h.4v3.183h.931V66.223h.453v4.1h1.812v.441h-.912V80.3h3.636v10.58h9.035V95.2Z" transform="translate(1545.989 680.292)" fill="#00a8fa"/>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Path: _layout/mobile/css/seum_main.css */
+
+/* main css 입니다. */
+
+/* *** 랜딩페이지 임시 css *** */
+#landing_page {
+    text-align: center;
+    color: #fff;
+}
+
+#landing_page h1 {
+    font-size: 4rem;
+}
+
+#landing_page h1 + a {
+    font-size: 2rem;
+    color: #fff;
+}

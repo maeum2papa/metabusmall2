@@ -1,0 +1,16 @@
+{
+  "name": "mecro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "MecroJoin.js",
+  "scripts": {
+    "start": "node MecroJoin.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colyseus.js": "^0.15.15"
+  },
+  "type": "module"
+}

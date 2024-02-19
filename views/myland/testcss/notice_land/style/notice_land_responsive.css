@@ -1,0 +1,29 @@
+@media all and (max-width: 932px) and (orientation: landscape) {
+    .noticeLand {
+        top:5%;
+    }
+    .noticeLand h1 {
+        background-size: 100%;
+        width: 96px;
+        font-size: 12px;
+        padding-top: 4px;
+        left: 152px;
+        top:23px;
+    }
+    .noticeLand #noticeContents {
+        width: 400px;
+        padding: 10px 20px;
+    }
+    .noticeLand #noticeContents #notice_con{
+        font-size: 12px;
+        line-height: 23px;
+        height: 70px;
+        overflow-y: scroll;
+    }
+    .noticeLand #noticeContents #nLbtn {
+        width: 20px; height: 20px;
+        padding: 0;
+        opacity: 0;
+    }
+    .noticeLand #noticeContents #nLbtn img {width: 10px;}
+}

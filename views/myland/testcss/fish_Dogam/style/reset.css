@@ -1,0 +1,35 @@
+* {box-sizing:border-box;}
+/* font */
+@font-face {
+    font-family: 'NEXON_Lv2_Gothic';
+    src: url(../font/NEXON_Lv2_Gothic.woff) format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'NexonLv2Gothic';
+    src: url(../font/NEXON_Lv2_Gothic_Bold.woff) format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+/* reset.css */
+html, body,
+h1,h2,h3,h4,h5,h6,p, blockquote,address,
+span,strong,em,q,sub,sup,del,s,a,img,
+div,header,nav,aside,main,footer,article,figure,figcaption,
+section,video,
+table,thead,tbody,tfoot,tr,th,td,ul,ol,li,dl,dt,dd,
+form,fieldset,legend,input,select,option,button,label,textarea {
+    font-family: 'NexonLv2Gothic';
+    margin:0; padding:0; line-height:1.0;
+    font-size:16px; font-style:normal; font-weight:normal;
+    text-decoration:none; letter-spacing: -0.02em;
+}
+th {text-align:left;}
+table, tr, th, td {border-collapse:collapse;}
+ul,ol,li {list-style:none;}
+a {color:#000;}
+input {outline:none; border:0;}
+button {cursor:pointer; border:0;}
+fieldset {border:0;}
+.skip {display:none;}

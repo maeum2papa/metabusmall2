@@ -1,0 +1,142 @@
+#fishing_popup {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    /* width: 400px;*/
+    /* height: 300px; */
+    background-color: #fff;
+    position: absolute;
+    top: 50%; transform: translate(-50%,-50%);
+    left: 50%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* display: none; */ /* 디스플레이 */
+}
+
+#fishing_popup .fishing_popup_box {
+    /* max width: 390px;
+    height: auto; */
+    border: 2px solid #00A8FA;
+    border-radius: 13px;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+#fishing_popup .fishing_popup_box .fishing_popup_title {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top : 20px
+}
+
+/* 유리병이 떴을 때 */
+#fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass {/* display: none; */}
+#fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass img {
+    max-height: 50px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass h1 {
+    font-size: 14pt;
+    margin-left: 10px;
+    color:#00A8FA
+}
+
+#fishing_popup .fishing_popup_box .fishing_popup_title .fishing_glass p {
+    font-size: 11pt;
+}
+
+/* 유리병 팝업 */
+#fishing_popup .fishing_popup_text {
+    background-color: #bde9ff;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+    opacity: 1;
+}
+
+#fishing_popup .fishing_popup_text h2 {
+    font-size: 11pt;
+    margin: 3px 5px 10px 10px;
+}
+
+#fishing_popup .fishing_popup_text p {
+    font-size: 10pt;
+    margin: 3px 7px 10px 10px;
+    padding: 0px 15px;
+}
+
+/* etc */
+#fishing_popup_etc {
+    background-color:#fff ;
+    width:250px; height: 180px;
+    position: absolute;
+    top: 50%; transform: translate(-50%,-50%);
+    left: 50%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 물고기 떴을 때 */
+#fishing_popup_etc .fishing_fish {
+    border: 2px solid #00A8FA;
+    border-radius: 13px;
+    align-items: center;
+    justify-content: center;
+    margin: 5px; height: 93.5%;
+    /* display: none; */ /* 디스플레이 */
+}
+#fishing_popup_etc .fishing_fish img {
+    max-height: 50px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-top: 25px;
+}
+#fishing_popup_etc .fishing_fish h1 {
+    font-size: 14pt;
+    margin-left: 10px;
+    color:#00A8FA;
+    text-align: center;
+}
+/* 쓰레기 떴을 때 */
+#fishing_popup_etc2 {
+    background-color:#fff ;
+    width:250px; height: 180px;
+    position: absolute;
+    top: 50%; transform: translate(-50%,-50%);
+    left: 50%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#fishing_popup_etc2 .fishing_trash {
+    /* background-color: salmon; */
+    border: 2px solid #00A8FA;
+    border-radius: 13px;
+    align-items: center;
+    justify-content: center;
+    margin: 5px; height: 93.5%;
+}
+#fishing_popup_etc2 .fishing_trash img {
+    max-height: 50px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-top: 35px;
+}
+#fishing_popup_etc2 .fishing_trash h1 {
+    font-size: 14pt;
+    margin-left: 10px;
+    color:#00A8FA;
+    text-align: center;
+}

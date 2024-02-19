@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Test For WebRTC</title>                
+		<link rel="stylesheet" href="land_rtc.css">
+        <style>
+           /* video {
+                width: 300px;
+                height: 300px;
+                margin: 20px;
+                background-color: black;
+            }*/
+        </style>
+
+
+        <script src="./library/settings.js" ></script>        
+        <script src="./library/adapter.js"></script>
+        <script src="./library/janus.js"></script>    
+        <script src="./videolist.js"></script>
+        <script src="./socket_package.js"></script>
+        <script src="./webrtc_client.js"></script>        
+
+
+        <script>            
+            var x;
+            document.addEventListener("DOMContentLoaded", function(event) {
+                let janus_client = WEBRTC_CLIENT.WEBRTC_CLIENT_GET_INSTANCE();
+                x = janus_client;
+
+				document.getElementById("toggle_camera").addEventListener("click", function (event) {
+					// 송출 상태가 아니면 송출하기
+					janus_client.toggleMuteVideo();
+				})
+
+				document.getElementById("toggle_mic").addEventListener("click", function (event) {
+					// 송출 상태가 아니면 송출하기
+					janus_client.toggleMuteAudio();
+				})
+            })
+        </script>
+                
+        </head>
+
+        <body>
+			<div id="land_rtc_wrap">
+				<div class="setting_btn_box">
+					<button id="employee_list_btn">직원 목록</button>
+					<button id="device_setting_btn">기기 설정</button>
+				</div>
+		
+				 <div class="video_setting_box">
+					<button id="toggle_camera">
+						<div class="camera_on_box">
+							<div class="camera_on">
+								<!--<img src="/seum_img/video.svg" alt="video" title="video" />-->
+								카메라 켜기
+							</div>
+						</div>
+		
+						<div class="camera_off_box">
+							<div class="camera_off">
+								<!--<img src="/seum_img/video_off.svg" alt="video_off" title="video_off" />-->
+								카메라 끄기
+							</div>
+						</div>
+					</button>
+					<button id="toggle_mic">
+						<div class="mic_on_box">
+							<div class="mic_on">
+								<!--<img src="/seum_img/mic.svg" alt="mic" title="mic" />-->
+								마이크 켜기
+							</div>
+						</div>
+		
+						<div class="mic_off_box">
+							<div class="mic_off">
+								<!--<img src="/seum_img/mic_off.svg" alt="mic_off" title="mic_off" />-->
+								마이크 끄기
+							</div>
+						</div>
+					</button>
+					<button id="share_screen">
+						<!--<img src="/seum_img/screen_share.svg" alt="screen_share" title="screen_share" />-->
+						화면 공유
+					</button>
+					<button id="add_media">
+						<!--<img src="/seum_img/media_share.svg" alt="media_share" title="media_share" />-->
+						미디어 추가
+					</button>
+				</div>
+		
+				<div class="video_call_box_wrap">
+				</div>
+			</div>
+
+        </body>
+</html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240" height="36" viewBox="0 0 240 36">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.403" x2="1.043" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fb8c00"/>
+      <stop offset="1" stop-color="#00a8fa"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="사각형_1483" data-name="사각형 1483" width="240" height="36" rx="8" transform="translate(75 490)" fill="url(#linear-gradient)"/>
+    </clipPath>
+  </defs>
+  <g id="cloud_m" transform="translate(-75 -490)" clip-path="url(#clip-path)">
+    <path id="패스_614" data-name="패스 614" d="M31.822,0a8.14,8.14,0,0,0-7.978,6.532A4.936,4.936,0,0,0,20.337,6.4a4.954,4.954,0,1,0-9.713,1.559,6.322,6.322,0,1,0,.161,9.119,4.942,4.942,0,0,0,6.921-3.358,4.951,4.951,0,0,0,8.323.134A8.137,8.137,0,1,0,31.822,0" transform="translate(277.926 512.66)" fill="#fff"/>
+    <path id="패스_614-2" data-name="패스 614" d="M8.138,18.915a8.14,8.14,0,0,0,7.978-6.532,4.936,4.936,0,0,0,3.507.134,4.954,4.954,0,1,0,9.713-1.559,6.322,6.322,0,1,0-.161-9.119A4.942,4.942,0,0,0,22.254,5.2a4.951,4.951,0,0,0-8.323-.134A8.137,8.137,0,1,0,8.138,18.915" transform="translate(69.919 483.551)" fill="#fff"/>
+  </g>
+</svg>
