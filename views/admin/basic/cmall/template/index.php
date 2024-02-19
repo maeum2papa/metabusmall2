@@ -37,7 +37,7 @@
 						<th>노출여부</th>
 						<td>
                             <div class="checkbox-inline">
-                                <input type="checkbox" name="useyn" value="y" id="useyn" > <label for="useyn">노출중인 템플릿만 보기</label>
+                                <input type="checkbox" name="search_cit_status" value="1" id="search_cit_status" > <label for="useyn">노출중인 템플릿만 보기</label>
                             </div>
 						</td>
 					</tr>
@@ -77,7 +77,7 @@
                             <th><input type="checkbox" name="chkall" id="chkall" /></th>
                             <th>NO</th>
                             <th>이미지</th>
-							<th><a href="">상품명</a></th>
+							<th>상품명</th>
                             <th>상품설명</th>
                             <th>예치금 차감 금액</th>
                             <th>노출여부</th>
@@ -93,17 +93,16 @@
 							
 					?>
 						<tr>
-                        <td><input type="checkbox" name="chk[]" class="list-chkbox" value="<?php echo element(element('primary_key', $view), $result); ?>" /></td>
-							<td><a href="<?php echo goto_url(cmall_item_url(html_escape(element('cit_key', $result)))); ?>" target="_blank"><?php echo html_escape(element('cit_key', $result)); ?></a></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="<?php echo admin_url($this->pagedir); ?>/status/111" target="_blank"></a></td>
-							<td><a href="<?php echo admin_url($this->pagedir); ?>/write/<?php echo element(element('primary_key', $view), $result); ?>?<?php echo $this->input->server('QUERY_STRING', null, ''); ?>" class="btn btn-outline btn-default btn-xs">수정</a></td>
+                        <td><input type="checkbox" name="chk[]" class="list-chkbox" value="<?php echo element('citt_id', $result); ?>" /></td>
+							<td><a href="<?php echo goto_url(cmall_item_url(element('citt_id', $result))); ?>" target="_blank"><?php echo element('citt_id', $result); ?></a></td>
+                            <td><?php echo element('citt_file_1', $result)?></td>
+                            <td><?php echo element('citt_name', $result)?></td>
+                            <td><?php echo element('citt_summary', $result)?></td>
+                            <td><?php echo element('citt_price', $result)?></td>
+                            <td><?php echo element('citt_status', $result)?></td>
+                            <td><?php echo element('citt_ship_type', $result)?></td>
+                            <td><a href="<?php echo admin_url($this->pagedir); ?>/status/<?php echo element('citt_id', $result)?>" target="_blank"><?php echo element('citt_use_count', $result)?></a></td>
+							<td><a href="<?php echo admin_url($this->pagedir); ?>/write/<?php echo element('citt_id', $result); ?>?<?php echo $this->input->server('QUERY_STRING', null, ''); ?>" class="btn btn-outline btn-default btn-xs">수정</a></td>
 						</tr>
 					<?php
 						}

@@ -13,8 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['admin_page_menu']['cmall'] =
 	array(
-		'__config'					=> array('컨텐츠몰관리', 'fa-shopping-cart'),
+		'__config'					=> array('교환소관리', 'fa-shopping-cart'),
 		'menu'						=> array(
+			'template'				=> array('복지상품 템플릿관리', ''),
 			'cmallcfg'				=> array('컨텐츠몰환경설정', ''),
 			// 'emailform'				=> array('메일/쪽지발송양식', ''),
 			'cmallorder'			=> array('주문내역', ''),
@@ -23,12 +24,12 @@ $config['admin_page_menu']['cmall'] =
 			'cmallcategory'			=> array('분류관리', ''),
 			'cmallitem'				=> array('상품관리', ''),
 			'qna'					=> array('상품문의', ''),
-			'review'				=> array('상품사용후기', ''),
+			'review'				=> array('상품후기', ''),
 			// 'wishlist'				=> array('보관함현황', ''),
 			// 'cmallcart'				=> array('장바구니현황', ''),
 			// 'itemdownload'			=> array('상품다운로드로그', ''),
 			// 'itemhistory'			=> array('상품내용변경로그', ''),
 			// 'linkclick'				=> array('상품데모링크클릭', ''),
-			'cmallstat'				=> array('구매통계', ''),
+			// 'cmallstat'				=> array('구매통계', ''),
 		),
 	);
