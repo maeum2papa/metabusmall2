@@ -1,5 +1,5 @@
 <div class="modal-header">
-	<h4 class="modal-title">템플리 사용현황[5]</h4>
+	<h4 class="modal-title">템플릿 사용현황[<?php echo number_format($view['data']['total_rows']);?>]</h4>
 </div>
 <div class="modal-body">
     <table class="table table-hover table-striped table-bordered">
@@ -18,16 +18,28 @@
         <?php
         if (element('list', element('data', $view))) {
             foreach (element('list', element('data', $view)) as $result) {
-                
+
+                //판매 기간
+                if($result['cit_view_type'] == 'n'){
+                    if($result[cit_download_days]>0){
+                        $after_cit_download_days = substr($result['cit_datetime'], 0, 10);
+                        $cit_download_days = date("Y-m-d", strtotime("+".$result['cit_download_days']." day", strtotime($after_cit_download_days)))."까지";
+                    }else{
+                        $cit_download_days = "무제한";	
+                    }
+                    
+                }else{
+                    $cit_download_days = $result['cit_startDt']."~<br>".$result['cit_endDt'];
+                }
         ?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>0</td>
+                <td><?php echo $result['company_name']; ?></td>
+                <td><?php echo $result['cit_key']; ?></td>
+                <td><?php echo $result['cit_name']; ?></td>
+                <td><?php echo number_format($result['cit_price']); ?>개</td>
+                <td><?php echo $cit_download_days; ?></td>
+                <td><?php echo $result['cit_status']; ?></td>
+                <td><?php echo number_format($result['cit_template_item_order_count']); ?></td>
             </tr>
         <?php
             }

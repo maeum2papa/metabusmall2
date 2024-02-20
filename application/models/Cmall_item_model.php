@@ -294,4 +294,64 @@ class Cmall_item_model extends CB_Model
 
 		return $result;
 	}
+
+
+    /**
+     * 템플릿으로 생성된 상품 리스트
+     */
+    public function get_template_item_list($per_page="", $offset="", $where="", $orderby=""){
+
+        if ( ! in_array(strtolower($orderby), $this->allow_order)) {
+			$orderby = 'cit_id desc';
+		}
+
+        $this->db->select('*');
+		$this->db->from($this->_table);
+
+		if ($where) {
+			$this->db->where($where);
+		}
+	
+		$this->db->order_by($orderby);
+		if ($limit) {
+			$this->db->limit($limit, $offset);
+		}
+		$qry = $this->db->get();
+		$result['list'] = $qry->result_array();
+		
+
+
+		$this->db->select('count(*) as rownum');
+		$this->db->from($this->_table);
+		if ($where) {
+			$this->db->where($where);
+		}
+		
+		$qry = $this->db->get();
+		$rows = $qry->row_array();
+		$result['total_rows'] = $rows['rownum'];
+
+        return $result;
+
+    }
+
+
+    /**
+     * 템플릿상품 노출 변경
+     */
+    public function change_cit_stauts($citt_id,$change_cit_status){
+
+        if ($citt_id) {
+			$updatedata = array(
+				'cit_status' => $change_cit_status,
+				'cit_updated_datetime' => cdate('Y-m-d H:i:s'),
+			);
+			$this->db->where("citt_id", $citt_id);
+			$this->db->set($updatedata);
+		}
+
+		$result = $this->db->update($this->_table);
+
+		return $result;
+    }
 }

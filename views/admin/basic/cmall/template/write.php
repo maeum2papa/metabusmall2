@@ -30,20 +30,20 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">예치금차감금액</label>
 					<div class="col-sm-10 form-inline">
-						<input type="number" class="form-control" name="citt_price" value="<?php echo set_value('citt_price', element('citt_price', element('data', $view))); ?>" />
+						<input type="number" class="form-control" name="citt_deposit" value="<?php echo set_value('citt_deposit', element('citt_deposit', element('data', $view))); ?>" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">배송방법</label>
 					<div class="col-sm-10 form-inline">
                         <label class="radio-inline" for="citt_ship_type_1">
-							<input type="radio" name="citt_ship_type" id="citt_ship_type_1" value="1" checked <?php echo set_radio('citt_ship_type', '1', (element('citt_ship_type', element('data', $view)) == 'n' ? true : false)); ?>  /> 컬래버랜드배송
+							<input type="radio" name="citt_ship_type" id="citt_ship_type_1" value="1" checked <?php echo set_radio('citt_ship_type', '1', (element('citt_ship_type', element('data', $view)) == 1 ? true : false)); ?>  /> 컬래버랜드배송
 						</label>
 						<label class="radio-inline" for="citt_ship_type_2">
-							<input type="radio" name="citt_ship_type" id="citt_ship_type_2" value="2" <?php echo set_radio('citt_ship_type', '2', (element('citt_ship_type', element('data', $view)) == 's' ? true : false)); ?>  /> 기프티콘발송
+							<input type="radio" name="citt_ship_type" id="citt_ship_type_2" value="2" <?php echo set_radio('citt_ship_type', '2', (element('citt_ship_type', element('data', $view)) == 2 ? true : false)); ?>  /> 기프티콘발송
 						</label>
                         <label class="radio-inline" for="citt_ship_type_3">
-							<input type="radio" name="citt_ship_type" id="citt_ship_type_3" value="3" <?php echo set_radio('citt_ship_type', '3', (element('citt_ship_type', element('data', $view)) == 's' ? true : false)); ?> /> 업체배송
+							<input type="radio" name="citt_ship_type" id="citt_ship_type_3" value="3" <?php echo set_radio('citt_ship_type', '3', (element('citt_ship_type', element('data', $view)) == 3 ? true : false)); ?> /> 업체배송
 						</label>
 					</div>
 				</div>
@@ -70,14 +70,15 @@
 					<?php
 					if (element('citt_file_' . $k, element('data', $view))) {
 					?>
-						<img src="<?php echo thumb_url('cmallitem', element('citt_file_' . $k, element('data', $view)), 80); ?>" alt="<?php echo isset($detail) ? html_escape(element('cde_title', $detail)) : ''; ?>" title="<?php echo isset($detail) ? html_escape(element('cde_title', $detail)) : ''; ?>" />
+						<img src="<?php echo thumb_url('cmallitemtemplate', element('citt_file_' . $k, element('data', $view)), 80)?>" width="80px" alt="<?php echo isset($detail) ? html_escape(element('cde_title', $detail)) : ''; ?>" title="<?php echo isset($detail) ? html_escape(element('cde_title', $detail)) : ''; ?>" />
 						<label for="citt_file_<?php echo $k; ?>_del">
 							<input type="checkbox" name="citt_file_<?php echo $k; ?>_del" id="citt_file_<?php echo $k; ?>_del" value="1" <?php echo set_checkbox('citt_file_' . $k . '_del', '1'); ?> /> 삭제
 						</label>
+						<input type="hidden" name="citt_file_<?php echo $k; ?>" value="<?php echo element('citt_file_' . $k, element('data', $view))?>"/>
 					<?php
 					}
 					?>
-						<input type="file" name="citt_file_<?php echo $k; ?>" id="citt_file_<?php echo $k; ?>" />
+						<input type="file" name="citt_file_<?php echo $k; ?>_upload" id="citt_file_<?php echo $k; ?>_upload"/>
 					</div>
 				</div>
 			<?php } ?>
@@ -120,7 +121,7 @@ jQuery(function($) {
 	$('#fadminwrite').validate({
 		rules: {
 			citt_name: 'required',
-			citt_price: { required:true, number:true },
+			citt_deposit: { required:true, number:true },
 			citt_content : {<?php echo ($this->cbconfig->item('use_cmall_product_dhtml')) ? 'required_' . $this->cbconfig->item('cmall_product_editor_type') : 'required'; ?> : true },
 			citt_mobile_content : {<?php echo ($this->cbconfig->item('use_cmall_product_dhtml')) ? 'required_' . $this->cbconfig->item('cmall_product_editor_type') : 'required'; ?> : true }
 		}

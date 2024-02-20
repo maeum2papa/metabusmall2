@@ -37,7 +37,7 @@
 						<th>노출여부</th>
 						<td>
                             <div class="checkbox-inline">
-                                <input type="checkbox" name="search_cit_status" value="1" id="search_cit_status" > <label for="useyn">노출중인 템플릿만 보기</label>
+                                <input type="checkbox" name="search_cit_status" value="1" id="search_cit_status" <?php echo ($this->input->get('search_cit_status')==1)?"checked":"";?>> <label for="useyn">노출중인 템플릿만 보기</label>
                             </div>
 						</td>
 					</tr>
@@ -63,9 +63,9 @@
             <div class="row flex">
                 <div>전체 : <?php echo element('total_rows', element('data', $view), 0); ?>건</div>
                 <div class="text-right">
-                    <select name="" class="form-control px140">
-                        <option value="">미노출</option>
-                        <option value="">노출</option>
+                    <select name="change_citt_status" class="form-control px140">
+                        <option value="0">미노출</option>
+                        <option value="1">노출</option>
                     </select>
                     <button type="button" class="btn btn-outline btn-default btn-sm btn-list-update btn-list-selected" data-list-update-url = "<?php echo element('list_update_url', $view); ?>" >변경</button>
                 </div>
@@ -83,7 +83,6 @@
                             <th>노출여부</th>
                             <th>상품종류</th>
 							<th>사용현황</th>
-							<th>수정</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -94,15 +93,14 @@
 					?>
 						<tr>
                         <td><input type="checkbox" name="chk[]" class="list-chkbox" value="<?php echo element('citt_id', $result); ?>" /></td>
-							<td><a href="<?php echo goto_url(cmall_item_url(element('citt_id', $result))); ?>" target="_blank"><?php echo element('citt_id', $result); ?></a></td>
-                            <td><?php echo element('citt_file_1', $result)?></td>
+							<td><?php echo element('citt_id', $result); ?></td>
+                            <td><img src="<?php echo thumb_url('cmallitemtemplate', element('citt_file_1', $result), 80)?>" width="80px"></td>
                             <td><?php echo element('citt_name', $result)?></td>
                             <td><?php echo element('citt_summary', $result)?></td>
-                            <td><?php echo element('citt_price', $result)?></td>
+                            <td><?php echo element('citt_deposit', $result)?></td>
                             <td><?php echo element('citt_status', $result)?></td>
                             <td><?php echo element('citt_ship_type', $result)?></td>
                             <td><a href="<?php echo admin_url($this->pagedir); ?>/status/<?php echo element('citt_id', $result)?>" target="_blank"><?php echo element('citt_use_count', $result)?></a></td>
-							<td><a href="<?php echo admin_url($this->pagedir); ?>/write/<?php echo element('citt_id', $result); ?>?<?php echo $this->input->server('QUERY_STRING', null, ''); ?>" class="btn btn-outline btn-default btn-xs">수정</a></td>
 						</tr>
 					<?php
 						}

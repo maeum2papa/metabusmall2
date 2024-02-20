@@ -130,4 +130,22 @@ class Cmall_order_detail_model extends CB_Model
 		$this->db->query($q);
 
 	}
+
+	/**
+	 * 배송대기 이후 주문 상품 개수
+	 */
+	public function get_template_item_order_count($cit_id){
+		
+		$this->db->select('count(*) as rownum');
+		$this->db->from($this->_table);
+		
+		$where['cod_status'] = 'end';
+		$where['cod_status'] = 'ready'; //발송대기 (배송준비)
+
+		$this->db->where($where);
+		$qry = $this->db->get();
+		$rows = $qry->row_array();
+		
+		return $rows['rownum'];
+	}
 }
