@@ -21,9 +21,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	?>
 		<div class="box-table-header">
 			<div class="btn-group btn-group-sm" role="group">
-				<a href="<?php echo admin_url('cmall/cmallorder'); ?>" class="btn btn-sm <?php echo ( ! $this->input->get('cor_pay_type')) ? 'btn-success' : 'btn-default';?>">전체내역</a>
-                <a href="<?php echo admin_url('cmall/cmallorder'); ?>?cor_pay_type=f" class="btn btn-sm <?php echo ($this->input->get('cor_pay_type') === 'f') ? 'btn-info' : 'btn-default';?>">열매</a>
-                <a href="<?php echo admin_url('cmall/cmallorder'); ?>?cor_pay_type=c" class="btn btn-sm <?php echo ($this->input->get('cor_pay_type') === 'c') ? 'btn-info' : 'btn-default';?>">컬래버코인</a>
+				<a href="<?php echo admin_url('cmall/cmallorder'); ?>" class="btn btn-sm <?php echo ( $this->input->get('citt_id_use') == "" || $this->input->get('citt_id_use') == NULL) ? 'btn-success' : 'btn-default';?>">전체내역</a>
+                <a href="<?php echo admin_url('cmall/cmallorder'); ?>?citt_id_use=0" class="btn btn-sm <?php echo ($this->input->get('citt_id_use') === '0') ? 'btn-info' : 'btn-default';?>">자체상품</a>
+                <a href="<?php echo admin_url('cmall/cmallorder'); ?>?citt_id_use=1" class="btn btn-sm <?php echo ($this->input->get('citt_id_use') === '1') ? 'btn-info' : 'btn-default';?>">템플릿상품</a>
 				<!-- <a href="<?php echo admin_url('cmall/cmallorder'); ?>?cor_pay_type=bank" class="btn btn-sm <?php echo ($this->input->get('cor_pay_type') === 'bank') ? 'btn-info' : 'btn-default';?>">무통장</a>
 				<a href="<?php echo admin_url('cmall/cmallorder'); ?>?cor_pay_type=card" class="btn btn-sm <?php echo ($this->input->get('cor_pay_type') === 'card') ? 'btn-info' : 'btn-default';?>">카드</a>
 				<a href="<?php echo admin_url('cmall/cmallorder'); ?>?cor_pay_type=realtime" class="btn btn-sm <?php echo ($this->input->get('cor_pay_type') === 'realtime') ? 'btn-info' : 'btn-default';?>">실시간</a>
@@ -68,23 +68,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 							<div class="checkbox-inline">
 								<input type="checkbox" name="status[]" value="cancel" id="status_cancel" <?php echo (in_array("cancel",$this->input->get("status")))?"checked":"";?>> <label for="status_cancel">주문취소</label>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th>카테고리</th>
-						<td>
-							<?php
-								$config_item = config_item("custom");
-							?>
-							<div class="checkbox-inline">
-								<input type="checkbox" name="cmall_category[]" value="<?php echo $config_item['category']['basic'];?>" id="cmall_category_0" <?php echo (in_array($config_item['category']['basic'],$this->input->get("cmall_category")))?"checked":"";?>> <label for="cmall_category_0">공용몰</label>
-							</div>
-							<div class="checkbox-inline">
-								<input type="checkbox" name="cmall_category[]" value="<?php echo $config_item['category']['item'];?>" id="cmall_category_1" <?php echo (in_array($config_item['category']['item'],$this->input->get("cmall_category")))?"checked":"";?>> <label for="cmall_category_1">아이템몰</label>
-							</div>
-							<div class="checkbox-inline">
-								<input type="checkbox" name="cmall_category[]" value="<?php echo $config_item['category']['company'];?>" id="cmall_category_2" <?php echo (in_array($config_item['category']['company'],$this->input->get("cmall_category")))?"checked":"";?>> <label for="cmall_category_2">기업몰</label>
 							</div>
 						</td>
 					</tr>
@@ -135,6 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="pr5">선택한 것을 : </div>
 						<select class="form-control per20 change-status">
 							<option value="order">주문확인</option>
+							<option value="ready">발송대기</option>
 							<option value="end">발송완료</option>
 							<option value="cancel">주문취소</option>
 						</select>
