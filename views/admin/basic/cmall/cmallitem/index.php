@@ -96,12 +96,13 @@
 					</tr>
 					<?php }?>
 					<tr>
-						<th>상품정보</th>
+						<th>상품명</th>
 						<td>
-							<select class="form-control px140" name="search_item_key">
+							<!-- <select class="form-control px140" name="search_item_key">
 								<option value="cit_name" >상품명</option>
 								<option value="cit_key" <?php echo ($this->input->get("search_item_key")=="cit_key")?"selected":"";?>>상품코드</option>
-							</select>
+							</select> -->
+							<input type="hidden" name="search_item_key" value="cit_name"/>
 							<input type="text" name="search_item_value" value="<?php echo $this->input->get("search_item_value");?>" class="form-control px300">
 						</td>
 					</tr>
@@ -142,17 +143,36 @@
 					<thead>
 						<tr>
 							<th><a href="<?php echo element('cit_key', element('sort', $view)); ?>">상품코드</a></th>
-							<th>카테고리</th>
+							<?php if($this->session->userdata['mem_admin_flag']==0){?>
+								<th>카테고리</th>
+							<?php }else{ ?>
+								<th>상품분류</th>
+							<?php } ?>
 							<th>이미지</th>
 							<th><a href="<?php echo element('cit_name', element('sort', $view)); ?>">상품명</a></th>
-							<th><a href="<?php echo element('cit_price', element('sort', $view)); ?>">판매가격</a></th>
-							<th><a href="<?php echo element('cit_download_days', element('sort', $view)); ?>">판매기한</a></th>
-							<th>PC (레이아웃 / 사이드바 / 스킨)</th>
-							<th>모바일 (레이아웃 / 사이드바 / 스킨)</th>
+							<th>
+								<a href="<?php echo element('cit_price', element('sort', $view)); ?>">
+								<?php if($this->session->userdata['mem_admin_flag']==0){?>
+									교환열매
+								<?php }else{ ?>
+									교환포인트
+								<?php } ?>
+								</a>
+							</th>
+							<th><a href="<?php echo element('cit_download_days', element('sort', $view)); ?>">교환기간</a></th>
+							<?php if($this->session->userdata['mem_admin_flag']==0){?>
+								<th>PC (레이아웃 / 사이드바 / 스킨)</th>
+								<th>모바일 (레이아웃 / 사이드바 / 스킨)</th>
+							<?php }else{ ?>
+								
+							<?php } ?>
 							<th><a href="<?php echo element('cit_order', element('sort', $view)); ?>">정렬순서</a></th>
-							<th><a href="<?php echo element('cit_status', element('sort', $view)); ?>">판매여부</a></th>
-							<th><a href="<?php echo element('cit_sell_count', element('sort', $view)); ?>">판매량</a></th>
-							<th><a href="<?php echo element('cit_hit', element('sort', $view)); ?>">조회수</a></th>
+							<th><a href="<?php echo element('cit_status', element('sort', $view)); ?>">노출여부</a></th>
+							<th><a href="<?php echo element('cit_sell_count', element('sort', $view)); ?>">교환횟수</a></th>
+							<?php if($this->session->userdata['mem_admin_flag']==0){?>
+								<th><a href="<?php echo element('cit_hit', element('sort', $view)); ?>">조회수</a></th>
+							<?php }else{ ?>
+							<?php } ?>
 							<th>수정</th>
 							<th><input type="checkbox" name="chkall" id="chkall" /></th>
 						</tr>
@@ -161,12 +181,6 @@
 					<?php
 					if (element('list', element('data', $view))) {
 						foreach (element('list', element('data', $view)) as $result) {
-							//화폐 단위
-							if($result[cit_money_type] == 'f'){
-								$cit_money_type = "원";
-							}else{
-								$cit_money_type = "개";
-							}
 							//판매 기간
 							if($result[cit_view_type] == 'n'){
 								if($result[cit_download_days]>0){
@@ -182,13 +196,21 @@
 					?>
 						<tr>
 							<td><a href="<?php echo goto_url(cmall_item_url(html_escape(element('cit_key', $result)))); ?>" target="_blank"><?php echo html_escape(element('cit_key', $result)); ?></a></td>
-							<td style="width:130px;">
-								<?php foreach (element('category', $result) as $cv) { echo '<label class="label label-info">' . html_escape(element('cca_value', $cv)) . '</label> ';} ?>
-								<?php if (element('cit_type1', $result)) { ?><label class="label label-danger">추천</label> <?php } ?>
-								<?php if (element('cit_type2', $result)) { ?><label class="label label-warning">인기</label> <?php } ?>
-								<?php if (element('cit_type3', $result)) { ?><label class="label label-default">신상품</label> <?php } ?>
-								<?php if (element('cit_type4', $result)) { ?><label class="label label-primary">할인</label> <?php } ?>
-							</td>
+
+							<?php if($this->session->userdata['mem_admin_flag']==0){?>
+								<td style="width:130px;">
+									<?php foreach (element('category', $result) as $cv) { echo '<label class="label label-info">' . html_escape(element('cca_value', $cv)) . '</label> ';} ?>
+									<?php if (element('cit_type1', $result)) { ?><label class="label label-danger">추천</label> <?php } ?>
+									<?php if (element('cit_type2', $result)) { ?><label class="label label-warning">인기</label> <?php } ?>
+									<?php if (element('cit_type3', $result)) { ?><label class="label label-default">신상품</label> <?php } ?>
+									<?php if (element('cit_type4', $result)) { ?><label class="label label-primary">할인</label> <?php } ?>
+								</td>
+							<?php }else{ ?>
+								<td style="width:130px;">
+									<?php echo (element('citt_id', $result))?"템플릿":"자체";?>
+								</td>
+							<?php } ?>
+							
 							<td>
 								<?php if (element('cit_file_1', $result)) {?>
 									<a href="<?php echo goto_url(cmall_item_url(html_escape(element('cit_key', $result)))); ?>" target="_blank">
@@ -197,8 +219,10 @@
 								<?php } ?>
 							</td>
 							<td><input type="text" name="cit_name[<?php echo element(element('primary_key', $view), $result); ?>]" class="form-control" value="<?php echo html_escape(element('cit_name', $result)); ?>" /></td>
-							<td style="padding: 0; width:130px;"><input type="number" name="cit_price[<?php echo element(element('primary_key', $view), $result); ?>]" class="form-control" value="<?php echo html_escape(element('cit_price', $result)); ?>" /><?=$cit_money_type?></td>
+							<td style="padding: 0; width:130px;"><input type="number" name="cit_price[<?php echo element(element('primary_key', $view), $result); ?>]" class="form-control" value="<?php echo html_escape(element('cit_price', $result)); ?>" /></td>
 							<td><?=$cit_download_days?></td>
+
+							<?php if($this->session->userdata['mem_admin_flag']==0){?>
 							<td class=" form-group-sm">
 								<select class="form-control" name="item_layout[<?php echo element(element('primary_key', $view), $result); ?>]" >
 									<?php echo element('item_layout_option', $result); ?>
@@ -229,10 +253,16 @@
 									<?php echo element('item_mobile_skin_option', $result); ?>
 								</select>
 							</td>
+							<?php }else{ ?>
+							<?php } ?>
+
 							<td><input type="number" name="cit_order[<?php echo element(element('primary_key', $view), $result); ?>]" class="form-control" value="<?php echo html_escape(element('cit_order', $result)); ?>" style="width: 50px;" /></td>
 							<td><input type="checkbox" name="cit_status[<?php echo element(element('primary_key', $view), $result); ?>]" value="1" <?php echo set_checkbox('cit_status', '1', (element('cit_status', $result) ? true : false)); ?> /></td>
 							<td class="text-right"><?php echo number_format(element('cit_sell_count', $result)); ?></td>
-							<td class="text-right"><?php echo number_format(element('cit_hit', $result)); ?></td>
+							<?php if($this->session->userdata['mem_admin_flag']==0){?>
+								<td class="text-right"><?php echo number_format(element('cit_hit', $result)); ?></td>
+							<?php }else{ ?>
+							<?php } ?>
 							<td><a href="<?php echo admin_url($this->pagedir); ?>/write/<?php echo element(element('primary_key', $view), $result); ?>?<?php echo $this->input->server('QUERY_STRING', null, ''); ?>" class="btn btn-outline btn-default btn-xs">수정</a></td>
 							<td><input type="checkbox" name="chk[]" class="list-chkbox" value="<?php echo element(element('primary_key', $view), $result); ?>" /></td>
 						</tr>

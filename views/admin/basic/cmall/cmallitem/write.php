@@ -5,6 +5,9 @@
 	#select_item_list.is-land tr.item_type_l{display: table-tr;}
 	#select_item_list.is-land tr.item_type_a{display: none;}
 	#item-selector.dn{display:none;}
+	#template-selecter.dn{display:none;}
+	#citt_deposit_viewer.dn{display:none;}
+	.citt_id_viewer{line-height:30px;}
 </style>
 <?php $custom_config = config_item("custom"); ?>
 <div class="box">
@@ -17,26 +20,62 @@
 		echo form_open_multipart(current_full_url(), $attributes);
 		?>
 			<input type="hidden" name="<?php echo element('primary_key', $view); ?>"	value="<?php echo element(element('primary_key', $view), element('data', $view)); ?>" />
-		
+			
 			<div class="box-table-header">
-				<h4><a data-toggle="collapse" href="#cmalltab0" aria-expanded="true" aria-controls="cmalltab0">상품구분</a></h4>
+				<h4><a data-toggle="collapse" href="#cmalltab0" aria-expanded="true" aria-controls="cmalltab0">
+						<?php if($this->session->userdata['mem_admin_flag']==0){?>
+							상품구분
+						<?php }else{ ?>
+							상품선택
+						<?php } ?>
+				</a></h4>
 				<a data-toggle="collapse" href="#cmalltab0" aria-expanded="true" aria-controls="cmalltab0"><i class="fa fa-chevron-up pull-right"></i></a>
 			</div>
 			<div class="collapse in" id="cmalltab0">
 				<div class="form-group">
-					<label class="col-sm-2 control-label">상품구분</label>
-					<div class="col-sm-10">
-						<label class="radio-inline" for="cit_item_type_b">
-							<input type="radio" name="cit_item_type" id="cit_item_type_b" value="b" checked <?php echo set_radio('cit_item_type', 'b', (element('cit_item_type', element('data', $view)) == 'b' ? true : false)); ?> /> 기본
-						</label>
+					<label class="col-sm-2 control-label">
 						<?php if($this->session->userdata['mem_admin_flag']==0){?>
+							상품구분
+						<?php }else{ ?>
+							상품선택
+						<?php } ?>
+					</label>
+					<div class="col-sm-10">
+						<?php if($this->session->userdata['mem_admin_flag']==0){?>
+							<label class="radio-inline" for="cit_item_type_b">
+								<input type="radio" name="cit_item_type" id="cit_item_type_b" value="b" checked <?php echo set_radio('cit_item_type', 'b', (element('cit_item_type', element('data', $view)) == 'b' ? true : false)); ?> /> 기본
+							</label>
 							<label class="radio-inline" for="cit_item_type_i">
 								<input type="radio" name="cit_item_type" id="cit_item_type_i" value="i" <?php echo set_radio('cit_item_type', 'i', (element('cit_item_type', element('data', $view)) == 'i' ? true : false)); ?> /> 아이템
 							</label>
 							<label class="radio-inline" for="cit_item_type_g">
 								<input type="radio" name="cit_item_type" id="cit_item_type_g" value="g" <?php echo set_radio('cit_item_type', 'g', (element('cit_item_type', element('data', $view)) == 'g' ? true : false)); ?> /> 기프티콘 
 							</label>
-						<?php }?>
+						<?php }else{ ?>
+							<input type="hidden" name="cit_item_type" value="b"/>
+							<?php if(!element("cit_id", element('data',$view))){ ?>
+								<label class="inline-label">
+									<input type="radio" name="citt_id_use" value="1" checked>
+									템플릿상품
+								</label>
+								<label class="inline-label">
+									<input type="radio" name="citt_id_use" value="0">
+									자체상품
+								</label>
+							<?php }else{ ?>
+								<!-- 비주얼적으로 보여주기 위한 영역 -->
+								<input type="hidden" name="citt_id_use" value="<?php echo (element('citt_id',element('data',$view)))?"1":"0";?>"/>
+								<label class="inline-label">
+									<input type="radio" disabled <?php echo (element('citt_id',element('data',$view)))?"checked":"";?>>
+									템플릿상품
+								</label>
+								<label class="inline-label">
+									<input type="radio" disabled <?php echo (!element('citt_id',element('data',$view)))?"checked":"";?>>
+									자체상품
+								</label>
+							<?php } ?>
+							
+						<?php } ?>
 						<script type="text/javascript">
 						//<![CDATA[
 						function display_cmall_category2(check, idname) {
@@ -51,94 +90,124 @@
 						</script>
 					</div>
 				</div>
+				<?php if($this->session->userdata['mem_admin_flag']==0){?>
+				<?php }else{ ?>
+					<div class="form-group" id="template-selecter">
+						<label class="col-sm-2 control-label">
+							<?php if(!element("cit_id", element('data',$view))){ ?>
+								템플릿선택
+							<?php }else{ ?>
+								템플릿번호
+							<?php } ?>
+						</label>
+						<div class="col-sm-10">
+							<?php if(!element("cit_id", element('data',$view))){ ?>
+								<button type="button" class="btn btn-default btn-sm btn-template-selector" >선택</button>
+							<?php } ?>
+							<input type="hidden" name="citt_id" value="<?php echo element('citt_id', element('data', $view));?>">
+							<span class="citt_id_viewer"><?php echo element('citt_id', element('data', $view));?></span>
+						</div>
+					</div>
+				<?php } ?>
 			</div>
-			
-			<div class="box-table-header">
-				<h4><a data-toggle="collapse" href="#cmalltab1" aria-expanded="true" aria-controls="cmalltab1">카테고리</a></h4>
-				<a data-toggle="collapse" href="#cmalltab1" aria-expanded="true" aria-controls="cmalltab1"><i class="fa fa-chevron-up pull-right"></i></a>
-			</div>
-			<div class="collapse in" id="cmalltab1">
-				<div class="form-group">
-					<label class="col-sm-2 control-label">카테고리</label>
-					<div class="col-sm-10">
-						<?php
-						$open = false;
-						$category = element('all_category', element('data', $view));
-						$item_category = element('category', element('data', $view));
-						if (element(0, $category)) {
 
-							foreach (element(0, $category) as $key => $val) {
-								if($this->session->userdata['mem_admin_flag']!=0){ //기업관리자
-									if($val['cca_id'] != $custom_config['category']['company']){
-										unset($category[0][$key]);
+
+			<?php if($this->session->userdata['mem_admin_flag']==0){?>
+				<div class="box-table-header">
+					<h4><a data-toggle="collapse" href="#cmalltab1" aria-expanded="true" aria-controls="cmalltab1">카테고리</a></h4>
+					<a data-toggle="collapse" href="#cmalltab1" aria-expanded="true" aria-controls="cmalltab1"><i class="fa fa-chevron-up pull-right"></i></a>
+				</div>
+				<div class="collapse in" id="cmalltab1">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">카테고리</label>
+						<div class="col-sm-10">
+							<?php
+
+							function get_subcat($category, $item_category, $key, $display)
+							{
+
+								$subcat = element($key, $category);
+								$html = '';
+								if ($subcat) {
+									$html .= '<div class="form-group" id="catwrap_' . $key . '" style="vertical-align:margin-left:10px;top;display:' . $display . ';" >';
+									foreach ($subcat as $skey => $sval) {
+										$display = (is_array($item_category) && in_array(element('cca_id', $sval), $item_category)) ? 'block' : 'none';
+										$cat_checked = (is_array($item_category) && in_array(element('cca_id', $sval), $item_category)) ? 'checked="checked"' : '';
+										$html .= '<div class="checkbox-inline" style="vertical-align:top;margin-left:10px;">';
+										$html .= '<label for="cca_id_' . element('cca_id', $sval) . '"><input type="checkbox" name="cmall_category[]" value="' . element('cca_id', $sval) . '" ' . $cat_checked . ' id="cca_id_' . element('cca_id', $sval) . '" onclick="display_cmall_category(this.checked,\'catwrap_' . element('cca_id', $sval) . '\');" /> ' . element('cca_value', $sval) . '</label>';
+										$html .= get_subcat($category, $item_category, element('cca_id', $sval), $display);
+										$html .= '</div>';
 									}
-								}else{//슈퍼관리자
-									if($val['cca_id'] == $custom_config['category']['company']){
-										unset($category[0][$key]);
-									}
+									$html .= '</div>';
 								}
+								return $html;
 							}
-							
-							$i = 0;
-							foreach (element(0, $category) as $key => $val) {
-								$display = (is_array($item_category) && in_array(element('cca_id', $val), $item_category)) ? "block" : 'none';
-								if ($i%3== 0) {
-									echo '<div>';
-									$open = true;
+
+
+							$open = false;
+							$category = element('all_category', element('data', $view));
+							$item_category = element('category', element('data', $view));
+							if (element(0, $category)) {
+
+								foreach (element(0, $category) as $key => $val) {
+									if($this->session->userdata['mem_admin_flag']!=0){ //기업관리자
+										if($val['cca_id'] != $custom_config['category']['company']){
+											unset($category[0][$key]);
+										}
+									}else{//슈퍼관리자
+										if($val['cca_id'] == $custom_config['category']['company']){
+											unset($category[0][$key]);
+										}
+									}
 								}
-								echo '<div class="checkbox-inline" style="vertical-align:top;">';
-								$cat_checked = (is_array($item_category) && in_array(element('cca_id', $val), $item_category)) ? 'checked="checked"' : '';
-								echo '<label for="cca_id_' . element('cca_id', $val) . '"><input type="checkbox" name="cmall_category[]" value="' . element('cca_id', $val) . '" ' . $cat_checked . ' id="cca_id_' . element('cca_id', $val) . '" onclick="display_cmall_category(this.checked,\'catwrap_' . element('cca_id', $val) . '\');" />' . element('cca_value', $val) . '</label> ';
-								echo get_subcat($category, $item_category, element('cca_id', $val), $display);
-								echo '</div>';
-								if ($i%3== 2) {
+								
+								$i = 0;
+								foreach (element(0, $category) as $key => $val) {
+									$display = (is_array($item_category) && in_array(element('cca_id', $val), $item_category)) ? "block" : 'none';
+									if ($i%3== 0) {
+										echo '<div>';
+										$open = true;
+									}
+									echo '<div class="checkbox-inline" style="vertical-align:top;">';
+									$cat_checked = (is_array($item_category) && in_array(element('cca_id', $val), $item_category)) ? 'checked="checked"' : '';
+									echo '<label for="cca_id_' . element('cca_id', $val) . '"><input type="checkbox" name="cmall_category[]" value="' . element('cca_id', $val) . '" ' . $cat_checked . ' id="cca_id_' . element('cca_id', $val) . '" onclick="display_cmall_category(this.checked,\'catwrap_' . element('cca_id', $val) . '\');" />' . element('cca_value', $val) . '</label> ';
+									echo get_subcat($category, $item_category, element('cca_id', $val), $display);
+									echo '</div>';
+									if ($i%3== 2) {
+										echo '</div>';
+										$open = false;
+									}
+
+									$i++;
+								}
+								if ($open) {
 									echo '</div>';
 									$open = false;
 								}
-
-								$i++;
 							}
-							if ($open) {
-								echo '</div>';
-								$open = false;
-							}
-						}
-						function get_subcat($category, $item_category, $key, $display)
-						{
+							
 
-							$subcat = element($key, $category);
-							$html = '';
-							if ($subcat) {
-								$html .= '<div class="form-group" id="catwrap_' . $key . '" style="vertical-align:margin-left:10px;top;display:' . $display . ';" >';
-								foreach ($subcat as $skey => $sval) {
-									$display = (is_array($item_category) && in_array(element('cca_id', $sval), $item_category)) ? 'block' : 'none';
-									$cat_checked = (is_array($item_category) && in_array(element('cca_id', $sval), $item_category)) ? 'checked="checked"' : '';
-									$html .= '<div class="checkbox-inline" style="vertical-align:top;margin-left:10px;">';
-									$html .= '<label for="cca_id_' . element('cca_id', $sval) . '"><input type="checkbox" name="cmall_category[]" value="' . element('cca_id', $sval) . '" ' . $cat_checked . ' id="cca_id_' . element('cca_id', $sval) . '" onclick="display_cmall_category(this.checked,\'catwrap_' . element('cca_id', $sval) . '\');" /> ' . element('cca_value', $sval) . '</label>';
-									$html .= get_subcat($category, $item_category, element('cca_id', $sval), $display);
-									$html .= '</div>';
+							?>
+							<script type="text/javascript">
+							//<![CDATA[
+							function display_cmall_category(check, idname) {
+								if (check === true) {
+									$('#' + idname).show();
+								} else {
+									$('#' + idname).hide();
+									$('#' + idname).find('input:checkbox').attr('checked', false);
 								}
-								$html .= '</div>';
 							}
-							return $html;
-						}
-
-						?>
-						<script type="text/javascript">
-						//<![CDATA[
-						function display_cmall_category(check, idname) {
-							if (check === true) {
-								$('#' + idname).show();
-							} else {
-								$('#' + idname).hide();
-								$('#' + idname).find('input:checkbox').attr('checked', false);
-							}
-						}
-						//]]>
-						</script>
+							//]]>
+							</script>
+						</div>
 					</div>
 				</div>
-			</div>
+			<?php }else{ ?>
+				<input type="hidden" name="cmall_category[]" value="2">
+			<?php } ?>
+			
+			
 			<div class="box-table-header">
 				<h4><a data-toggle="collapse" href="#cmalltab2" aria-expanded="true" aria-controls="cmalltab2">기본정보</a></h4>
 				<a data-toggle="collapse" href="#cmalltab2" aria-expanded="true" aria-controls="cmalltab2"><i class="fa fa-chevron-up pull-right"></i></a>
@@ -147,7 +216,14 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">상품페이지주소</label>
 					<div class="col-sm-10 form-inline">
-						<?php echo cmall_item_url(); ?> <input type="text" class="form-control" name="cit_key" value="<?php echo set_value('cit_key', element('cit_key', element('data', $view))); ?>" /> 페이지주소를 입력해주세요
+					<?php 
+					echo cmall_item_url();
+					if($this->session->userdata['mem_admin_flag']==0){?>
+						<input type="text" class="form-control" name="cit_key" value="<?php echo set_value('cit_key', element('cit_key', element('data', $view))); ?>" />
+					<?php }else{ ?>
+						<input type="text" class="form-control" name="cit_key" value="<?php echo set_value('cit_key', element('cit_key', element('data', $view))); ?>" readonly/> 
+					<?php } ?>
+					페이지주소를 입력해주세요
 					</div>
 				</div>
 				<div class="form-group">
@@ -163,76 +239,84 @@
 						<div class="help-inline">정렬순서가 낮은 상품이 먼저 나옵니다</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">PC 레이아웃/스킨</label>
-					<div class="col-sm-10 form-inline">
-						레이아웃 -
-						<select name="item_layout" id="item_layout" class="form-control" >
-							<?php echo element('item_layout_option', element('data', $view)); ?>
-						</select>
-						사이드바 -
-						<select class="form-control" name="item_sidebar" id="item_sidebar">
-							<option value="">기본설정따름</option>
-							<option value="1" <?php echo set_select('item_sidebar', '1', (element('item_sidebar', element('data', $view)) === '1' ? true : false)); ?> >사용</option>
-							<option value="2" <?php echo set_select('item_sidebar', '2', (element('item_sidebar', element('data', $view)) === '2' ? true : false)); ?> >사용하지않음</option>
-						</select>
-						스킨 -
-						<select name="item_skin" id="item_skin" class="form-control" >
-							<?php echo element('item_skin_option', element('data', $view)); ?>
-						</select>
+				<?php if($this->session->userdata['mem_admin_flag']==0){?>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">PC 레이아웃/스킨</label>
+						<div class="col-sm-10 form-inline">
+							레이아웃 -
+							<select name="item_layout" id="item_layout" class="form-control" >
+								<?php echo element('item_layout_option', element('data', $view)); ?>
+							</select>
+							사이드바 -
+							<select class="form-control" name="item_sidebar" id="item_sidebar">
+								<option value="">기본설정따름</option>
+								<option value="1" <?php echo set_select('item_sidebar', '1', (element('item_sidebar', element('data', $view)) === '1' ? true : false)); ?> >사용</option>
+								<option value="2" <?php echo set_select('item_sidebar', '2', (element('item_sidebar', element('data', $view)) === '2' ? true : false)); ?> >사용하지않음</option>
+							</select>
+							스킨 -
+							<select name="item_skin" id="item_skin" class="form-control" >
+								<?php echo element('item_skin_option', element('data', $view)); ?>
+							</select>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">모바일 레이아웃/스킨</label>
-					<div class="col-sm-10 form-inline">
-						레이아웃 -
-						<select name="item_mobile_layout" id="item_mobile_layout" class="form-control" >
-						<?php echo element('item_mobile_layout_option', element('data', $view)); ?>
-						</select>
-						사이드바 -
-						<select class="form-control" name="item_mobile_sidebar" id="item_mobile_sidebar">
-							<option value="">기본설정따름</option>
-							<option value="1" <?php echo set_select('item_mobile_sidebar', '1', (element('item_mobile_sidebar', element('data', $view)) === '1' ? true : false)); ?> >사용</option>
-							<option value="2" <?php echo set_select('item_mobile_sidebar', '2', (element('item_mobile_sidebar', element('data', $view)) === '2' ? true : false)); ?> >사용하지않음</option>
-						</select>
-						스킨 -
-						<select name="item_mobile_skin" id="item_mobile_skin" class="form-control" >
-							<?php echo element('item_mobile_skin_option', element('data', $view)); ?>
-						</select>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">모바일 레이아웃/스킨</label>
+						<div class="col-sm-10 form-inline">
+							레이아웃 -
+							<select name="item_mobile_layout" id="item_mobile_layout" class="form-control" >
+							<?php echo element('item_mobile_layout_option', element('data', $view)); ?>
+							</select>
+							사이드바 -
+							<select class="form-control" name="item_mobile_sidebar" id="item_mobile_sidebar">
+								<option value="">기본설정따름</option>
+								<option value="1" <?php echo set_select('item_mobile_sidebar', '1', (element('item_mobile_sidebar', element('data', $view)) === '1' ? true : false)); ?> >사용</option>
+								<option value="2" <?php echo set_select('item_mobile_sidebar', '2', (element('item_mobile_sidebar', element('data', $view)) === '2' ? true : false)); ?> >사용하지않음</option>
+							</select>
+							스킨 -
+							<select name="item_mobile_skin" id="item_mobile_skin" class="form-control" >
+								<?php echo element('item_mobile_skin_option', element('data', $view)); ?>
+							</select>
+						</div>
 					</div>
-				</div>
+				<?php }else{ ?>
+					<input type="hidden" name="item_layout" value="">
+					<input type="hidden" name="item_sidebar" value="">
+					<input type="hidden" name="item_skin" value="">
+					
+					<input type="hidden" name="item_mobile_layout" value="">
+					<input type="hidden" name="item_mobile_sidebar" value="">
+					<input type="hidden" name="item_mobile_skin" value="">
+				<?php } ?>
 			</div>
 			<div class="box-table-header">
 				<h4><a data-toggle="collapse" href="#cmalltab3" aria-expanded="true" aria-controls="cmalltab3">세부정보</a></h4>
 				<a data-toggle="collapse" href="#cmalltab3" aria-expanded="true" aria-controls="cmalltab3"><i class="fa fa-chevron-up pull-right"></i></a>
 			</div>
 			<div class="collapse in" id="cmalltab3">
+				<?php if($this->session->userdata['mem_admin_flag']==0){?>
+					<input type="hidden" name="cit_money_type" value="f">
+				<?php }else{ ?>
+					<input type="hidden" name="cit_money_type" value="c">
+				<?php } ?>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">화폐선택</label>
-					<div class="col-sm-10 form-inline">
-						<select class="form-control" name="cit_money_type" id="cit_money_type" onChange="asmo_money_type(this.value)">
-							<option value="f" <?=set_select('cit_money_type', 'f', (element('cit_money_type', element('data', $view)) === 'f' ? true : false)); ?> >열매</option>
-							<option value="c" <?=set_select('cit_money_type', 'c', (element('cit_money_type', element('data', $view)) === 'c' ? true : false)); ?> >코인</option>
-						</select>
-						<script type="text/javascript">
-						//<![CDATA[
-						function asmo_money_type(arg) {
-							if (arg === 'f') {
-								$('#seum_money_txt').text("원");
-							} else {
-								$('#seum_money_txt').text("개");
-							}
-						}
-						//]]>
-						</script>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">판매가격</label>
+					<label class="col-sm-2 control-label">
+						<?php if($this->session->userdata['mem_admin_flag']==0){?>
+							교환 열매
+						<?php }else{ ?>
+							교환 포인트
+						<?php } ?>
+					</label>
 					<div class="col-sm-10 form-inline">
 						<input type="number" class="form-control" name="cit_price" value="<?php echo set_value('cit_price', element('cit_price', element('data', $view))); ?>" />
 						<span id="seum_money_txt">
 						<?php if(element('cit_money_type', element('data', $view)) === 'c'){?>개<?php }else{ ?>원<?php } ?>
+						</span>
+						
+						<span class="help-inline">
+							<input type="hidden" name="citt_deposit" value="<?php echo element('citt_deposit',element('data',$view));?>">
+							<div id="citt_deposit_viewer" class="<?php echo (element('citt_deposit',element('data',$view)) > 0)?"":"dn"; ?>">
+								예치금차감금액 : <span id="citt_deposit" ><?php echo "-".number_format(element('citt_deposit',element('data',$view)));?></span>
+							</div>
 						</span>
 					</div>
 				</div>
@@ -284,26 +368,26 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">판매가능</label>
+					<label class="col-sm-2 control-label">교환여부</label>
 					<div class="col-sm-10">
 						<label for="cit_status" class="checkbox-inline">
-							<input type="checkbox" name="cit_status" id="cit_status" value="1" <?php echo set_checkbox('cit_status', '1', (element('cit_status', element('data', $view)) ? true : false)); ?> /> 판매합니다
+							<input type="checkbox" name="cit_status" id="cit_status" value="1" <?php echo set_checkbox('cit_status', '1', (element('cit_status', element('data', $view)) ? true : false)); ?> /> 교환합니다
 						</label>
-						<div class="help-inline" >체크를 해제하시면 상품 리스트에서 사라지며, 구매할 수 없습니다. </div>
+						<div class="help-inline" >체크를 해제하시면 복지교환소 상품리스트에서 사라지며, 교환할 수 없습니다.​</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label">한번만 구매</label>
+					<label class="col-sm-2 control-label">1회 교환제한​</label>
 					<div class="col-sm-10">
 						<label for="cit_one_sale" class="checkbox-inline">
 							<input type="checkbox" name="cit_one_sale" id="cit_one_sale" value="y" <?php echo ($view['data']['cit_one_sale']=="y")?"checked":""; ?> /> 사용
 						</label>
-						<div class="help-inline" >회원당 1개의 상품을 한번만 구매할 수 있습니다.</div>
+						<div class="help-inline" >직원당 해당 상품을 한번만 교환할 수 있습니다.​</div>
 					</div>
 				</div>
 				
 				<div class="form-group">
-					<label class="col-sm-2 control-label">판매재고</label>
+					<label class="col-sm-2 control-label">한정수량</label>
 					<div class="col-sm-10 form-inline">
 						<label class="radio-inline" for="cit_stock_type_i">
 							<input type="radio" name="cit_stock_type" id="cit_stock_type_i" value="i" checked <?php echo set_radio('cit_stock_type', 'i', (element('cit_stock_type', element('data', $view)) == 'i' ? true : false)); ?> onclick="stock_type('i')" /> 무제한 판매
@@ -348,7 +432,7 @@
 					<label class="col-sm-2 control-label">노출기간</label>
 					<div class="col-sm-10 form-inline">
 						<input type="number" class="form-control" name="cit_download_days" value="<?php echo set_value('cit_download_days', (int) element('cit_download_days', element('data', $view))); ?>" />일
-						<div class="help-inline" >해당기간동안 계속 다운로드 받을 수 있습니다. 0 이면 기간제한 없이 한번 결제후 언제든지 다운로드가 가능합니다</div>
+						<div class="help-inline" >해당기간동안 계속 노출 됩니다. 0 이면 무제한으로 노출 됩니다.</div>
 					</div>
 				</div>
 				<div class="form-group" id="view_type_s">
@@ -358,13 +442,17 @@
                 		<input type="text" class="form-control" name="cit_endDt" id="cit_endDt" value="<?=element('cit_endDt', element('data', $view)); ?>" readonly /> &nbsp;
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">아이템번호</label>
-					<div class="col-sm-10 form-inline">
-						<input type="text" class="form-control" name="cit_item_arr" value="<?php echo set_value('cit_item_arr', element('cit_item_arr', element('data', $view))); ?>" readonly/>
-						<div class="help-inline" ><a href="#item-selector">아이템선택</a>에서 설정해 주세요.</div>
+				<?php if($this->session->userdata['mem_admin_flag']==0){?>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">아이템번호</label>
+						<div class="col-sm-10 form-inline">
+							<input type="text" class="form-control" name="cit_item_arr" value="<?php echo set_value('cit_item_arr', element('cit_item_arr', element('data', $view))); ?>" readonly/>
+							<div class="help-inline" ><a href="#item-selector">아이템선택</a>에서 설정해 주세요.</div>
+						</div>
 					</div>
-				</div>
+				<?php }else{ ?>
+					<input type="hidden" class="form-control" name="cit_item_arr" value=""/>
+				<?php } ?>
 				<div class="form-group" style="display: none">
 					<label class="col-sm-2 control-label">판매자 회원아이디</label>
 					<div class="col-sm-10 form-inline">
@@ -391,52 +479,31 @@
 					</div>
 				</div>
 			</div>
-			<div class="box-table-header">
-				<h4><a data-toggle="collapse" href="#cmalltab5" aria-expanded="true" aria-controls="cmalltab5">상품옵션</a></h4>
-				<a data-toggle="collapse" href="#cmalltab5" aria-expanded="true" aria-controls="cmalltab5"><i class="fa fa-chevron-up pull-right"></i></a>
-			</div>
-			<div class="collapse in" id="cmalltab5">
-				<div class="table-responsive">
-					<table class="table table-hover table-striped table-bordered">
-						<thead>
-							<tr>
-								<th>옵션명 <a href="javascript:;" class="btn btn-xs btn-danger" onClick="add_option();">옵션추가</a></th>
-								<th>첨부파일</th>
-								<th>추가금액</th>
-								<th>사용여부</th>
-							</tr>
-						</thead>
-						<tbody id="item_option_wrap">
-						<?php
-						if (element('item_detail', element('data', $view))) {
-							foreach (element('item_detail', element('data', $view)) as $detail) {
-						?>
-							<tr>
-								<td><input type="text" class="form-control" name="cde_title_update[<?php echo html_escape(element('cde_id', $detail)); ?>]" value="<?php echo html_escape(element('cde_title', $detail)); ?>" /></td>
-								<td class="form-inline">
-									<input type="file" class="form-control" name="cde_file_update[<?php echo html_escape(element('cde_id', $detail)); ?>]" />
-									<?php if (element('cde_filename', $detail)) { ?>
-										<a href="<?php echo admin_url('cmall/itemdownload/download/' . element('cde_id', $detail)); ?>" class="ct_file_name"><?php echo html_escape(element('cde_originname', $detail));?></a>
-									<?php } ?>
-								</td>
-								<td><input type="number" class="form-control" name="cde_price_update[<?php echo html_escape(element('cde_id', $detail)); ?>]" value="<?php echo (int) element('cde_price', $detail); ?>" />원</td>
-								<td><input type="checkbox" name="cde_status_update[<?php echo html_escape(element('cde_id', $detail)); ?>]" value="1" <?php echo (element('cde_status', $detail)) ? ' checked="checked" ' : ''; ?> /></td>
-							</tr>
-						<?php
-							}
+			
+
+			<?php if(element('cit_id', element('data', $view))){?>
+
+				<?php
+					if (element('item_detail', element('data', $view))) {
+						foreach (element('item_detail', element('data', $view)) as $detail) {
+					?>
+						<input type="hidden" name="cde_title_update[<?php echo html_escape(element('cde_id', $detail)); ?>]" value="<?php echo html_escape(element('cde_title', $detail)); ?>" />
+						<!-- <input type="file" class="form-control" name="cde_file_update[<?php echo html_escape(element('cde_id', $detail)); ?>]" /> -->
+						<input type="hidden" class="form-control" name="cde_price_update[<?php echo html_escape(element('cde_id', $detail)); ?>]" value="<?php echo (int) element('cde_price', $detail); ?>" />
+						<input type="hidden" name="cde_status_update[<?php echo html_escape(element('cde_id', $detail)); ?>]" value="1" />
+					<?php
 						}
-						?>
-						</tbody>
-					</table>
-				</div>
-				<script type="text/javascript">
-				//<![CDATA[
-				function add_option() {
-					$('#item_option_wrap').append('<tr><td><input type="text" class="form-control" name="cde_title[]" value="" /></td><td class="form-inline"><input type="file" class="form-control" name="cde_file[]" /></td><td><input type="number" class="form-control" name="cde_price[]" value="0" />원</td><td><input type="checkbox" name="cde_status[]" value="1" checked="checked" /></td></tr>');
-				}
-				//]]>
-				</script>
-			</div>
+					}
+				?>
+
+			<?php }else{ ?>
+				<input type="hidden" name="cde_title[]" value="0">
+				<!-- <input type="file" class="form-control" name="cde_file[]"> -->
+				<input type="hidden" name="cde_price[]" value="0" >
+				<input type="hidden" name="cde_status[]" value="1" checked="checked">
+			<?php } ?>
+			
+
 			<div class="box-table-header">
 				<h4><a data-toggle="collapse" href="#cmalltab6" aria-expanded="true" aria-controls="cmalltab6">이미지</a></h4>
 				<a data-toggle="collapse" href="#cmalltab6" aria-expanded="true" aria-controls="cmalltab6"><i class="fa fa-chevron-up pull-right"></i></a>
@@ -449,7 +516,7 @@
 					<?php
 					if (element('cit_file_' . $k, element('data', $view))) {
 					?>
-						<img src="<?php echo thumb_url('cmallitem', element('cit_file_' . $k, element('data', $view)), 80); ?>" alt="<?php echo isset($detail) ? html_escape(element('cde_title', $detail)) : ''; ?>" title="<?php echo isset($detail) ? html_escape(element('cde_title', $detail)) : ''; ?>" />
+						<img id="cit_file_<?php echo $k;?>_img" src="<?php echo thumb_url('cmallitem', element('cit_file_' . $k, element('data', $view)), 80); ?>" alt="<?php echo isset($detail) ? html_escape(element('cde_title', $detail)) : ''; ?>" title="<?php echo isset($detail) ? html_escape(element('cde_title', $detail)) : ''; ?>" />
 						<label for="cit_file_<?php echo $k; ?>_del">
 							<input type="checkbox" name="cit_file_<?php echo $k; ?>_del" id="cit_file_<?php echo $k; ?>_del" value="1" <?php echo set_checkbox('cit_file_' . $k . '_del', '1'); ?> /> 삭제
 						</label>
@@ -561,6 +628,276 @@ function chk_company_item_setting(){
 	return true;
 }
 
+function setTemplateItem(data){
+
+	document.querySelector("[name='citt_id']").value = data.citt_id;
+	document.querySelector(".citt_id_viewer").textContent = data.citt_id;
+
+	document.querySelector("[name='cit_name']").value = data.citt_name;
+	document.querySelector("#citt_deposit_viewer").classList.remove("dn");
+	document.querySelector("#citt_deposit").textContent = (data.citt_deposit*(-1)).toLocaleString()+"원";
+	document.querySelector("[name='citt_deposit']").value = data.citt_deposit;
+	document.querySelector("[name='cit_price']").value = data.citt_deposit;
+	document.querySelector("[name='cit_summary']").value = data.citt_summary;
+	oEditors.getById.cit_content.exec("PASTE_HTML", [data.citt_content]);
+	oEditors.getById.cit_mobile_content.exec("PASTE_HTML", [data.citt_mobile_content]);
+
+	if(data.citt_file_1!=""){
+
+		targetElement = document.querySelector("[name='cit_file_1']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_1_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_1_del" id="cit_file_1_del" value="1"> 삭제 <input type="hidden" name="citt_file_1" value="'+data.citt_file_1+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_1_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_1_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_1);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+		
+	}
+
+	if(data.citt_file_2!=""){
+
+		targetElement = document.querySelector("[name='cit_file_2']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_2_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_2_del" id="cit_file_2_del" value="1"> 삭제 <input type="hidden" name="citt_file_2" value="'+data.citt_file_2+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_2_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_2_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_2);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+
+	}
+
+	if(data.citt_file_3!=""){
+
+		targetElement = document.querySelector("[name='cit_file_3']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_3_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_3_del" id="cit_file_3_del" value="1"> 삭제 <input type="hidden" name="citt_file_3" value="'+data.citt_file_3+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_3_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_3_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_3);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+
+	}
+
+	if(data.citt_file_4!=""){
+
+		targetElement = document.querySelector("[name='cit_file_4']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_4_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_4_del" id="cit_file_4_del" value="1"> 삭제 <input type="hidden" name="citt_file_4" value="'+data.citt_file_4+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_4_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_4_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_4);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+
+	}
+
+	if(data.citt_file_5!=""){
+
+		targetElement = document.querySelector("[name='cit_file_5']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_5_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_5_del" id="cit_file_5_del" value="1"> 삭제 <input type="hidden" name="citt_file_5" value="'+data.citt_file_5+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_5_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_5_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_5);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+
+	}
+
+	if(data.citt_file_6!=""){
+
+		targetElement = document.querySelector("[name='cit_file_6']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_6_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_6_del" id="cit_file_6_del" value="1"> 삭제 <input type="hidden" name="citt_file_6" value="'+data.citt_file_6+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_6_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_6_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_6);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+
+	}
+
+	if(data.citt_file_7!=""){
+
+		targetElement = document.querySelector("[name='cit_file_7']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_7_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_7_del" id="cit_file_7_del" value="1"> 삭제 <input type="hidden" name="citt_file_7" value="'+data.citt_file_7+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_7_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_7_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_7);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+
+	}
+
+	if(data.citt_file_8!=""){
+
+		targetElement = document.querySelector("[name='cit_file_8']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_8_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_8_del" id="cit_file_8_del" value="1"> 삭제 <input type="hidden" name="citt_file_8" value="'+data.citt_file_8+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_8_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_8_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_8);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+
+	}
+
+	if(data.citt_file_9!=""){
+
+		targetElement = document.querySelector("[name='cit_file_9']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_9_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_9_del" id="cit_file_9_del" value="1"> 삭제 <input type="hidden" name="citt_file_9" value="'+data.citt_file_9+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_9_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_9_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_9);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+
+	}
+
+	if(data.citt_file_10!=""){
+
+		targetElement = document.querySelector("[name='cit_file_9']");
+
+		label = document.createElement("label");
+		label.setAttribute("for", "cit_file_10_del");
+		label.innerHTML = '<input type="checkbox" name="cit_file_10_del" id="cit_file_10_del" value="1"> 삭제 <input type="hidden" name="citt_file_10" value="'+data.citt_file_10+'">';
+
+		targetElement.parentNode.insertBefore(label, targetElement);
+
+		targetElement = document.querySelector("[for='cit_file_10_del']");
+
+		img = document.createElement("img");
+		img.setAttribute("id", "cit_file_10_img");
+		img.setAttribute("width", "80px");
+		img.setAttribute("src", "/uploads/cmallitemtemplate/"+data.citt_file_10);
+
+		targetElement.parentNode.insertBefore(img, targetElement);
+
+	}
+	
+}
+
+function clearTemplateItem(){
+	document.querySelector("[name='citt_id']").value = "";
+	document.querySelector(".citt_id_viewer").textContent = "";
+
+	document.querySelector("[name='cit_name']").value = "";
+	document.querySelector("#citt_deposit_viewer").classList.add("dn");
+	document.querySelector("#citt_deposit").textContent = "";
+	document.querySelector("[name='citt_deposit']").value = 0;
+	document.querySelector("[name='cit_price']").value = 0;
+	document.querySelector("[name='cit_summary']").value = "";
+	oEditors.getById.cit_content.exec("SET_CONTENTS", [""]);
+	oEditors.getById.cit_mobile_content.exec("SET_CONTENTS", [""]);
+
+	for(i = 1; i<11; i++){
+		if(document.querySelector("#cit_file_"+i+"_img")){
+			document.querySelector("[for='cit_file_"+i+"_del']").remove();
+			document.querySelector("#cit_file_"+i+"_img").remove();
+		}
+		
+		if(document.querySelector("[name='cit_file_"+i+"']").value){
+			document.querySelector("[name='cit_file_"+i+"']").value = "";
+		}
+		
+	}
+}
+
+//cit_file_* 파일 업로드를 시도 이벤트
+var cit_files  = document.querySelectorAll("[name^='cit_file_']");
+cit_files.forEach(element => {
+	element.addEventListener("change",function(){
+
+		key = this.id;
+		key = key.replace("cit_file_","");
+		
+		if(document.querySelector("[for='cit_file_"+key+"_del']")){
+			document.querySelector("[for='cit_file_"+key+"_del']").remove();
+			document.querySelector("#cit_file_"+key+"_img").remove();
+		}
+
+	});
+});
+
+
+
 var cmall_categorys = document.querySelectorAll("[name='cmall_category[]']");
 var cit_item_types  = document.querySelectorAll("[name='cit_item_type']");
 
@@ -590,17 +927,6 @@ cmall_categorys.forEach(element => {
     });
 });
 
-//화페선택 변경 이벤트
-document.querySelector("#cit_money_type").addEventListener("change",function() {
-	if(this.value == "c"){
-		document.querySelectorAll("[name='cmall_category[]']:checked").forEach(element => {
-			if(element.value == custom_config_company_category){
-				alert("커래버코인은 기업몰 카테고리에서는 사용할 수 없습니다.");
-				document.querySelector("#cit_money_type").value = "f";
-			}
-		});
-	}
-});
 
 //상품구분 변경 이벤트
 cit_item_types.forEach(element => {
@@ -621,6 +947,30 @@ cit_item_types.forEach(element => {
 		}
 	});
 });
+
+//템플릿상품, 자체상품 선택 이벤트
+document.querySelectorAll('[name="citt_id_use"]').forEach( element => {
+	element.addEventListener("change",function(){
+		if(this.value == 1){ //템플릿 상품
+			document.querySelector('#template-selecter').classList.remove('dn');
+		}else{
+			//자체상품
+			clearTemplateItem();
+			document.querySelector('#template-selecter').classList.add('dn');
+		}
+	});
+});
+
+// 템플릿 선택 버튼 이벤트
+if(document.querySelector(".btn-template-selector")){
+	document.querySelector(".btn-template-selector").addEventListener("click",function(){
+
+		clearTemplateItem();
+
+		window.open('/admin/cmall/cmallitem/templateselecter', 'template-select-popup', 'width=1200px, height=630px, menubar=no, toolbar=no, location=no, status=no, scrollbars=no');
+
+	});
+}
 
 document.querySelector(".btn-item-setting-popup").addEventListener("click",function(){
 	ewWindow = window.open('/admin/cmall/cmallitem/itemsetting?item_sno_data='+document.querySelector('[name="cit_item_arr"]').value, 'item-setting-popup', 'width=1200px, height=630px, menubar=no, toolbar=no, location=no, status=no, scrollbars=no');
@@ -681,17 +1031,6 @@ jQuery(function($) {
 				}
 			});
 
-			if(option_count == 0) {
-				alert("상품옵션을 하나이상 입력해 주십시오.");
-				$("#cmalltab5").focus();
-				return false;
-			}
-
-			if(option_count > 0 && (option_file == 0 || option_count > option_file)) {
-				alert("입력하신 상품옵션의 파일을 업로드해 주십시오.");
-				$("#cmalltab5").focus();
-				return false;
-			}
 
 			form.submit();
 		}
@@ -743,8 +1082,13 @@ async function page_load(){
 
 	await get_item_selector();
 
-	if(document.querySelector('[name="cit_item_type"]:checked').value=='i'){
-		document.querySelector('#item-selector').classList.remove('dn');
+	if(document.querySelectorAll('[name="cit_item_type"]').length == 1){
+		
+	}else{
+
+		if(document.querySelector('[name="cit_item_type"]:checked').value=='i'){
+			document.querySelector('#item-selector').classList.remove('dn');
+		}
 	}
 	
 	//아이템선택 아바타 클릭 이벤트

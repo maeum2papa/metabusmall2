@@ -23,7 +23,9 @@ class Cmall_item_template_model extends CB_Model
 	public $primary_key = 'citt_id'; // 사용되는 테이블의 프라이머리키
 
 	public $allow_order = array(
-        'citt_id desc'
+        'citt_id desc',
+		'citt_name asc',
+		'citt_deposit asc'
     );
 
 	function __construct()
@@ -48,7 +50,7 @@ class Cmall_item_template_model extends CB_Model
 		if ($where) {
 			$this->db->where($where);
 		}
-	
+		
 		$this->db->order_by($orderby);
 		if ($limit) {
 			$this->db->limit($limit, $offset);
@@ -56,7 +58,6 @@ class Cmall_item_template_model extends CB_Model
 		$qry = $this->db->get();
 		$result['list'] = $qry->result_array();
 		
-
 
 		$this->db->select('count(*) as rownum');
 		$this->db->from($this->_table);

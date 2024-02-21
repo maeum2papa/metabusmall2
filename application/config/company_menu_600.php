@@ -13,10 +13,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['admin_page_menu']['cmall'] =
 	array(
-		'__config'					=> array('SHOP 관리', 'fa-shopping-cart'),
+		'__config'					=> array('교환소관리', 'fa-shopping-cart'),
 		'menu'						=> array(
-			'cmallorder'			=> array('주문내역', ''),
-			'cmallitem'				=> array('상품관리', ''),
+			'cmallitem'				=> array('복지교환소관리', ''),
+			'cmallorder'			=> array('복지교환소 주문내역', ''),
 			'qna'					=> array('상품문의', ''),
 			'review'				=> array('상품사용후기', ''),
             '../deposit/companydeposit/lists'			=> array('예치금변동내역', '')

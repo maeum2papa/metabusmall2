@@ -36,6 +36,11 @@ class Cmallitem extends CB_Controller
 	 */
 	protected $helpers = array('form', 'array', 'cmall', 'dhtml_editor');
 
+	/**
+	 * 상품종류 1:컬래버랜드배송, 2:기프티콘발송, 3:업체배송
+	 */
+	protected $shipType = array(NULL,"컬래버랜드배송","기프티콘발송","업체배송");
+
 	function __construct()
 	{
 		parent::__construct();
@@ -310,6 +315,14 @@ class Cmallitem extends CB_Controller
 		}
 
 		/**
+		 * 템플릿상품 사용인데 템플릿이 선택 안된 경우
+		 */
+		if($this->input->post("citt_id_use") == 1 && $this->input->post("citt_id") == ""){
+			alert(cmsg("1104"));
+			exit;
+		}
+
+		/**
 		 * Validation 라이브러리를 가져옵니다
 		 */
 		$this->load->library('form_validation');
@@ -563,8 +576,55 @@ class Cmallitem extends CB_Controller
 		$file_error = '';
 
 		if ($form_validation) {
+
+			//cit_file_* 업로드
 			$this->load->library('upload');
 			for ($k = 1; $k <= 10; $k++) {
+
+				//템플릿 상품 이미지 복사
+				if($this->input->post("citt_file_".$k)){
+
+					$upload_path = config_item('uploads_dir') . '/cmallitem/';
+					if (is_dir($upload_path) === false) {
+						mkdir($upload_path, 0707);
+						$file = $upload_path . 'index.php';
+						$f = @fopen($file, 'w');
+						@fwrite($f, '');
+						@fclose($f);
+						@chmod($file, 0644);
+					}
+					$upload_path .= cdate('Y') . '/';
+					if (is_dir($upload_path) === false) {
+						mkdir($upload_path, 0707);
+						$file = $upload_path . 'index.php';
+						$f = @fopen($file, 'w');
+						@fwrite($f, '');
+						@fclose($f);
+						@chmod($file, 0644);
+					}
+					$upload_path .= cdate('m') . '/';
+					if (is_dir($upload_path) === false) {
+						mkdir($upload_path, 0707);
+						$file = $upload_path . 'index.php';
+						$f = @fopen($file, 'w');
+						@fwrite($f, '');
+						@fclose($f);
+						@chmod($file, 0644);
+					}
+
+					$upload_path = config_item('uploads_dir') . '/cmallitem/';
+					$citt_upload_path = config_item('uploads_dir') . '/cmallitemtemplate/';
+
+					if(is_file($citt_upload_path.$this->input->post("citt_file_".$k))){
+
+						@copy($citt_upload_path.$this->input->post("citt_file_".$k),
+						$upload_path.$this->input->post("citt_file_".$k));
+
+						$cit_file[$k] = $this->input->post("citt_file_".$k);
+					}
+				}
+			
+
 				if (isset($_FILES) && isset($_FILES['cit_file_' . $k]) && isset($_FILES['cit_file_' . $k]['name']) && $_FILES['cit_file_' . $k]['name']) {
 					$upload_path = config_item('uploads_dir') . '/cmallitem/';
 					if (is_dir($upload_path) === false) {
@@ -801,6 +861,36 @@ class Cmallitem extends CB_Controller
 			$view['view']['data']['all_category'] = $this->Cmall_category_model->get_all_category();
 
 			/**
+			 * cit_key가 없으면 제안
+			 */
+			if($view['view']['data']['cit_key']==""){
+				$recommend_cit_key = ($this->session->userdata['mem_admin_flag']==0)?"0":"1";
+				$recommend_cit_key = $recommend_cit_key.date("Ymd");
+				$recommend_cit_key = $recommend_cit_key.str_pad($this->session->userdata['company_idx'], 4, '0', STR_PAD_LEFT);
+				
+				$recommend_cit_key_number = $this->{$this->modelname}->get_lately_cit_key($recommend_cit_key);
+				if(!$recommend_cit_key_number){
+					$recommend_cit_key_number = 0;
+				}else{
+					$recommend_cit_key_number = (int)str_replace($recommend_cit_key,"",$recommend_cit_key_number);
+				}
+
+				$recommend_cit_key = $recommend_cit_key.str_pad(($recommend_cit_key_number+1), 4, '0', STR_PAD_LEFT);
+
+				$view['view']['data']['cit_key'] = $recommend_cit_key;
+			}
+
+			/**
+			 * 상품추가 상황이면
+			 */
+			if(!$pid){
+				//상품선택 기본 값
+				$view['view']['data']['citt_id_use'] = 1;
+				$view['view']['data']['cit_order'] = 1;
+			}
+
+
+			/**
 			 * primary key 정보를 저장합니다
 			 */
 			$view['view']['primary_key'] = $primary_key;
@@ -863,6 +953,8 @@ class Cmallitem extends CB_Controller
 				'cit_endDt' => $cit_endDt,
 				'cit_item_arr' => $this->input->post('cit_item_arr', null, ''),
 				'cit_one_sale' => $this->input->post('cit_one_sale', null, ''),
+				'citt_id' => $this->input->post('citt_id', null, ''),
+				'citt_deposit' => $this->input->post('citt_deposit', null, '')
 			);
 
 			for ($k = 1; $k <= 10; $k++) {
@@ -928,6 +1020,27 @@ class Cmallitem extends CB_Controller
 					'message',
 					'정상적으로 입력되었습니다'
 				);
+
+				
+				//상품옵션 1개 필수 입력
+				$exp = explode(".",$updatedata['cit_file_1']);
+				$exp = ".".$exp[1];
+
+				$fileupdate = array(
+					'cit_id' => $pid,
+					'mem_id' => $this->member->item('mem_id'),
+					'cde_title' => "0",
+					'cde_price' => 0,
+					'cde_originname' => uniqid().$exp,
+					'cde_filename' => $updatedata['cit_file_1'],
+					'cde_filesize' => filesize(config_item('uploads_dir') . '/cmallitem/'.$updatedata['cit_file_1']),
+					'cde_type' => str_replace(".","",strtolower($exp)),
+					'cde_is_image' => 1,
+					'cde_datetime' => cdate('Y-m-d H:i:s'),
+					'cde_ip' => $this->input->ip_address(),
+					'cde_status' => 1,
+				);
+				$this->Cmall_item_detail_model->insert($fileupdate);
 			}
 
 			$this->load->model('Cmall_item_history_model');
@@ -1368,5 +1481,77 @@ class Cmallitem extends CB_Controller
 			echo '<option value='.$v['cate_sno'].'>'.$v['cate_kr'].'</option>';
 		}
 
+	}
+
+
+	/**
+	 * 템플릿 선택 팝업
+	 */
+	public function templateselecter(){
+
+		$this->load->model("Cmall_item_template_model");
+
+		$page = (((int) $this->input->get('page')) > 0) ? ((int) $this->input->get('page')) : 1;
+		$per_page = $this->cbconfig->item('list_count') ? (int) $this->cbconfig->item('list_count') : 20;
+		$offset = ($page - 1) * $per_page;
+
+		$where = array();
+		$where["citt_status"] = 1; //1은 노출
+
+		if($this->input->get("search_item_value")!=''){
+			$where["citt_name like "] = "%".$this->input->get("search_item_value")."%";
+		}
+
+		$orderby = ($this->input->get('sort')) ? $this->input->get('sort') : 'citt_id desc';
+
+		$result = $this->Cmall_item_template_model->get_item_list($per_page, $offset, $where, $orderby);
+		
+		if(count($result['list'])>0){
+			foreach($result['list'] as $k=>$v){
+				$v['citt_ship_type'] = $this->shipType[$v['citt_ship_type']];
+				$result['list'][$k] = $v;
+			}
+		}
+
+		$view['view']['data'] = $result;
+
+		/**
+		 * 어드민 레이아웃을 정의합니다
+		 */
+		$layoutconfig = array('layout' => 'layout_popup', 'skin' => 'templateselecter');
+		$view['layout'] = $this->managelayout->admin($layoutconfig, $this->cbconfig->get_device_view_type());
+		$this->data = $view;
+		$this->layout = element('layout_skin_file', element('layout', $view));
+		$this->view = element('view_skin_file', element('layout', $view));
+	}
+
+	/**
+	 * 템플릿 선택 팝업 안에서 템플릿 내용 보기
+	 */
+	public function templateview($pid = 0){
+
+		if ($pid) {
+			$pid = (int) $pid;
+			if (empty($pid) OR $pid < 1) {
+				show_404();
+			}
+		}
+
+		$this->load->model("Cmall_item_template_model");
+
+		$view['view']['data'] = $this->Cmall_item_template_model->get_one($pid);
+
+		if($view['view']['data']['citt_id']){
+			$view['view']['data']['citt_ship_type'] = $this->shipType[$view['view']['data']['citt_ship_type']];
+		}
+
+		/**
+		 * 어드민 레이아웃을 정의합니다
+		 */
+		$layoutconfig = array('layout' => 'layout_popup', 'skin' => 'templateview');
+		$view['layout'] = $this->managelayout->admin($layoutconfig, $this->cbconfig->get_device_view_type());
+		$this->data = $view;
+		$this->layout = element('layout_skin_file', element('layout', $view));
+		$this->view = element('view_skin_file', element('layout', $view));
 	}
 }

@@ -354,4 +354,27 @@ class Cmall_item_model extends CB_Model
 
 		return $result;
     }
+
+
+    /**
+     * 최근 cit_key 구하기 (상품페이지주소 추천하기 위해서)
+     */
+    public function get_lately_cit_key($cit_key){
+        
+        $this->db->select('cit_key');
+		$this->db->from($this->_table);
+
+        $where = array();
+        $where["cit_key like "] = $cit_key."%";
+        $this->db->where($where);
+
+        $this->db->order_by("cit_key desc");
+
+        $this->db->limit(1,0);
+
+        $qry = $this->db->get();
+        $row = $qry->row_array();
+        
+        return $row['cit_key'];
+    }
 }
