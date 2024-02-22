@@ -242,7 +242,7 @@ if ( ! function_exists('busiCoin')) {
 if ( ! function_exists('debug')) {
 	function debug($data=''){
 		if($data == '' || $data == null) $data = " ";
-		echo "<xmp style='background:black; color:#43db20; font-size:11px; line-height:16px; text-align:left; position:relative; z-index:1000;'>";
+		echo "<xmp style='background:black; color:#43db20; font-size:11px; line-height:16px; text-align:left; position:relative; z-index:1000; padding-left:70px;'>";
 		print_r($data);
 		echo "</xmp>";
 	}

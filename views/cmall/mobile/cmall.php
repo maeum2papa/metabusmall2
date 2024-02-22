@@ -147,7 +147,7 @@
 
 		<div class="asmo_common_goods_list asmo_itemmall_recom">
 			<div class="reco_top_box">
-				<strong><span>아이템몰</span> 추천상품</strong>
+				<strong><span>컬래버랜드</span> 아이템교환소</strong>
 				<a href="<?php echo site_url('cmall/lists/6'); ?>">더보기</a>
 			</div>
 
@@ -190,17 +190,7 @@
 								</div>
 
 								<div class="info_desc_right">
-									<?php
-										if($item['cit_money_type']=='f'){
-											?>
-											<span id="price" class="asmo_price_fruit"><?php echo number_format(element('fruit_cit_price', $item)); ?></span>개
-											<?php
-										}else{
-											?>
-											<span id="price" class="asmo_price_coin"><?php echo number_format(element('cit_price', $item)); ?></span>개
-											<?php
-										}
-									?>
+									<span id="price" class="asmo_price_fruit"><?php echo number_format(element('cit_price', $item)); ?></span>개
 								</div>
 							</div>
 						</div>
@@ -213,78 +203,10 @@
 				
 			</div>
 		</div>
-		<div class="asmo_common_goods_list asmo_cmall_bottom_list_wrap">
-			<div class="cmall_official cmall_reco">
+		<div class="asmo_common_goods_list asmo_itemmall_recom">
+			
 				<div class="reco_top_box">
-					<strong><span>공식몰</span> 추천상품</strong>
-					<a href="<?php echo site_url('cmall/lists/1'); ?>">더보기</a>
-				</div>
-
-				<div class="reco_cont_wrap">
-
-					<?php
-					if (element('type2', $view)) {
-						foreach (element('type2', $view) as $item) {
-					?>
-					<div class="reco_cont">
-						<?php if(soldoutYn(element('cit_id', $item)) == 'y'){?>
-							<a onClick="alert('베타테스트 기간에는 구매가 불가합니다');">
-						<?php }else{ ?>
-							<a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>">
-						<?php } ?>
-							<div class="cont_img">
-								<img src="<?php echo thumb_url('cmallitem', element('cit_file_1', $item)); ?>" alt="">
-								
-								<?php if(soldoutYn(element('cit_id', $item)) == 'y'){?>
-								<div class="soldout_mask">
-									<span>구매 불가</span>
-								</div>
-								<?php } ?>
-								
-							</div>
-							<div class="cont_info">
-								<div class="cont_info_title">
-									<p><?php echo html_escape(element('cit_name', $item)); ?></p>
-									<span><?php echo element('cit_summary', $item); ?></span>
-								</div>
-								<div class="cont_info_desc">
-									<div class="info_desc_left">
-										<div class="info_desc_box">
-											<span id="heart_cnt"><?php echo number_format(element('cit_wish_count', $item)); ?></span>
-										</div>
-
-										<div class="info_desc_box">
-											<span id="buy_cnt"><?php echo number_format(element('cit_sell_count', $item)); ?></span>
-										</div>
-									</div>
-
-									<div class="info_desc_right">
-										<?php
-											if($item['cit_money_type']=='f'){
-												?>
-												<span id="price" class="asmo_price_fruit"><?php echo number_format(element('fruit_cit_price', $item)); ?></span>개
-												<?php
-											}else{
-												?>
-												<span id="price" class="asmo_price_coin"><?php echo number_format(element('cit_price', $item)); ?></span>개
-												<?php
-											}
-										?>
-									</div>
-								</div>
-							</div>
-						</a>
-					</div>
-					<?php
-						}
-					}
-					?>
-
-				</div>
-			</div>
-			<div class="cmall_company cmall_reco">
-				<div class="reco_top_box">
-					<strong><span><?=busiNm($this->member->item('company_idx'))?></span> 추천상품</strong>
+					<strong><span><?=busiNm($this->member->item('company_idx'))?></span> 복지교환소</strong>
 					<a href="<?php echo site_url('cmall/lists/2'); ?>">더보기</a>
 				</div>
 
@@ -326,17 +248,7 @@
 									</div>
 
 									<div class="info_desc_right">
-										<?php
-											if($item['cit_money_type']=='f'){
-												?>
-												<span id="price" class="asmo_price_fruit"><?php echo number_format(element('fruit_cit_price', $item)); ?></span>개
-												<?php
-											}else{
-												?>
-												<span id="price" class="asmo_price_coin"><?php echo number_format(element('cit_price', $item)); ?></span>개
-												<?php
-											}
-										?>
+										<span id="price" class="asmo_price_coin"><?php echo number_format(element('cit_price', $item)); ?></span>개
 									</div>
 								</div>
 							</div>
@@ -347,7 +259,7 @@
 					}
 					?>
 				</div>
-			</div>
+			
 		</div>
 	</div>
 </div>

@@ -262,6 +262,7 @@ class Cmall_item_model extends CB_Model
 		$this->db->select('cmall_item.*,cmall_category.cca_id');
 		$this->db->join('cmall_category_rel', 'cmall_category_rel.cit_id = cmall_item.cit_id', 'left');
 		$this->db->join('cmall_category','cmall_category.cca_id = cmall_category_rel.cca_id','left');
+
 		//자사몰 필터링은 위한 조건
 		if($cconfig['custom']['category']['company'] == $config['cca_id']){
 			$where['cmall_item.company_idx'] = $company_idx;
@@ -272,26 +273,6 @@ class Cmall_item_model extends CB_Model
 		$qry = $this->db->get("cmall_item");
 		$result = $qry->result_array();
 		
-		if(count($result)>0){
-
-			//재화가치 가져오기
-			$this->load->model("Company_info_model");
-			$coin_value = $this->Company_info_model->get_company_coin_value();
-
-			foreach($result as $k => $v){
-
-				$result[$k]['fruit_cit_price'] = 0;
-
-				if($v['cit_money_type']=='f'){
-					$result[$k]['fruit_cit_price'] = $v['cit_price'] / $coin_value;
-					if($result[$k]['fruit_cit_price'] < 0){
-						$result[$k]['fruit_cit_price'] = 0;
-					} 
-				}
-				
-			}
-		}
-
 		return $result;
 	}
 

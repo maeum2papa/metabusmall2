@@ -65,15 +65,15 @@ class Cmall extends CB_Controller
 		
 		$config = array(
 			'cca_id' => $cconfig['custom']['category']['item'],
-			'limit' => 5
+			'limit' => 3
 		);
 		$view['view']['type1'] = $this->Cmall_item_model->get_latest_shop($config,$cconfig);
 		
-		$config = array(
-			'cca_id' => $cconfig['custom']['category']['basic'],
-			'limit' => 5
-		);
-		$view['view']['type2'] = $this->Cmall_item_model->get_latest_shop($config,$cconfig);
+		// $config = array(
+		// 	'cca_id' => $cconfig['custom']['category']['basic'],
+		// 	'limit' => 5
+		// );
+		// $view['view']['type2'] = $this->Cmall_item_model->get_latest_shop($config,$cconfig);
 		
 		$config = array(
 			'cca_id' => $cconfig['custom']['category']['company'],
@@ -246,10 +246,19 @@ class Cmall extends CB_Controller
 		$meta_author = str_replace($searchconfig, $replaceconfig, $meta_author);
 		$page_name = str_replace($searchconfig, $replaceconfig, $page_name);
 
+        
+		if($category_id == 6){
+			//아이템 교환소
+			$skin = "listsitem";
+		}else if($category_id == 2){
+			//팀메타 교환소
+			$skin = "lists";
+		}
+
 		$layoutconfig = array(
 			'path' => 'cmall',
 			'layout' => 'layout',
-			'skin' => 'lists',
+			'skin' => $skin,
 			'layout_dir' => $this->cbconfig->item('layout_cmall'),
 			'mobile_layout_dir' => $this->cbconfig->item('mobile_layout_cmall'),
 			'use_sidebar' => $this->cbconfig->item('sidebar_cmall'),

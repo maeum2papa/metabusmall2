@@ -1,5 +1,25 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
+<style>
+	body {
+		background: transparent linear-gradient(180deg, #000000 0%, #3E3E3E 100%);
+		background-attachment: fixed;
+	}
+
+	header, .navbar { /* 각종메뉴 숨김처리 */
+		display:none !important;
+	}
+
+
+	
+	footer .container .company_info_box .company li a,
+	footer .container .company_info_box  .company li::after,
+	footer .container .company_info_box .company_info p,
+	.company_info_right_box span,
+	.company_info_right_box strong {
+		color: rgba(177, 177, 177, 1) !important;
+	}
+</style>
 
 <!-- asmo sh 231204 디자인 상 cmall 전체 주석 처리 후 div#asmo_camll 생성 -->
 <!-- <h4>추천상품</h4>
@@ -116,8 +136,11 @@
 
 <div class="asmo_cmall">
 	<div class="asmo_cmall_index">
+		<!-- shop 부분 공통 top box -->
 		<div class="cmall_top_wrap">
 			<div class="top_left_box">
+
+				<h2><a href="<?php echo site_url('cmall'); ?>">교환소</a></h2>
 
 				<div class="status_box status_box_wrap" id="fruit_popup_open">
 					<div class="status_icon">
@@ -138,139 +161,78 @@
 				</div>
 			</div>
 			<div class="top_right_box">
-				<a href="/cmall/wishlist">찜하기목록으로 <?=banner('heart_color')?></a>
-				<a href="/cmall/cart">장바구니 <?=banner('cart')?></a>
-				<a href="/cmall/orderlist">구매내역 <?=banner('purchase_history')?></a>
+				<a href="/cmall/cart">장바구니</a>
+				<a href="/cmall/orderlist">교환내역</a>
+			</div>
+
+		</div>
+
+		<div class="cmall_main_wrap">
+			<div class="swiper-wrap">
+				<div class="cmall_index_slide swiper">
+					<div class="swiper-wrapper">
+							<?=banner('shop_slide_banner','','','<li class="swiper-slide">','</li>')?>
+					</div>
+			
+				</div>
+				<div class="ctrl_wrap">
+					<div class="asmo_pause_btn">
+						<span class="pause_btn"></span>
+					</div>
+					<div class="prev_btn "></div>
+					<div class="pagingInfo">
+						<i>1</i>
+						/
+						<span>5</span>
+					</div>
+					<div class="next_btn "></div>
+				</div>
+			</div>
+			<div class="cmall_guide">
+				<div class="cmall_guide_box"><?=banner('cmall_guide_top')?></div>
+				<div class="cmall_guide_box"><?=banner('cmall_guide_bottom')?></div>
 			</div>
 		</div>
 
-		<div class="swiper-wrap">
-			<div class="cmall_index_slide swiper mySwiper">
-				<div class="swiper-wrapper">
-					
-						<?=banner('shop_slide_banner','','','<li class="swiper-slide">','</li>')?>
-						
+		<div class="asmo_cmall_reco_wrap">
+			<div class="cmall_itemmall cmall_reco">
+				<div class="reco_top_box">
+					<strong>컬래버랜드 아이템교환소</strong>
+					<a href="<?php echo site_url('cmall/lists/6'); ?>">더보기 <span></span></a>
 				</div>
-				
-			</div>
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
-		</div>
 
+				<div class="reco_cont_wrap">
 
-		<div class="cmall_itemmall cmall_reco">
-			<div class="reco_top_box">
-				<strong><span>아이템몰</span> 추천상품</strong>
-				<a href="<?php echo site_url('cmall/lists/6'); ?>">더보기</a>
-			</div>
-
-			<div class="reco_cont_wrap">
-
-			<?php
-			if (element('type1', $view)) {
-				foreach (element('type1', $view) as $item) {
-			?>
-				<div class="reco_cont">
-						<?php if(soldoutYn(element('cit_id', $item)) == 'y'){?>
-							<a onClick="alert('<?php echo cmsg("1103");?>');">
-						<?php }else if(cmall_item_one_sale_order($this->member->item('mem_id'),$item['cit_id'])){ ?>
-							<a onClick="alert('<?php echo cmsg("1102")?>');">
-						<?php }else{ ?>
-							<a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>">
-						<?php } ?>
-
-						<div class="cont_img">
-							<img src="<?php echo thumb_url('cmallitem', element('cit_file_1', $item)); ?>" alt="">
-
-							<?php if(soldoutYn(element('cit_id', $item)) == 'y' || cmall_item_one_sale_order($this->member->item('mem_id'),$item['cit_id'])){?>
-							<div class="soldout_mask">
-								<span>구매 불가</span>
-							</div>
-							<?php } ?>
-								
-						</div>
-						<div class="cont_info">
-							<div class="cont_info_title">
-								<p><?php echo html_escape(element('cit_name', $item)); ?></p>
-								<span><?php echo element('cit_summary', $item); ?></span>
-							</div>
-							<div class="cont_info_desc">
-								<div class="info_desc_left">
-									<div class="info_desc_box">
-										<?=banner('heart')?>
-										<span id="heart_cnt"><?php echo number_format(element('cit_wish_count', $item)); ?></span>
-									</div>
-
-									<div class="info_desc_box">
-										<?=banner('cart_2')?>
-										<span id="buy_cnt"><?php echo number_format(element('cit_sell_count', $item)); ?></span>
-									</div>
-								</div>
-
-								<div class="info_desc_right">
-										<?php
-											if($item['cit_money_type']=='f'){
-												echo banner('fruit');
-												?>
-												<span id="price"><?php echo number_format(element('fruit_cit_price', $item)); ?></span>개
-												<?php
-											}else{
-												echo banner('coin');
-												?>
-												<span id="price"><?php echo number_format(element('cit_price', $item)); ?></span>개
-												<?php
-											}
-										?>
-								</div>
-							</div>
-						</div>
-					</a>
-				</div>
 				<?php
-					}
-				}
+				if (element('type1', $view)) {
+					foreach (element('type1', $view) as $item) {
 				?>
-				
-			</div>
-		</div>
-		<div class="cmall_reco_wrap">
-			<div class="cmall_official cmall_reco">
-				<div class="reco_top_box">
-					<strong><span><?=busiNm($this->member->item('company_idx'))?></span> 복지교환소</strong>
-					<a href="<?php echo site_url('cmall/lists/1'); ?>">더보기</a>
-				</div>
-
-				<div class="reco_cont_wrap">
-
-					<?php
-					if (element('type2', $view)) {
-						foreach (element('type2', $view) as $item) {
-					?>
 					<div class="reco_cont">
-						<?php if(soldoutYn(element('cit_id', $item)) == 'y'){?>
-							<a onClick="alert('<?php echo cmsg("1103");?>');">
-						<?php }else if(cmall_item_one_sale_order($this->member->item('mem_id'),$item['cit_id'])){ ?>
-							<a onClick="alert('<?php echo cmsg("1102")?>');">
-						<?php }else{ ?>
-							<a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>">
-						<?php } ?>
+							<?php if(soldoutYn(element('cit_id', $item)) == 'y'){?>
+								<a onClick="alert('<?php echo cmsg("1103");?>');">
+							<?php }else if(cmall_item_one_sale_order($this->member->item('mem_id'),$item['cit_id'])){ ?>
+								<a onClick="alert('<?php echo cmsg("1102")?>');">
+							<?php }else{ ?>
+								<a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>">
+							<?php } ?>
+
 							<div class="cont_img">
 								<img src="<?php echo thumb_url('cmallitem', element('cit_file_1', $item)); ?>" alt="">
-								
+
 								<?php if(soldoutYn(element('cit_id', $item)) == 'y' || cmall_item_one_sale_order($this->member->item('mem_id'),$item['cit_id'])){?>
 								<div class="soldout_mask">
 									<span>구매 불가</span>
 								</div>
 								<?php } ?>
-								
+									
 							</div>
 							<div class="cont_info">
 								<div class="cont_info_title">
 									<p><?php echo html_escape(element('cit_name', $item)); ?></p>
-									<span><?php echo element('cit_summary', $item); ?></span>
+									<!-- <span><?php echo element('cit_summary', $item); ?></span> -->
 								</div>
 								<div class="cont_info_desc">
-									<div class="info_desc_left">
+									<!-- <div class="info_desc_left">
 										<div class="info_desc_box">
 											<?=banner('heart')?>
 											<span id="heart_cnt"><?php echo number_format(element('cit_wish_count', $item)); ?></span>
@@ -280,22 +242,15 @@
 											<?=banner('cart_2')?>
 											<span id="buy_cnt"><?php echo number_format(element('cit_sell_count', $item)); ?></span>
 										</div>
-									</div>
+									</div> -->
 
 									<div class="info_desc_right">
-										<?php
-											if($item['cit_money_type']=='f'){
+											<?php
 												echo banner('fruit');
-												?>
-												<span id="price"><?php echo number_format(element('fruit_cit_price', $item)); ?></span>개
-												<?php
-											}else{
-												echo banner('coin');
 												?>
 												<span id="price"><?php echo number_format(element('cit_price', $item)); ?></span>개
 												<?php
-											}
-										?>
+											?>
 									</div>
 								</div>
 							</div>
@@ -305,84 +260,80 @@
 						}
 					}
 					?>
-
+					
 				</div>
 			</div>
+			<div class="cmall_reco_wrap">
+				<div class="cmall_official cmall_reco">
+					<div class="reco_top_box">
+						<strong><span><?=busiNm($this->member->item('company_idx'))?></span> 복지교환소</strong>
+						<a href="<?php echo site_url('cmall/lists/2'); ?>">더보기 <span></span></a>
+					</div>
 
-			<!-- // 240215 컬래버랜드 시연을 위해 미노출 처리 -->
-			<div class="cmall_company cmall_reco dn">
-				<div class="reco_top_box">
-					<strong><span><?=busiNm($this->member->item('company_idx'))?></span> 복지교환소</strong>
-					<a href="<?php echo site_url('cmall/lists/2'); ?>">더보기</a>
-				</div>
+					<div class="reco_cont_wrap">
 
-				<div class="reco_cont_wrap">
-				<?php
-					if (element('type3', $view)) {
-						foreach (element('type3', $view) as $item) {
-					?>
-					<div class="reco_cont">
-						<?php if(soldoutYn(element('cit_id', $item)) == 'y'){?>
-							<a onClick="alert('<?php echo cmsg("1103");?>');">
-						<?php }else if(cmall_item_one_sale_order($this->member->item('mem_id'),$item['cit_id'])){ ?>
-							<a onClick="alert('<?php echo cmsg("1102")?>');">
-						<?php }else{ ?>
-							<a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>">
-						<?php } ?>
-							<div class="cont_img">
-								<img src="<?php echo thumb_url('cmallitem', element('cit_file_1', $item)); ?>" alt="">
-
-								<?php if(soldoutYn(element('cit_id', $item)) == 'y' || cmall_item_one_sale_order($this->member->item('mem_id'),$item['cit_id'])){?>
-								<div class="soldout_mask">
-									<span>구매 불가</span>
-								</div>
-								<?php } ?>
-								
-							</div>
-							<div class="cont_info">
-								<div class="cont_info_title">
-									<p><?php echo html_escape(element('cit_name', $item)); ?></p>
-									<span><?php echo element('cit_summary', $item); ?></span>
-								</div>
-								<div class="cont_info_desc">
-									<div class="info_desc_left">
-										<div class="info_desc_box">
-											<?=banner('heart')?>
-											<span id="heart_cnt"><?php echo number_format(element('cit_wish_count', $item)); ?></span>
-										</div>
-
-										<div class="info_desc_box">
-											<?=banner('cart_2')?>
-											<span id="buy_cnt"><?php echo number_format(element('cit_sell_count', $item)); ?></span>
-										</div>
+						<?php
+						if (element('type3', $view)) {
+							foreach (element('type3', $view) as $item) {
+						?>
+						<div class="reco_cont">
+							<?php if(soldoutYn(element('cit_id', $item)) == 'y'){?>
+								<a onClick="alert('<?php echo cmsg("1103");?>');">
+							<?php }else if(cmall_item_one_sale_order($this->member->item('mem_id'),$item['cit_id'])){ ?>
+								<a onClick="alert('<?php echo cmsg("1102")?>');">
+							<?php }else{ ?>
+								<a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>">
+							<?php } ?>
+								<div class="cont_img">
+									<img src="<?php echo thumb_url('cmallitem', element('cit_file_1', $item)); ?>" alt="">
+									
+									<?php if(soldoutYn(element('cit_id', $item)) == 'y' || cmall_item_one_sale_order($this->member->item('mem_id'),$item['cit_id'])){?>
+									<div class="soldout_mask">
+										<span>구매 불가</span>
 									</div>
+									<?php } ?>
+									
+								</div>
+								<div class="cont_info">
+									<div class="cont_info_title">
+										<p><?php echo html_escape(element('cit_name', $item)); ?></p>
+										<!-- <span><?php echo element('cit_summary', $item); ?></span> -->
+									</div>
+									<div class="cont_info_desc">
+										<!-- <div class="info_desc_left">
+											<div class="info_desc_box">
+												<?=banner('heart')?>
+												<span id="heart_cnt"><?php echo number_format(element('cit_wish_count', $item)); ?></span>
+											</div>
 
-									<div class="info_desc_right">
-										<?php
-											if($item['cit_money_type']=='f'){
-												echo banner('fruit');
-												?>
-												<span id="price"><?php echo number_format(element('fruit_cit_price', $item)); ?></span>개
-												<?php
-											}else{
+											<div class="info_desc_box">
+												<?=banner('cart_2')?>
+												<span id="buy_cnt"><?php echo number_format(element('cit_sell_count', $item)); ?></span>
+											</div>
+										</div> -->
+
+										<div class="info_desc_right">
+											<?php
 												echo banner('coin');
 												?>
 												<span id="price"><?php echo number_format(element('cit_price', $item)); ?></span>개
 												<?php
-											}
-										?>
+											?>
+										</div>
 									</div>
 								</div>
-							</div>
-						</a>
-					</div>
-					<?php
+							</a>
+						</div>
+						<?php
+							}
 						}
-					}
-					?>
+						?>
+
+					</div>
 				</div>
 			</div>
 		</div>
+			
 	</div>
 
 	<!-- <div class="status_popup_bg">
@@ -422,26 +373,43 @@
 	const mySwiper = new Swiper('.cmall_index_slide', {
 		speed: 500,
 		// effect: 'fade',
-		slidesPerView : 2,
-		spaceBetween: 16,
 		loop: true,
 		pagination: {
 			el: '.swiper-pagination',
 			clickable: true,
 		},
 		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
+			nextEl: '.next_btn',
+			prevEl: '.prev_btn',
 		},
+	});
+
+	let sw = 0;
+
+	$('.asmo_pause_btn').click(function() {
+		if (sw == 0) {
+			mySwiper.autoplay.stop();
+			$('.asmo_pause_btn').addClass('on');
+			sw = 1;
+		} else {
+			mySwiper.autoplay.start();
+			$('.asmo_pause_btn').removeClass('on');
+			sw = 0;
+		}
+	});
+
+	// mySwiper의 슬라이드 개수를 가져와서 pagingInfo에 넣어주기
+	$('.pagingInfo span').text(mySwiper.slides.length);
+
+	// mySwiper의 슬라이드가 바뀔 때마다 pagingInfo에 현재 슬라이드 번호 넣어주기
+	mySwiper.on('slideChange', function() {
+		$('.pagingInfo i').text(mySwiper.realIndex + 1);
 	});
 
 
 	// asmo sh 231201 shop 페이지 디자인 상 헤더, nav바, 숨김 처리 스크립트
 	$(document).ready(function() {
-		$('header').addClass('dn');
-		$('.navbar').addClass('dn');
-		// $('.sidebar').addClass('dn');
-		// $('footer').addClass('dn');
+		
 
 		$('.main').addClass('add');
 
