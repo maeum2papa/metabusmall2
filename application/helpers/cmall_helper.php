@@ -413,3 +413,28 @@ if ( ! function_exists('cmall_item_one_sale_order')) {
 		return $result;
 	}
 }
+
+
+/**
+ * 상품과 연동된 아이템 카테고리들 구하기
+ */
+if ( ! function_exists('cmall_item_asset_category_link')) {
+	function cmall_item_asset_category_link($cit_item_arr){
+
+		$result = array();
+
+		$CI =& get_instance();
+
+		$CI->load->model(array("Asset_item_model","Asset_category_model"));
+
+		foreach($cit_item_arr as $k => $v){
+			$row = $CI->Asset_item_model->get_one($v);
+			$row = $CI->Asset_category_model->get_one($row['cate_sno']);
+
+			$result[$v] = $row;
+		}
+
+		return $result;
+		
+	}
+}

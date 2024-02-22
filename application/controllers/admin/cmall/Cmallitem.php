@@ -123,6 +123,12 @@ class Cmallitem extends CB_Controller
 				$where["cb_cmall_item.cit_status"] = 0;
 			}	
 		}
+		
+		if(!$this->input->get("cit_item_type")){
+			if($this->session->userdata['mem_admin_flag']==0){
+				$_GET['cit_item_type'][0] = "i";
+			}
+		}
 
 		if($this->input->get("cit_item_type")){
 			$cit_item_types = array();
@@ -210,13 +216,6 @@ class Cmallitem extends CB_Controller
 
 		$view['view']['data'] = $result;
 
-		if($this->session->userdata['mem_admin_flag']==0){
-			$this->load->model("Company_info_model");
-			$forder = "company_name asc";
-			$where = array();
-			$companys =$this->Company_info_model->get_admin_list(0, 9999999999999, $where, '', null, $forder, null, null);
-			$view['view']['data']['companys'] = $companys['list'];
-		}
 
 		/**
 		 * primary key 정보를 저장합니다
@@ -246,7 +245,7 @@ class Cmallitem extends CB_Controller
 
 		// 이벤트가 존재하면 실행합니다
 		$view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
-
+		
 		/**
 		 * 어드민 레이아웃을 정의합니다
 		 */

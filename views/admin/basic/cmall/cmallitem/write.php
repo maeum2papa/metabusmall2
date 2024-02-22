@@ -42,14 +42,10 @@
 					</label>
 					<div class="col-sm-10">
 						<?php if($this->session->userdata['mem_admin_flag']==0){?>
-							<label class="radio-inline" for="cit_item_type_b">
-								<input type="radio" name="cit_item_type" id="cit_item_type_b" value="b" checked <?php echo set_radio('cit_item_type', 'b', (element('cit_item_type', element('data', $view)) == 'b' ? true : false)); ?> /> 기본
-							</label>
-							<label class="radio-inline" for="cit_item_type_i">
-								<input type="radio" name="cit_item_type" id="cit_item_type_i" value="i" <?php echo set_radio('cit_item_type', 'i', (element('cit_item_type', element('data', $view)) == 'i' ? true : false)); ?> /> 아이템
-							</label>
-							<label class="radio-inline" for="cit_item_type_g">
-								<input type="radio" name="cit_item_type" id="cit_item_type_g" value="g" <?php echo set_radio('cit_item_type', 'g', (element('cit_item_type', element('data', $view)) == 'g' ? true : false)); ?> /> 기프티콘 
+							<input type="hidden" name="cit_item_type" value="i">
+							<label class="inline-label">
+								<input type="radio" checked disabled>
+								아이템
 							</label>
 						<?php }else{ ?>
 							<input type="hidden" name="cit_item_type" value="b"/>
@@ -113,96 +109,7 @@
 
 
 			<?php if($this->session->userdata['mem_admin_flag']==0){?>
-				<div class="box-table-header">
-					<h4><a data-toggle="collapse" href="#cmalltab1" aria-expanded="true" aria-controls="cmalltab1">카테고리</a></h4>
-					<a data-toggle="collapse" href="#cmalltab1" aria-expanded="true" aria-controls="cmalltab1"><i class="fa fa-chevron-up pull-right"></i></a>
-				</div>
-				<div class="collapse in" id="cmalltab1">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">카테고리</label>
-						<div class="col-sm-10">
-							<?php
-
-							function get_subcat($category, $item_category, $key, $display)
-							{
-
-								$subcat = element($key, $category);
-								$html = '';
-								if ($subcat) {
-									$html .= '<div class="form-group" id="catwrap_' . $key . '" style="vertical-align:margin-left:10px;top;display:' . $display . ';" >';
-									foreach ($subcat as $skey => $sval) {
-										$display = (is_array($item_category) && in_array(element('cca_id', $sval), $item_category)) ? 'block' : 'none';
-										$cat_checked = (is_array($item_category) && in_array(element('cca_id', $sval), $item_category)) ? 'checked="checked"' : '';
-										$html .= '<div class="checkbox-inline" style="vertical-align:top;margin-left:10px;">';
-										$html .= '<label for="cca_id_' . element('cca_id', $sval) . '"><input type="checkbox" name="cmall_category[]" value="' . element('cca_id', $sval) . '" ' . $cat_checked . ' id="cca_id_' . element('cca_id', $sval) . '" onclick="display_cmall_category(this.checked,\'catwrap_' . element('cca_id', $sval) . '\');" /> ' . element('cca_value', $sval) . '</label>';
-										$html .= get_subcat($category, $item_category, element('cca_id', $sval), $display);
-										$html .= '</div>';
-									}
-									$html .= '</div>';
-								}
-								return $html;
-							}
-
-
-							$open = false;
-							$category = element('all_category', element('data', $view));
-							$item_category = element('category', element('data', $view));
-							if (element(0, $category)) {
-
-								foreach (element(0, $category) as $key => $val) {
-									if($this->session->userdata['mem_admin_flag']!=0){ //기업관리자
-										if($val['cca_id'] != $custom_config['category']['company']){
-											unset($category[0][$key]);
-										}
-									}else{//슈퍼관리자
-										if($val['cca_id'] == $custom_config['category']['company']){
-											unset($category[0][$key]);
-										}
-									}
-								}
-								
-								$i = 0;
-								foreach (element(0, $category) as $key => $val) {
-									$display = (is_array($item_category) && in_array(element('cca_id', $val), $item_category)) ? "block" : 'none';
-									if ($i%3== 0) {
-										echo '<div>';
-										$open = true;
-									}
-									echo '<div class="checkbox-inline" style="vertical-align:top;">';
-									$cat_checked = (is_array($item_category) && in_array(element('cca_id', $val), $item_category)) ? 'checked="checked"' : '';
-									echo '<label for="cca_id_' . element('cca_id', $val) . '"><input type="checkbox" name="cmall_category[]" value="' . element('cca_id', $val) . '" ' . $cat_checked . ' id="cca_id_' . element('cca_id', $val) . '" onclick="display_cmall_category(this.checked,\'catwrap_' . element('cca_id', $val) . '\');" />' . element('cca_value', $val) . '</label> ';
-									echo get_subcat($category, $item_category, element('cca_id', $val), $display);
-									echo '</div>';
-									if ($i%3== 2) {
-										echo '</div>';
-										$open = false;
-									}
-
-									$i++;
-								}
-								if ($open) {
-									echo '</div>';
-									$open = false;
-								}
-							}
-							
-
-							?>
-							<script type="text/javascript">
-							//<![CDATA[
-							function display_cmall_category(check, idname) {
-								if (check === true) {
-									$('#' + idname).show();
-								} else {
-									$('#' + idname).hide();
-									$('#' + idname).find('input:checkbox').attr('checked', false);
-								}
-							}
-							//]]>
-							</script>
-						</div>
-					</div>
-				</div>
+				<input type="hidden" name="cmall_category[]" value="6">
 			<?php }else{ ?>
 				<input type="hidden" name="cmall_category[]" value="2">
 			<?php } ?>
@@ -239,54 +146,13 @@
 						<div class="help-inline">정렬순서가 낮은 상품이 먼저 나옵니다</div>
 					</div>
 				</div>
-				<?php if($this->session->userdata['mem_admin_flag']==0){?>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">PC 레이아웃/스킨</label>
-						<div class="col-sm-10 form-inline">
-							레이아웃 -
-							<select name="item_layout" id="item_layout" class="form-control" >
-								<?php echo element('item_layout_option', element('data', $view)); ?>
-							</select>
-							사이드바 -
-							<select class="form-control" name="item_sidebar" id="item_sidebar">
-								<option value="">기본설정따름</option>
-								<option value="1" <?php echo set_select('item_sidebar', '1', (element('item_sidebar', element('data', $view)) === '1' ? true : false)); ?> >사용</option>
-								<option value="2" <?php echo set_select('item_sidebar', '2', (element('item_sidebar', element('data', $view)) === '2' ? true : false)); ?> >사용하지않음</option>
-							</select>
-							스킨 -
-							<select name="item_skin" id="item_skin" class="form-control" >
-								<?php echo element('item_skin_option', element('data', $view)); ?>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">모바일 레이아웃/스킨</label>
-						<div class="col-sm-10 form-inline">
-							레이아웃 -
-							<select name="item_mobile_layout" id="item_mobile_layout" class="form-control" >
-							<?php echo element('item_mobile_layout_option', element('data', $view)); ?>
-							</select>
-							사이드바 -
-							<select class="form-control" name="item_mobile_sidebar" id="item_mobile_sidebar">
-								<option value="">기본설정따름</option>
-								<option value="1" <?php echo set_select('item_mobile_sidebar', '1', (element('item_mobile_sidebar', element('data', $view)) === '1' ? true : false)); ?> >사용</option>
-								<option value="2" <?php echo set_select('item_mobile_sidebar', '2', (element('item_mobile_sidebar', element('data', $view)) === '2' ? true : false)); ?> >사용하지않음</option>
-							</select>
-							스킨 -
-							<select name="item_mobile_skin" id="item_mobile_skin" class="form-control" >
-								<?php echo element('item_mobile_skin_option', element('data', $view)); ?>
-							</select>
-						</div>
-					</div>
-				<?php }else{ ?>
-					<input type="hidden" name="item_layout" value="">
-					<input type="hidden" name="item_sidebar" value="">
-					<input type="hidden" name="item_skin" value="">
-					
-					<input type="hidden" name="item_mobile_layout" value="">
-					<input type="hidden" name="item_mobile_sidebar" value="">
-					<input type="hidden" name="item_mobile_skin" value="">
-				<?php } ?>
+				<input type="hidden" name="item_layout" value="">
+				<input type="hidden" name="item_sidebar" value="">
+				<input type="hidden" name="item_skin" value="">
+				
+				<input type="hidden" name="item_mobile_layout" value="">
+				<input type="hidden" name="item_mobile_sidebar" value="">
+				<input type="hidden" name="item_mobile_skin" value="">
 			</div>
 			<div class="box-table-header">
 				<h4><a data-toggle="collapse" href="#cmalltab3" aria-expanded="true" aria-controls="cmalltab3">세부정보</a></h4>
@@ -309,7 +175,7 @@
 					<div class="col-sm-10 form-inline">
 						<input type="number" class="form-control" name="cit_price" value="<?php echo set_value('cit_price', element('cit_price', element('data', $view))); ?>" />
 						<span id="seum_money_txt">
-						<?php if(element('cit_money_type', element('data', $view)) === 'c'){?>개<?php }else{ ?>원<?php } ?>
+							개
 						</span>
 						
 						<span class="help-inline">
@@ -373,7 +239,7 @@
 						<label for="cit_status" class="checkbox-inline">
 							<input type="checkbox" name="cit_status" id="cit_status" value="1" <?php echo set_checkbox('cit_status', '1', (element('cit_status', element('data', $view)) ? true : false)); ?> /> 교환합니다
 						</label>
-						<div class="help-inline" >체크를 해제하시면 복지교환소 상품리스트에서 사라지며, 교환할 수 없습니다.​</div>
+						<div class="help-inline" >체크를 해제하시면 상품리스트에서 사라지며, 교환할 수 없습니다.​</div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -897,57 +763,6 @@ cit_files.forEach(element => {
 });
 
 
-
-var cmall_categorys = document.querySelectorAll("[name='cmall_category[]']");
-var cit_item_types  = document.querySelectorAll("[name='cit_item_type']");
-
-
-//카테고리 변경 이벤트
-cmall_categorys.forEach(element => {
-    element.addEventListener("change", function() {
-		//기업몰 선택
-		if(this.value==custom_config_company_category){
-			if(!chk_company_item_setting()){
-				alert("기업몰은 화폐로 열매만 사용 가능합니다.");
-				this.checked = false;
-			}
-
-			document.querySelectorAll("[name='cit_item_type']:checked").forEach(element => {
-				if(element.value == "i" || element.value == "g"){
-					alert("상품구분 아이템, 기프티콘은 기업몰에서 사용할 수 없습니다.");
-					
-					cmall_categorys.forEach(function(element){
-						if(element.value==custom_config_company_category){
-							element.checked = false;
-						}
-					});
-				}
-			});
-		}
-    });
-});
-
-
-//상품구분 변경 이벤트
-cit_item_types.forEach(element => {
-	element.addEventListener("change",function(){
-		if(this.value != "b"){
-			document.querySelectorAll("[name='cmall_category[]']:checked").forEach(element => {
-				if(element.value == custom_config_company_category){
-					alert("상품구분 아이템,기프티콘은 기업몰 카테고리와 함꼐 사용할 수 없습니다.");
-					document.querySelectorAll("[name='cit_item_type']")[0].checked = true;
-				}
-			});
-		}
-
-		if(this.value == 'i'){
-			document.querySelector('#item-selector').classList.remove('dn');
-		}else{
-			document.querySelector('#item-selector').classList.add('dn');
-		}
-	});
-});
-
 //템플릿상품, 자체상품 선택 이벤트
 document.querySelectorAll('[name="citt_id_use"]').forEach( element => {
 	element.addEventListener("change",function(){
@@ -1082,13 +897,10 @@ async function page_load(){
 
 	await get_item_selector();
 
-	if(document.querySelectorAll('[name="cit_item_type"]').length == 1){
-		
+	if(document.querySelector('[name="cit_item_type"]').value=='i'){
+		document.querySelector('#item-selector').classList.remove('dn');
 	}else{
 
-		if(document.querySelector('[name="cit_item_type"]:checked').value=='i'){
-			document.querySelector('#item-selector').classList.remove('dn');
-		}
 	}
 	
 	//아이템선택 아바타 클릭 이벤트

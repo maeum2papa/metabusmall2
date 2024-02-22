@@ -60,41 +60,6 @@
 							</div>
 						</td>
 					</tr>
-					<?php 
-					if($this->session->userdata["mem_admin_flag"]==0){
-					?>
-					<tr>
-						<th>상품구분</th>
-						<td>
-							<div class="checkbox-inline">
-								<input type="checkbox" name="cit_item_type[]" value="b" id="cit_item_type_b" <?php echo (in_array("b",$this->input->get("cit_item_type")))?"checked":"";?>> <label for="cit_item_type_b">기본</label>
-							</div>
-							<div class="checkbox-inline">
-								<input type="checkbox" name="cit_item_type[]" value="i" id="cit_item_type_i" <?php echo (in_array("i",$this->input->get("cit_item_type")))?"checked":"";?>> <label for="cit_item_type_i">아이템</label>
-							</div>
-							<div class="checkbox-inline">
-								<input type="checkbox" name="cit_item_type[]" value="g" id="cit_item_type_g" <?php echo (in_array("g",$this->input->get("cit_item_type")))?"checked":"";?>> <label for="cit_item_type_g">기프티콘</label>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th>카테고리</th>
-						<td>
-							<?php
-								$config_item = config_item("custom");
-							?>
-							<div class="checkbox-inline">
-								<input type="checkbox" name="cmall_category[]" value="<?php echo $config_item['category']['basic'];?>" id="cmall_category_0" <?php echo (in_array($config_item['category']['basic'],$this->input->get("cmall_category")))?"checked":"";?>> <label for="cmall_category_0">공용몰</label>
-							</div>
-							<div class="checkbox-inline">
-								<input type="checkbox" name="cmall_category[]" value="<?php echo $config_item['category']['item'];?>" id="cmall_category_1" <?php echo (in_array($config_item['category']['item'],$this->input->get("cmall_category")))?"checked":"";?>> <label for="cmall_category_1">아이템몰</label>
-							</div>
-							<div class="checkbox-inline">
-								<input type="checkbox" name="cmall_category[]" value="<?php echo $config_item['category']['company'];?>" id="cmall_category_2" <?php echo (in_array($config_item['category']['company'],$this->input->get("cmall_category")))?"checked":"";?>> <label for="cmall_category_2">기업몰</label>
-							</div>
-						</td>
-					</tr>
-					<?php }?>
 					<tr>
 						<th>상품명</th>
 						<td>
@@ -106,24 +71,6 @@
 							<input type="text" name="search_item_value" value="<?php echo $this->input->get("search_item_value");?>" class="form-control px300">
 						</td>
 					</tr>
-					<?php 
-					if($this->session->userdata["mem_admin_flag"]==0){
-					?>
-					<tr>
-						<th>기업</th>
-						<td>
-							<?php
-								foreach($view['data']['companys'] as $k=>$v){
-									?>
-									<div class="checkbox-inline">
-										<input type="checkbox" name="company_idx[]" value="<?php echo $v['company_idx'];?>" id="company_idx_<?php echo $k+1;?>" <?php echo (in_array($v['company_idx'],$this->input->get("company_idx")))?"checked":"";?>> <label for="company_idx_<?php echo $k+1;?>"><?php echo $v['company_name'];?></label>
-									</div>
-									<?php
-								}
-							?>
-						</td>
-					</tr>
-					<?php }?>
 				</table>
 				<div class="mt10">
 					<button class="btn btn-outline btn-default btn-sm" type="submit">검색</button>
@@ -144,7 +91,7 @@
 						<tr>
 							<th><a href="<?php echo element('cit_key', element('sort', $view)); ?>">상품코드</a></th>
 							<?php if($this->session->userdata['mem_admin_flag']==0){?>
-								<th>카테고리</th>
+								<th>카테고리/유형</th>
 							<?php }else{ ?>
 								<th>상품분류</th>
 							<?php } ?>
@@ -160,12 +107,6 @@
 								</a>
 							</th>
 							<th><a href="<?php echo element('cit_download_days', element('sort', $view)); ?>">교환기간</a></th>
-							<?php if($this->session->userdata['mem_admin_flag']==0){?>
-								<th>PC (레이아웃 / 사이드바 / 스킨)</th>
-								<th>모바일 (레이아웃 / 사이드바 / 스킨)</th>
-							<?php }else{ ?>
-								
-							<?php } ?>
 							<th><a href="<?php echo element('cit_order', element('sort', $view)); ?>">정렬순서</a></th>
 							<th><a href="<?php echo element('cit_status', element('sort', $view)); ?>">노출여부</a></th>
 							<th><a href="<?php echo element('cit_sell_count', element('sort', $view)); ?>">교환횟수</a></th>
@@ -181,6 +122,11 @@
 					<?php
 					if (element('list', element('data', $view))) {
 						foreach (element('list', element('data', $view)) as $result) {
+                            
+                            //상품과 연동된 아이템 카테고리
+                            $cit_item_arr = cmall_item_asset_category_link(explode(",",$result['cit_item_arr']));
+                            
+
 							//판매 기간
 							if($result[cit_view_type] == 'n'){
 								if($result[cit_download_days]>0){
@@ -199,7 +145,14 @@
 
 							<?php if($this->session->userdata['mem_admin_flag']==0){?>
 								<td style="width:130px;">
-									<?php foreach (element('category', $result) as $cv) { echo '<label class="label label-info">' . html_escape(element('cca_value', $cv)) . '</label> ';} ?>
+                                    
+                                    <?php if(count($cit_item_arr)>0){
+                                        foreach($cit_item_arr as $v){
+                                            ?>
+                                            <label class="label label-info"><?php echo $v['cate_kr']?></label>
+                                        <?php
+                                        }
+                                    }?>
 									<?php if (element('cit_type1', $result)) { ?><label class="label label-danger">추천</label> <?php } ?>
 									<?php if (element('cit_type2', $result)) { ?><label class="label label-warning">인기</label> <?php } ?>
 									<?php if (element('cit_type3', $result)) { ?><label class="label label-default">신상품</label> <?php } ?>
@@ -221,41 +174,6 @@
 							<td><input type="text" name="cit_name[<?php echo element(element('primary_key', $view), $result); ?>]" class="form-control" value="<?php echo html_escape(element('cit_name', $result)); ?>" /></td>
 							<td style="padding: 0; width:130px;"><input type="number" name="cit_price[<?php echo element(element('primary_key', $view), $result); ?>]" class="form-control" value="<?php echo html_escape(element('cit_price', $result)); ?>" /></td>
 							<td><?=$cit_download_days?></td>
-
-							<?php if($this->session->userdata['mem_admin_flag']==0){?>
-							<td class=" form-group-sm">
-								<select class="form-control" name="item_layout[<?php echo element(element('primary_key', $view), $result); ?>]" >
-									<?php echo element('item_layout_option', $result); ?>
-								</select>
-								<br />
-								<select class="form-control" name="item_sidebar[<?php echo element(element('primary_key', $view), $result); ?>]">
-									<option value="">기본설정따름</option>
-									<option value="1" <?php echo set_select('item_sidebar[' . element(element('primary_key', $view), $result) . ']', '1', (element('item_sidebar', element('meta', $result)) === '1' ? true : false)); ?> >사용</option>
-									<option value="2" <?php echo set_select('item_sidebar[' . element(element('primary_key', $view), $result) . ']', '2', (element('item_sidebar', element('meta', $result)) === '2' ? true : false)); ?> >사용하지않음</option>
-								</select>
-								<br />
-								<select class="form-control" name="item_skin[<?php echo element(element('primary_key', $view), $result); ?>]" >
-									<?php echo element('item_skin_option', $result); ?>
-								</select>
-							</td>
-							<td class=" form-group-sm">
-								<select class="form-control" name="item_mobile_layout[<?php echo element(element('primary_key', $view), $result); ?>]" >
-									<?php echo element('item_mobile_layout_option', $result); ?>
-								</select>
-								<br />
-								<select class="form-control" name="item_mobile_sidebar[<?php echo element(element('primary_key', $view), $result); ?>]">
-									<option value="">기본설정따름</option>
-									<option value="1" <?php echo set_select('item_mobile_sidebar[' . element(element('primary_key', $view), $result) . ']', '1', (element('item_mobile_sidebar', element('meta', $result)) === '1' ? true : false)); ?> >사용</option>
-									<option value="2" <?php echo set_select('item_mobile_sidebar[' . element(element('primary_key', $view), $result) . ']', '2', (element('item_mobile_sidebar', element('meta', $result)) === '2' ? true : false)); ?> >사용하지않음</option>
-								</select>
-								<br />
-								<select class="form-control" name="item_mobile_skin[<?php echo element(element('primary_key', $view), $result); ?>]" >
-									<?php echo element('item_mobile_skin_option', $result); ?>
-								</select>
-							</td>
-							<?php }else{ ?>
-							<?php } ?>
-
 							<td><input type="number" name="cit_order[<?php echo element(element('primary_key', $view), $result); ?>]" class="form-control" value="<?php echo html_escape(element('cit_order', $result)); ?>" style="width: 50px;" /></td>
 							<td><input type="checkbox" name="cit_status[<?php echo element(element('primary_key', $view), $result); ?>]" value="1" <?php echo set_checkbox('cit_status', '1', (element('cit_status', $result) ? true : false)); ?> /></td>
 							<td class="text-right"><?php echo number_format(element('cit_sell_count', $result)); ?></td>
