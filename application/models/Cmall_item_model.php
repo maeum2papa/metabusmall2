@@ -117,7 +117,7 @@ class Cmall_item_model extends CB_Model
 				}
 			}
 		}
-
+		
 		$this->db->select('cmall_item.*');
 		$this->db->from($this->_table);
 
@@ -187,7 +187,7 @@ class Cmall_item_model extends CB_Model
 		$qry = $this->db->get();
 		$rows = $qry->row_array();
 		$result['total_rows'] = $rows['rownum'];
-
+		
 		if(count($result['list'])>0){
 
 			//재화가치 가져오기

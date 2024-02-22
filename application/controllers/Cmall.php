@@ -143,7 +143,7 @@ class Cmall extends CB_Controller
 		// 이벤트가 존재하면 실행합니다
 		$view['view']['event']['before'] = Events::trigger('before', $eventname);
 
-		$this->load->model(array('Cmall_item_model'));
+		$this->load->model(array('Cmall_item_model','Asset_category_model','Asset_item_model'));
 		/**
 		 * 페이지에 숫자가 아닌 문자가 입력되거나 1보다 작은 숫자가 입력되면 에러 페이지를 보여줍니다.
 		 */
@@ -193,6 +193,57 @@ class Cmall extends CB_Controller
 		if(!$category_id){
 			$where["((cit_item_type = 'b' AND company_idx='".$this->member->item('company_idx')."') OR cit_item_type !='b')"] = null;
 		}
+
+        /**
+         * 아이템교한소에서 아이템(Asset) 카테고리 선택
+         */
+        if($category_id == 6){
+
+            $search_cate_sno = array();
+
+            if($this->input->get("search_cate_sno_parent_sno")==""){
+                $_GET['search_cate_sno_parent_sno'] = 5; //아바타
+            }
+    
+            if($this->input->get("search_cate_sno")==""){
+                $_GET['search_cate_sno'] = 5; //아바타
+            }
+
+
+            if($this->input->get("search_cate_sno_parent_sno") == $this->input->get("search_cate_sno")){
+                //하위 아이템(Asset) 카테고리 구하기
+                $asset_category = $this->Asset_category_model->get_all_category();
+
+                if(count($asset_category[$this->input->get("search_cate_sno")])>0){
+                    foreach($asset_category[$this->input->get("search_cate_sno")] as $k=>$v){
+                        $search_cate_sno[] = $v['cate_sno'];
+                    }
+                }
+
+                if(count($search_cate_sno) > 0){
+                    $item_snos = $this->Asset_item_model->get_cate_sno_all($search_cate_sno);
+                    if(count($item_snos)>0){
+                        foreach($item_snos as $v){
+                            $or_where[] = "FIND_IN_SET('".$v."', cit_item_arr)";
+                        }
+                        $where["(".implode(" OR ",$or_where).")"] = null;
+                    }
+                }
+
+            }else if($this->input->get("search_cate_sno_parent_sno") != $this->input->get("search_cate_sno")){
+                $search_cate_sno[] = $this->input->get("search_cate_sno");
+                $item_snos = $this->Asset_item_model->get_cate_sno_all($search_cate_sno);
+                if(count($item_snos)>0){
+                    foreach($item_snos as $v){
+                        $or_where[] = "cit_item_arr = '".$v."'";
+                    }
+                    $where["(".implode(" OR ",$or_where).")"] = null;
+                }
+            }
+
+            
+        }
+
 
 		$result = $this->Cmall_item_model
 			->get_item_list($per_page, $offset, $where, $category_id, $findex, $sfield, $skeyword);
@@ -250,6 +301,20 @@ class Cmall extends CB_Controller
 		if($category_id == 6){
 			//아이템 교환소
 			$skin = "listsitem";
+
+            //아이템 카테고리 구하기
+            $item_categorys = $this->Asset_category_model->get_all_category();
+            
+            // cate_sno == 5 // 아바타
+            $view['view']['data']['item_categorys'][0] = $item_categorys[5];
+
+            // cate_sno == 6 // 랜드 외부
+            $view['view']['data']['item_categorys'][1] = $item_categorys[6];
+
+            // cate_sno == 1 // 랜드 내부
+            $view['view']['data']['item_categorys'][2] = $item_categorys[1];
+
+
 		}else if($category_id == 2){
 			//팀메타 교환소
 			$skin = "lists";
