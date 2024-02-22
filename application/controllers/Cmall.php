@@ -211,15 +211,16 @@ class Cmall extends CB_Controller
 
 
             if($this->input->get("search_cate_sno_parent_sno") == $this->input->get("search_cate_sno")){
+				
                 //하위 아이템(Asset) 카테고리 구하기
                 $asset_category = $this->Asset_category_model->get_all_category();
-
+				
                 if(count($asset_category[$this->input->get("search_cate_sno")])>0){
                     foreach($asset_category[$this->input->get("search_cate_sno")] as $k=>$v){
                         $search_cate_sno[] = $v['cate_sno'];
                     }
                 }
-
+				
                 if(count($search_cate_sno) > 0){
                     $item_snos = $this->Asset_item_model->get_cate_sno_all($search_cate_sno);
                     if(count($item_snos)>0){
@@ -228,7 +229,9 @@ class Cmall extends CB_Controller
                         }
                         $where["(".implode(" OR ",$or_where).")"] = null;
                     }
-                }
+                }else{
+					$where["cit_status"] = ""; //검색 결과를 안가져오기 위함
+				}
 
             }else if($this->input->get("search_cate_sno_parent_sno") != $this->input->get("search_cate_sno")){
                 $search_cate_sno[] = $this->input->get("search_cate_sno");
