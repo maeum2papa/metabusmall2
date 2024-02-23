@@ -25,28 +25,12 @@
 	</div>
 	<!-- //몰 상단 공통 요소  -->
 
-	<?php
-
-		$exchange_limit_product = "";
-		
-		if($view['data']['cit_download_days'] > 0 || ($view['data']['cit_startDt']!=0 && $view['data']['cit_endDt']!=0)){
-			$exchange_limit_product = "기간한정 상품입니다.​";
-		}else if($view['data']['cit_one_sale']=='y'){
-			$exchange_limit_product = "1인당 1회 교환 제한 상품입니다.​";
-		}else if($view['data']['cit_stock_type']=='s'){
-			$exchange_limit_product = "한정수량 제품입니다.​";
-		}
-	?>
-
-	<?php
-		if($exchange_limit_product!=''){
-		?>
-		<!-- 1인당 1회 교환 제한 상품일 때 -->
-			<div class="exchange_limit_product"><span><?php echo $exchange_limit_product;?></span></div>
-		<!-- 1인당 1회 교환 제한 상품일 때 -->
-		<?php
-		}
-	?>
+    <!-- 네비게이터 -->
+    <div>
+        <a href="<?php echo site_url('cmall/lists/6?search_cate_sno_parent_sno='.element('depth', element('data', $view))[0]["cate_parent"].'&search_cate_sno='.element('depth', element('data', $view))[0]["cate_sno"].'&search_set_item=0'); ?>"><?php echo element('depth', element('data', $view))[0]["text"]; ?></a>
+        > 
+        <a href="<?php echo site_url('cmall/lists/6?search_cate_sno_parent_sno='.element('depth', element('data', $view))[1]["cate_parent"].'&search_cate_sno='.element('depth', element('data', $view))[1]["cate_sno"].'&search_set_item='.element('depth', element('data', $view))[1]["set"]); ?>"><?php echo element('depth', element('data', $view))[1]["text"]; ?></a>
+    </div>
 
 	<!-- <h3>상품안내</h3> -->
 	<?php if ($this->member->is_admin()) { ?>

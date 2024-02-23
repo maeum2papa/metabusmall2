@@ -501,11 +501,6 @@ class Cmall extends CB_Controller
 			? display_html_content(element('mobile_footer_content', element('meta', $data)), 1, $thumb_width)
 			: display_html_content(element('footer_content', element('meta', $data)), 1, $thumb_width);
 
-		//열매이면 재화가치 구하기
-		if($data['cit_money_type']=='f'){
-			$this->load->model("Company_info_model");
-			$data['company_coin_value'] = $this->Company_info_model->get_company_coin_value();
-		}
 
 		$view['view']['data'] = $data;
 		$view['view']['item_key'] = $cit_key;
@@ -549,11 +544,39 @@ class Cmall extends CB_Controller
 		$meta_keywords = str_replace($searchconfig, $replaceconfig, $meta_keywords);
 		$meta_author = str_replace($searchconfig, $replaceconfig, $meta_author);
 		$page_name = str_replace($searchconfig, $replaceconfig, $page_name);
+		
+		if(cmall_item_parent_category($data['cit_id']) == 6){
+			$skin = "itemitem";
+
+			$view['view']['data']['depth'][0] = "";
+			$view['view']['data']['depth'][1] = "";
+
+			$this->load->model("Asset_item_model");
+			$this->load->model("Asset_category_model");
+
+			$cit_item_arr = explode(",",$view['view']['data']['cit_item_arr']);
+			
+			$asset_item = $this->Asset_item_model->get_one($cit_item_arr[0]);
+			$asset_category = $this->Asset_category_model->get_one($asset_item['cate_sno']);
+
+			$view['view']['data']['depth'][1] = array("cate_parent"=>$asset_category['cate_parent'],"cate_sno"=>$asset_category['cate_sno'],"text"=>$asset_category['cate_kr'],"set"=>0);
+			
+			if(strpos($view['view']['data']['cit_item_arr'],",") > 0){
+				$view['view']['data']['depth'][1] = array("cate_parent"=>$asset_category['cate_parent'],"cate_sno"=>$asset_category['cate_parent'],"text"=>"세트","set"=>1);
+			}
+			
+			$asset_category_parent = $this->Asset_category_model->get_one($asset_category['cate_parent']);
+
+			$view['view']['data']['depth'][0] = array("cate_parent"=>$asset_category['cate_parent'],"cate_sno"=>$asset_category['cate_parent'],"text"=>$asset_category_parent['cate_kr'],"set"=>0);
+			
+		}else{
+			$skin = "item";
+		}
 
 		$layoutconfig = array(
 			'path' => 'cmall',
 			'layout' => 'layout',
-			'skin' => 'item',
+			'skin' => $skin,
 			'layout_dir' => $layout_dir,
 			'mobile_layout_dir' => $mobile_layout_dir,
 			'use_sidebar' => $use_sidebar,

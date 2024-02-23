@@ -21,6 +21,13 @@
 	.company_info_right_box strong {
 		color: rgba(177, 177, 177, 1) !important;
 	}
+
+    a{
+        color:white;
+    }
+    a:hover{
+        color:orange;
+    }
 </style>
 
 <!-- asmo sh 231205 shop div#item 감싸는 div#asmo_cmall 생성 -->
@@ -59,7 +66,7 @@
 		</div>
 
 		<div class="product_box_wrap_top">
-			<strong><?=busiNm($this->member->item('company_idx'))?> 복지교환소<!-- 리스트 페이지 제목 들어가야 합니다. --> </strong>
+			<strong>컬래버랜드 아이템교환소<!-- 리스트 페이지 제목 들어가야 합니다. --> </strong>
 		</div>
 
 		<?php if (element('header_content', element('data', $view))) { ?>
@@ -99,52 +106,25 @@
 
 				<!-- asmo sh 231206 디자인 상 상품 제목 제외하고 주석처리 및 fixed div로 재배치 -->
 				<div class="product-right col-xs-12 col-lg-6">
-					
-					<?php
 
-						$exchange_limit_product = "";
-						
-						if($view['data']['cit_download_days'] > 0 || ($view['data']['cit_startDt']!=0 && $view['data']['cit_endDt']!=0)){
-							$exchange_limit_product = "기간한정 상품입니다.​";
-						}else if($view['data']['cit_one_sale']=='y'){
-							$exchange_limit_product = "1인당 1회 교환 제한 상품입니다.​";
-						}else if($view['data']['cit_stock_type']=='s'){
-							$exchange_limit_product = "한정수량 제품입니다.​";
-						}
-					?>
-
-					<?php
-						if($exchange_limit_product!=''){
-						?>
-						<!-- 1인당 1회 교환 제한 상품일 때 -->
-							<div class="exchange_limit_product"><span><?php echo $exchange_limit_product;?></span></div>
-						<!-- 1인당 1회 교환 제한 상품일 때 -->
-						<?php
-						}
-					?>
-					
-
+                    <!-- 네비게이터 -->
+                    <div>
+                        <a href="<?php echo site_url('cmall/lists/6?search_cate_sno_parent_sno='.element('depth', element('data', $view))[0]["cate_parent"].'&search_cate_sno='.element('depth', element('data', $view))[0]["cate_sno"].'&search_set_item=0'); ?>"><?php echo element('depth', element('data', $view))[0]["text"]; ?></a>
+                        > 
+                        <a href="<?php echo site_url('cmall/lists/6?search_cate_sno_parent_sno='.element('depth', element('data', $view))[1]["cate_parent"].'&search_cate_sno='.element('depth', element('data', $view))[1]["cate_sno"].'&search_set_item='.element('depth', element('data', $view))[1]["set"]); ?>"><?php echo element('depth', element('data', $view))[1]["text"]; ?></a>
+                    </div>
+                    
 					<div class="product-title"><?php echo html_escape(element('cit_name', element('data', $view))); ?></div>
 
 					<div class="cart_total_price">
 						<div class="total_price_type">
-							<?php
-								if($item['cit_money_type']=='f'){
-									echo banner('fruit');
-									?>
-									<?php
-								}else{
-									echo banner('coin');
-									?>
-									<?php
-								}
-							?>
+							<?php echo banner('fruit'); ?>
 						</div>
 						<div class="total_order_price_box"><span id="total_order_price">0</span>개</div>
 					</div>
 
 					<div class="product-intro">
-						<p><?php echo element('cit_summary', element('data', $view)); ?></p>
+						<p><?php echo nl2br(element('cit_summary', element('data', $view))); ?></p>
 					</div>
 
 					<?php
@@ -159,10 +139,6 @@
 							<?php
 							foreach (element('detail', element('data', $view)) as $detail) {
 								$price = element('cit_price', element('data', $view)) + element('cde_price', $detail);
-								if($view['data']['company_coin_value']){
-									$price = $price / $view['data']['company_coin_value'];
-									if($price < 0) $price = 0;
-								}
 							?>
 								<li>
 									<div class="opt-name">
@@ -506,7 +482,7 @@ jQuery(function($){
 			$sel = jQuery('input[name^=chk_detail]:checked'),
 			$total_order_price = $(this);
 
-		if($sel.size() == 0){
+        if($sel.size() == 0){
             jQuery('input[name="chk_detail[]"]:eq(0)').prop( "checked", true );
             $sel = jQuery('input[name^=chk_detail]:checked');
         }
