@@ -9,15 +9,28 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">질문제목</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="cqa_title" value="<?php echo set_value('cqa_title', element('cqa_title', element('data', $view))); ?>" />
+					<input type="text" class="form-control" name="cqa_title" value="<?php echo set_value('cqa_title', element('cqa_title', element('data', $view))); ?>" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">비밀글여부</label>
 				<div class="col-sm-10">
-					<label for="cqa_secret" class="checkbox-inline">
-					<input type="checkbox" name="cqa_secret" id="cqa_secret" value="1" <?php echo set_checkbox('cqa_secret', '1', (element('cqa_secret', element('data', $view)) ? true : false)); ?> /> 비밀글입니다
-					</label>
+					
+						<?php if(element('cqa_secret', element('data', $view))){
+							?>
+								<input type="hidden" name="cqa_secret" value="1"/>
+								<label for="cqa_secret" class="checkbox-inline">
+									<input type="checkbox"  checked disabled/> 비밀글입니다
+								</label>
+							<?php
+						}else{
+							?>
+							<input type="hidden" name="cqa_secret" value=""/>
+								<label for="cqa_secret" class="checkbox-inline">
+									<input type="checkbox"   disabled/> 비밀글입니다
+								</label>
+							<?php
+						}?>
 				</div>
 			</div>
 			<div class="form-group">
@@ -41,6 +54,9 @@
 </div>
 
 <script type="text/javascript">
+
+document.querySelector("[name='cqa_content']").setAttribute("readonly","");
+
 //<![CDATA[
 $(function() {
 	$('#fadminwrite').validate({
