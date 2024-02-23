@@ -37,16 +37,17 @@
 		<div class="cmall_ctg_accordian">
 			
 			<!-- 홈페이지 로드 시 첫 번째 아코디언 메뉴만 노출 -->
-			<div class="cmall_ctg_accordian_title <?php echo (!$this->input->get("search_cate_sno_parent_sno") || $this->input->get("search_cate_sno_parent_sno")==5)?"active":"";?>" onClick="goCategory(this,5,5);">
+			<div class="cmall_ctg_accordian_title <?php echo (!$this->input->get("search_cate_sno_parent_sno") || $this->input->get("search_cate_sno_parent_sno")==5)?"active":"";?>" onClick="goCategory(this,5,5,0);">
 				<h3>아바타</h3>
 			</div>
 			<div class="cmall_ctg_accordian_content <?php echo (!$this->input->get("search_cate_sno_parent_sno") || $this->input->get("search_cate_sno_parent_sno")==5)?"":"dn";?>"">
 				<ul>
+				<li><a href="#" class="<?php echo ($this->input->get("search_cate_sno") == 5 && $this->input->get("search_set_item")==1)?"active":"";?>" onclick="goCategory(this,5,5,1);">세트</a></li>
 					<?php
 					if(count(element('item_categorys',element('data',$view))[0]) > 0){
 						foreach(element('item_categorys',element('data',$view))[0] as $k=>$v){
 							?>
-							<li><a href="#" class="<?php echo ($this->input->get("search_cate_sno") == $v['cate_sno'])?"active":"";?>" onClick="goCategory(this,<?php echo $v['cate_parent'];?>,<?php echo $v['cate_sno'];?>);"><?php echo $v['cate_kr'];?></a></li>
+							<li><a href="#" class="<?php echo ($this->input->get("search_cate_sno") == $v['cate_sno'])?"active":"";?>" onClick="goCategory(this,<?php echo $v['cate_parent'];?>,<?php echo $v['cate_sno'];?>,0);"><?php echo $v['cate_kr'];?></a></li>
 							<?php
 						}
 					}
@@ -56,7 +57,7 @@
 		</div>
 
 		<div class="cmall_ctg_accordian">
-			<div class="cmall_ctg_accordian_title <?php echo ($this->input->get("search_cate_sno_parent_sno")==6)?"active":"";?>" onClick="goCategory(this,6,6);">
+			<div class="cmall_ctg_accordian_title <?php echo ($this->input->get("search_cate_sno_parent_sno")==6)?"active":"";?>" onClick="goCategory(this,6,6,0);">
 				<h3>랜드(외부)</h3>
 			</div>
 
@@ -67,7 +68,7 @@
 					if(count(element('item_categorys',element('data',$view))[1]) > 0){
 						foreach(element('item_categorys',element('data',$view))[1] as $k=>$v){
 							?>
-							<li><a href="#" class="<?php echo ($this->input->get("search_cate_sno") == $v['cate_sno'])?"active":"";?>" onClick="goCategory(this,<?php echo $v['cate_parent'];?>,<?php echo $v['cate_sno'];?>);"><?php echo $v['cate_kr'];?></a></li>
+							<li><a href="#" class="<?php echo ($this->input->get("search_cate_sno") == $v['cate_sno'])?"active":"";?>" onClick="goCategory(this,<?php echo $v['cate_parent'];?>,<?php echo $v['cate_sno'];?>,0);"><?php echo $v['cate_kr'];?></a></li>
 							<?php
 						}
 					}
@@ -77,7 +78,7 @@
 		</div>
 
 		<div class="cmall_ctg_accordian">
-			<div class="cmall_ctg_accordian_title <?php echo ($this->input->get("search_cate_sno_parent_sno")==1)?"active":"";?>" onClick="goCategory(this,1,1);">
+			<div class="cmall_ctg_accordian_title <?php echo ($this->input->get("search_cate_sno_parent_sno")==1)?"active":"";?>" onClick="goCategory(this,1,1,0);">
 				<h3>랜드(내부)</h3>
 			</div>
 
@@ -88,7 +89,7 @@
 					if(count(element('item_categorys',element('data',$view))[2]) > 0){
 						foreach(element('item_categorys',element('data',$view))[2] as $k=>$v){
 							?>
-							<li><a href="#" class="<?php echo ($this->input->get("search_cate_sno") == $v['cate_sno'])?"active":"";?>" onClick="goCategory(this,<?php echo $v['cate_parent'];?>,<?php echo $v['cate_sno'];?>);"><?php echo $v['cate_kr'];?></a></li>
+							<li><a href="#" class="<?php echo ($this->input->get("search_cate_sno") == $v['cate_sno'])?"active":"";?>" onClick="goCategory(this,<?php echo $v['cate_parent'];?>,<?php echo $v['cate_sno'];?>,0);"><?php echo $v['cate_kr'];?></a></li>
 							<?php
 						}
 					}
@@ -140,6 +141,7 @@
 
 				<input type="hidden" name="search_cate_sno_parent_sno" value="">
 				<input type="hidden" name="search_cate_sno" value="">
+				<input type="hidden" name="search_set_item" value="">
 			</form>
 		</div>
 	</div>
@@ -233,6 +235,7 @@ function goCategory(element,cate_sno_parent_sno,cate_sno){
 	document.querySelector("[name='skeyword']").value = "";
 	document.querySelector("[name='search_cate_sno']").value = cate_sno;
 	document.querySelector("[name='search_cate_sno_parent_sno']").value = cate_sno_parent_sno;
+	document.querySelector("[name='search_set_item']").value = set_item;
 	document.querySelector("#item_list_serach_form").submit();
 
 }

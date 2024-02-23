@@ -220,8 +220,9 @@ class Cmall extends CB_Controller
                         $search_cate_sno[] = $v['cate_sno'];
                     }
                 }
-				
+                
                 if(count($search_cate_sno) > 0){
+
                     $item_snos = $this->Asset_item_model->get_cate_sno_all($search_cate_sno);
                     if(count($item_snos)>0){
                         foreach($item_snos as $v){
@@ -244,6 +245,10 @@ class Cmall extends CB_Controller
                 }
             }
 
+            //카테고리에서 세트상품을 선택한 경우
+            if($this->input->get("search_set_item")){
+                $where["cit_item_arr like "] = "%,%";
+            }
             
         }
 
