@@ -1,13 +1,12 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
+
 <div id="asmo_item_detail_wrap"> 
 
 	<?php if (element('category_nav', $view)) { ?>
 		<ol class="breadcrumb asmo_item_list_nav">
-			<li><a href="<?php echo site_url('cmall/lists');?>">상품목록</a></li>
-			<?php foreach (element('category_nav', $view) as $result) { ?>
-				<li><a href="<?php echo site_url('cmall/lists/' . element('cca_id', $result));?>" title="<?php echo html_escape(element('cca_value', $result)); ?>"><?php echo html_escape(element('cca_value', $result)); ?></a></li>
-			<?php } ?>
+			<li><a href="<?php echo site_url('cmall');?>">교환소</a></li>
+			<li><a href="<?php echo site_url('cmall/lists/2');?>"><?=busiNm($this->member->item('company_idx'))?> 복지교환소</a></li>
 		</ol>
 		<?php if (element('category_all', $view) && element(element('category_id', $view), element('category_all', $view))) { ?>
 			<div class="cmall-category-nav">
@@ -18,6 +17,7 @@
 				</div>
 			</div>
 		<?php } ?>
+		
 	<?php } else { ?>
 		<h3>전체상품</h3>
 	<?php } ?>

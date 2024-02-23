@@ -17,10 +17,8 @@
 
 	<?php if (element('category_nav', $view)) { ?>
 		<ol class="breadcrumb asmo_item_list_nav">
-			<li><a href="<?php echo site_url('cmall/lists');?>">상품목록</a></li>
-			<?php foreach (element('category_nav', $view) as $result) { ?>
-				<li><a href="<?php echo site_url('cmall/lists/' . element('cca_id', $result));?>" title="<?php echo html_escape(element('cca_value', $result)); ?>"><?php echo html_escape(element('cca_value', $result)); ?></a></li>
-			<?php } ?>
+		<li><a href="<?php echo site_url('cmall');?>">교환소</a></li>
+			<li><a href="<?php echo site_url('cmall/lists/6');?>">컬래버랜드 아이템교환소</a></li>
 		</ol>
 		<?php if (element('category_all', $view) && element(element('category_id', $view), element('category_all', $view))) { ?>
 			<div class="cmall-category-nav">
@@ -173,7 +171,7 @@
 						<li class="asmo_sell_cnt_li"><?php echo number_format(element('cit_sell_count', $item)); ?></li>
 					</div>
 					<div class="info_desc_right">
-						<span id="price" class="asmo_price_fruit"><?php echo number_format(element('cit_price', $item)); ?></span>개
+						<span id="price" class="asmo_price_coin asmo_price_fruit"><?php echo number_format(element('cit_price', $item)); ?></span>개
 					</div>
 				</ul>
 			</div>
