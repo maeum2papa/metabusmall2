@@ -461,8 +461,8 @@ class Cmallorder extends CB_Controller
 							if($v2['cod_status'] == 'order' && $ct_status == 'cancel'){
 
 								//주문의 열매 환원
-								$order['cor_cash'] -= ($v2['cod_fruit'] * $order['company_coin_value']);
-								$order['cor_refund_price'] += ($v2['cod_fruit'] * $order['company_coin_value']);
+								$order['cor_cash'] -= ($v2['cod_fruit']);
+								$order['cor_refund_price'] += $v2['cod_fruit'];
 								fuse($order['mem_id'], $v2['cod_fruit'], "주문상품취소 (주문번호 : ".$cor_id.", 상품 : ".$oval['item']['cit_name']."[".$v2['cde_title']."])", $now, "order", $v2['cod_id'], "관리자가 주문상품취소");
 								
 								//기업 예치금 환원
@@ -962,7 +962,7 @@ class Cmallorder extends CB_Controller
 					if($order['status'] == 'order' && $change_status == 'cancel'){
 						
 						//주문의 열매와 예치금 환원, 주문의 코인 환원
-						$return_fruit = $order['cor_cash'] / $order['company_coin_value'];
+						$return_fruit = $order['cor_cash'];
 
 						fuse($order['mem_id'], $return_fruit, "주문취소 (주문번호 : ".$cor_id.")", $now, "order", $cor_id, "관리자가 주문취소");
 

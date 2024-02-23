@@ -190,16 +190,12 @@ class Cmall_item_model extends CB_Model
 		
 		if(count($result['list'])>0){
 
-			//재화가치 가져오기
-			$this->load->model("Company_info_model");
-			$coin_value = $this->Company_info_model->get_company_coin_value();
-
 			foreach($result['list'] as $k => $v){
 
 				$result['list'][$k]['fruit_cit_price'] = 0;
 
 				if($v['cit_money_type']=='f'){
-					$result['list'][$k]['fruit_cit_price'] = $v['cit_price'] / $coin_value;
+					$result['list'][$k]['fruit_cit_price'] = $v['cit_price'];
 					if($result['list'][$k]['fruit_cit_price'] < 0){
 						$result['list'][$k]['fruit_cit_price'] = 0;
 					} 

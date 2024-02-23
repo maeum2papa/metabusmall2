@@ -68,21 +68,6 @@ class Company_info_model extends CB_Model
         return $result;
     }
 
-	//재화가치 구하기
-	public function get_company_coin_value()
-    {
-        $this->db->select('company_info.coin_value');
-					
-		$where['company_info.company_idx'] = $this->member->item('company_idx');
-
-		$this->db->where($where);
-		$this->db->limit(1);
-		$qry = $this->db->get("company_info");
-		$item_result = (array) $qry->row();
-		$result = $item_result['coin_value'];
-
-		return $result;
-    }
 
 	/**
 	 * 엑셀 업로드 시 기업이름으로 idx 불러오기

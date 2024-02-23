@@ -159,10 +159,7 @@
 							<?php
 							foreach (element('detail', element('data', $view)) as $detail) {
 								$price = element('cit_price', element('data', $view)) + element('cde_price', $detail);
-								if($view['data']['company_coin_value']){
-									$price = $price / $view['data']['company_coin_value'];
-									if($price < 0) $price = 0;
-								}
+						
 							?>
 								<li>
 									<div class="opt-name">

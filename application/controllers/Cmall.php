@@ -640,12 +640,6 @@ class Cmall extends CB_Controller
 		$view['view']['item'] = $item;
 		$view['view']['detail'] = $detail;
 
-		if($item['cit_money_type']=="f"){
-			$this->load->model("Company_info_model");
-			$company = $this->Company_info_model->get_one($this->member->item("company_idx"));
-			$view['view']['company_coin_value'] = $company['coin_value'];
-		}
-
 		// 이벤트가 존재하면 실행합니다
 		$view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
 
@@ -956,10 +950,6 @@ class Cmall extends CB_Controller
 		$view['view']['data'] = $result;
 		$view['view']['input_address'] = $input_address;
 		$view['view']['cor_pay_type'] = $cor_pay_type;
-		if($cor_pay_type == 'f'){
-			$this->load->model("Company_info_model");
-			$view['view']['company_coin_value'] = $this->Company_info_model->get_company_coin_value();
-		}
 
 		$this->load->model('Unique_id_model');
 		$unique_id = $this->Unique_id_model->get_id($this->input->ip_address());
@@ -1898,9 +1888,7 @@ class Cmall extends CB_Controller
 
         //결제 최종 단계전 열매나 코인 사용가능한만큼 있는지 체크
         if($this->input->post('pay_type') === 'f'){
-			$company_coin_value = busiCoin($this->member->item('company_idx'));
-			$insertdata['company_coin_value'] = $company_coin_value;
-            if(($total_price_sum / $company_coin_value) > $this->member->item('mem_cur_fruit')){
+            if(($total_price_sum) > $this->member->item('mem_cur_fruit')){
                 alert(cmsg("3105"));
                 exit;
             }
@@ -1953,11 +1941,11 @@ class Cmall extends CB_Controller
 						->get_one(element('cde_id', $val), 'cde_price');
 
 					if($tmp_oderlist_item['cit_money_type']=='f'){
-						$tmp_cod_fruit = ($tmp_oderlist_item['cit_price'] * $val['cct_count']) / $company_coin_value;
+						$tmp_cod_fruit = ($tmp_oderlist_item['cit_price'] * $val['cct_count']);
 
 						//옵션가 있는 경우
 						if($itemDetail['cde_price'] > 0){
-							$tmp_cod_fruit += (($itemDetail['cde_price'] * $val['cct_count']) / $company_coin_value);
+							$tmp_cod_fruit += ($itemDetail['cde_price'] * $val['cct_count']);
 						}
 
 						$tmp_cod_company_deposit = fdeposit(array($tmp_oderlist_item),$this->member->item('company_idx'));
@@ -1981,10 +1969,6 @@ class Cmall extends CB_Controller
 						'cde_price' => $itemDetail['cde_price']
 					);
 
-					if($company_coin_value && $tmp_cod_company_deposit > 0){
-						$insertdetail['company_coin_value'] = $company_coin_value;
-					}
-
 					$this->Cmall_order_detail_model->insert($insertdetail);
 					$deletewhere = array(
 						'mem_id' => $mem_id,
@@ -2007,7 +1991,7 @@ class Cmall extends CB_Controller
 					$this->load->helper('fruit');
 				}
 
-				fuse($this->member->item('mem_id'), (($total_price_sum / $company_coin_value)*(-1)), "상품구매 (주문번호 : ".$cor_id.")",$insertdata['cor_datetime'], "order", $cor_id, "주문");
+				fuse($this->member->item('mem_id'), (($total_price_sum)*(-1)), "상품구매 (주문번호 : ".$cor_id.")",$insertdata['cor_datetime'], "order", $cor_id, "주문");
 			}
 
 
@@ -3119,7 +3103,7 @@ class Cmall extends CB_Controller
 				$this->load->helper('fruit');
 			}
 
-			$return_fruit = $order['cor_cash'] / $order['company_coin_value'];
+			$return_fruit = $order['cor_cash'];
 
 			fuse($order['mem_id'], $return_fruit, "주문취소 (주문번호 : ".$cor_id.")", $now, "order", $cor_id, "주문취소");
 

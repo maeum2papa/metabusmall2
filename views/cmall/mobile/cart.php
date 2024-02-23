@@ -68,13 +68,12 @@
 								$total_price = 0;
 								foreach (element('detail', $result) as $detail) {
 								?>
-									<li><i class="fa fa-angle-right" aria-hidden="true"></i> <?php echo html_escape(element('cde_title', $detail)) . ' ' . element('cct_count', $detail);?>개 (+<?php echo number_format(element('cde_price', $detail) / element('company_coin_value', $result)); ?>개)</li>
+									<li><i class="fa fa-angle-right" aria-hidden="true"></i> <?php echo html_escape(element('cde_title', $detail)) . ' ' . element('cct_count', $detail);?>개 (+<?php echo number_format(element('cde_price', $detail), $result)); ?>개)</li>
 								<?php
 									$total_num += element('cct_count', $detail);
 									$total_price += ((int) element('cit_price', $result) + (int) element('cde_price', $detail)) * element('cct_count', $detail);
 								}
-								// $total_price_sum += $total_price;
-								$total_price = $total_price / element('company_coin_value', $result);
+								
 								?>
 								</ul>
 								<div class="col-xs-12 col-md-3 prd-price">

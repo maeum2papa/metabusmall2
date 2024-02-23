@@ -77,7 +77,7 @@ $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css
 											?>
 											<?php echo html_escape(element('cde_title', $detail)) . ' ' . element('cod_count', $detail);?>개 (+<?php
 											if($view['data']['cor_pay_type'] == 'f'){
-												echo number_format(element('cde_price', $detail) / $view['data']['company_coin_value']);
+												echo number_format(element('cde_price', $detail));
 											}else if($view['data']['cor_pay_type'] == 'c'){
 												echo number_format(element('cde_price', $detail));
 											}
@@ -94,14 +94,14 @@ $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css
 									<div><span>수량 :</span> <?php echo number_format($total_num); ?> 개</div>
 									<div><span>상품단가 :</span> <?php
 										if($view['data']['cor_pay_type'] == 'f'){
-											echo "열매 ".number_format(element('cit_price', $detail) / $view['data']['company_coin_value']);
+											echo "열매 ".number_format(element('cit_price', $detail));
 										}else if($view['data']['cor_pay_type'] == 'c'){
 											echo "코인 ".number_format(element('cit_price', $detail));
 										}
 									?> 개</div>
 									<div class="prd-total"><span>합계 :</span> <strong><?php
 										if($view['data']['cor_pay_type'] == 'f'){
-											echo "열매 ".number_format($total_price / $view['data']['company_coin_value']);
+											echo "열매 ".number_format($total_price);
 										}else if($view['data']['cor_pay_type'] == 'c'){
 											echo "코인 ".number_format($total_price);
 										}
@@ -214,7 +214,7 @@ $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css
 								<span class="info-tit">총 주문액</span>
 								<?php
 								if($view['data']['cor_pay_type']=='f'){
-									echo number_format(abs(element('cor_cash_request', element('data', $view)) / $view['data']['company_coin_value']));
+									echo number_format(abs(element('cor_cash_request', element('data', $view))));
 								}else if($view['data']['cor_pay_type']=='c'){
 									echo number_format(abs(element('cor_cash_request', element('data', $view))));
 								}
@@ -225,7 +225,7 @@ $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css
 								<?php
 								$notyet = abs(element('cor_cash_request', element('data', $view))) - abs(element('cor_cash', element('data', $view)));
 								if($view['data']['cor_pay_type']=='f'){
-									echo number_format($notyet / $view['data']['company_coin_value']);
+									echo number_format($notyet);
 								}else if($view['data']['cor_pay_type']=='c'){
 									echo number_format($notyet);
 								}
@@ -235,7 +235,7 @@ $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css
 								<span class="info-tit">결제액</span>
 								<strong><?php
 								if($view['data']['cor_pay_type']=='f'){
-									echo number_format(abs(element('cor_cash', element('data', $view)) / $view['data']['company_coin_value']));
+									echo number_format(abs(element('cor_cash', element('data', $view))));
 								}else if($view['data']['cor_pay_type']=='c'){
 									echo number_format(abs(element('cor_cash', element('data', $view))));
 								}

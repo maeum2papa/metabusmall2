@@ -252,7 +252,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						?>
 						<tr>
 							<th>결제된 열매</th>
-							<td><?php echo number_format($view['data']['cor_cash'] / $view['data']['company_coin_value']);?> 개<br/>(결제 당시 재화가치 : <?php echo number_format($view['data']['company_coin_value']);?> 원)</td>
+							<td><?php echo number_format($view['data']['cor_cash']);?> 개</td>
 						</tr>
 						<?php
 							}

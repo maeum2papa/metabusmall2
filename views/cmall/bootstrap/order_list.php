@@ -97,7 +97,7 @@
 						<td class="text-right">
 							<?php
 								if($result['cor_pay_type']=='f'){
-									echo '열매 '.number_format((int) element('cor_total_money', $result) / $result['company_coin_value']);
+									echo '열매 '.number_format((int) element('cor_total_money', $result));
 								}else{
 									echo '컬래버 코인 '.number_format((int) element('cor_total_money', $result));
 								}
