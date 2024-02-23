@@ -140,6 +140,7 @@
 						<!-- 홈페이지 로드 시 첫 번째 아코디언 메뉴만 노출 -->
 						<div class="cmall_ctg_accordian_content <?php echo ($this->input->get("search_cate_sno_parent_sno")==6)?"":"dn";?>" >
 							<ul>
+							<li><a href="#" class="<?php echo ($this->input->get("search_cate_sno") == 6 && $this->input->get("search_set_item")==1)?"active":"";?>" onclick="goCategory(this,6,6,1);">세트</a></li>
 								<?php
 								if(count(element('item_categorys',element('data',$view))[1]) > 0){
 									foreach(element('item_categorys',element('data',$view))[1] as $k=>$v){
@@ -161,6 +162,7 @@
 						<!-- 홈페이지 로드 시 첫 번째 아코디언 메뉴만 노출 -->
 						<div class="cmall_ctg_accordian_content <?php echo ($this->input->get("search_cate_sno_parent_sno")==1)?"":"dn";?>" >
 							<ul>
+							<li><a href="#" class="<?php echo ($this->input->get("search_cate_sno") == 1 && $this->input->get("search_set_item")==1)?"active":"";?>" onclick="goCategory(this,1,1,1);">세트</a></li>
 							<?php
 								if(count(element('item_categorys',element('data',$view))[2]) > 0){
 									foreach(element('item_categorys',element('data',$view))[2] as $k=>$v){
