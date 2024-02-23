@@ -107,6 +107,17 @@
 					$k = 0;
 					if (element('list', element('data', $view))) {
 						foreach (element('list', element('data', $view)) as $item) {
+
+							$condition_mask = "";
+							
+							if($item['cit_download_days'] > 0 || ($item['cit_startDt']!=0 && $item['cit_endDt']!=0)){
+								$condition_mask = "기간한정";
+							}else if($item['cit_one_sale']=='y'){
+								$condition_mask = "1인1회";
+							}else if($item['cit_stock_type']=='s'){
+								$condition_mask = "한정수량";
+							}
+							
 					?>
 						<li class="col-xs-6 col-sm-6 col-md-4 col-lg-4 cmall-list-col">
 							<div class="thumbnail" >
@@ -126,11 +137,17 @@
 									</div>
 									<?php } ?>
 
-
-									<!-- 상품등록시 설정한 조건 표시 (한정수량/1인1회/기간한정) -->
-									<div class="condition_mask">
-										<span>한정수량</span>
-									</div>
+									<?php
+										if($condition_mask!=""){
+											?>
+												<!-- 상품등록시 설정한 조건 표시 (한정수량/1인1회/기간한정) -->
+												<div class="condition_mask">
+													<span><?php echo $condition_mask;?></span>
+												</div>
+											<?php
+										}
+									?>
+									
 								</a>
 								<div class="cont_info">
 									<div class="cont_info_title"><a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>" title="<?php echo html_escape(element('cit_name', $item)); ?>"><p><?php echo html_escape(element('cit_name', $item)); ?></p></a></div>

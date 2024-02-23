@@ -197,11 +197,6 @@
 									</div>
 									<?php } ?>
 
-
-									<!-- 상품등록시 설정한 조건 표시 (한정수량/1인1회/기간한정) -->
-									<div class="condition_mask">
-										<span>한정수량</span>
-									</div>
 								</a>
 								<div class="cont_info">
 									<div class="cont_info_title"><a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>" title="<?php echo html_escape(element('cit_name', $item)); ?>"><p><?php echo html_escape(element('cit_name', $item)); ?></p></a></div>

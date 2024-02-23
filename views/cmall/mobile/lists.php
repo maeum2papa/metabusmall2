@@ -76,12 +76,34 @@
 				//echo '<ul class="mb20">';
 				$open = true;
 			}
+
+			$condition_mask = "";
+			
+			if($item['cit_download_days'] > 0 || ($item['cit_startDt']!=0 && $item['cit_endDt']!=0)){
+				$condition_mask = "기간한정";
+			}else if($item['cit_one_sale']=='y'){
+				$condition_mask = "1인1회";
+			}else if($item['cit_stock_type']=='s'){
+				$condition_mask = "한정수량";
+			}
 	?>
 		<li class="table-list-item">
 			<a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>" class="thumbnail" title="<?php echo html_escape(element('cit_name', $item)); ?>">
 				<img src="<?php echo thumb_url('cmallitem', element('cit_file_1', $item)); ?>" alt="<?php echo html_escape(element('cit_name', $item)); ?>" title="<?php echo html_escape(element('cit_name', $item)); ?>" style="width: 100%; display: block;" />
 			</a>
 			<div class="cont_info">
+
+				<?php
+					if($condition_mask!=""){
+						?>
+							<!-- 상품등록시 설정한 조건 표시 (한정수량/1인1회/기간한정) -->
+							<div class="condition_mask">
+								<span><?php echo $condition_mask;?></span>
+							</div>
+						<?php
+					}
+				?>
+
 				<div class="cont_info_title">
 					<p class="cmall-tit"><a href="<?php echo cmall_item_url(element('cit_key', $item)); ?>" title="<?php echo html_escape(element('cit_name', $item)); ?>"><?php echo html_escape(element('cit_name', $item)); ?></a></p>
 					<p class="cmall-txt"><?php echo element('cit_summary', $item); ?></p>

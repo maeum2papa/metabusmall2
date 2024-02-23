@@ -242,72 +242,98 @@
 						<div class="help-inline" >체크를 해제하시면 상품리스트에서 사라지며, 교환할 수 없습니다.​</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">1회 교환제한​</label>
-					<div class="col-sm-10">
-						<label for="cit_one_sale" class="checkbox-inline">
-							<input type="checkbox" name="cit_one_sale" id="cit_one_sale" value="y" <?php echo ($view['data']['cit_one_sale']=="y")?"checked":""; ?> /> 사용
-						</label>
-						<div class="help-inline" >직원당 해당 상품을 한번만 교환할 수 있습니다.​</div>
+
+				<?php if($this->session->userdata['mem_admin_flag']==0){?>
+					
+				<?php }else{ ?>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">1회 교환제한​</label>
+						<div class="col-sm-10">
+							<label for="cit_one_sale" class="checkbox-inline">
+								<input type="checkbox" name="cit_one_sale" id="cit_one_sale" value="y" <?php echo ($view['data']['cit_one_sale']=="y")?"checked":""; ?> /> 사용
+							</label>
+							<div class="help-inline" >직원당 해당 상품을 한번만 교환할 수 있습니다.​</div>
+						</div>
 					</div>
-				</div>
+				<?php } ?>
 				
-				<div class="form-group">
-					<label class="col-sm-2 control-label">한정수량</label>
-					<div class="col-sm-10 form-inline">
-						<label class="radio-inline" for="cit_stock_type_i">
-							<input type="radio" name="cit_stock_type" id="cit_stock_type_i" value="i" checked <?php echo set_radio('cit_stock_type', 'i', (element('cit_stock_type', element('data', $view)) == 'i' ? true : false)); ?> onclick="stock_type('i')" /> 무제한 판매
-						</label>
-						<label class="radio-inline" for="cit_stock_type_s">
-							<input type="radio" name="cit_stock_type" id="cit_stock_type_s" value="s" <?php echo set_radio('cit_stock_type', 's', (element('cit_stock_type', element('data', $view)) == 's' ? true : false)); ?> onclick="stock_type('s')" /> 재고량에 따름
-						</label> &nbsp;  &nbsp; 
-						상품재고 :  <input type="number" class="form-control" id="cit_stock_cnt" name="cit_stock_cnt" value="<?php echo set_value('cit_stock_cnt', element('cit_stock_cnt', element('data', $view))); ?>" /> 개
-						<script type="text/javascript">
-						//<![CDATA[
-						function stock_type(arg) {
-							if (arg === 'i') {
-								$("#cit_stock_cnt").attr("readonly",true); 
-							} else {
-								$("#cit_stock_cnt").removeAttr("readonly"); 
+				
+				<?php if($this->session->userdata['mem_admin_flag']==0){?>
+
+					<input type="hidden" name="cit_stock_type" value="i"/>
+					<input type="hidden" name="cit_stock_cnt" value="0" />
+
+
+				<?php }else{ ?>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">한정수량</label>
+						<div class="col-sm-10 form-inline">
+							<label class="radio-inline" for="cit_stock_type_i">
+								<input type="radio" name="cit_stock_type" id="cit_stock_type_i" value="i" checked <?php echo set_radio('cit_stock_type', 'i', (element('cit_stock_type', element('data', $view)) == 'i' ? true : false)); ?> onclick="stock_type('i')" /> 무제한 판매
+							</label>
+							<label class="radio-inline" for="cit_stock_type_s">
+								<input type="radio" name="cit_stock_type" id="cit_stock_type_s" value="s" <?php echo set_radio('cit_stock_type', 's', (element('cit_stock_type', element('data', $view)) == 's' ? true : false)); ?> onclick="stock_type('s')" /> 재고량에 따름
+							</label> &nbsp;  &nbsp; 
+							상품재고 :  <input type="number" class="form-control" id="cit_stock_cnt" name="cit_stock_cnt" value="<?php echo set_value('cit_stock_cnt', element('cit_stock_cnt', element('data', $view))); ?>" /> 개
+							<script type="text/javascript">
+							//<![CDATA[
+							function stock_type(arg) {
+								if (arg === 'i') {
+									$("#cit_stock_cnt").attr("readonly",true); 
+								} else {
+									$("#cit_stock_cnt").removeAttr("readonly"); 
+								}
 							}
-						}
-						<?php if(element('cit_stock_type', element('data', $view))){?>
-						var stock_type_arg = '<?=element('cit_stock_type', element('data', $view))?>';
-						<?php }else{?>
-						var stock_type_arg = 'i';
-						<?php }?>
-						//]]>
-						stock_type(stock_type_arg);
-						</script>
+							<?php if(element('cit_stock_type', element('data', $view))){?>
+							var stock_type_arg = '<?=element('cit_stock_type', element('data', $view))?>';
+							<?php }else{?>
+							var stock_type_arg = 'i';
+							<?php }?>
+							//]]>
+							stock_type(stock_type_arg);
+							</script>
+						</div>
 					</div>
-				</div>
+
+				<?php } ?>
 				
-				<div class="form-group">
-					<label class="col-sm-2 control-label">노출방식</label>
-					<div class="col-sm-10 form-inline">
-						<label class="radio-inline" for="cit_view_type_n">
-							<input type="radio" name="cit_view_type" id="cit_view_type_n" value="n" checked <?php echo set_radio('cit_view_type', 'n', (element('cit_view_type', element('data', $view)) == 'n' ? true : false)); ?> onclick="view_type('n')" /> 등록일로부터 N일
-						</label>
-						<label class="radio-inline" for="cit_view_type_s">
-							<input type="radio" name="cit_view_type" id="cit_view_type_s" value="s" <?php echo set_radio('cit_view_type', 's', (element('cit_view_type', element('data', $view)) == 's' ? true : false)); ?> onclick="view_type('s')" /> 기간설정
-						</label>
+				<?php if($this->session->userdata['mem_admin_flag']==0){?>
+
+					<input type="hidden" name="cit_view_type" value="n">
+					<input type="hidden" name="cit_download_days" value="0" />
+
+				<?php }else{ ?>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">노출방식</label>
+						<div class="col-sm-10 form-inline">
+							<label class="radio-inline" for="cit_view_type_n">
+								<input type="radio" name="cit_view_type" id="cit_view_type_n" value="n" checked <?php echo set_radio('cit_view_type', 'n', (element('cit_view_type', element('data', $view)) == 'n' ? true : false)); ?> onclick="view_type('n')" /> 등록일로부터 N일
+							</label>
+							<label class="radio-inline" for="cit_view_type_s">
+								<input type="radio" name="cit_view_type" id="cit_view_type_s" value="s" <?php echo set_radio('cit_view_type', 's', (element('cit_view_type', element('data', $view)) == 's' ? true : false)); ?> onclick="view_type('s')" /> 기간설정
+							</label>
+						</div>
 					</div>
-				</div>
+					
+					<div class="form-group" id="view_type_n">
+						<label class="col-sm-2 control-label">노출기간</label>
+						<div class="col-sm-10 form-inline">
+							<input type="number" class="form-control" name="cit_download_days" value="<?php echo set_value('cit_download_days', (int) element('cit_download_days', element('data', $view))); ?>" />일
+							<div class="help-inline" >해당기간동안 계속 노출 됩니다. 0 이면 무제한으로 노출 됩니다.</div>
+						</div>
+					</div>
+					<div class="form-group" id="view_type_s">
+						<label class="col-sm-2 control-label">노출기간</label>
+						<div class="col-sm-10 form-inline">
+							<input type="text" class="form-control" name="cit_startDt" id="cit_startDt" value="<?=element('cit_startDt', element('data', $view)); ?>" readonly /> -
+							<input type="text" class="form-control" name="cit_endDt" id="cit_endDt" value="<?=element('cit_endDt', element('data', $view)); ?>" readonly /> &nbsp;
+						</div>
+					</div>
+
+				<?php } ?>
 				
-				<div class="form-group" id="view_type_n">
-					<label class="col-sm-2 control-label">노출기간</label>
-					<div class="col-sm-10 form-inline">
-						<input type="number" class="form-control" name="cit_download_days" value="<?php echo set_value('cit_download_days', (int) element('cit_download_days', element('data', $view))); ?>" />일
-						<div class="help-inline" >해당기간동안 계속 노출 됩니다. 0 이면 무제한으로 노출 됩니다.</div>
-					</div>
-				</div>
-				<div class="form-group" id="view_type_s">
-					<label class="col-sm-2 control-label">노출기간</label>
-					<div class="col-sm-10 form-inline">
-						<input type="text" class="form-control" name="cit_startDt" id="cit_startDt" value="<?=element('cit_startDt', element('data', $view)); ?>" readonly /> -
-                		<input type="text" class="form-control" name="cit_endDt" id="cit_endDt" value="<?=element('cit_endDt', element('data', $view)); ?>" readonly /> &nbsp;
-					</div>
-				</div>
 				<?php if($this->session->userdata['mem_admin_flag']==0){?>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">아이템번호</label>
