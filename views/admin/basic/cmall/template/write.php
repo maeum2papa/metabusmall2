@@ -30,7 +30,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">예치금차감금액</label>
 					<div class="col-sm-10 form-inline">
-						<input type="number" class="form-control" name="citt_deposit" value="<?php echo set_value('citt_deposit', element('citt_deposit', element('data', $view))); ?>" />
+						<input type="number" class="form-control" name="citt_deposit" value="<?php echo set_value('citt_deposit', element('citt_deposit', element('data', $view))); ?>" min="100"/>
 					</div>
 				</div>
 				<div class="form-group">

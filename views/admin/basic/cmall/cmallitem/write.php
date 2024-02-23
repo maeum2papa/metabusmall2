@@ -173,7 +173,7 @@
 						<?php } ?>
 					</label>
 					<div class="col-sm-10 form-inline">
-						<input type="number" class="form-control" name="cit_price" value="<?php echo set_value('cit_price', element('cit_price', element('data', $view))); ?>" />
+						<input type="number" class="form-control" name="cit_price" value="<?php echo set_value('cit_price', element('cit_price', element('data', $view))); ?>" <?php echo ($this->session->userdata['mem_admin_flag']==0)?"":"readonly";?>/>
 						<span id="seum_money_txt">
 							개
 						</span>
@@ -503,7 +503,7 @@ function setTemplateItem(data){
 	document.querySelector("#citt_deposit_viewer").classList.remove("dn");
 	document.querySelector("#citt_deposit").textContent = (data.citt_deposit*(-1)).toLocaleString()+"원";
 	document.querySelector("[name='citt_deposit']").value = data.citt_deposit;
-	document.querySelector("[name='cit_price']").value = data.citt_deposit;
+	document.querySelector("[name='cit_price']").value = Math.round(data.citt_deposit/100);
 	document.querySelector("[name='cit_summary']").value = data.citt_summary;
 	oEditors.getById.cit_content.exec("PASTE_HTML", [data.citt_content]);
 	oEditors.getById.cit_mobile_content.exec("PASTE_HTML", [data.citt_mobile_content]);
@@ -768,10 +768,12 @@ document.querySelectorAll('[name="citt_id_use"]').forEach( element => {
 	element.addEventListener("change",function(){
 		if(this.value == 1){ //템플릿 상품
 			document.querySelector('#template-selecter').classList.remove('dn');
+			document.querySelector("[name='cit_price']").setAttribute("readonly", "");
 		}else{
 			//자체상품
 			clearTemplateItem();
 			document.querySelector('#template-selecter').classList.add('dn');
+			document.querySelector("[name='cit_price']").removeAttribute("readonly");
 		}
 	});
 });

@@ -246,7 +246,7 @@ class Template extends CB_Controller
             } else {
                 // 기본값 설정
                 $getdata['citt_status'] = '1';
-				$getdata['citt_deposit'] = '0';
+				$getdata['citt_deposit'] = '100';
             }
 
             $view['view']['data'] = $getdata;
