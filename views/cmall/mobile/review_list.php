@@ -9,7 +9,22 @@ if (element('list', element('data', $view))) {
 		<div class="asmo_review_top" onclick="return review_open(this);">
 			<p class="item_review_title" ><i class="fa fa-comments-o"></i> <?php echo html_escape(element('cre_title', $result)); ?></p>
 			<ul>
-				<li><?php echo element('display_name', $result); ?></li>
+				<li>
+					<?php
+					if(cmall_item_parent_category($view['cit_id'])==2){
+						?>
+							<?php echo $result['mem_div'];?>
+							<?php echo $result['mem_username'];?>
+							<?php echo $result['mem_position'];?>
+						<?php
+					}else if(cmall_item_parent_category($view['cit_id'])==6){
+						
+						?>
+							<?php echo mb_substr($result['mem_username'],0,2)."*";?>
+						<?php
+					}
+					?>
+				</li>
 				<li class="asmo_time"><?php echo element('display_datetime', $result); ?></li>
 				<?php if (element('cre_score', $result) >=1 && element('cre_score', $result) <=5) { ?>
 					<li class="asmo_review_star">

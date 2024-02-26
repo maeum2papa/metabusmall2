@@ -2791,7 +2791,7 @@ class Cmall extends CB_Controller
 		$this->pagination->initialize($config);
 		$view['view']['paging'] = $this->pagination->create_links();
 		$view['view']['page'] = $page;
-
+		
 
 		// 이벤트가 존재하면 실행합니다
 		$view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);

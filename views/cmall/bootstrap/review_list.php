@@ -13,7 +13,22 @@ if (element('list', element('data', $view))) {
 			<ul class="col-lg-4 review-info">
 
 				<!-- 아이템몰일 때 -->
-				<li><span class="sd-only">작성자</span> <span class="itemMall_span"><?=busiNm($this->member->item('company_idx'))?></span><span class="asmo_sh_writer"><?php echo element('display_name', $result); ?></span></li>
+				<li><span class="sd-only">작성자</span> <span class="itemMall_span"><?=busiNm($this->member->item('company_idx'))?></span><span class="asmo_sh_writer">
+					<?php
+					if(cmall_item_parent_category($view['cit_id'])==2){
+						?>
+							<?php echo $result['mem_div'];?>
+							<?php echo $result['mem_username'];?>
+							<?php echo $result['mem_position'];?>
+						<?php
+					}else if(cmall_item_parent_category($view['cit_id'])==6){
+						
+						?>
+							<?php echo mb_substr($result['mem_username'],0,2)."*";?>
+						<?php
+					}
+					?>
+				</span></li>
 				<!-- //아이템몰일 때 -->
 
 				<!-- 복지교환소일 때 -->

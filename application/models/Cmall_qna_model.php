@@ -41,7 +41,7 @@ class Cmall_qna_model extends CB_Model
 
 	public function get_list($limit = '', $offset = '', $where = '', $like = '', $findex = '', $forder = '', $sfield = '', $skeyword = '', $sop = 'OR')
 	{
-		$select = 'cmall_qna.*, member.mem_id, member.mem_userid, member.mem_nickname, member.mem_is_admin, member.mem_icon';
+		$select = 'cmall_qna.*, member.mem_id, member.mem_userid, member.mem_nickname, member.mem_is_admin, member.mem_icon,member.mem_position,member.mem_div,member.mem_username';
 		$join[] = array('table' => 'member', 'on' => 'cmall_qna.mem_id = member.mem_id', 'type' => 'left');
 		$result = $this->_get_list_common($select, $join, $limit, $offset, $where, $like, $findex, $forder, $sfield, $skeyword, $sop);
 		return $result;

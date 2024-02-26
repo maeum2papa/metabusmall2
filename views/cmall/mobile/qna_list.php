@@ -9,7 +9,22 @@ if (element('list', element('data', $view))) {
 		<div class="asmo_review_top" onclick="return qna_open(this);">
 			<p class="item_qna_title"><i class="fa fa-comments-o"></i> <?php echo html_escape(element('cqa_title', $result)); ?></p>
 			<ul>
-				<li><?php echo element('display_name', $result); ?></li>
+				<li>
+					<?php
+					if(cmall_item_parent_category($view['cit_id'])==2){
+						?>
+							<?php echo $result['mem_div'];?>
+							<?php echo $result['mem_username'];?>
+							<?php echo $result['mem_position'];?>
+						<?php
+					}else if(cmall_item_parent_category($view['cit_id'])==6){
+						
+						?>
+							<?php echo mb_substr($result['mem_username'],0,2)."*";?>
+						<?php
+					}
+					?>
+				</li>
 				<li class="asmo_time"><?php echo element('display_datetime', $result); ?></li>
 				<li class="asmo_qa_status"><?php echo (element('cqa_reply_mem_id', $result)) ? '<span class="complete">답변완료</span>' : '<span>답변대기</span>';?></li>
 			</ul>
