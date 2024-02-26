@@ -62,13 +62,13 @@
 								<?php if(soldoutYn($result['cit_id'])=='y'){?>
 									<div class="soldout_box"><span><?=banner('error')?>품절</span></div>
 								<?php } ?>
-								<ul class="cmall-options">
+								<ul class="cmall-options dn">
 								<?php
 								$total_num = 0;
 								$total_price = 0;
 								foreach (element('detail', $result) as $detail) {
 								?>
-									<li><i class="fa fa-angle-right" aria-hidden="true"></i> <?php echo html_escape(element('cde_title', $detail)) . ' ' . element('cct_count', $detail);?>개 (+<?php echo number_format(element('cde_price', $detail), $result)); ?>개)</li>
+									<li><i class="fa fa-angle-right" aria-hidden="true"></i> <?php echo html_escape(element('cde_title', $detail)) . ' ' . element('cct_count', $detail);?>개 (+<?php echo number_format(element('cde_price', $detail), $result); ?>개)</li>
 								<?php
 									$total_num += element('cct_count', $detail);
 									$total_price += ((int) element('cit_price', $result) + (int) element('cde_price', $detail)) * element('cct_count', $detail);
@@ -77,12 +77,13 @@
 								?>
 								</ul>
 								<div class="col-xs-12 col-md-3 prd-price">
-									<div><span>수량 </span> <?php echo number_format($total_num); ?> 개</div>
-									<div><span>상품단가  </span> 열매 <?php echo number_format(element('fruit_cit_price', $result)); ?> 개</div>
+									<!-- <div><span>수량 </span> <?php echo number_format($total_num); ?> 개</div> -->
+									<!-- <div><span>상품단가  </span> 열매 <?php echo number_format(element('fruit_cit_price', $result)); ?> 개</div> -->
 									<div class="prd-total"><span>합계  </span> 열매 <?php echo number_format($total_price); ?><input type="hidden" name="total_price[<?php echo element('cit_id', $result); ?>]" value="<?php echo $total_price; ?>" /> 개</div>
-									<div class="cmall-option-change">
+									<!-- <div class="cmall-option-change">
 										<button class="change_option btn btn-info btn-xs" type="button" data-cit-id="<?php echo element('cit_id', $result); ?>">옵션 / 수량 변경</button>
-									</div>
+									</div> -->
+
 								</div>
 							</div>
 						</div>
@@ -145,7 +146,7 @@
 								<div class="soldout_box"><span><?=banner('error')?>품절</span></div>
 							<?php } ?>
 
-							<ul class="cmall-options">
+							<ul class="cmall-options dn">
 							<?php
 							$total_num = 0;
 							$total_price = 0;
@@ -160,11 +161,27 @@
 							?>
 							</ul>
 							<div class="col-xs-12 col-md-3 prd-price">
-								<div><span>수량</span> <?php echo number_format($total_num); ?> 개</div>
-								<div><span>상품단가 </span> 복지포인트 <?php echo number_format(element('cit_price', $result)); ?> 개</div>
+								<!-- <div><span>수량</span> <?php echo number_format($total_num); ?> 개</div> -->
+								<!-- <div><span>상품단가 </span> 복지포인트 <?php echo number_format(element('cit_price', $result)); ?> 개</div> -->
 								<div class="prd-total"><span>합계 </span> 복지포인트 <?php echo number_format($total_price); ?><input type="hidden" name="total_price[<?php echo element('cit_id', $result); ?>]" value="<?php echo $total_price; ?>" /> 개</div>
-								<div class="cmall-option-change">
+								<!-- <div class="cmall-option-change">
 									<button class="change_option btn btn-info btn-xs" type="button" data-cit-id="<?php echo element('cit_id', $result); ?>">옵션 / 수량 변경</button>
+								</div> -->
+
+								<?php
+									$cart_prd_condition_box = "";
+
+									if(element('cit_download_days',element('item',$result)) > 0 || (element('cit_startDt',element('item', $result))!=0 && element('cit_endDt',element('item', $result))!=0)){
+										$cart_prd_condition_box = "기간한정";
+									}else if(element('cit_one_sale',element('item', $result))=='y'){
+										$cart_prd_condition_box = "1인당 1회 교환 제한";
+									}else if(element('cit_stock_type',element('item', $result))=='s'){
+										$cart_prd_condition_box = "한정수량";
+									}
+
+								?>
+								<div class="cart_prd_condition_box">
+									<span><?php echo $cart_prd_condition_box;?></span>
 								</div>
 							</div>
 						</div>

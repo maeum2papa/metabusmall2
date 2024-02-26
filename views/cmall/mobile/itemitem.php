@@ -104,7 +104,7 @@
 				?>
 					<input type="hidden" name="stype" id="stype" value="" />
 					<input type="hidden" name="cit_id" value="<?php echo element('cit_id', element('data', $view)); ?>" />
-					<div class="product-option">
+					<div class="product-option dn">
 						<table class="table table-bordered item_detail_table">
 							<tbody>
 								<tr class="danger" style="display:none;">

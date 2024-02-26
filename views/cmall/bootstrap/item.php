@@ -100,9 +100,25 @@
 				<!-- asmo sh 231206 디자인 상 상품 제목 제외하고 주석처리 및 fixed div로 재배치 -->
 				<div class="product-right col-xs-12 col-lg-6">
 
+				<?php
+					$exchange_limit_product = "";
+
+					if(element('cit_download_days',element('data', $view)) > 0 || (element('cit_startDt',element('data', $view))!=0 && element('cit_endDt',element('data', $view))!=0)){
+						$exchange_limit_product = "기간한정 상품입니다.";
+					}else if(element('cit_one_sale',element('data', $view))=='y'){
+						$exchange_limit_product = "1인당 1회 교환 제한 상품입니다";
+					}else if(element('cit_stock_type',element('data', $view))=='s'){
+						$exchange_limit_product = "한정수량 상품입니다.​";
+					}
+				?>
+
+					<?php
+					if($exchange_limit_product!=""){
+					?>
 					<!-- 1인당 1회 교환 제한 상품일 때 -->
-					<div class="exchange_limit_product"><span>1인당 1회 교환 제한 상품입니다</span></div>
+					<div class="exchange_limit_product"><span><?php echo $exchange_limit_product;?></span></div>
 					<!-- 1인당 1회 교환 제한 상품일 때 -->
+					<?php } ?>
 
 					<div class="product-title"><?php echo html_escape(element('cit_name', element('data', $view))); ?></div>
 

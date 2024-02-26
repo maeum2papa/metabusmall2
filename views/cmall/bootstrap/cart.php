@@ -134,7 +134,6 @@
 											$total_price += ((int) element('cit_price', $result) + (int) element('cde_price', $detail)) * element('cct_count', $detail);
 										}
 										// $total_price_sum += $total_price;
-										$total_price = $total_price / element('company_coin_value', $result);
 										?>
 										</ul>
 										<div class="col-xs-12 col-md-3 prd-price">
@@ -239,8 +238,20 @@
 										- 1인1회 : 1인당 1회 교환 제한​
 										- 기간한정 : 기간한정​
 									-->
+									<?php
+										$cart_prd_condition_box = "";
+
+										if(element('cit_download_days',element('item',$result)) > 0 || (element('cit_startDt',element('item', $result))!=0 && element('cit_endDt',element('item', $result))!=0)){
+											$cart_prd_condition_box = "기간한정";
+										}else if(element('cit_one_sale',element('item', $result))=='y'){
+											$cart_prd_condition_box = "1인당 1회 교환 제한";
+										}else if(element('cit_stock_type',element('item', $result))=='s'){
+											$cart_prd_condition_box = "한정수량";
+										}
+
+									?>
 									<div class="cart_prd_condition_box">
-										<span>1인 1회 교환 제한</span>
+										<span><?php echo $cart_prd_condition_box;?></span>
 									</div>
 								</div>
 							</div>

@@ -736,7 +736,7 @@ class Cmall extends CB_Controller
 		// 이벤트가 존재하면 실행합니다
 		$view['view']['event']['before'] = Events::trigger('before', $eventname);
 
-		$this->load->model(array('Cmall_cart_model'));
+		$this->load->model(array('Cmall_cart_model','Cmall_item_model'));
 
 		if ($this->input->post('chk')) {
 			$cit_id = $this->input->post('chk');
@@ -782,6 +782,9 @@ class Cmall extends CB_Controller
 				$result[$key]['item_url'] = cmall_item_url(element('cit_key', $val));
 				$result[$key]['detail'] = $this->Cmall_cart_model
 					->get_cart_detail($mem_id, element('cit_id', $val));
+				
+				$result[$key]['item'] = $this->Cmall_item_model->get_one($val['cit_id']);
+			
 			}
 
 			//결제 방법에 따라 장바구니 나누기
