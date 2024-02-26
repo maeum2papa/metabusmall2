@@ -163,7 +163,7 @@
 					</ul>
 				<!-- asmo sh 231214 체크박스 및 선택삭제 버튼 감싸는 .all-chk_box 생성 -->
 					<div class="all-chk_box asmo_coin_box">
-						<div class="all-chk"><input type="checkbox" name="chkallc" id="chkallc" /> <label for="chkallc">복지포인트상품 전체선택</label></div>
+						<div class="all-chk"><input type="checkbox" name="chkallc" id="chkallc" /> <label for="chkallc">복지포인트 상품 전체선택</label></div>
 						<button type="button" class="btn btn-outline btn-default btn-sm btn-list-delete btn-list-selected" data-list-delete-url = "<?php echo element('list_delete_url', $view); ?>" >선택상품 삭제</button>
 					</div>
 					<ul class="prd-list c-area">
@@ -355,7 +355,7 @@ jQuery(function($) {
 		}
 
 		if(fcount > 0 && ccount > 0){
-			alert('열매상품 또는 복지포인트상품 한 종류만 선택해주세요.');
+			alert('열매상품 또는 복지포인트 상품 한 종류만 선택해주세요.');
 			return;
 		}
 

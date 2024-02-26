@@ -248,7 +248,7 @@
 					}else if(element('cor_pay_type',$view)=='c'){
 						?>
 						<div>
-						<h5 class="market-title">복지포인트상품 결제정보</h5>
+						<h5 class="market-title">복지포인트 상품 결제정보</h5>
 						<ul>
 							<li>
 								<span class="info-tit">총 주문 복지포인트</span>
