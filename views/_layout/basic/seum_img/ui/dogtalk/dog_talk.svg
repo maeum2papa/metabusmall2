@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="297.266" height="99.999" viewBox="0 0 297.266 99.999">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f1f1f1"/>
+      <stop offset="0.498" stop-color="#fff"/>
+      <stop offset="1" stop-color="#f1f1f1"/>
+    </linearGradient>
+    <filter id="합치기_34" x="0" y="0" width="297.266" height="99.999" filterUnits="userSpaceOnUse">
+      <feOffset dx="3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.451"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#합치기_34)">
+    <path id="합치기_34-2" data-name="합치기 34" d="M-4012-15898a11,11,0,0,1-11-11v-68a11,11,0,0,1,11-11h251a11,11,0,0,1,11,11v54.776c1.036,4.6,4.366,16.17,12.2,19.434,7.41,3.082-6.95,1.531-14.541.57A10.978,10.978,0,0,1-3761-15898Z" transform="translate(4025 15990)" stroke="#222" stroke-width="1" opacity="0.88" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

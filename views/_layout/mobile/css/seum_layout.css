@@ -82,7 +82,7 @@
 *{margin:0;padding:0;font:inherit;color:inherit;}
 *, :after, :before {box-sizing:border-box;}
 :root {-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%;cursor:default;line-height:1.5;overflow-wrap:break-word;word-break:break-word;tab-size:4}
-html, body {height:100%; font-family: 'NexonLv2Gothic', sans-serif; font-size: 62.5%; letter-spacing: -0.01em; color: #222222; }
+html, body {height:100%; font-family: 'NexonLv2Gothic', sans-serif; font-size: 62.5%; letter-spacing: -0.02em; color: #222222; }
 img, picture, video, canvas, svg {display: block;max-width:100%;}
 button {background:none;border:0;cursor:pointer;}
 a {text-decoration:none; color: #222222;}
@@ -125,32 +125,6 @@ input[type=password]::placeholder {
     padding-top: 40px;
 }
 
-/* body {
-    display : block;
-    transform : translateY(100vh) rotate(-90deg);
-    transform : translateY(calc(var(--vh, 1vh) * 100)) rotate(-90deg);
-    transform-origin : top left;
-    width : 100vh;
-    width: calc(var(--vh, 1vh) * 100);
-    height : 100vw;
-    height: calc(var(--vw, 1vw) * 100);
-    overflow-y : hidden;
-} */
-
-
-/* @media ( orientation : portrait ) {
-    body {
-        display : block;
-        transform : translateY(100vh) rotate(-90deg);
-        transform : translateY(calc(var(--vh, 1vh) * 100)) rotate(-90deg);
-        transform-origin : top left;
-        width : 100vh;
-        width: calc(var(--vh, 1vh) * 100);
-        height : 100vw;
-        height: calc(var(--vw, 1vw) * 100);
-        overflow-y : hidden;
-    }
-} */
 
 
 #layer_dim {
@@ -160,189 +134,69 @@ input[type=password]::placeholder {
     background: #22222266;
     left: 0;
     top: 0;
-    z-index: 99;
+    z-index: 100;
 }
 
 /* *** --------- 상단 네비게이션 바 --------- *** */
 
 .asmo_login_complete  .main {
-
+    padding: 102px 0 0;
 }
 
 
 
 .navbar {
-    height: 40px;
-    line-height: normal;
-    box-shadow: none;
-    display: flex;
-    justify-content: space-between;
+    height: 102px;
+    background: #222;
     position: fixed;
     width: 100%;
-    background: none;
-    z-index: 99;
-    -webkit-backdrop-filter: blur(10px) brightness(0.8);
-    backdrop-filter: blur(10px) brightness(0.8);
-}
-
-.navbar::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    background:rgba(34,34,34,0.5);
-    position: absolute;
     left: 0;
     top: 0;
-    z-index: -1;
-}
-
-
-
-.nav_bar_left,
-.nav_bar_right,
-.asmo_nav_info,
-.asmo_nav_money_wrap ul {
-    display: flex;
-}
-
-.nav_bar_left .asmo_nav_logo {
-    position: relative;
-    padding: 6px 15px;
-    z-index: 1;
-}
-
-.nav_bar_left .asmo_nav_logo::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    background: rgba(255,255,255,0.8);
+    z-index: 100;
+    box-shadow: none;
+    line-height: initial;
 }
 
 
 .asmo_nav_info {
-    background: rgba(34, 34, 34, 0.67);
-    gap: 8px;
-    align-items: center;
-    width: 180px;
-    padding:  0 0 0 14px;
+    position: absolute;
+    left: 2.4rem;
+    bottom: -1.4rem;
 }
+
 
 .asmo_nav_info > p {
-    width: 32px;
-    height: 32px;
-    background: #f6f6f6;
-    border-radius: 50%;
-
+    width: 64px;
+    height: 64px;
+    background: #fff;
+    border-radius: 100%;
     overflow: hidden;
-}
-
-
-.asmo_nav_info .asmo_nav_info_txt {
-    width: calc(100% - 40px);
+    position: relative;
+    border: 2px solid #222;
 }
 
 
 .asmo_nav_info .asmo_small_profile img {
-    width: 32px;
-    border-radius: 100%;
-
-    
-    height: 32px;
-    transform: scale(1.5);
-    position: relative;
-    top: 7px;
-}
-
-.asmo_nav_info .asmo_nav_info_txt p:first-child {
-    margin: 0 0 3px;
-    line-height: 1;
-    font-size: 0;
-}
-
-.asmo_nav_info .asmo_nav_info_txt p:first-child span {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #fff;
-    max-width: 61px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-}
-
-.asmo_nav_info .asmo_nav_info_txt p:first-child em {
-    font-size: 1.2rem;
-    color: #FB8C00;
-    font-weight: 500;
-    padding: 0 0 0 4px;
-    max-width: calc(100% - 65px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-}
-
-.asmo_nav_info .asmo_nav_info_txt p:last-child {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1.1rem;
-    line-height: 1;
-    width: 96%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 
 
-.asmo_nav_money_wrap ul {
-    align-items: center;
-    gap: 14px;
-    padding: 6px 0 0 24px;
+.nav_bar_right {
+    position: absolute;
+    right: 2.4rem;
+    bottom: 1rem;
 }
 
-.asmo_nav_money_wrap ul li {
-    width: 82px;
-    border: 0.5px solid rgba(251, 140, 0, 1);
-    border-radius: 5px;
-    box-shadow: 2px 3px 10px rgba(251, 140, 0, 0.08);
-    background-color: rgba(34, 34, 34, 0.5);
-    height: 28px;
-    line-height: 28px;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 0 10px 0 6px;
-    text-align: right;
-}
-
-
-.asmo_nav_money_wrap ul li.fruit {
-    background-image: url(../images/fruit.png);
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-origin: content-box;
-    background-size: 24px;
-}
-
-.asmo_nav_money_wrap ul li.seed {
-    background-image: url(../images/seed.png);
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-origin: content-box;
-    background-size: 24px;
-}
-
-.asmo_nav_money_wrap ul li.rank {
-    background-image: url(../images/rank.png);
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-origin: content-box;
-    background-size: 24px;
+#asmo_ham_btn {
+    text-indent: -9999px;
+    width: 2.7rem;
+    height: 3.1rem;
+    background: url(../images/asmo_ham.svg) no-repeat center center;
 }
 
 
@@ -354,173 +208,186 @@ input[type=password]::placeholder {
     margin: 0 2px 0 0;
 }
 
-/* 1:1채팅 */
-#asmo_nav_qa_btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 8px;
-    background: rgba(34, 34, 34, 0.67);
-}
-
-#asmo_nav_qa_btn span {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background: url(../images/chat.svg) no-repeat 0 0;
-}
-
-
-
-
-
-/* 로그아웃 버튼 */
-
-.nav_bar_right {
-    position: relative;
-}
-
-#asmo_nav_logout {
-    width: 40px;
-    height: 40px;
-    background: url(../images/dots.svg) no-repeat center center;
-}
-
-#asmo_nav_logout + p {
-    position: absolute;
-    width: 112px;
-    border-radius: 0 0 0 5px;
-    top: 40px;
-    right: 0;
-    display: none;
-    min-height: 30px;
-}
-
-#asmo_nav_logout + p a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-#asmo_nav_logout + p::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;border-radius: 0 0 0 5px;
-    background: rgba(34,34,34,0.5);
-    width: 100%;
-    height: 100%;
-}
-
-#asmo_nav_logout + p a span {
-    font-size: 1.4rem;
-    color: rgba(255, 255, 255, 0.8);
-    display: inline-block;
-    padding: 0 0 0 20px;
-    background: url(../images/logout.svg) no-repeat left center;
-    line-height: 30px;
-}
-
-#asmo_nav_logout + p a.asmo_admin_menu span  {
-    background: url(../images/admin_icon.svg) no-repeat left center;
-}
-
-#asmo_nav_logout.active + p {
-    display: block;
-}
 
 
 /* *** 하단 픽스바 *** */
-#asmo_fixed_bar {
-    width: 100%;
-    height: 45px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 99;
-    -webkit-backdrop-filter: blur(10px) brightness(0.8);
-    backdrop-filter: blur(10px) brightness(0.8);
-}
-
-#asmo_fixed_bar ul {
-    width: 100%;
-    display: flex;
-    height: 45px;
-}
-
-#asmo_fixed_bar ul li {
-    width: 25%;
-}
-
-
- 
-
-#asmo_fixed_bar ul li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: rgba(34, 34, 34, 0.65);
-    text-align: center;
-}
-
-#asmo_fixed_bar ul li.active a {
-    background: rgba(251, 140, 0, 0.65);
-}  
-
-#asmo_fixed_bar ul li a span {
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 45px;
-    padding: 0 0 0 34px;
-    background: url(../images/company_icon_w.svg) no-repeat left center;
-}
 
 .forM  {
     display: none !important;
 }
 
+#asmo_fixed_bar {
+    background: #222;
+    width: calc(100% - 58px);
+    right: -100%;
+    bottom: 0;
+    position: fixed;
+    height: calc(100% - 102px);
+    z-index: 99;
+    transition: right 0.3s ease-out;
+    box-shadow: rgba(0, 0, 0, 0.35) -5px 0 20px;
+}
+
+#asmo_fixed_bar.active {
+    right: 0;
+}
+
+#asmo_fixed_bar ul {
+    padding: 1.4rem 0 0;
+}
+
+#asmo_fixed_bar ul li {
+    position: relative;
+    margin: 0 0 6px;
+}
+
+
+#asmo_fixed_bar ul li a {
+    font-size: 1.8rem;
+    color: #B4B4B4;
+    font-weight: 500;
+    line-height: 2.6rem;
+    display: block;
+    padding: 7px 0 7px 60px;
+}
+
+#asmo_fixed_bar ul li.active a {
+    color: #FB8C00;
+}
+
+#asmo_fixed_bar ul li.active::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 40px;
+    background: #FB8C00;
+    border-radius: 0 6px 6px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+/* 대쉬보드 */
+#asmo_fixed_bar ul li.asmo_q_dash a {
+    background: url(../images/asmo_side_dash_icon.svg) no-repeat 22px center;
+}
+ 
+
+#asmo_fixed_bar ul li.asmo_q_dash.active a {
+    background: url(../images/asmo_side_dash_icon_on.svg) no-repeat 22px center;
+}
+ 
+
+
+/* 마이랜드 */
 #asmo_fixed_bar ul li.asmo_q_my a {
-    background: rgba(34, 34, 34, 0.7);
+    background: url(../images/asmo_side_myland_icon.svg) no-repeat 22px center;
 }
 
 #asmo_fixed_bar ul li.asmo_q_my.active a {
-    background: rgba(251, 140, 0, 0.7);
+    background: url(../images/asmo_side_myland_icon_on.svg) no-repeat 22px center;
 }
 
 
-#asmo_fixed_bar ul li.asmo_q_my a span {
-    background: url(../images/myland_icon_w.svg) no-repeat left center;
+/* 기업랜드 */
+#asmo_fixed_bar ul li.asmo_q_office a {
+    background: url(../images/asmo_side_company_icon.svg) no-repeat 22px center;
 }
 
+#asmo_fixed_bar ul li.asmo_q_office.active a {
+    background: url(../images/asmo_side_company_icon_on.svg) no-repeat 22px center;
+}
+
+
+
+/* 클래스룸 */
 #asmo_fixed_bar ul li.asmo_q_class a {
-    background: rgba(34, 34, 34, 0.75);
+    background: url(../images/asmo_side_class_icon.svg) no-repeat 22px center;
 }
 
 #asmo_fixed_bar ul li.asmo_q_class.active a {
-    background: rgba(251, 140, 0, 0.75);
+    background: url(../images/asmo_side_class_icon_on.svg) no-repeat 22px center;
 }
 
-#asmo_fixed_bar ul li.asmo_q_class a span {
-    background: url(../images/class_icon_w.svg) no-repeat left center;
-}
 
+
+/* SHOP */
 #asmo_fixed_bar ul li.asmo_q_shop a {
-    background: rgba(34, 34, 34, 0.8);
+    background: url(../images/asmo_side_shop_icon.svg) no-repeat 22px center;
 }
 
 #asmo_fixed_bar ul li.asmo_q_shop.active a {
+    background: url(../images/asmo_side_shop_icon_on.svg) no-repeat 22px center;
+}
+
+
+
+
+/* 사이드바 하단 버튼 */
+.asmo_ham_bottom_menu {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.asmo_ham_bottom_menu li {
+    text-align: center;
+}
+
+.asmo_ham_bottom_menu li a em {
+    display: inline-block;
+}
+
+.asmo_ham_bottom_menu li a {
+    display: inline-block;
+    color: #B4B4B4;
+    font-size: 1.8rem;
+    font-weight: 500;
+    border: 1px solid #B4B4B4;
+    border-radius: 5px;
+    height: 3.4rem;
+    width: 17.1rem;
+    text-align: center;
+    padding: 3px 0;
+}
+
+
+
+/* 이용가이드 */
+
+.asmo_ham_bottom_menu li.asmo_go_guide a {
     background: rgba(251, 140, 0, 0.8);
+    border-color: transparent;
+    color: #fff;
+}
+
+.asmo_ham_bottom_menu li.asmo_go_guide a em {
+    width: 23px;
+    background: url(../images/asmo_faq.svg) no-repeat center center;
+    vertical-align: top;
+    height: 100%;
+    margin: 0 1.2rem 0 0;
+}
+
+/* 로그아웃 */
+
+.asmo_ham_bottom_menu li.asmo_logout {
+    margin: 1.6rem 0 0;
+}
+
+.asmo_ham_bottom_menu li.asmo_logout a em {
+    width: 14px;
+    background: url(../images/asmo_logout.svg) no-repeat center center;
+    vertical-align: top;
+    height: 100%;
+    margin: 0 2rem 0 0;
 }
 
 
-#asmo_fixed_bar ul li.asmo_q_shop a span {
-    background: url(../images/shop_icon_w.svg) no-repeat left center;
-}
+
 
 
 
@@ -598,9 +465,7 @@ footer .company li span {
     position: relative;
 }
 
-#asmo_class_nav > ul > li {
-    
-}
+
 
 #asmo_class_nav > ul > li > a {
     font-size: 1.4rem;
@@ -724,20 +589,6 @@ footer .company li span {
     }
 
 
-
-    /* *** 상단네비 *** */
-    .asmo_nav_info {
-        width: 180px;
-    }
-
-    .asmo_nav_money_wrap ul {
-        padding-left: 14px;
-        gap: 10px;
-    }
-
-    #asmo_nav_qa_btn {
-        padding: 0 12px;
-    }
 
 
     /* *** 푸터 *** */

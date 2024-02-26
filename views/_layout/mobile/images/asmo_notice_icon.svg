@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23" height="23" viewBox="0 0 23 23">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_4404" data-name="사각형 4404" width="23" height="23" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="asmo_notice_icon" clip-path="url(#clip-path)">
+    <g id="megaphone_5513963" transform="translate(0 0.003)">
+      <path id="패스_1800" data-name="패스 1800" d="M6.342,5.947H9.516v9.516H6.342Z" transform="translate(-0.395 -0.4)" fill="#bdc3c7"/>
+      <path id="패스_1801" data-name="패스 1801" d="M10.7,16.309a1.981,1.981,0,0,1-1.979,1.933H7.969L5.548,15.468H9.116Z" transform="translate(-0.395 -0.4)" fill="#802f34"/>
+      <path id="패스_1802" data-name="패스 1802" d="M2.379,5.947H6.742v9.516H2.379A1.983,1.983,0,0,1,.395,13.479V7.932A1.983,1.983,0,0,1,2.379,5.947Z" transform="translate(-0.395 -0.4)" fill="#e64c3c"/>
+      <path id="패스_1803" data-name="패스 1803" d="M21.016,1.584v11.7l-8.684,3.884L10.7,16.309l-1.58-.846V5.947L19.264.539a1.189,1.189,0,0,1,1.608.493A1.168,1.168,0,0,1,21.016,1.584Z" transform="translate(-0.395 -0.4)" fill="#e5e5e5"/>
+      <path id="패스_1804" data-name="패스 1804" d="M21.272,13.479h.139A1.983,1.983,0,0,0,23.395,11.5V9.911a1.983,1.983,0,0,0-1.984-1.984h-.395v5.362Z" transform="translate(-0.395 -0.4)" fill="#c03a2b"/>
+      <path id="패스_1805" data-name="패스 1805" d="M7.918,23.395H7.025a1.992,1.992,0,0,1-1.9-1.413L3.174,15.463H7.137l.832,2.774,1.087,3.624a1.194,1.194,0,0,1-1.138,1.533Z" transform="translate(-0.395 -0.4)" fill="#c03a2b"/>
+      <circle id="타원_123" data-name="타원 123" cx="5.553" cy="5.553" r="5.553" transform="translate(11.895 11.89)" fill="#e64c3c"/>
+      <g id="그룹_1146" data-name="그룹 1146" transform="translate(16.258 13.479)">
+        <circle id="타원_124" data-name="타원 124" cx="0.795" cy="0.795" r="0.795" transform="translate(0.395 6.342)" fill="#f0c419"/>
+        <path id="패스_1806" data-name="패스 1806" d="M19.032,15.068c0,.655-.534,3.568-1.189,3.568s-1.189-2.913-1.189-3.568a1.189,1.189,0,1,1,2.379,0Z" transform="translate(-16.653 -13.879)" fill="#f0c419"/>
+      </g>
+    </g>
+  </g>
+</svg>

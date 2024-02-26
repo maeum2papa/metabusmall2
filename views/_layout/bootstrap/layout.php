@@ -328,12 +328,12 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 	<!-- nav end --> <!-- header end -->
 
 	<!-- main start -->
-	<div class="main add">
+	<div class="main">
 		<div class="container">
 			<div class="row">
 
 				<?php if (element('use_sidebar', $layout)) {?>
-					<div class="col-md-9 col-sm-8 col-xs-12 mb20">
+					<div class="collabor">
 				<?php } ?>
 
 				<!-- 본문 시작 -->
@@ -359,27 +359,38 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 	<footer>
 		
 		
-		<!-- asmo sh 231121 footer 내 div.container dn 처리 후 디자인에 맞게 재배치 및 일단 하드코딩으로 관리 -->
+		<!-- asmo sh 231121 footer 내 div.container dn 처리 후 디자인에 맞게 재배치 -->
 
 		<div class="container">
 			<div class="footer_logo">
-				<a href=""><?=banner('login_logo')?></a>
+				<a href="<?php echo site_url('dashboard'); ?>"><?=banner('footer_logo')?></a>
 			</div>
 
 			<div class="company_info_box">
-				<div class="company_info">
-					<b><?php echo $this->cbconfig->item('company_name'); ?></b>
-					<span><?php echo $this->cbconfig->item('company_address'); ?></span>
+
+				<div class="company_info_left">
+					<ul class="company">
+						<li><a href="<?php echo document_url('provision'); ?>" title="이용약관">이용약관</a></li>
+						<li><a href="<?php echo document_url('privacy'); ?>" title="개인정보처리방침">개인정보처리방침</a></li>
+						<!-- <li><a href="<?php echo document_url('financeAgree'); ?>" title="전자금융거래약관">전자금융거래약관</a></li> -->
+					</ul>
+					<div class="company_info">
+						<p><?php echo $this->cbconfig->item('company_name'); ?> | 대표이사 : <?php echo $this->cbconfig->item('company_owner'); ?></p>
+						<p><?php echo $this->cbconfig->item('company_address'); ?></p>
+						<p>사업자등록번호 <?php echo $this->cbconfig->item('company_reg_no'); ?></p>
+						<p>통신판매업신고 : 제2023-서울금천-2766</p>
+					</div>
 				</div>
 
-				<div class="company_info">
-					<span>사업자등록번호 <?php echo $this->cbconfig->item('company_reg_no'); ?></span>
+				<div class="company_info_right">
+					<div class="company_info_right_box">
+						<span>장애 신고 및 이용 문의</span>
+						<strong>help@collaborland.kr</strong>
+					</div>
+
+					<a href="">모바일 앱 다운로드 안내 ></a>
 				</div>
 
-				<div class="company_info">
-					<span>대표번호 <?php echo $this->cbconfig->item('company_phone'); ?> | </span>
-					<span>FAX <?php echo $this->cbconfig->item('company_fax'); ?></span>
-				</div>
 			</div>
 		</div>
 
@@ -449,7 +460,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 			</div>
 		</div>
 		<!-- 컬래버랜드 강의 -->
-		<ul class="col_barTitle" style="display: none;">
+		<ul class="col_barTitle">
 			<li class="col_title_li" onClick="location.href='<?php echo site_url('classroom/business_class?menu=채용부터 온보딩');?>'">
 				<p class="col_title_icon"><img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/classroom/mwu_icon.png" alt="mwu_icon"></p>
 				<div class="col_title_con">
@@ -495,8 +506,8 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 			
 		</ul>
 		<!-- 기업강의 -->
-		<ul class="cpn_barTitle">
-			<li class="cpn_title_li">
+		<ul class="cpn_barTitle dn">
+			<li class="cpn_title_li" onClick="location.href='<?php echo site_url('classroom/company_class');?>'">
 				<p class="cpn_title_icon"><img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/classroom/company_icon.png" alt="company_icon"></p>
 				<p class="cpn_title_con">기업 강의</p>
 			</li>
@@ -517,62 +528,31 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
             <button id="npopClose"><img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/npop_close.svg" alt="npop_close"></button>
         </div>
         <div class="npopBtm">
-            <div class="notice_contents notice1">
-                <!-- 첫번째 공지사항입니다 -->
-                <h2>기업랜드 내 규칙 공지</h2> <!-- 제목 -->
-                <div class="npopCon">
-                    <p class="npop_img"><img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/npop_itemSet.png" alt="npop_itemSet"></p> <!-- 이미지 공간입니다 -->
-                    <div class="npopConBtm">
-                        <!-- 내용 -->
-                        <p>기업랜드에서 지켜야 할 규칙 공지 안내 드립니다.</p>
-                        <p>1. 보이는 사람한테는 인사는 꼭 해주세요!</p>
-                    </div>
-                    <a href="https://seum.collaborland.kr/post/58" class="npop_plus"><img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/npop_plus.svg" alt="npop_plus"></a>
-                </div>
-            </div>
-            <div class="notice_contents notice2">
-                <!-- 두번째 공지사항입니다 -->
-                <h2>팀메타 필수 교육 영상 시청 공유 드립니다.</h2> <!-- 제목 -->
-                <div class="npopCon">
-                    <div class="npopConBtm">
-                        <!-- 내용 -->
-                        <p>기업랜드에서 지켜야할 규칙 공지 안내드립니다.기업랜드에서 지켜야할 규칙 공지 안내드립니다.기업랜드에서 지켜야할 규칙 공지 안내드립니다.기업랜드에서 지켜야할 규칙 공지 안내드립니다.기업랜드에서 지켜야할 규칙 공지 안내드립니다.기업랜드에서 지켜야할 규칙 공지 안내드립니다.</p>
-                        <p>
-                            <span>1. 보이는 사람한테는 인사는 꼭 해주세요!</span> <br>
-                            <span>2. 열매 수확 후에는 씨앗을 심어 주세요.</span> <br>
-                            <span>3. 비매너 안 돼요! 예쁜 말만 쓰도록 합시다.</span> <br>
-                        </p>
-                        
-                    </div>
+			<?php  
+			$cnotice = recent_notice($this->member->item('company_idx'));
+			foreach($cnotice as $k => $v){
+			?>
+			<div class="notice_contents notice<?php echo $k+1; ?>">
+				<h2><?php echo element('post_title', $v); ?></h2>
+				<div class="npopCon">
+					<?php if(element('pfi_filename', $v)){ ?>
+						<p class="npop_img"><img src="/uploads/post/<?php echo element('pfi_filename', $v); ?>" alt="npop_itemSet"></p>
+					<?php } ?>
+					<div class="npopConBtm">
+						<?php echo element('post_content', $v); ?>
+					</div>
+					<?php if(element('pln_url', $v)){ ?>
+					<a target="_black" href="<?php echo element('pln_url', $v); ?>" class="npopCon_link"><?php echo element('pln_url', $v); ?></a>
+					<?php } ?>
 
-					<!-- 링크 있을 때 입니다. -->
-					<a href="#" class="npopCon_link">
-						https://www.naver.com/
-					</a>
-					<!-- 링크 있을 때 입니다. -->
+					<?php if(element('pfi_filename', $v)){ ?>
+						<a href="/uploads/post/<?php echo element('pfi_filename', $v); ?>" download class="npopCon_file"></a>
+					<?php } ?>
 
-                    <a href="https://seum.collaborland.kr/post/58" class="npop_plus"><img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/npop_plus.svg" alt="npop_plus"></a>
-                </div>
-            </div>
-            <div class="notice_contents notice3">
-                <!-- 세번째 공지사항입니다 -->
-                <h2>기업몰 판매 공지</h2> <!-- 제목 -->
-                <div class="npopCon">
-                    <div class="npopConBtm">
-                        <!-- 내용 -->
-                        <p>이번 저희 기업에서 새로운 상품이 판매될 예정입니다.</p>
-                        <p>
-                            많은 임직원 분들이 요청해 주셨던 문구류와 간식류를 대량으로 준비 중이오니, <br>
-                            임직원 분들의 많은 관심 부탁 드리겠습니다. <br>
-                        </p>
-                        <p>감사합니다.</p>
-                    </div>
-                    <a href="https://seum.collaborland.kr/post/58" class="npop_plus"><img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/npop_plus.svg" alt="npop_plus"></a>
-                </div>
-            </div>
-
-
-			
+					<a target="_black" href="https://seum.collaborland.kr/post/<?php echo element('post_id', $v); ?>" class="npop_plus"><img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/npop_plus.svg" alt="npop_plus"></a>
+				</div>
+			</div>
+			<?php } ?>
 			<!-- 공지사항이 없을 때 입니다. -->
 			<!-- <div class="nopost" style="line-height: 200px;">
 				<p>등록된 공지사항이 없습니다.</p>
@@ -1098,29 +1078,33 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 
 <script type="text/javascript">
 
-	// 사이드바 토글
-	const  barToggle_menu = document.querySelectorAll ('#class_sideBar > .BarCon > .barToggle_bg > .barToggle_menu > p')
-	const barCon = document.querySelectorAll ('#class_sideBar > .BarCon > ul ')
+	// 클래스룸 사이드바 스크립트 추가
+	function handleCollClassClick() {
+		document.querySelectorAll('.col_barTitle, .cpn_barTitle').forEach(function(title) {
+			title.classList.add('dn');
+		});
+		document.querySelector('.col_barTitle').classList.remove('dn');
+		document.querySelector('#barToggle').classList.remove('toggleX');
+	}
 
-	barCon[0].classList.toggle('toggleSidebarA')
-	barCon[1].style.display = 'none'
-	barToggle_menu.forEach(function(t,i){
-		t.addEventListener('click',function(){
-			for(let j of barCon){j.classList.remove('toggleSidebarA')}
-			barCon[i].classList.toggle('toggleSidebarA')
-		})
+	function handleCpnClassClick() {
+		document.querySelectorAll('.col_barTitle, .cpn_barTitle').forEach(function(title) {
+			title.classList.add('dn');
+		});
+		document.querySelector('.cpn_barTitle').classList.remove('dn');
+		document.querySelector('#barToggle').classList.add('toggleX');
+	}
+
+	document.querySelectorAll('.collClass').forEach(function(element) {
+		element.addEventListener('click', handleCollClassClick);
 	});
-	const barToggle = document.getElementById('barToggle')
-	// console.log (barToggle)
-	barToggle_menu.forEach(function(t,i){
-		t.addEventListener('click',function(){
-			barToggle.classList.toggle('toggleBgColor')
-			barToggle.classList.toggle('toggleX')
-		})
+
+	document.querySelectorAll('.cpnClass').forEach(function(element) {
+		element.addEventListener('click', handleCpnClassClick);
 	});
-	
-	// 열매 현황 팝업창 띄우기 스크립트
+
 	$(document).ready(function() {
+
 		// 열매 박스 클릭 시 열매 팝업창 띄우기
 		$('.status_box').on('click', function() {
 			$('#status_popup').css('display', 'block');

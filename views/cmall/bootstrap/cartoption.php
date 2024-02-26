@@ -13,9 +13,17 @@ echo form_open(site_url('cmallact/optionupdate'), $attributes);
 				<ul>
 				
 					<?php
+					$company_coin_value = 0;
+					if($view['company_coin_value'] && $view['item']['cit_money_type']=="f"){
+						$company_coin_value = $view['company_coin_value'];
+					}
 					if (element('detail', $view)) {
 						foreach (element('detail', $view) as $key => $value) {
 							$price = element('cit_price', element('item', $view)) + element('cde_price', $value);
+
+							if($view['company_coin_value'] && $view['item']['cit_money_type']=="f"){
+								$price = ($price / $company_coin_value);
+							}
 					?>
 						<li>
 							 <div class="opt-name">

@@ -32,7 +32,7 @@
 
 <!-- asmo sh 231205 shop div#item 감싸는 div#asmo_cmall 생성 -->
 <div class="asmo_cmall">
-	<div class="market" id="item">
+	<div class="asmo_cmall_market" id="itemitem">
 
 		<!-- shop 부분 공통 top box -->
 		<div class="cmall_top_wrap">
@@ -108,7 +108,7 @@
 				<div class="product-right col-xs-12 col-lg-6">
 
                     <!-- 네비게이터 -->
-                    <div>
+                    <div class="item_navi">
                         <a href="<?php echo site_url('cmall/lists/6?search_cate_sno_parent_sno='.element('depth', element('data', $view))[0]["cate_parent"].'&search_cate_sno='.element('depth', element('data', $view))[0]["cate_sno"].'&search_set_item=0'); ?>"><?php echo element('depth', element('data', $view))[0]["text"]; ?></a>
                         > 
                         <a href="<?php echo site_url('cmall/lists/6?search_cate_sno_parent_sno='.element('depth', element('data', $view))[1]["cate_parent"].'&search_cate_sno='.element('depth', element('data', $view))[1]["cate_sno"].'&search_set_item='.element('depth', element('data', $view))[1]["set"]); ?>"><?php echo element('depth', element('data', $view))[1]["text"]; ?></a>
@@ -390,13 +390,15 @@
 			$(targetId).parent().addClass("selected");
 		});
 			
-		if ($('.asmo_cmall #item .product-right > form .product-option li').length === 1) {
+		if ($('.asmo_cmall .asmo_cmall_market .product-right > form .product-option li').length > 0) {
 			setTimeout(() => {
 				
-				$('.asmo_cmall #item .product-right > form .product-option li .opt-name input[type=checkbox]').trigger('click');
+				$('.asmo_cmall .asmo_cmall_market .product-right > form .product-option li .opt-name input[type=checkbox]').trigger('click');
+
+				console.log('triggered');
 			}, 10);
 
-			$('.asmo_cmall #item .product-right > form .product-option li .opt-name .span-chk label').addClass('dn');
+			$('.asmo_cmall .asmo_cmall_market .product-right > form .product-option li .opt-name .span-chk label').addClass('dn');
 		}
 
 		$('#order_layer_open_btn').click(function() {

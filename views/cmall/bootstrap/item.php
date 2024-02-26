@@ -25,7 +25,7 @@
 
 <!-- asmo sh 231205 shop div#item 감싸는 div#asmo_cmall 생성 -->
 <div class="asmo_cmall">
-	<div class="market" id="item">
+	<div class="asmo_cmall_market" id="item">
 
 		<!-- shop 부분 공통 top box -->
 		<div class="cmall_top_wrap">
@@ -99,30 +99,10 @@
 
 				<!-- asmo sh 231206 디자인 상 상품 제목 제외하고 주석처리 및 fixed div로 재배치 -->
 				<div class="product-right col-xs-12 col-lg-6">
-					
-					<?php
 
-						$exchange_limit_product = "";
-						
-						if($view['data']['cit_download_days'] > 0 || ($view['data']['cit_startDt']!=0 && $view['data']['cit_endDt']!=0)){
-							$exchange_limit_product = "기간한정 상품입니다.​";
-						}else if($view['data']['cit_one_sale']=='y'){
-							$exchange_limit_product = "1인당 1회 교환 제한 상품입니다.​";
-						}else if($view['data']['cit_stock_type']=='s'){
-							$exchange_limit_product = "한정수량 제품입니다.​";
-						}
-					?>
-
-					<?php
-						if($exchange_limit_product!=''){
-						?>
-						<!-- 1인당 1회 교환 제한 상품일 때 -->
-							<div class="exchange_limit_product"><span><?php echo $exchange_limit_product;?></span></div>
-						<!-- 1인당 1회 교환 제한 상품일 때 -->
-						<?php
-						}
-					?>
-					
+					<!-- 1인당 1회 교환 제한 상품일 때 -->
+					<div class="exchange_limit_product"><span>1인당 1회 교환 제한 상품입니다</span></div>
+					<!-- 1인당 1회 교환 제한 상품일 때 -->
 
 					<div class="product-title"><?php echo html_escape(element('cit_name', element('data', $view))); ?></div>
 
@@ -159,7 +139,10 @@
 							<?php
 							foreach (element('detail', element('data', $view)) as $detail) {
 								$price = element('cit_price', element('data', $view)) + element('cde_price', $detail);
-						
+								if($view['data']['company_coin_value']){
+									$price = $price / $view['data']['company_coin_value'];
+									if($price < 0) $price = 0;
+								}
 							?>
 								<li>
 									<div class="opt-name">
@@ -502,11 +485,6 @@ jQuery(function($){
 			qty = 0,
 			$sel = jQuery('input[name^=chk_detail]:checked'),
 			$total_order_price = $(this);
-
-		if($sel.size() == 0){
-            jQuery('input[name="chk_detail[]"]:eq(0)').prop( "checked", true );
-            $sel = jQuery('input[name^=chk_detail]:checked');
-        }
 
 		if ($sel.size() > 0) {
 			$sel.each(function() {

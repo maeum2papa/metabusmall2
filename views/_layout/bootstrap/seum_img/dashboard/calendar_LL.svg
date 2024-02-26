@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="53" height="53" viewBox="0 0 53 53">
+  <defs>
+    <filter id="사각형_4299" x="0" y="0" width="53" height="53" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="사각형_4299-2" x="0" y="0" width="53" height="53" filterUnits="userSpaceOnUse">
+      <feOffset dx="-2" dy="-2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur-2"/>
+      <feFlood flood-color="#eee" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-2"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="그룹_849" data-name="그룹 849" transform="translate(-839 -67)">
+    <g data-type="innerShadowGroup">
+      <g transform="matrix(1, 0, 0, 1, 839, 67)" filter="url(#사각형_4299)">
+        <rect id="사각형_4299-3" data-name="사각형 4299" width="35" height="35" rx="5" transform="translate(9 6)" fill="#fff"/>
+      </g>
+      <g transform="matrix(1, 0, 0, 1, 839, 67)" filter="url(#사각형_4299-2)">
+        <rect id="사각형_4299-4" data-name="사각형 4299" width="35" height="35" rx="5" transform="translate(9 6)" fill="#fff"/>
+      </g>
+    </g>
+    <g id="그룹_850" data-name="그룹 850" transform="translate(3)">
+      <path id="down-arrow_6751818" d="M19.627,8.249l-9-8a1,1,0,0,0-1.32,0l-9,8a1,1,0,0,0,1.32,1.5l8.34-7.41,8.34,7.41a1,1,0,1,0,1.32-1.5Z" transform="translate(853.486 100.5) rotate(-90)" fill="rgba(34,34,34,0.5)"/>
+      <path id="down-arrow_6751818-2" data-name="down-arrow_6751818" d="M19.627,8.249l-9-8a1,1,0,0,0-1.32,0l-9,8a1,1,0,0,0,1.32,1.5l8.34-7.41,8.34,7.41a1,1,0,1,0,1.32-1.5Z" transform="translate(861.486 100.5) rotate(-90)" fill="rgba(34,34,34,0.5)"/>
+    </g>
+  </g>
+</svg>

@@ -23,7 +23,7 @@
 
 <!-- asmo sh 231205 shop div#lists 감싸는 div#asmo_cmall 생성 -->
 <div class="asmo_cmall">
-	<div id="lists">
+	<div id="lists" class="asmo_cmall_list">
 		
 		<!-- shop 부분 공통 top box -->
 		<div class="cmall_top_wrap">
@@ -102,7 +102,7 @@
 
 			<div class="cmall_list_wrap">
 
-				<ul class="row on">
+				<ul class="row">
 					<?php 
 					$k = 0;
 					if (element('list', element('data', $view))) {

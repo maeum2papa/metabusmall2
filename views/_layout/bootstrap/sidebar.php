@@ -61,7 +61,7 @@ $rank = seum_rank($this->member->item('company_idx'),$this->member->item('mem_id
                             <span class="asmo_sidebar_icon"></span>
 
                             <div class="asmo_menu_hover">
-                                <p>SHOP</p>
+                                <p>교환소</p>
                             </div>  
                         </a>
                     </li>
@@ -73,7 +73,7 @@ $rank = seum_rank($this->member->item('company_idx'),$this->member->item('mem_id
             <div class="sidebar_menu">
                 <ul>
                     <li id="asmo_info">
-                        <a href="<?php echo site_url('dashboard'); ?>" class="sidebar_logo">
+                        <a href="<?php echo site_url('faq/faq'); ?>" class="sidebar_logo">
                             <span class="asmo_sidebar_icon"></span>
                         
                             <div class="asmo_menu_hover">

@@ -18,7 +18,7 @@
 
 .asmo_login_wrapper .table-box .table-heading {
     background: none;
-    padding: 36px 0 40px;
+    padding: 15px 0 12px;
 }
 
 .asmo_login_wrapper .table-box .table-heading img {
@@ -42,16 +42,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 400px;
+    width: calc(100% - 72px);
     border-radius: 15px;
     box-shadow: 0px 3px 20px #00A8FA2E;
 }
 
+.access {
+    box-shadow: none;
+}
 
 
 .table-body form {
     border: 0;
-    padding: 0 50px;
+    padding: 0 26px;
 }
 
 .loginform li {
@@ -60,7 +63,7 @@
 
 .asmo_login_wrapper .input {
     width: 100%;
-    border: 1px solid #494949CC;
+    border: 1px solid #494949;
     border-radius: 8px;
     height: 40px;
     line-height: 38px;
@@ -70,7 +73,7 @@
 }
 
 .asmo_login_wrapper .input::placeholder {
-    color: rgba(34, 34, 34, 0.4);
+    color: rgba(34, 34, 34, 0.5);
 }
 
 .asmo_login_wrapper .input:focus {
@@ -94,12 +97,31 @@
 }
 
 
+.findarea .table-box {
+    background: none;
+}
+
+.findarea .table-box .table-body {
+    background: #fff;
+    box-shadow: 0px 3px 20px #00A8FA2E;
+    border-radius: 15px;
+}
+
+
+.access .table-box {
+
+    box-shadow: 0px 3px 20px #00A8FA2E;
+}
+
+
+
+
 .error:not(.input) {
     display: block;
-    margin: 14px 0 0;
+    margin: 5px 0 0;
     color: rgba(34, 34, 34, 0.8);
-    font-size: 1.4rem;
-    border-radius: 8px 8px 8px 0;
+    font-size: 1.2rem;
+    border-radius: 8px;
     background: rgba(251, 140, 0, 0.2);
     padding: 6px 10px;
     margin: 14px 0 0;
@@ -187,35 +209,103 @@
     background: none;
     border: 0;
     text-shadow: none;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: rgba(34, 34, 34, 0.65);
     font-weight: normal;
     padding: 16px 20px;
     line-height: normal;
 }
 
+/* 초대코드 발급 */
+.asmo_guest_login {
+    text-align: center;
+    margin: 2rem 0 0;
+}
+
+.asmo_guest_login span {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #fff;
+    display: block;
+    margin: 0 0 1.2rem;
+    line-height: normal;
+}
+
+.asmo_guest_login a {
+    display: inline-block;
+    position: relative;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+
+/* ***  게스트 로그인 페이지 *** */
+.asmo_guest_login_tit {
+    text-align: center;
+    margin: 2rem 0 2.7rem;
+}
+
+.asmo_guest_login_tit p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #FB8C00;
+    line-height: normal;
+    margin: 0 0 7px;
+}
+
+.asmo_guest_login_tit span {
+    color: #222;
+    font-size: 1.4rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.loginform li.asmo_login_btn_li.asmo_guest_login_btn_wrap {
+    margin: 3.4rem 0 2.8rem;
+}
+
+
+/* *** 게스트 닉네임 설정 *** */
+.asmo_login_nickname_txt {
+    text-align: center;
+    color: #707070;
+    font-size: 1.2rem;
+}
+
+#asmo_login_nickname_wrap .loginform li.asmo_login_btn_li.asmo_guest_login_btn_wrap {
+    margin: 15px 0 28px;
+}
+
+
+#asmo_login_nickname_wrap  .loginform li {
+    margin: 0 0 6px;
+}
+
+
 
 /* *** 계정찾기  *** */
 
 .findarea {
-    width: 484px;
+    width: calc(100% - 72px);
+    box-shadow: none;
 }
 
 /* 공통 타이틀 */
 .asmo_login_wrapper .findarea .table-box .table-heading {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 500;
-    color: #000;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg id='그룹_1064' data-name='그룹 1064' transform='translate(-709.529 -228.487)'%3E%3Crect id='사각형_3951' data-name='사각형 3951' width='20' height='20' transform='translate(709.529 228.487)' fill='none'/%3E%3Cg id='그룹_597' data-name='그룹 597' transform='translate(713.376 230.561)'%3E%3Cpath id='패스_1197' data-name='패스 1197' d='M17.3,17.536a5.44,5.44,0,0,0-2.742-4.682,1.231,1.231,0,0,0-1.257-.068,5.163,5.163,0,0,1-4.8-.006,1.209,1.209,0,0,0-1.222.061A5.435,5.435,0,0,0,4.509,17.47a2.118,2.118,0,0,0,2.243,2.3c1.386,0,2.773,0,4.159,0s2.8.006,4.2,0a2.108,2.108,0,0,0,2.19-2.237m-2.25.957c-1.373,0-2.746,0-4.119,0s-2.746,0-4.119,0c-.73,0-1.067-.335-1.023-1.059a4.229,4.229,0,0,1,1.9-3.351.448.448,0,0,1,.506-.044,6.268,6.268,0,0,0,5.41.009.448.448,0,0,1,.508.026A4.237,4.237,0,0,1,16.019,17.5a.859.859,0,0,1-.971.991' transform='translate(-4.506 -4.411)' fill='%23222'/%3E%3Cpath id='패스_1198' data-name='패스 1198' d='M11.357,3a3.841,3.841,0,1,0,3.826,3.855A3.844,3.844,0,0,0,11.357,3m-.029,6.4A2.56,2.56,0,1,1,13.9,6.844,2.567,2.567,0,0,1,11.328,9.4' transform='translate(-4.944 -3)' fill='%23222'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A") no-repeat 16px center;
-    padding: 12px 40px;
-    background-size: 20px;
+    color: #fff;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='profile_icon' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect id='사각형_3951' data-name='사각형 3951' width='24' height='24' fill='none'/%3E%3Cg id='그룹_597' data-name='그룹 597'%3E%3Cpath id='패스_1197' data-name='패스 1197' d='M19.492,18.375A6.373,6.373,0,0,0,16.28,12.89a1.443,1.443,0,0,0-1.473-.08A6.048,6.048,0,0,1,9.179,12.8a1.416,1.416,0,0,0-1.432.072A6.367,6.367,0,0,0,4.509,18.3,2.481,2.481,0,0,0,7.136,21c1.624,0,3.248,0,4.872,0,1.64,0,3.279.007,4.919,0a2.469,2.469,0,0,0,2.565-2.62M16.856,19.5c-1.608,0-3.217,0-4.825,0s-3.217,0-4.825,0c-.855,0-1.25-.393-1.2-1.24a4.954,4.954,0,0,1,2.224-3.925.524.524,0,0,1,.593-.051,7.342,7.342,0,0,0,6.337.01.525.525,0,0,1,.6.03,4.963,4.963,0,0,1,2.236,4.014A1.006,1.006,0,0,1,16.856,19.5' fill='%23fff'/%3E%3Cpath id='패스_1198' data-name='패스 1198' d='M12.018,3A4.5,4.5,0,1,0,16.5,7.516,4.5,4.5,0,0,0,12.018,3m-.034,7.5A3,3,0,1,1,15,7.5a3.007,3.007,0,0,1-3.016,3' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E") no-repeat 0 0;
+    padding: 0 0 10px 28px;
 }
 
 
 .findaccount,
 .change_pw {
-    border-top: 1px solid rgba(169, 169, 169, 0.5);
-    padding: 16px 20px 24px;
+    border: 0;
+    padding: 26px 25px 17px;
 }
 
 .table-body .findaccount form,
@@ -224,25 +314,26 @@
 }
 
 .container .findaccount h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
     color: #000;
-    margin: 0 0 8px;
+    margin: 0 0 12px;
     padding: 0;
     border: 0;
+
 }
 
 .findarea .text {
-    padding: 0 0 40px;
+    padding: 0 0 20px;
     color: rgba(0, 0, 0, 0.6);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: normal;
     line-height: 1.4;
 }
 
 #asmo_find_pw_btn,
 #asmo_reset_pw_btn {
-    width: 140px;
+    width: 100%;
     height: 40px;
     background: transparent linear-gradient(90deg, #006CFA 0%, #00A8FA 100%) 0% 0% no-repeat padding-box;
     border-radius: 8px;
@@ -256,9 +347,6 @@
     position: relative;
     overflow: hidden;
     padding: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
 }
 
 #asmo_reset_pw_btn {
@@ -292,8 +380,8 @@
 }
 
 .asmo_login_wrapper .input#idpw_email {
-    width: calc(100% - 150px);
-    margin: 0;
+    width: 100%;
+    margin: 0 0 1.3rem;
 }
 
 
@@ -309,14 +397,18 @@
 .asmo_login_wrapper .alert {
     color: rgba(34, 34, 34, 0.8);
     font-size: 1.4rem;
-    border-radius: 8px 8px 8px 0;
+    border-radius: 8px;
     background: rgba(251, 140, 0, 0.2);
     padding: 6px 10px;
-    margin: 14px 0 0;
+    margin: 0 2.6rem 1.4rem;
     border: 0;
     word-break: keep-all;
 }
 
+
+.asmo_login_wrapper .findarea .alert {
+    margin: 5px 0 0;
+}
 
 
 .asmo_login_wrapper .alert button {
@@ -352,12 +444,12 @@
 
 
 .change_password li {
-    margin: 0 0 14px;
+    margin: 0 0 18px;
 }
 
 .change_password li.asmo_reset_btn_wrap  {
     position: relative;
-    margin: 36px 0 14px;
+    margin: 30px 0 5px;
 }
 
 
@@ -376,532 +468,719 @@
 /* *** 대쉬보드 메인 *** */
 
 .dash_top_wrap {
-    height: 200px;
+    height: 15.4rem;
+    padding: 2.8rem 2.4rem 0;
+    position: relative;
+    overflow: hidden;
 }
 
 
+.dash_top_wrap::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(2px);
+    transform: scale(1.1);
+}
 
-.dash_top_wrap.day {
+.dash_top_wrap.day::before {
     background: url(../images/dash_bg_day.png) no-repeat center top;
     background-size: cover;
 }
 
-.dash_top_wrap.sunset {
+.dash_top_wrap.sunset::before {
     background: url(../images/dash_bg_sunset.png) no-repeat center top;
     background-size: cover;
 }
 
-.dash_top_wrap.night {
+.dash_top_wrap.night::before {
     background: url(../images/dash_bg_night.png) no-repeat center top;
     background-size: cover;
 }
 
-
-
-/* 대쉬보드 중간 컨텐츠 영역 */
-.dash_mid_wrap {
-    padding: 0 13.671875% 32px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-end;
-    margin-top: -39px;
+.asmo_dash_intro_txt_wrap {
+    position: relative;
 }
 
-.dash_mid_wrap > div {
-    box-shadow: 2px 3px 15px rgba(0, 168, 250, 0.08);
-    border-radius: 10px;
-    background: #fff;
+#asmo_dash_intro_txt {
+    position: absolute;
+    bottom: 1.6rem;
+    left: 2.4rem;
+}
+
+#asmo_dash_intro_txt p {
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: -1.1px;
+    line-height: normal;
+}
+
+#asmo_dash_intro_txt p .asmo_hand_icon {
+    display: inline-block;
+    width: 2.9rem;
+    height: 2.9rem;
+    background: url(../images/asmo_hand.svg) no-repeat 0 0;
+    vertical-align: middle;
+    margin: -4px 0 0 8px;
+}
+
+#asmo_dash_intro_txt p:first-child {
+    margin: 0 0 1rem;
+}
+
+#asmo_dash_intro_txt p:last-child {
+    line-height: 1.5;
 }
 
 
-#asmo_member_profile {
-    padding: 0 15px 24px;
-    width: 240px;
+/* *** 대쉬보드 메인컨텐츠 *** */
+#asmo_dash_tab_container {
+    background: #F1F1F1;
+    padding: 0 2.4rem 5.8rem;
 }
 
-#asmo_member_profile .asmo_profile_img_wrap {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto;
-    margin-top: -53px;
 
-    background: #f6f6f6;
-    border-radius: 100%;
+/* 탭버튼 */
+
+#asmo_dash_tab_btn {
+    padding: 7px 0 10px;
 }
 
-#asmo_member_profile .asmo_profile_img_wrap img {
-    width: 120px;
-    height: 120px;
-    border-radius: 100%;
+#asmo_dash_tab_btn ul {
+    border-bottom: 1px solid #B4B4B4;
 }
 
-.asmo_profile_top .asmo_info_wrap {
+#asmo_dash_tab_btn ul li {
+    color: #B4B4B4;
+    font-size: 1.4rem;
+    font-weight: 500;
+    transition: all 0.3s ease-out;
+    position: relative;
+    display: inline-block;
+    width: 6.3rem;
     text-align: center;
-    padding: 24px 0;
-    border-bottom: 1px solid rgba(169, 169, 169, 0.5);
-    margin: 0 0 24px;
+    height: 3.3rem;
+    line-height: 3.3rem;
+    margin: 0 0.7rem 0 0;
 }
 
-.asmo_profile_top .asmo_info_wrap .asmo_name {
-    margin: 0 0 20px;
-}
-
-.asmo_profile_top .asmo_info_wrap .asmo_name,
-.asmo_profile_top .asmo_info_wrap .asmo_name + p {
-    line-height: 1;
-}
-
-.asmo_profile_top .asmo_info_wrap .asmo_name + p {
-    width: 96%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-
-.asmo_profile_top .asmo_info_wrap .asmo_name b {
-    font-size: 2.4rem;
-    font-weight: bold;
+#asmo_dash_tab_btn ul li.active {
     color: #222;
-    max-width: 124px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-}
-
-
-.asmo_profile_top .asmo_info_wrap .asmo_name span {
-    font-size: 1.8rem;
     font-weight: bold;
-    color: rgba(251, 140, 0, 0.8);
-    padding: 0 0 0 6px;
-    max-width: 83px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
 }
 
-/* 상태명 입력 */
+#asmo_dash_tab_btn ul li::after {
+    transition: all 0.3s ease-out;
+}
 
-.asmo_profile_bottom .asmo_status_inner::after {
+#asmo_dash_tab_btn ul li.active::after {
     content: '';
     display: block;
-    clear: both;
+    width: 100%;
+    height: 2px;
+    background: #222;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
 }
 
-.asmo_profile_bottom .asmo_status_inner .asmo_status_btn_wrap,
-.asmo_profile_bottom .asmo_status_inner .asmo_status_input_wrap {
-    float: left;
+/* 슈퍼관리자 배너 */
+.dash_cm_box {
+    padding: 14px 0 10px;
 }
 
-.asmo_profile_bottom .asmo_status_inner .asmo_status_btn_wrap strong {
-    color: rgba(34, 34, 34, 0.8);
+.dash_cm_box img{
+    filter: drop-shadow(0 3px 6px #00000029);
+}
+
+
+/* 대쉬보드 MY 컨텐츠 */
+
+/* 프로필 카드 */
+#asmo_dash_name_card {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: #00000029 0 0 15px;
+    margin: 0 0 1rem;
+    padding: 1.7rem 1.3rem 1.4rem;
+}
+
+/* 프로필사진 */
+.asmo_profile_top {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 1.5rem;
+}
+
+.asmo_profile_img_wrap {
+    width: 10.3rem;
+    height: 10.3rem;
+    border-radius: 100%;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #9C9C9C, #BFBFBF);
+}
+
+/* 프로필정보 */
+.asmo_profile_top .asmo_info_wrap {
+    width: calc(100% - 11.9rem);
+}
+
+
+.asmo_profile_top .asmo_info_wrap .asmo_name {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0.8rem;
+}
+
+.asmo_profile_top .asmo_info_wrap .asmo_mem_div {
     font-size: 1.4rem;
-    font-weight: bold;
-    padding: 0 6px 0 0;
-    line-height: 28px;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0 0 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.statusButton {
-    width: 16px;
-    height: 16px;
+.asmo_profile_top .asmo_info_wrap .asmo_name b {
+    font-size: 2rem;
+    font-weight: bold;
+    max-width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 2.3rem;
+}
+
+.asmo_profile_top .asmo_info_wrap .asmo_name span {
+    font-size: 1.6rem;
+    color: rgba(251, 140, 0, 0.9);
+    font-weight: 500;
+    padding: 0 0 0 1.2rem;
+    max-width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 2.3rem;
+}
+
+
+/* 칭호 */
+.asmo_rank_nickname_inner,
+.asmo_status_inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.asmo_rank_nickname_inner {
+    margin: 0 0 1.5rem;
+}
+
+.asmo_rank_nickname_inner span {
+    display: inline-block;
+    background: #707070;
+    border-radius: 3px;
+    padding: 0 1.2rem 0 0.5rem;
+    height: 2.3rem;
+    line-height: 2.3rem;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.asmo_rank_nickname_inner span img {
+    margin: 0 0.5rem 0 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#change_nickname,
+.asmo_status_inner button {
+    width: 2rem;
+    height: 2rem;
     background: url(../images/profile_icon.svg) no-repeat center center;
 }
 
-.statusButton.check {
-    background: url(../images/success_icon.svg) no-repeat center center;
+/* 상태명 */
+.asmo_status_inner .asmo_status_input_wrap {
+    width: calc(100% - 2.4rem);
 }
 
-.asmo_profile_bottom .asmo_status_inner .asmo_status_input_wrap {
-    padding: 0 0 0 3px;
+.asmo_status_inner .asmo_status_input_wrap input, .asmo_status_input_wrap span {
+    height: 2rem;
+    line-height: 1.8rem;
+    border: 1px solid #B4B4B4;
+    border-radius: 1px;
+    width: 100%;
+    font-size: 1.4rem;
+    display: block;
+    color: #707070;
 }
 
-.asmo_profile_bottom .asmo_status_inner .asmo_status_input_wrap input,
+.asmo_status_input_wrap input {
+    text-indent: 5px;
+}
+
+
 .asmo_status_input_wrap span {
-    width: 148px;
-    height: 28px;
-    border: 1px solid #494949CC;
-    border-radius: 8px;
-    padding: 0 10px;
-    line-height: 2.6rem;
-    color: #222;
-    font-size: 1.2rem;
+    border-color: transparent;
+}
+
+.asmo_status_inner .asmo_status_input_wrap input:focus {
+    outline: none;
+}
+
+
+/* 순위,열매,포인트 현황 */
+.asmo_profile_bottom ol {
+    display: flex;
+    background: #F1F1F1;
+    margin: 0 0 1rem;
+    padding: 0.5rem;
+}
+
+.asmo_profile_bottom ol li {
+    width: calc((100% / 3) - 1rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.asmo_profile_bottom ol li#asmo_my_rank_status {
+    padding: 0 1rem 0 0;
+}
+
+.asmo_profile_bottom ol li#asmo_my_rank_status *,
+.asmo_profile_bottom ol li#asmo_my_fruit_status *,
+.asmo_profile_bottom ol li#asmo_my_point_status * {
+    pointer-events: none;
+}
+
+.asmo_profile_bottom ol li#asmo_my_point_status {
+    padding: 0 0 0 1rem;
+}
+
+
+.asmo_profile_bottom ol li span {
     display: inline-block;
+    width: 3rem;
+    height: 3rem;
 }
 
-.asmo_status_input_wrap span {
-    border-color: transparent;
+.asmo_profile_bottom ol li b {
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 3rem;
+    max-width: calc(100% - 30px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
+.asmo_profile_bottom ol li#asmo_my_rank_status span {
+    background: url(../images/asmo_rank_icon.png) no-repeat center center;
+    background-size: 30px;
+} 
 
-.asmo_profile_bottom .asmo_status_inner .asmo_status_input_wrap input.asmo_status_before {
-    border-color: transparent;
+.asmo_profile_bottom ol li#asmo_my_fruit_status {
+    border-left: 1px solid rgba(180, 180, 180, 1);
+    border-right: 1px solid rgba(180, 180, 180, 1);
+    width: calc((100% / 3) + 2rem);
+    padding: 0 1rem;
 }
 
+.asmo_profile_bottom ol li#asmo_my_fruit_status span {
+    background: url(../images/asmo_fruit_icon.png) no-repeat center center;
+    background-size: 30px;
+} 
+
+.asmo_profile_bottom ol li#asmo_my_point_status span {
+    background: url(../images/asmo_point_icon2.png) no-repeat center center;
+    background-size: 30px;
+} 
 
 
-
-/* 수강현황 */
-
-#asmo_class_process {
+/* 일퀘 현황 */
+.asmo_profile_bottom #asmo_quest_status {
+    border: 1px solid #FB8C00;
+    border-radius: 5px;
+    padding: 0 1.3rem 0 0.6rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: fit-content;
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
-    gap: 6px;
-    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.asmo_profile_bottom #asmo_quest_status * {
+    pointer-events: none;
+}
+
+.asmo_profile_bottom #asmo_quest_status em {
+    font-size: 1.6rem;
+    line-height: 3.4rem;
+    color: #FB8C00;
+    font-weight: 500;
+    padding: 0 0 0 2.9rem;
+    background: url(../images/asmo_quest_icon.svg) no-repeat left center;
+}
+
+.asmo_profile_bottom #asmo_quest_status b {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 3.4rem;
+}
+
+
+
+/* 나의 수강 현황 */
+#asmo_class_process {
+    background: #fff;
+    border-radius: 5px;
+    padding: 1.2rem 0.8rem;
+    box-shadow: #00000029 0 0 15px;
+    margin: 0 0 1rem;
+}
+
+.asmo_class_status_tit {
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 0 0 0 2.8rem;
+    line-height: 2rem;
+    background: url(../images/asmo_class_status_icon.svg) no-repeat left center;
+    margin: 0 0 1rem;
 }
 
 #asmo_class_process ul {
     display: flex;
-    padding: 12px 11px;
-    box-shadow: 2px 3px 15px #00A8FA14;
-    border-radius: 10px;
-    background: #fff;
-    gap: 10px;
+    justify-content: space-between;
 }
 
 #asmo_class_process ul li {
-    border-radius: 8px;
-    box-shadow: 2px 3px 10px rgba(34, 34, 34, 0.08);
-    background: #fff;
-    padding: 11px 16px 9px;
-    color: #fff;
-    text-align: center;
+    width: calc(50% - 5px);
+    border-radius: 5px;
 }
 
-#asmo_class_process ul li span {
-    display: block;
-    width: 44px;
-    height: 44px;
-    border: 1px solid #fff;
-    border-radius: 100%;
-    margin: 0 auto 8px;
-    background: url(../images/ing.svg) no-repeat center center;
-}
-
-#asmo_class_process ul li p {
-    font-size: 1.2rem;
-    color: rgba(255,255,255,0.8);
-}
-
-#asmo_class_process ul li.ing {
-    background: #00A8FA;
-}
-
-#asmo_class_process ul li.soon {
-    background: #222;
-}
-
-#asmo_class_process ul li.soon span {
-    background: url(../images/soon.svg) no-repeat center center;
-}
-
-
-#asmo_class_process ul li strong {
-    font-size: 2rem;
-    line-height: normal;
-    color: #fff;
-    font-weight: bold;
-    display: block;
-    margin: 16px 0 0;
-}
-
-#asmo_class_process ul li.end strong {
-    color: #FB8C00;
-}
-
-#asmo_class_process ul li.end span {
-    background: url(../images/end.png) no-repeat center center;
-    border: 1px solid  rgba(251, 140, 0, 0.8);
-    background-size: 30px;
-}
-
-#asmo_class_process ul li.end p {
-    color: rgba(251, 140, 0, 0.8);
-}
-
-
-/* 랭킹정보 */
-#asmo_rank_info {
-    box-shadow: none;
-    background: none;
-    border-radius: 0;
-    width: calc(100% - 538px);
-}
-
-#asmo_rank_info .asmo_rank_inner {
-    box-shadow: 2px 3px 15px rgba(0, 168, 250, 0.08);
-    border-radius: 10px;
-    background: #fff;
-    padding: 12px 4px 2px;
-}
-
-
-#asmo_rank_info h4 {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #222;
-    line-height: normal;
-    margin: 0 0 6px;
-    padding: 0 12px 0 10px;
-}
-
-#asmo_rank_info h4 .asmo_common_more {
-    float: right;
-}
-
-.asmo_common_more {
-    display: block;
-    width: 16px;
-    height: 16px;
-    background: #FB8C00 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cg id='그룹_719' data-name='그룹 719' transform='translate(-1804.868 -393.868)'%3E%3Crect id='사각형_1404' data-name='사각형 1404' width='1.5' height='8' rx='0.75' transform='translate(1808.118 393.868)' fill='%23fff'/%3E%3Crect id='사각형_1405' data-name='사각형 1405' width='1.5' height='8' rx='0.75' transform='translate(1812.868 397.118) rotate(90)' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E%0A") no-repeat center center;
-    transform: rotate(0deg);
-    transition: all 0.3s ease-in-out;
-    text-indent: -9999px;
-    border-radius: 100%;
-}
-
-.asmo_common_more:hover  {
-    transform: rotate(90deg);
-}
-
-.asmo_average_bar_wrap {
-    line-height: normal;
-    background: #fff;
-    box-shadow: 2px 3px 15px rgba(0, 168, 250, 0.08);
-    border-radius: 10px;
-}
-
-#asmo_rank_info ol li {
-    border-radius: 8px;
-    padding: 3px 0 3px;
-    background: none;
+#asmo_class_process ul li a {
     display: flex;
     align-items: center;
-}
-
-#asmo_rank_info ol li span {
-    display: inline-block;
-}
-
-#asmo_rank_info ol li span,
-#asmo_rank_info ol li span em {
-    font-size: 1.2rem;
-    color: rgba(34, 34, 34, 0.6);
-}
-
-#asmo_rank_info ol li span em {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    border-radius: 100%;
-    line-height: 18px;
-    text-align: center;
+    justify-content: space-between;
+    padding: 7px 10px;
+    background: #00A8FA url(../images/class_icon.svg) no-repeat 10px center;
+    border-radius: 5px;
 }
 
 
-#asmo_rank_info ol li.asmo_rank_tit span {
-    color: rgba(34, 34, 34, 0.4);
+
+#asmo_class_process ul li a p {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0 0 0 3.9rem;
 }
 
-#asmo_rank_info ol li.active {
-    box-shadow: 0px 2px 20px rgba(251, 140, 0, 0.08);
+#asmo_class_process ul li a strong {
+    width: 3rem;
+    height: 3rem;
     background: #fff;
+    border-radius: 100%;
+    color: #00A8FA;
+    text-align: center;
+    line-height: 3rem;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-#asmo_rank_info ol li.active span {
-    color: #FB8C00;
+
+
+#asmo_class_process ul li.end a {
+    background: #22222280 url(../images/graduation_icon.svg) no-repeat 10px center;
+}
+
+#asmo_class_process ul li.end a strong {
+    color: #22222280;
+}
+
+
+
+/* 대쉬보드 하단 광고 배너 */
+
+#dash_bottom_cm_wrap {
+    box-shadow: #00000029 0 0 15px;
+    border-radius: 5px;
+}
+
+#dash_bottom_cm_wrap .swiper-slide img {
+    border-radius: 5px;
+}
+
+
+/* 대쉬보드 기업 컨텐츠 */
+.asmo_tab_cont_box {
+    display: none;
+}
+
+.asmo_tab_cont_box.active {
+    display: block;
+}
+
+/* 이달의 일정 */
+.asmo_common_dash_box {
+    background: #fff;
+    border-radius: 5px;
+    padding: 1rem 1.6rem;
+    box-shadow: #00000029 0 0 15px;
+    margin: 0 0 1rem;
+}
+
+.asmo_common_dash_box .asmo_dash_box_tit {
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 0 0 0 3.1rem;
+    position: relative;
+    background: url(../images/asmo_schedule_icon.svg) no-repeat left center;
+    margin: 0 0 1rem;
+}
+
+.asmo_common_dash_box .asmo_dash_box_tit span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(0, 168, 250, 0.3) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='그룹_259' data-name='그룹 259' width='12' height='12' viewBox='0 0 12 12'%3E%3Crect id='사각형_1404' data-name='사각형 1404' width='2' height='12' rx='1' transform='translate(5)' fill='%23fff'/%3E%3Crect id='사각형_1405' data-name='사각형 1405' width='2' height='12' rx='1' transform='translate(12 5) rotate(90)' fill='%23fff'/%3E%3C/svg%3E") no-repeat center center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 100%;
+}
+
+.asmo_schedule_list_wrap {
+    background: #F1F1F1;
+    border-radius: 5px;
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.asmo_schedule_list_wrap li {
+    position: relative;
+}
+
+.asmo_schedule_list_wrap li::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 3.3rem;
+    background: #70707080;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.asmo_schedule_list_wrap li a {
+    display: flex;
+    padding: 0 0 0 0.5rem;
+    flex-direction: column;
+}
+
+.asmo_schedule_list_wrap li a strong {
+    font-size: 1.6rem;
     font-weight: 500;
 }
 
-#asmo_rank_info ol li.active span:first-child em {
-    background: #FB8C00;
-    box-shadow: 0px 3px 10px #FB8C0014;
-    color: #fff;
-}
-
-
-#asmo_rank_info ol li span:first-child {
-    width: 20%;
-    text-align: center;
-}
-
-#asmo_rank_info ol li span:nth-child(2) {
-    width: 40%;
-    padding: 0 0 0 20px;
-}
-
-#asmo_rank_info ol li span:last-child {
-    width: 40%;
-    padding: 0 0 0 10px;
-}
-
-/* 평균수강률 */
-.asmo_average_bar_wrap {
-    padding: 7px 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-}
-.asmo_average_bar_wrap span {
-    font-size: 1.1rem;
+.asmo_schedule_list_wrap li a span {
+    color: #222222B3;
+    font-size: 1.2rem;
+    display: block;
     line-height: 1;
+    margin: 0.4rem 0 0;
 }
 
-.asmo_average_bar_wrap em {
-    display: inline-block;
-    width: calc(100% - 60px);
-    background: #E8F7FF;
-    border-radius: 8px;
-    position: relative;
-    height: 8px;
+/* 이달의 이벤트 */
+.asmo_common_dash_box#asmo_monthly_event .asmo_dash_box_tit {
+    background: url(../images/asmo_event_icon.svg) no-repeat left center;
 }
 
-.asmo_average_bar_wrap em i {
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 8px;
-    border-radius: 8px;
-    background: linear-gradient(270deg, #FB8C00 0%, #FDD199 100%);
-}
-
-
-/* 대쉬보드 하단컨텐츠 */
-.dash_bottom_wrap {
-    padding: 0 13.671875% 85px;
+.asmo_event_list_wrap {
     display: flex;
-    gap: 14px;
+    flex-direction: column;
+    gap: 0.7rem;
 }
 
-/* 게시판리스트 공통 */
-
-.asmo_dash_board_container {
-    width: calc(100% - 444px);
-}
-
-.asmo_dash_board_container .asmo_list_common_tit {
+.asmo_event_list_wrap li {
+    background: #00A8FA1A;
+    border-radius: 5px;
+    padding: 0 1.4rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin: 0 0 6px;
 }
 
-.asmo_dash_board_container .asmo_list_common_tit b {
+.asmo_event_list_wrap li strong {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.asmo_event_list_wrap li span {
     font-size: 1.4rem;
+    font-weight: normal;
+    padding: 0 0 0 2.5rem;
+    background: url(../images/asmo_cake.svg) no-repeat left center;
+}
+
+.asmo_event_list_wrap li span b {
+    font-size: 2.2rem;
     font-weight: bold;
 }
 
-.asmo_dash_board_container .asmo_dash_list_wrap ol li a {
-    padding: 8px 0 0;
+.asmo_event_list_wrap li#asmo_wed span {
+    background: url(../images/asmo_ring.svg) no-repeat left center;
+}
+
+.asmo_event_list_wrap li#asmo_promo span {
+    background: url(../images/asmo_levelup.svg) no-repeat left center;
+}
+
+
+/* 이달의 서베이 */
+.asmo_common_dash_box#asmo_monthly_survey .asmo_dash_box_tit {
+    background: url(../images/asmo_survey_icon.svg) no-repeat left center;
+}
+
+
+.asmo_survey_list_wrap  {
+    background: #F1F1F1;
+    border-radius: 5px;
+    padding: 0 1.2rem;
+}
+
+.asmo_survey_list_wrap li {
+    border-top: 1px solid #7070704D;
+}
+
+.asmo_survey_list_wrap li:first-child {
+    border-top: 0;
+}
+
+.asmo_survey_list_wrap li a {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    padding: 0.8rem 0;
+    align-items: center;
 }
 
-.asmo_dash_board_container .asmo_dash_list_wrap ol li a span {
-    font-size: 1.2rem;
-    color: rgba(34, 34, 34, 0.8);
-    display: inline-block;
-    width: 70%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
-.asmo_dash_board_container .asmo_dash_list_wrap ol li a em {
-    font-size: 1.2rem;
-    color: rgba(34, 34, 34, 0.4);
+.asmo_survey_list_wrap li a span {
+    font-size: 1.6rem;
     font-weight: normal;
 }
 
-.asmo_dash_board_container .asmo_dash_list_wrap {
-    box-shadow: 2px 3px 15px rgba(0, 168, 250, 0.08);
-    border-radius: 10px;
-    background: #fff;
-    padding: 13px 14px 15px;
+
+.asmo_survey_list_wrap li a em {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #fff;
+    background: #00A8FA;
+    border-radius: 5px;
+    padding: 0 0.9rem;
+    font-weight: normal;
+    line-height: 1.8rem;
 }
 
-.asmo_dash_board_container .asmo_dash_list_wrap:last-child {
-    margin: 8px 0 0;
+
+.asmo_survey_list_wrap li.asmo_survey_complete  a em  {
+    background: #22222280;
 }
 
 
-/* 대쉬보드 문의 버튼 영역 */
-.asmo_dash_qa_wrap {
-    box-shadow: 2px 3px 15px rgba(0, 168, 250, 0.08);
-    border-radius: 10px;
-    background: #fff;
-    padding: 19px 15px 18px;
+
+
+/* 기업 공지사항 */
+.asmo_common_dash_box#asmo_dash_notice .asmo_dash_box_tit {
+    background: url(../images/asmo_notice_icon.svg) no-repeat left center;
+}
+
+
+.asmo_notice_list_wrap li {
+    border-bottom: 1px solid rgba(180, 180, 180, 0.5);
+}
+
+.asmo_notice_list_wrap li a  {
     display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
     align-items: center;
-    justify-content: center;
-    width: 220px
 }
 
-.asmo_dash_qa_wrap ul {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    height: 100%;
+.asmo_notice_list_wrap li a span {
+    color: rgba(34, 34, 34, 0.8);
+    font-size: 1.6rem;
+    font-weight: normal;
 }
 
-.asmo_dash_qa_wrap ul li {
-    height: calc((100% - 24px) / 3);
-}
-
-.asmo_dash_qa_wrap ul li a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #FB8C00;
-    padding: 0 11px;
-    border: 1px solid #FB8C00;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
+.asmo_notice_list_wrap li a span:first-child {
+    max-width: calc(100% - 100px);
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
-    background: #FEE3C2;
-    background-size: cover;
 }
 
-.asmo_dash_qa_wrap ul li.blue a {
-    background: #E8F7FF;
-    background-size: cover;
+.asmo_notice_list_wrap li a .date {
+    color: rgba(34, 34, 34, 0.4);
+    font-size: 1.6rem;
+    font-weight: normal;
+}
+
+
+/* 1:1문의 배너 */
+
+.asmo_dash_qa_wrap {
+    box-shadow: rgba(34,34,34,0.08) 2px 3px 10px;
+}
+
+.asmo_dash_qa_wrap a {
+    display: block;
+    background: #E8F7FF url(../images/asmo_faq_bg.svg) no-repeat right bottom;
+    padding: 1rem 1.3rem;
+    border: 1px solid #00A8FA;
+    border-radius: 6px;
+}
+
+
+.asmo_dash_qa_wrap a p {
     color: #00A8FA;
-    border-color: #00A8FA;
+    font-size: 1.3rem;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0 0 1.1rem;
 }
 
-.asmo_dash_qa_wrap ul li.black a {
-    background: #D4D4D4;
-    background-size: cover;
-    color: #222;
-    border-color: #222;
+.asmo_dash_qa_wrap a  b {
+    display: block;
+    line-height: 1;
+    color: #00A8FA;
+    font-weight: bold;
+    font-size: 2rem;
 }
+
 
 
 /* 랭킹팝업 */
-#asmo_rank_popup {
-    width: 440px;
-    padding: 18px 16px;
-}
 
-#asmo_rank_popup .asmo_popup_tit,
-#asmo_nickname_popup .asmo_popup_tit{
-    background: url(../images/rank_icon.svg) no-repeat left center;
-    margin: 0 0 18px;
+
+.asmo_cmall_main_popup_wrap  .asmo_popup_tit {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: normal;
 }
 
 /* 나의 랭킹 */
@@ -910,21 +1189,21 @@
     align-items: center;
     justify-content: center;
     height: 36px;
-    border-radius: 8px;
-    border: 1px solid rgba(167, 167, 167, 0.9);
+    border-radius: 10px;
+    border: 1px solid rgba(251, 140, 0, 0.9);
     background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 100%);
-    margin: 0 0 10px;
+    margin: 12px 0;
 }
 
 #asmo_rank_popup .my_rank_status span {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
 }
 
 #asmo_rank_popup .my_rank_status span strong {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
-    color: #00A8FA;
+    color: #FB8C00;
     margin: 0 0 0 10px;
 }
 
@@ -1011,7 +1290,7 @@
     display: table;
     table-layout: fixed;
     width: 100%;
-    padding: 18px 0 8px;
+    padding: 17px 0 12px;
 }
 
 .rank_scroll_box .rank_box_tit span {
@@ -1019,6 +1298,7 @@
     color: rgba(34, 34, 34, 0.6);
     display: table-cell;
     text-align: center;
+    line-height: normal;
 }
 
 .rank_scroll_box .rank_box_tit span:first-child,
@@ -1028,35 +1308,37 @@
 
 
 
-.rank_scroll_box .rank_box_tit span:last-child,
-.asmo_cmall_popup_box .rank_scroll_box ul li b:last-child {
-    width: 202px;
-}
+
 
 
 .rank_scroll_box {
     position: relative;
+    border: 1px solid #C8C8C8;
+    border-radius: 10px;
+    padding: 0 24px;
+    background: #FBFBFB;
 }
 
 .rank_scroll_box::after {
     content: '';
     display: block;
-    width: 100%;
-    height: 23px;
+    width: calc(100% - 46px);
+    height: 24px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
     position: absolute;
-    bottom: -2px;
-    left: 0;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .rank_scroll_box ul {
-    max-height: 120px;
+    max-height: 348px;
     overflow-y: auto;
 }
 
 .asmo_cmall_popup_box .rank_scroll_box  ul li {
-    height: 32px;
-    margin: 0 0 2px;
+    height: 42px;
+    margin: 0 0 4px;
     display: table;
     table-layout: fixed;
     width: 100%;
@@ -1065,12 +1347,34 @@
 }
 
 .asmo_cmall_popup_box .rank_scroll_box  ul li em,
-.asmo_cmall_popup_box .rank_scroll_box  ul li b  {
+.asmo_cmall_popup_box .rank_scroll_box  ul li b,
+.asmo_cmall_popup_box .rank_scroll_box  ul li strong {
     display: table-cell;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 500;
-    line-height: 30px;
+    line-height: 40px;
     text-align: center;
+    color: #222;
+}
+
+.asmo_cmall_popup_box .rank_scroll_box  ul li b {
+    max-width: 32%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.asmo_cmall_popup_box .rank_scroll_box  ul li strong  {
+    width: 58px;
+}
+
+.asmo_cmall_popup_box .rank_scroll_box  ul li strong a {
+    background: url(../images/go_land.svg) no-repeat center center;
+    border-radius: 0;
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    vertical-align: top;
 }
 
 .asmo_cmall_popup_box .rank_scroll_box  ul li.asmo_rank_01 em,
@@ -1081,89 +1385,95 @@
 
 .asmo_cmall_popup_box .rank_scroll_box  ul li.asmo_rank_01 em {
     background: url(../images/rank01.png) no-repeat center center;
-    background-size: 24px;
+    background-size: 30px;
 }
 
 .asmo_cmall_popup_box .rank_scroll_box  ul li.asmo_rank_02 em {
     background: url(../images/rank02.png) no-repeat center center;
-    background-size: 24px;
+    background-size: 30px;
 }
 
 .asmo_cmall_popup_box .rank_scroll_box  ul li.asmo_rank_03 em {
     background: url(../images/rank03.png) no-repeat center center;
-    background-size: 24px;
+    background-size: 30px;
 }
 
 
 /* 칭호목록 */
-#asmo_nickname_popup {
-    width: 460px;
-    padding: 18px 16px 30px;
+
+.asmo_cmall_main_popup_wrap#asmo_nickname_popup  .asmo_popup_tit {
+    margin: 0 0 10px;
+}
+
+#asmo_nickname_popup  .asmo_cmall_popup_box {
+    background: #FBFBFB;
+    padding: 12px 15px;
+    border: 1px solid #C8C8C8;
+    border-radius: 10px;
+    max-height: 254px;
+    overflow-y: auto;
 }
 
 #asmo_nickname_popup .my_nickname_list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px;
 }
 
 #asmo_nickname_popup .my_nickname_list li {
-    width: calc((100% - 20px) / 3);
+    width: calc((100% - 5px) / 2);
     border-color: rgba(34, 34, 34, 0.2);
-    padding: 14px 8px 11px;
-    height: 190px;
+    padding: 10px 8px 14px;
+    height: 215px;
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
     position: relative;
+    background: #fff;
+    margin: 0 0 7px;
 }
 
 #asmo_nickname_popup .my_nickname_list li .my_nickname_img_box {
-    width: 60px;
-    margin: 0 auto 10px;
-    border: 2px solid #00A8FA;
+    width: 88px;
+    margin: 0 auto 16px;
+    border: 2px solid rgba(251,140,0,0.6);
     border-radius: 10px;
 }
 
 #asmo_nickname_popup .my_nickname_list li .my_nickname_img_box img {
     width: 100%;
     border-radius: 8px;
-    border: 1px solid #00A8FA;
+    border: 1px solid #FB8C00;
 }
 
 #asmo_nickname_popup .my_nickname_list li b {
-    background: linear-gradient(180deg, #00A8FA 0%, #7ED5FF 100%);
-    border: 1px solid #FFFFFF66;
-    border-radius: 8px;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    height: 28px;
+    margin: 0 0 16px;
+    color: #FB8C00;
     display: block;
-    line-height: 26px;
-    margin: 0 0 8px;
-    width: 100%;
+    line-height: normal;
 }
 
 #asmo_nickname_popup .my_nickname_list li em {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: rgba(34, 34, 34, 0.6);
-    margin: 0 0 12px;
+    margin: 0 0 10px;
     font-weight: normal;
     line-height: normal;
 }
 
 #asmo_nickname_popup .my_nickname_list li span {
     display: inline-block;
-    width: 80px;
-    height: 28px;
-    line-height: 26px;
+    width: 98px;
+    line-height: 28px;
     text-align: center;
     color: rgba(34, 34, 34, 0.6);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     background: #fff;
     border: 1px solid rgba(34, 34, 34, 0.2);
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 #asmo_nickname_popup .my_nickname_list li.active span {
@@ -1190,17 +1500,91 @@
 }
 
 .asmo_ing_mask p {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #fff;
     font-weight: bold;
-    text-shadow: 2px 2px 2px rgba(34,34,34,0.2);
 }
 
+/* 활성된 칭호 */
+.asmo_active_nick_name_wrap_tit {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: linear-gradient(180deg, #FB8C00 0%, rgba(251,140,0,0.3) 100%);
+    border: 1px solid #222222;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+    line-height: 30px;
+}
+
+.asmo_active_nick_box {
+    display: flex;
+    background: #FBFBFB;
+    border: 1px solid #C8C8C8;
+    border-radius: 0 0 10px 10px;
+    border-top: 0;
+    padding: 10px 16px 12px 24px;
+    gap: 50px;
+}
+
+.asmo_active_nick_box  .my_nickname_img_box_container {
+    background: #fff;
+    border: 2px solid #FB8C00;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.asmo_active_nick_box  .my_nickname_img_box_container img {
+    width: 80px;
+    border-radius: 10px;
+}
+
+.asmo_active_nick_box .my_nickname_img_box {
+    width: 92px;
+    background: rgba(251,140,0,0.6);
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.asmo_active_nick_box .asmo_active_box_describe  {
+    padding: 16px 0 0;
+}
+
+.asmo_active_nick_box .asmo_active_box_describe ul li {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.asmo_active_nick_box .asmo_active_box_describe ul li b {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.asmo_active_nick_name_wrap {
+    margin: 0 0 14px;
+}
 
 /* 랭킹팝업 끝 */
 
 
+/* 이벤트 카드 */
+#asmo_event_card {
+    background: #FB8C00;
+    border-radius: 10px;
+    box-shadow: #00000029 0 0 15px;
+    height: 131px;
+    padding: 10px 0;
+}
 
+#asmo_event_card p {
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    line-height: 18px;
+}
 
 
 
@@ -3011,106 +3395,116 @@
 /* 열매, 코인 팝업 */
 .asmo_cmall_main_popup_wrap  {
     position: fixed;
-    width: 310px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+    width: 100%;
+    left: 0;
+    bottom: -100%;
     background: #fff;
-    border-radius: 10px;
-    padding: 38px 20px 20px;
-    box-shadow: 0px 3px 20px rgba(0, 168, 250, 0.08);
-    z-index: 100;
+    border-radius: 2rem 2rem 0 0;
+    padding: 5rem 1.8rem 3rem;
+    box-shadow: 0px -1rem 99px #0000004D;
+    z-index: 101;
+    transition: bottom 0.3s ease-out;
+}
+
+
+.asmo_cmall_main_popup_wrap.active {
+    bottom: 0;
 }
 
 .asmo_cmall_main_popup_wrap .asmo_popup_close {
     position: absolute;
-    width: 16px;
-    height: 16px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='구성_요소_556_221' data-name='구성 요소 556 – 221' width='16' height='16' viewBox='0 0 16 16'%3E%3Crect id='사각형_3929' data-name='사각형 3929' width='16' height='16' fill='none'/%3E%3Cg id='그룹_561' data-name='그룹 561' transform='translate(2.977 2.977)'%3E%3Cpath id='패스_1187' data-name='패스 1187' d='M0,0V14.208' transform='translate(0 0) rotate(-45)' fill='none' stroke='%23222' stroke-linecap='round' stroke-width='2'/%3E%3Cpath id='패스_1188' data-name='패스 1188' d='M0,0V14.208' transform='translate(10.046 0) rotate(45)' fill='none' stroke='%23222' stroke-linecap='round' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E") no-repeat center center;
+    width: 55px;
+    height: 7px;
+    background: #B4B4B4;
     text-indent: -9999px;
-    top: 16px;
-    right: 16px;
-    z-index: 9;
+    border-radius: 7px;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .asmo_cmall_popup_box ul li {
     color: rgba(34, 34, 34, 0.6);
-    font-size: 1.2rem;
-    border: 1px solid rgba(0, 168, 250, 0.1);
+    font-size: 1.6rem;
+    border: 1px solid #8F00FB1A;
     border-radius: 8px;
-    padding: 0 12px;
-    height: 30px;
+    padding: 0 16px;
+    line-height: 40px;
     margin: 0 0 10px;
 }
 
 .asmo_cmall_popup_box ul li.asmo_popup_tit {
-    border-color: rgba(0, 168, 250, 0.1);
-    background: rgba(0, 168, 250, 0.5);
+    border-color: #8F00FB;
+    background: #F8E5FF;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
+    height: 40px;
+    margin: 14px 0 40px;
 }
 
 .asmo_cmall_popup_box ul li.asmo_popup_tit em {
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid rgba(0, 168, 250, 0.3);
-    border-radius: 100%;
-    background: #fff url(../images/fruit.png) no-repeat center;
-    background-size: 16px;
+    width: 32px;
+    height: 32px;
+    background: url(../images/fruit.png) no-repeat center;
+    background-size: 32px;
 }
 
 #asmo_coin_popup .asmo_cmall_popup_box ul li.asmo_popup_tit em {
-    background: #fff url(../images/seed.png) no-repeat center;
-    background-size: 16px;
+    background: url(../images/asmo_point_icon.png) no-repeat center;
+    background-size: 32px;
+}
+
+#asmo_coin_popup .asmo_cmall_popup_box ul li.asmo_popup_tit {
+    border-color: #00A8FA;
+    background: #E5F6FF;
 }
 
 
 .asmo_cmall_popup_box ul li span {
-    color: rgba(34, 34, 34, 0.6);
-    font-size: 1.2rem;
-    line-height: 30px;
+    color: #222;
+    font-size: 1.8rem;
+    line-height: 32px;
 }
 
-.asmo_cmall_popup_box a {
+#asmo_fruit_popup .asmo_cmall_popup_box ul li span b {
+    color: #B900FB;
+}
+
+#asmo_coin_popup .asmo_cmall_popup_box ul li span b {
+    color: #00A8FA;
+}
+
+
+#asmo_fruit_popup .asmo_cmall_popup_box a,
+#asmo_coin_popup .asmo_cmall_popup_box a {
     display: block;
     width: 100%;
-    height: 36px;
-    background: transparent linear-gradient(90deg, #006CFA 0%, #00A8FA 100%) 0% 0% no-repeat padding-box;
     color: #fff;
     border-radius: 8px;
     font-size: 1.6rem;
-    line-height: 36px;
+    line-height: 40px;
     text-align: center;
     font-weight: 500;
     margin: 24px 0 0;
 }
 
+#asmo_fruit_popup .asmo_cmall_popup_box a {
+    background: transparent linear-gradient(90deg, #8F00FB 0%, rgba(143,0,251,0.3) 100%) 0% 0% no-repeat padding-box;
+}
+
+#asmo_coin_popup .asmo_cmall_popup_box a {
+    background: transparent linear-gradient(90deg, #006CFA 0%, #00A8FA 100%) 0% 0% no-repeat padding-box;
+}
 
 /* 일일퀘스트 팝업 */
-#asmo_quest_popup {
-    width: 440px;
-    padding: 20px 16px 24px;
-}
-
-.asmo_cmall_main_popup_wrap .asmo_popup_tit {
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: normal;
-    padding: 0 0 0 24px;
-    margin: 0 0 26px;
-}
 
 
 #asmo_quest_popup .asmo_popup_tit {
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: normal;
-    padding: 0 0 0 24px;
-    background: url(../images/quest_icon_popup.svg) no-repeat left center;
+    margin: 0 0 20px;
 }
 
 #asmo_quest_popup ul li {
@@ -6009,56 +6403,13 @@
 @media (max-width:932px) {
 
     /* *** ------------ 로그인영역 ------------ *** */
-    .access {
-        width: 280px;
-    }
-
-    .findarea {
-        width: 484px;
-    }
+   
 
     .access .table-body form {
-        padding: 0 20px;
+        padding: 0 26px;
     }
 
-    .asmo_login_wrapper .table-box .table-heading {
-        padding: 17px 0 30px;
-    }
-
-    .loginform li {
-        margin: 0 0 10px;
-    }
-
-    .asmo_login_wrapper .input {
-        height: 36px;
-        padding: 0 12px;
-        line-height: 34px;
-        font-size: 1.4rem;
-    }
-
-    .loginform li.asmo_login_btn_li {
-        height: 36px;
-    }
-
-    .loginform li.asmo_login_btn_li #asmo_login_btn {
-        height: 36px;
-    }
-
-    .loginform li.asmo_login_btn_li #asmo_login_btn::after {
-        height: 36px;
-    }
-
-    .loginform li.asmo_login_btn_li #asmo_login_btn {
-        background: url(../images/cloud_m.svg) no-repeat padding-box;
-        background-size: 100%;
-        background-position: center center;
-    }
-
-
-    .loginform li.asmo_login_btn_li #asmo_login_btn:hover {
-        background-size: 103%;
-    }
-
+  
 
     #asmo_find_pw {
         padding: 14px 20px;
@@ -6068,50 +6419,21 @@
         padding: 0 0 2px;
     }
 
-    .error:not(.input) {
-        margin: 10px 0 0;
-        font-size: 1.2rem;
-    }
-
 
     /* *** 비밀번호 재설정 *** */
-    .asmo_login_wrapper .findarea .table-box .table-heading {
-        padding: 9px 30px;
-        font-size: 1.4rem;
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg id='그룹_1064' data-name='그룹 1064' transform='translate(-709.529 -228.487)'%3E%3Crect id='사각형_3951' data-name='사각형 3951' width='20' height='20' transform='translate(709.529 228.487)' fill='none'/%3E%3Cg id='그룹_597' data-name='그룹 597' transform='translate(713.376 230.561)'%3E%3Cpath id='패스_1197' data-name='패스 1197' d='M17.3,17.536a5.44,5.44,0,0,0-2.742-4.682,1.231,1.231,0,0,0-1.257-.068,5.163,5.163,0,0,1-4.8-.006,1.209,1.209,0,0,0-1.222.061A5.435,5.435,0,0,0,4.509,17.47a2.118,2.118,0,0,0,2.243,2.3c1.386,0,2.773,0,4.159,0s2.8.006,4.2,0a2.108,2.108,0,0,0,2.19-2.237m-2.25.957c-1.373,0-2.746,0-4.119,0s-2.746,0-4.119,0c-.73,0-1.067-.335-1.023-1.059a4.229,4.229,0,0,1,1.9-3.351.448.448,0,0,1,.506-.044,6.268,6.268,0,0,0,5.41.009.448.448,0,0,1,.508.026A4.237,4.237,0,0,1,16.019,17.5a.859.859,0,0,1-.971.991' transform='translate(-4.506 -4.411)' fill='%23222'/%3E%3Cpath id='패스_1198' data-name='패스 1198' d='M11.357,3a3.841,3.841,0,1,0,3.826,3.855A3.844,3.844,0,0,0,11.357,3m-.029,6.4A2.56,2.56,0,1,1,13.9,6.844,2.567,2.567,0,0,1,11.328,9.4' transform='translate(-4.944 -3)' fill='%23222'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A") no-repeat 10px center;
-        background-size: 16px;
-    }
 
-    .findaccount {
-        padding: 10px 16px 24px;
-    }
 
-    #asmo_find_pw_btn {
-        font-size: 1.4rem;
-    }
-
-    #asmo_find_pw_btn,
-    #asmo_find_pw_btn::after {
-        height: 36px;
-    }
 
     .asmo_login_wrapper .alert {
         font-size: 1.2rem;
-        margin: 10px 0 0;
+        margin: 0 2.6rem 1.4rem;
     }
 
 
     /* *** 대쉬보드 메인 *** */
 
 
-    .dash_top_wrap {
-        height: 144px;
-        padding: 52px 14px 0;
-        position: relative;
-        clear: both;
-        margin: 0 0 24px;
-    }
-
+  
     /* 배경 위 프로필 */
     #asmo_profile_forM {
         border-radius: 10px;
@@ -6294,129 +6616,11 @@
         clear: both;
     }
 
-    #asmo_class_process_forM {
-        width: 39.5%;
-        display: flex;
-        float: left;
-        background: #fff;
-        flex-direction: column;
-        gap: 6px;
-    }
 
-    #asmo_class_process_forM ul {
-        width: 100%;
-        gap: 12px;
-        display: flex;
-        padding: 7px 14px;
-        box-shadow: 2px 3px 15px rgba(0, 168, 250, 0.08);
-        border-radius: 10px;
-    }
 
-    #asmo_class_process_forM ul li {
-        width: calc((100% - 24px) / 3);
-        border-radius: 5px;box-shadow: 2px 3px 10px rgba(34, 34, 34, 0.06);
-        padding: 7px 0 5px;
-        text-align: center;
-        background: #00A8FA;
-    }
-
-    #asmo_class_process_forM ul li.soon { background: #222; }
-
-    #asmo_class_process_forM ul li.end  { background: #fff; }
-
-    #asmo_class_process_forM ul li span {
-        width: 40px;
-        height: 40px;
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='class_icon' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg id='class_icon-2' data-name='class_icon' transform='translate(-926.134 -472.134)' opacity='0.8'%3E%3Crect id='사각형_1415' data-name='사각형 1415' width='24' height='24' transform='translate(926.134 472.134)' fill='none'/%3E%3Cg id='그룹_275' data-name='그룹 275' transform='translate(929.194 476.662)'%3E%3Cpath id='패스_623' data-name='패스 623' d='M2911.838,1274.337H2900.2a3.037,3.037,0,0,1-2.988-3.077v-5.108a3.037,3.037,0,0,1,2.988-3.077h11.638a3.036,3.036,0,0,1,2.987,3.077v5.108A3.036,3.036,0,0,1,2911.838,1274.337Zm-11.638-10.266a2.054,2.054,0,0,0-2.021,2.081v5.108a2.053,2.053,0,0,0,2.021,2.081h11.638a2.053,2.053,0,0,0,2.02-2.081v-5.108a2.053,2.053,0,0,0-2.02-2.081Z' transform='translate(-2897.212 -1263.075)' fill='%23fff'/%3E%3Cpath id='패스_624' data-name='패스 624' d='M2930.619,1282.58a1.185,1.185,0,0,1-1.181-1.183v-3.311a1.181,1.181,0,0,1,1.772-1.023l2.867,1.656h0a1.181,1.181,0,0,1,0,2.046l-2.867,1.655A1.18,1.18,0,0,1,2930.619,1282.58Zm0-4.693a.2.2,0,0,0-.1.028.192.192,0,0,0-.1.172v3.311a.2.2,0,0,0,.3.172l2.867-1.655a.2.2,0,0,0,0-.344l-2.867-1.656A.2.2,0,0,0,2930.62,1277.886Z' transform='translate(-2923.246 -1274.139)' fill='%23fff'/%3E%3Cpath id='패스_625' data-name='패스 625' d='M2916.08,1328.936h-12.037a.564.564,0,0,0-.512-.333h-1.282a.563.563,0,0,0-.511.333h-1.206a.491.491,0,0,0,0,.983h1.206a.564.564,0,0,0,.511.333h1.282a.564.564,0,0,0,.512-.333h12.037a.491.491,0,0,0,0-.983Z' transform='translate(-2899.491 -1315.573)' fill='%23fff'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") no-repeat center center;
-        background-size: 24px;
-        margin: 0 auto 12px;
-        display: block;
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        border-radius: 100%;
-    }
-
-    #asmo_class_process_forM ul li.soon span {
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='expected_icon' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect id='사각형_1416' data-name='사각형 1416' width='24' height='24' fill='none'/%3E%3Cpath id='패스_626' data-name='패스 626' d='M3031.489,1272.209q-2.306-7.051-4.614-14.1c-.273-.836-.543-1.673-.821-2.507a.585.585,0,0,0-.911-.337,3.568,3.568,0,0,0-.341.23,8.226,8.226,0,0,1-2.588,1.292,13.778,13.778,0,0,1-3.9.51,11.665,11.665,0,0,0-3.007.362,11.959,11.959,0,0,0-3.665,1.807.6.6,0,0,0-.275.817l1.578,4.769c.367,1.111.732,2.223,1.1,3.333a.594.594,0,0,0,.938.342c.146-.087.281-.191.419-.291a8.131,8.131,0,0,1,2.212-1.132,12.573,12.573,0,0,1,3.881-.592,16.891,16.891,0,0,0,2.087-.127,10.227,10.227,0,0,0,4.085-1.556c.15-.094.2-.092.257.085q1.185,3.653,2.38,7.3c.094.288.219.535.558.578a.641.641,0,0,0,.661-.417v-.311C3031.5,1272.259,3031.5,1272.234,3031.489,1272.209Zm-8.367-14.479a11.779,11.779,0,0,0,1.949-1.014c.07-.045.1-.027.121.046q.232.72.471,1.438a.1.1,0,0,1-.046.129,11.512,11.512,0,0,1-1.947,1.058c-.018.008-.037.014-.055.02-.06.012-.059-.037-.071-.071-.161-.491-.32-.984-.484-1.474C3023.033,1257.784,3023.058,1257.755,3023.122,1257.729Zm-3.459.7a10.033,10.033,0,0,0,2.128-.271c.093-.023.126.01.153.094q.227.711.465,1.419c.034.1.006.129-.1.152a10.593,10.593,0,0,1-1.751.22,1.015,1.015,0,0,1-.49-.018c-.145-.078-.141-.33-.2-.505-.106-.312-.2-.628-.311-.939C3019.52,1258.465,3019.543,1258.428,3019.663,1258.425Zm-3.645.261a9.9,9.9,0,0,1,1.764-.206c.132,0,.342-.085.476.008s.129.312.186.475c.112.324.212.651.321.975.034.1.026.144-.1.149a10.017,10.017,0,0,0-2.106.268c-.105.026-.151,0-.182-.1-.147-.468-.3-.936-.455-1.4C3015.877,1258.738,3015.91,1258.708,3016.018,1258.686Zm-2.927,3.043c-.147-.454-.294-.909-.449-1.361-.032-.094-.027-.148.063-.207a11.958,11.958,0,0,1,1.913-1.033c.086-.036.135-.046.169.065.15.481.311.958.467,1.437a.111.111,0,0,1,.008.029c.03.1-.028.112-.076.131a11.661,11.661,0,0,0-1.927,1.008C3013.147,1261.87,3013.122,1261.825,3013.091,1261.729Zm.946,2.847c-.167-.505-.326-.995-.491-1.483-.027-.08.022-.1.07-.136a11.768,11.768,0,0,1,1.906-1.044c.095-.041.143-.042.179.077.137.45.288.9.436,1.344.024.072.049.128-.052.169A12.274,12.274,0,0,0,3014.037,1264.577Zm2.952,1.7a12.2,12.2,0,0,0-2.038,1.066c-.173-.522-.338-1.025-.507-1.526-.024-.071,0-.106.057-.142a11.711,11.711,0,0,1,1.926-1.049c.085-.036.122-.029.152.066q.227.72.467,1.437C3017.071,1266.2,3017.072,1266.242,3016.989,1266.274Zm.465-3.206c-.106.026-.161.014-.2-.107-.135-.445-.281-.887-.432-1.327-.037-.107-.02-.141.095-.167a9.856,9.856,0,0,1,1.69-.217c.577-.011.577-.011.715.415.107.332.209.666.325.995.042.121.006.139-.107.143A10.151,10.151,0,0,0,3017.454,1263.068Zm3,2.5a10.218,10.218,0,0,0-2.146.28c-.075.019-.1-.008-.127-.077q-.233-.729-.476-1.456c-.035-.1.013-.113.1-.133a9.516,9.516,0,0,1,1.7-.221c.568-.01.568-.01.7.408.115.35.225.7.346,1.05C3020.591,1265.535,3020.567,1265.569,3020.449,1265.573Zm.358-3.177c-.115-.35-.226-.7-.344-1.051-.029-.088-.047-.138.083-.143a10.722,10.722,0,0,0,2.148-.274c.1-.023.125.007.152.09.145.456.292.911.446,1.364.036.107,0,.131-.1.153a10.227,10.227,0,0,1-1.788.221C3020.929,1262.766,3020.929,1262.767,3020.808,1262.4Zm3.261,2.92a9.871,9.871,0,0,1-1.758.206c-.478.014-.478.014-.625-.434-.11-.337-.219-.675-.334-1.011-.036-.106-.039-.156.106-.161a10.23,10.23,0,0,0,2.1-.27c.116-.029.148.013.177.105.147.461.29.924.451,1.38C3024.242,1265.277,3024.176,1265.294,3024.069,1265.316Zm.424-3.19c-.056,0-.059-.056-.072-.1-.15-.46-.3-.922-.452-1.381-.031-.093,0-.124.079-.157a11.585,11.585,0,0,0,1.894-.986c.1-.066.139-.04.172.065.136.431.278.86.42,1.29.027.081.035.139-.052.2a11.777,11.777,0,0,1-1.911,1.038C3024.547,1262.106,3024.522,1262.115,3024.492,1262.126Zm2.9,1.7a11.81,11.81,0,0,1-1.908,1.041c-.1.043-.134.019-.165-.078-.15-.474-.308-.945-.462-1.417-.02-.063-.038-.113.055-.151a12.259,12.259,0,0,0,1.946-1.011c.016-.01.034-.02.051-.029.067-.006.069.046.083.087.153.466.306.932.461,1.4A.122.122,0,0,1,3027.391,1263.823Z' transform='translate(-3009.458 -1252.042)' fill='%23fff' opacity='0.8'/%3E%3C/svg%3E") no-repeat center center;
-    }
-
-    #asmo_class_process_forM ul li.end span  {
-        border: 1px solid rgba(251, 140, 0, 0.8);
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='success_icon' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect id='사각형_1417' data-name='사각형 1417' width='24' height='24' fill='none'/%3E%3Cg id='그룹_278' data-name='그룹 278' transform='translate(2.548 3.73)' opacity='0.8'%3E%3Cpath id='패스_627' data-name='패스 627' d='M2655.3,1611.9c-.33.2-.647.391-.953.6a.327.327,0,0,0-.085.233c-.006,1.015-.011,2.03,0,3.046a2.354,2.354,0,0,1-1.2,2.209c-1.033.614-2.047,1.263-3.078,1.878a4.16,4.16,0,0,1-4.534,0c-1.068-.634-2.124-1.292-3.182-1.944a2.246,2.246,0,0,1-1.1-2.03q-.007-1.576,0-3.153a.3.3,0,0,0-.166-.3q-1.077-.654-2.146-1.323a1.134,1.134,0,0,1,.005-2q3.87-2.393,7.743-4.779a1.975,1.975,0,0,1,2.206-.007q3.892,2.392,7.778,4.8a1.14,1.14,0,0,1,.032,1.963.329.329,0,0,0-.124.229q-.01,2.7,0,5.405a.372.372,0,0,0,.1.231,1.151,1.151,0,0,1,.044,1.593.993.993,0,0,1-1.482-.015,1.154,1.154,0,0,1,.072-1.591.31.31,0,0,0,.091-.192q.007-2.392,0-4.783A.4.4,0,0,0,2655.3,1611.9Zm-15.747-1.786c.091.058.158.1.225.144,2.406,1.486,4.818,2.962,7.216,4.464a1.2,1.2,0,0,0,1.426,0c2.416-1.511,4.844-3,7.268-4.5.053-.033.1-.071.172-.118l-.149-.1q-3.688-2.277-7.374-4.558a1.085,1.085,0,0,0-1.266.008c-1.983,1.237-3.974,2.458-5.962,3.686Zm2.771,3.146v.261c0,.765.008,1.53,0,2.295a1.138,1.138,0,0,0,.592,1.08c1.025.614,2.041,1.245,3.06,1.867a3.094,3.094,0,0,0,3.432.025c1.059-.637,2.108-1.292,3.164-1.934a1.053,1.053,0,0,0,.526-.967q0-1.233,0-2.467c0-.039-.006-.078-.011-.15l-.23.138q-2.005,1.237-4.011,2.474a2.024,2.024,0,0,1-2.278-.008l-2.912-1.8Z' transform='translate(-2638.253 -1603.994)' fill='%23fb8c00'/%3E%3C/g%3E%3C/svg%3E") no-repeat center center;
-    }
-
-   
-    #asmo_class_process_forM ul li p {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1.2rem;
-        line-height: normal;
-    }
-
-    #asmo_class_process_forM ul li.end p {
-        color: rgba(251, 140, 0, 0.8);
-    }
-
-    #asmo_class_process_forM ul li strong {
-        margin: 6px 0 0;
-        font-size: 2rem;
-        font-weight: bold;
-        color: #fff;
-        display: block;
-    }
-
-    #asmo_class_process_forM ul li.end strong {
-        color: #FB8C00;
-    }
 
     
-    /* 랭킹팝업 */
-    #asmo_rank_popup {
-        width: 340px;
-        padding: 10px;
-    }
-
-    #asmo_rank_popup .asmo_popup_tit, #asmo_nickname_popup .asmo_popup_tit{
-        font-size: 1.4rem;
-        background-size: 16px;
-        margin: 0 0 16px;
-    }
-
-    #asmo_rank_popup .my_rank_status { height: 30px; }
-    #asmo_rank_popup .my_rank_status span { font-size: 1.2rem;line-height: 28px;}
-    #asmo_rank_popup .my_rank_nickname { padding: 8px 10px;}
-    #asmo_rank_popup .my_rank_nickname .asmo_rank_tit { margin: 0 0 8px; }
-    #asmo_rank_popup .nickname_box .nick_box_tit { }
-    #asmo_rank_popup .nickname_box .nick_box_cont { padding: 8px; }
-    #asmo_rank_popup .nickname_box .nick_box_cont .nick_right_txt { padding: 0 0 0 10px; }
-    #asmo_rank_popup .nickname_box .nick_box_cont .nick_left_img { width: 50px; }
-    .rank_scroll_box .rank_box_tit { padding: 10px 0 8px; }
-    .asmo_cmall_popup_box .rank_scroll_box ul li { height: 30px; }
-    .asmo_cmall_popup_box .rank_scroll_box ul li em, .asmo_cmall_popup_box .rank_scroll_box ul li b { line-height: 28px; }
-    .asmo_cmall_popup_box .rank_scroll_box ul li.asmo_rank_01 em, .asmo_cmall_popup_box .rank_scroll_box ul li.asmo_rank_02 em, .asmo_cmall_popup_box .rank_scroll_box ul li.asmo_rank_03 em {
-        background-size: 20px;
-    }
-    .rank_scroll_box ul { max-height: 60px; }
-
-
-    #asmo_nickname_popup { 
-        width: 380px;
-        padding: 10px;
-    }
-
-    #asmo_nickname_popup .my_nickname_list li .my_nickname_img_box { width: 50px; margin: 0 auto 8px;}
-    #asmo_nickname_popup .my_nickname_list li b { font-size: 1.2rem; }
-    #asmo_nickname_popup .my_nickname_list li em { font-size: 1.2rem;}
-    #asmo_nickname_popup .my_nickname_list li span { width: 70px; }
-    #asmo_nickname_popup .my_nickname_list li { 
-        padding: 9px 8px 6px;
-        height: auto;
-        width: calc((100% - 16px) / 3);margin: 0;
-    }
-    #asmo_nickname_popup .my_nickname_list { gap: 8px; }
-
-    #asmo_nickname_popup .asmo_cmall_popup_box {
-        height: 230px;
-        overflow-y: auto;
-    }
+    
 
 
     /* *** 공지사항 영역 *** */
@@ -6506,10 +6710,6 @@
 
     #asmo_notice_tab_cont_wrap {
         padding:0 12px 9px;
-    }
-
-    #asmo_class_process {
-        padding: 15px 14px;
     }
 
 
@@ -6823,32 +7023,11 @@
     #asmo_item_list_goods_wrap.table-image .table-list-item { width: calc((100% - 36px) / 3);}
     .asmo_cmall_bottom_list_wrap .cmall_reco { width: calc(50% - 16px);}
     .asmo_cmall_bottom_list_wrap { padding: 0 0 50px;}
-    .asmo_cmall_main_popup_wrap { width: 340px; }
-    .asmo_cmall_popup_box a { height: 30px; line-height: 30px;}
 
 
     /* 일일퀘스트 팝업 */
 
-    #asmo_quest_popup {
-        width: 460px;
-        padding: 10px 10px 8px;
-
-    }
-
-    #asmo_quest_popup .asmo_popup_tit {
-        font-size: 1.4rem;
-        padding: 0 0 0 20px;
-        background-size: 16px;
-        margin: 0 0 16px;
-    }
-
-
-    #asmo_quest_popup  .asmo_popup_close {
-        top: 10px;
-        right: 10px;
-    }
-
-
+  
     #asmo_quest_popup .asmo_quest_end_layer p {
         width: calc(100% - 92px);
     }

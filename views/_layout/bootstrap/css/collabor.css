@@ -700,7 +700,7 @@
 
 .toggleBgColorOrange {background-color: #FB8C00 !important;}
 .toggleBgColor {background-color: #00A8FA !important;}
-.toggleX {transform: translateX(104px) !important;}
+.toggleX {transform: translateX(104px) !important; background-color: #00A8FA !important;}
 
 #mainSideVar {
     width: 70px;

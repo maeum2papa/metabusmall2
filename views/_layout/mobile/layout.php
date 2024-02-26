@@ -74,33 +74,26 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 	<?php if ($this->member->is_member()) { ?>
 	<nav class="navbar">
 		<div class="nav_bar_left">
-			<div class="asmo_nav_logo" onclick="location.href='/dashboard';">
-				<img src="<?php echo element('layout_skin_url', $layout); ?>/images/logo_top.svg" alt="컬래버랜드">
-			</div>
+			<!-- <div class="asmo_nav_logo" onclick="location.href='/dashboard';">
+				<img src="<?php //echo element('layout_skin_url', $layout); ?>/images/logo_top.svg" alt="컬래버랜드">
+			</div> -->
 			<div class="asmo_nav_info">
 				<p class="asmo_small_profile">
-					<!-- 유저 이미지 들어갈 곳 -->
-					<img src="<?php echo element('layout_skin_url', $layout); ?>/../bootstrap/seum_img/preview/<?php echo html_escape($this->member->item('mem_id')); ?>_preview.png?v=<?php echo mt_rand(); ?>" alt="preview_img" onerror="this.onerror=null; this.src='<?php echo element('layout_skin_url', $layout); ?>/../bootstrap/seum_img/preview/character_default.png'">
+					<!-- 기업 로고 들어가는 곳 -->
+					<a href="<?php echo site_url('dashboard'); ?>" class="sidebar_logo">
+						<span class="asmo_sidebar_icon"><img src="<?=busiIcon($this->member->item('company_idx'))?>" alt="기업 로고" onerror="this.onerror=null; this.src='<?php echo element('layout_skin_url', $layout); ?>/images/collaborlandLogo.svg'"></span>
+					</a>
 				</p>
-				<div class="asmo_nav_info_txt">
+				<div class="asmo_nav_info_txt" style="display:none;">
 					<p><span><?php echo html_escape($this->member->item('mem_nickname')); ?></span><em><?php echo html_escape($this->member->item('mem_position')); ?></em></p>
 					<p><?php echo html_escape($this->member->item('mem_div')); ?></p>
 				</div>
 			</div>
-			<div class="asmo_nav_money_wrap">
-				<ul>
-					<li class="asmo_nav_money_box fruit asmo_fruit"><?php echo html_escape($this->member->item('mem_cur_fruit')); ?></li>
-					<li class="asmo_nav_money_box seed asmo_point"><?php echo html_escape($this->member->item('mem_point')); ?></li>
-					<li class="asmo_nav_money_box rank asmo_rank asmo_rank_popup"><?php echo element('myrank', element('ranking', element('data', $view))); ?>위</li>
-				</ul>
-			</div>
 		</div>
 		<div class="nav_bar_right">
-			<div id="asmo_nav_quset_btn"></div>
-			<div id="asmo_nav_qa_btn"><span></span></div>
-			<div id="asmo_nav_logout">
-			</div>
-			<p>
+			<div id="asmo_ham_btn">메뉴</div>
+			<!-- <div id="asmo_nav_quset_btn"></div> -->
+			<p style="display:none;">
 				<!-- 기업관리자 등급일 때만 해당 메뉴 노출  -->
 				<?php if($this->member->item('mem_level') == 100 && $this->session->userdata('mem_admin_flag') != '0'){ ?>
 				<a class="asmo_admin_menu" href="https://<?=busiCode($this->member->item('company_idx'))?>.collaborland.kr/admin"><span>기업관리</span></a>
@@ -241,19 +234,26 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 	<?php if ($this->member->is_member()) { ?>
 	<div id="asmo_fixed_bar">
 		<ul>
-			<li class="asmo_q_office"><a href="<?php echo site_url('land/office'); ?>"><span><?=busiNm($this->member->item('company_idx'))?>랜드</span></a></li>
+			<!-- asmo lhb 240220 대시보드 메뉴 추가  -->
+			<li class="asmo_q_dash <?php if(  element('view_skin_path', $layout) == 'dashboard/mobile' ){ ?>active<?php }?>"><a href="/dashboard"><span>대시보드</span></a></li>
 			<li class="asmo_q_my"><a href="<?php echo site_url('myland/space'); ?>"><span>마이랜드</span></a></li>
+			<li class="asmo_q_office"><a href="<?php echo site_url('land/office'); ?>"><span><?=busiNm($this->member->item('company_idx'))?>랜드</span></a></li>
 			<li class="asmo_q_class <?php if(  element('view_skin_path', $layout) == 'classroom/mobile' ){ ?>active<?php }?>"><a href="<?php echo site_url('classroom'); ?>"><span>클래스룸</span></a></li>
-			<li class="asmo_q_shop <?php if(  element('view_skin_path', $layout) == 'cmall/mobile' ){ ?>active<?php }?>"><a href="<?php echo site_url('cmall'); ?>"><span>SHOP</span></a></li>
+			<li class="asmo_q_shop <?php if(  element('view_skin_path', $layout) == 'cmall/mobile' ){ ?>active<?php }?>"><a href="<?php echo site_url('cmall'); ?>"><span>교환소</span></a></li>
 		</ul>
+		<div class="asmo_ham_bottom_menu">
+			<ol>
+				<li class="asmo_go_guide"><a href="/faq/faq"><em></em>이용가이드</a></li>
+				<li class="asmo_logout"><a href="<?php echo site_url('login/logout?url=' . urlencode(current_full_url())); ?>" title="로그아웃"><em></em>로그아웃</a></li>
+			</ol>
+		</div>
 	</div>
 	<?php } ?>
 	<!-- //asmo lhb 231214 로그인 시 하단 퀵바 삽입 -->
 
 	<!-- footer start -->
-	<!-- asmo lhb 231214 푸터 미노출 -->
-	<!-- 푸터는 회원,랜드,대쉬보드만 미노출임 -->
-	<footer>
+	<!-- asmo lhb 240226 전체 페이지 푸터 미노출 -->
+	<footer style="display:none;">
 		<div class="asmo_ft_logo_wrap"><?=banner('ft_logo_m')?></div>
 		
 		<div class="asmo_ft_container">
@@ -348,168 +348,6 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 <!-- asmo lhb 231220 레이어 딤 추가 -->
 <div id="layer_dim" class="dn"></div>
 
-<!-- asmo lhb 231220 열매, 코인 팝업 추가  -->
-<div class="asmo_cmall_main_popup_wrap dn" id="asmo_fruit_popup">
-	<div class="asmo_popup_close">닫기</div>
-	<div class="asmo_cmall_popup_box">
-		<ul>
-			<li class="asmo_popup_tit"><em></em><span>보유 열매 : <b><?php echo html_escape($this->member->item('mem_cur_fruit')); ?>개</b></span></li>
-			<li>사용한 열매 : <span>100개</span></li>
-			<li>총 열매 (보유+사용) : <span>100개</span></li>
-		</ul>
-		<a href="<?php echo site_url('cmall/fruit'); ?>">열매 내역</a>
-	</div>
-</div>
-<div class="asmo_cmall_main_popup_wrap dn" id="asmo_coin_popup">
-	<div class="asmo_popup_close">닫기</div>
-	<div class="asmo_cmall_popup_box">
-		<ul>
-			<li class="asmo_popup_tit"><em></em><span>보유 컬래버 코인 : <b><?php echo html_escape($this->member->item('mem_point')); ?>개</b></span></li>
-			<li>사용한 컬래버 코인 : <span>100개</span></li>
-			<li>총 컬래버 코인 (보유+사용) : <span>100개</span></li>
-		</ul>
-		<a href="<?php echo site_url('cmall/point'); ?>">컬래버 코인 내역</a>
-	</div>
-</div>
-<!-- //asmo lhb 231220 열매, 코인 팝업 추가  -->
-
-
-<!-- asmo lhb 231221 일일퀘스트 팝업 추가  -->
-<div class="asmo_cmall_main_popup_wrap dn" id="asmo_quest_popup">
-	<div class="asmo_popup_close">닫기</div>
-	<div class="asmo_popup_tit">일일 퀘스트</div>
-	<div class="asmo_cmall_popup_box">
-		<ul>
-			<!-- asmo lhb 231221 퀘스트 클리어 시 clear 클래스 추가, 카운팅 1  -->
-			<li class="clear"><span>연못에서 물 1회 뜨기</span><em>CLEARED !</em><strong>[1/1]</strong></li>
-			<li><span>물고기 1마리 잡기</span><em>CLEARED !</em><strong>[0/1]</strong></li>
-			<li><span>동료 랜드 1회 방문하기</span><em>CLEARED !</em><strong>[0/1]</strong></li>
-			<li><span>씨앗 1개 획득하기</span><em>CLEARED !</em><strong>[0/1]</strong></li>
-			<li><span>씨앗 1번 심기</span><em>CLEARED !</em><strong>[0/1]</strong></li>
-		</ul>
-	</div>
-	<!-- 전체 퀘스트 완료 시 레이어 dn 클래스 삭제하여서 노출 처리하면 됨 -->
-	<div class="asmo_quest_end_layer dn">
-		<p>일일퀘스트를 완료하였습니다.<br><b>비료 1개</b>가 지급되었습니다</p>
-	</div>
-</div>
-<!-- //asmo lhb 231221 일일퀘스트 팝업 추가 끝 -->
-
-<!-- asmo lhb 231221 랭킹 팝업 추가  -->
-<div class="asmo_cmall_main_popup_wrap dn" id="asmo_rank_popup">
-	<div class="asmo_popup_close">닫기</div>
-	<div class="asmo_popup_tit">랭킹 현황</div>
-	<div class="asmo_cmall_popup_box">
-		<div class="my_rank_status"><span>나의 랭킹 <strong><?php echo element('myrank', element('ranking', element('data', $view))); ?></strong>위</span></div>
-		<div class="my_rank_nickname">
-			<div class="asmo_rank_tit">
-				<b>활성된칭호</b><div id="change_nickname">칭호 변경</div>
-			</div>
-			<div class="nickname_box">
-				<div class="nick_box_tit">[위대한 선구자]</div>
-				<div class="nick_box_cont">
-					<div class="nick_left_img">
-						<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick01.jpg" alt="위대한선구자">
-					</div>
-					<div class="nick_right_txt">
-						<p>
-							<b>[획득 조건]</b><br>
-							열매 10개 획득
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="rank_scroll_box">
-			<div class="rank_box_tit"><span>순위</span><span>닉네임</span><span>누적 열매</span></div>
-			<ul>
-				<?php foreach (element('list', element('ranking', element('data', $view))) as $result) { ?>
-					<li class="asmo_rank_0<?php echo $result['num']; ?>">
-						<em><?php echo $result['num']; ?></em>
-						<b><?php if($result['mem_username']){ echo $result['mem_username']; } else { echo $result['mem_nickname']; }?></b>
-						<b><?php echo number_format($result['cnt']); ?>개</b>
-					</li>
-				<?php } ?>
-			</ul>
-		</div>
-	</div>
-</div>
-<div class="asmo_cmall_main_popup_wrap dn" id="asmo_nickname_popup">
-	<div class="asmo_popup_close">닫기</div>
-	<div class="asmo_popup_tit">칭호 목록</div>
-	<div class="asmo_cmall_popup_box">
-		<ul class="my_nickname_list">
-			<!-- asmo lhb 231221 칭호 활성화 시 active 클래스 추가  -->
-			<li class="active">
-				<div class="my_nickname_img_box">
-					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick01.jpg" alt="위대한선구자">
-				</div>
-				<b>[위대한 선구자]</b>
-				<em>2023.12.30</em>
-				<span class="asmo_nick_btn">활성화</span>
-				<div class="asmo_ing_mask dn">
-					<p>[준비중]</p>
-				</div>
-			</li>
-			<li>
-				<div class="my_nickname_img_box">
-					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick02.jpg" alt="새내기낚시꾼">
-				</div>
-				<b>[새내기 낚시꾼]</b>
-				<em>-</em>
-				<span class="asmo_nick_btn">미획득</span>
-				<div class="asmo_ing_mask dn">
-					<p>[준비중]</p>
-				</div>
-			</li>
-			<li>
-				<div class="my_nickname_img_box">
-					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick03.jpg" alt="칭호이미지예시">
-				</div>
-				<b></b>
-				<em></em>
-				<span class="asmo_nick_btn"></span>
-				<div class="asmo_ing_mask">
-					<p>[준비중]</p>
-				</div>
-			</li>
-			<li>
-				<div class="my_nickname_img_box">
-					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick04.jpg" alt="칭호이미지예시">
-				</div>
-				<b></b>
-				<em></em>
-				<span class="asmo_nick_btn"></span>
-				<div class="asmo_ing_mask">
-					<p>[준비중]</p>
-				</div>
-			</li>
-			<li>
-				<div class="my_nickname_img_box">
-					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick05.jpg" alt="칭호이미지예시">
-				</div>
-				<b></b>
-				<em></em>
-				<span class="asmo_nick_btn"></span>
-				<div class="asmo_ing_mask">
-					<p>[준비중]</p>
-				</div>
-			</li>
-			<li>
-				<div class="my_nickname_img_box">
-					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick06.jpg" alt="칭호이미지예시">
-				</div>
-				<b></b>
-				<em></em>
-				<span class="asmo_nick_btn"></span>
-				<div class="asmo_ing_mask">
-					<p>[준비중]</p>
-				</div>
-			</li>
-		</ul>
-	</div>
-</div>
-<!-- //asmo lhb 231221 랭킹 팝업 추가 끝 -->
 
 
 
@@ -595,49 +433,331 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 </div>
 <!-- asmo sh 240103 공지사항 팝업 추가 끝 -->
 
+<!-- asmo lhb 231220 열매, 코인 팝업 추가  -->
+<div class="asmo_cmall_main_popup_wrap" id="asmo_fruit_popup">
+	<div class="asmo_popup_close">닫기</div>
+	<div class="asmo_popup_tit">열매 현황</div>
+	<div class="asmo_cmall_popup_box">
+		<ul>
+			<li class="asmo_popup_tit"><em></em><span>보유 컬래버 열매 <b>: <?php echo html_escape($this->member->item('mem_cur_fruit')); ?>개</b></span></li>
+			<li>사용한 열매 : 100개</li>
+			<li>총 열매 (보유+사용) : 100개</li>
+		</ul>
+		<a href="<?php echo site_url('cmall/fruit'); ?>">열매 내역</a>
+	</div>
+</div>
+<div class="asmo_cmall_main_popup_wrap" id="asmo_coin_popup">
+	<div class="asmo_popup_close">닫기</div>
+	<div class="asmo_popup_tit">포인트 현황</div>
+	<div class="asmo_cmall_popup_box">
+		<ul>
+			<li class="asmo_popup_tit"><em></em><span>보유 <?=busiNm($this->member->item('company_idx'))?> 복지포인트 <b>: <?php echo html_escape($this->member->item('mem_point')); ?>개</b></span></li>
+			<li>사용한 포인트 : <span>100개</span></li>
+			<li>총 포인트 (보유+사용) : <span>100개</span></li>
+		</ul>
+		<a href="<?php echo site_url('cmall/point'); ?>">복지포인트 내역</a>
+	</div>
+</div>
+<!-- //asmo lhb 231220 열매, 코인 팝업 추가  -->
+
+
+
+
+
+<!-- asmo lhb 231221 일일퀘스트 팝업 추가  -->
+<div class="asmo_cmall_main_popup_wrap" id="asmo_quest_popup">
+	<div class="asmo_popup_close">닫기</div>
+	<div class="asmo_popup_tit">일일 퀘스트 현황</div>
+	<div class="asmo_cmall_popup_box">
+		<ul>
+			<!-- asmo lhb 231221 퀘스트 클리어 시 clear 클래스 추가, 카운팅 1  -->
+			<li class="clear"><span>연못에서 물 1회 뜨기</span><em>CLEARED !</em><strong>[1/1]</strong></li>
+			<li><span>물고기 1마리 잡기</span><em>CLEARED !</em><strong>[0/1]</strong></li>
+			<li><span>동료 랜드 1회 방문하기</span><em>CLEARED !</em><strong>[0/1]</strong></li>
+			<li><span>씨앗 1개 획득하기</span><em>CLEARED !</em><strong>[0/1]</strong></li>
+			<li><span>씨앗 1번 심기</span><em>CLEARED !</em><strong>[0/1]</strong></li>
+		</ul>
+	</div>
+	<!-- 전체 퀘스트 완료 시 레이어 dn 클래스 삭제하여서 노출 처리하면 됨 -->
+	<div class="asmo_quest_end_layer dn">
+		<p>일일퀘스트를 완료하였습니다.<br><b>비료 1개</b>가 지급되었습니다</p>
+	</div>
+</div>
+<!-- //asmo lhb 231221 일일퀘스트 팝업 추가 끝 -->
+
+<!-- asmo lhb 231221 랭킹 팝업 추가  -->
+<div class="asmo_cmall_main_popup_wrap" id="asmo_rank_popup">
+	<div class="asmo_popup_close">닫기</div>
+	<div class="asmo_popup_tit">랭킹 현황</div>
+	<div class="asmo_cmall_popup_box">
+		<div class="my_rank_status"><span>나의 랭킹 <strong><?php echo element('myrank', element('ranking', element('data', $view))); ?></strong>위</span></div>
+		<div class="rank_scroll_box">
+			<div class="rank_box_tit"><span>순위</span><span>직원명</span><span>누적열매개수</span><span>랜드방문</span></div>
+			<ul>
+				<?php foreach (element('list', element('ranking', element('data', $view))) as $result) { ?>
+					<li class="asmo_rank_0<?php echo $result['num']; ?>">
+						<em><?php echo $result['num']; ?></em>
+						<b class="asmo_rank_id_sec"><?php if($result['mem_username']){ echo $result['mem_username']; } else { echo $result['mem_nickname']; }?></b>
+						<b><?php echo number_format($result['cnt']); ?>개</b>
+						<strong class="asmo_go_to_land"><a href=""></a></strong>
+					</li>
+				<?php } ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="asmo_cmall_main_popup_wrap" id="asmo_nickname_popup">
+	<div class="asmo_popup_close">닫기</div>
+	<div class="asmo_popup_tit">활성된 칭호</div>
+	<div class="asmo_active_nick_name_wrap">
+		<div class="asmo_active_nick_name_wrap_tit">[위대한 선구자]</div>
+		<div class="asmo_active_nick_box">
+			<div class="my_nickname_img_box">
+				<div class="my_nickname_img_box_container"><img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick01.jpg" alt="위대한선구자"></div>
+			</div>
+			<div class="asmo_active_box_describe">
+				<ul>
+					<li><b>[획득 조건]</b> 열매 10개 획득</li>
+					<li><b>[획득 일시]</b> 2023-12-20</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="asmo_popup_tit">칭호 목록</div>
+	<div class="asmo_cmall_popup_box">
+		<ul class="my_nickname_list">
+			<!-- asmo lhb 231221 칭호 활성화 시 active 클래스 추가  -->
+			<li class="active">
+				<div class="my_nickname_img_box">
+					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick01.jpg" alt="위대한선구자">
+				</div>
+				<b>[위대한 선구자]</b>
+				<em>2023-12-30</em>
+				<span class="asmo_nick_btn">활성화</span>
+				<div class="asmo_ing_mask dn">
+					<p>[준비중]</p>
+				</div>
+			</li>
+			<li>
+				<div class="my_nickname_img_box">
+					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick02.jpg" alt="새내기낚시꾼">
+				</div>
+				<b>[새내기 낚시꾼]</b>
+				<em>물고기 20마리 획득</em>
+				<span class="asmo_nick_btn">미획득</span>
+				<div class="asmo_ing_mask dn">
+					<p>[미획득]</p>
+				</div>
+			</li>
+			<li>
+				<div class="my_nickname_img_box">
+					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick03.jpg" alt="칭호이미지예시">
+				</div>
+				<b></b>
+				<em></em>
+				<span class="asmo_nick_btn"></span>
+				<div class="asmo_ing_mask">
+					<p>[준비중]</p>
+				</div>
+			</li>
+			<li>
+				<div class="my_nickname_img_box">
+					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick04.jpg" alt="칭호이미지예시">
+				</div>
+				<b></b>
+				<em></em>
+				<span class="asmo_nick_btn"></span>
+				<div class="asmo_ing_mask">
+					<p>[준비중]</p>
+				</div>
+			</li>
+			<li>
+				<div class="my_nickname_img_box">
+					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick05.jpg" alt="칭호이미지예시">
+				</div>
+				<b></b>
+				<em></em>
+				<span class="asmo_nick_btn"></span>
+				<div class="asmo_ing_mask">
+					<p>[준비중]</p>
+				</div>
+			</li>
+			<li>
+				<div class="my_nickname_img_box">
+					<img src="<?php echo element('layout_skin_url', $layout); ?>/images/nick06.jpg" alt="칭호이미지예시">
+				</div>
+				<b></b>
+				<em></em>
+				<span class="asmo_nick_btn"></span>
+				<div class="asmo_ing_mask">
+					<p>[준비중]</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- //asmo lhb 231221 랭킹 팝업 추가 끝 -->
+
 
 <script type="text/javascript">
 	
 
+//asmo lhb 240220 햄버거 버튼 클릭 토글 이벤트
+$('#asmo_ham_btn').click(function(){
+
+	
+	$('#asmo_fixed_bar').hasClass('active') ? $('#asmo_fixed_bar').removeClass('active') : $('#asmo_fixed_bar').addClass('active');
+
+});
+
+//asmo lhb 240220 햄버거 버튼 클릭 토글 이벤트 끝
+
 //asmo lhb 231220 열매, 코인 팝업 이벤트
 
-$('.asmo_fruit').click(function(){
-	$('#asmo_fruit_popup, #layer_dim').removeClass('dn');
-	$('body,html').css({'overflow':'hidden'});
-});
-
-$('.asmo_point').click(function(){
-	$('body,html').css({'overflow':'hidden'});
-	$('#asmo_coin_popup, #layer_dim').removeClass('dn');
-});
 
 $('.asmo_popup_close').click(function(){
-	$(this).parent().addClass('dn');
+
+	
+	$(this).parent().removeClass('active');
 	$('#layer_dim').addClass('dn');
-	$('body,html').css({'overflow':'initial'});
 });
 
 //asmo lhb 231220 열매, 코인 팝업 이벤트 끝
 
-//asmo lhb 231220 일일퀘스트 팝업 이벤트 
-$('#asmo_nav_quset_btn').click(function(){
-	$('body,html').css({'overflow':'hidden'});
-	$('#asmo_quest_popup, #layer_dim').removeClass('dn');
-});
-//asmo lhb 231220 일일퀘스트 팝업 이벤트  끝
 
 
-//asmo lhb 231220 랭킹 팝업 이벤트 
-$('.asmo_rank_popup').click(function(){
-	$('body,html').css({'overflow':'hidden'});
-	$('#asmo_rank_popup, #layer_dim').removeClass('dn');
+//asmo lhb 240222 랭킹팝업 이벤트
+$('#asmo_my_rank_status').click(function(){
+
+
+	$('#layer_dim').removeClass('dn');	
+	$('#asmo_rank_popup').addClass('active');
 });
 
+//asmo lhb 240222 랭킹팝업 이벤트 끝
+
+
+//asmo lhb 240222 열매팝업 이벤트
+$('#asmo_my_fruit_status').click(function(){
+
+
+	$('#layer_dim').removeClass('dn');	
+	$('#asmo_fruit_popup').addClass('active');
+});
+
+//asmo lhb 240222 열매팝업 이벤트 끝
+
+//asmo lhb 240222 코인팝업 이벤트
+$('#asmo_my_point_status').click(function(){
+
+
+	$('#layer_dim').removeClass('dn');	
+	$('#asmo_coin_popup').addClass('active');
+});
+
+//asmo lhb 240222 코인팝업 이벤트 끝
+
+
+//asmo lhb 240222 칭호팝업 이벤트
 $('#change_nickname').click(function(){
-	$('body,html').css({'overflow':'hidden'});
-	$('#asmo_rank_popup').addClass('dn');
-	$('#asmo_nickname_popup, #layer_dim').removeClass('dn');
+
+
+	$('#layer_dim').removeClass('dn');	
+	$('#asmo_nickname_popup').addClass('active');
 });
+
+//asmo lhb 240222 칭호팝업 이벤트 끝
+
+//asmo lhb 240222 일일퀘스트 팝업 이벤트
+$('#asmo_quest_status').click(function(){
+
+
+	$('#layer_dim').removeClass('dn');	
+	$('#asmo_quest_popup').addClass('active');
+});
+
+//asmo lhb 240222 일일퀘스트 팝업 이벤트 끝
+
+
+
+
+$('#layer_dim').click(function(){ //딤클릭 시 공통 팝업 닫히도록
+	$('.asmo_cmall_main_popup_wrap').removeClass('active');
+	$(this).addClass('dn');
+});
+
+
+$(document).on('click', function(event) {
+
+		
+
+	// if (!$(event.target).is('#asmo_rank_popup')) { //순위 팝업 이외의 영역 클릭 시 팝업 닫기
+
+	// 	$('#asmo_rank_popup').removeClass('active');
+	// 	$('#layer_dim').addClass('dn');	
+
+	// }
+	
+	
+	// if( $(event.target).is('#asmo_my_fruit_status') ){ //열매 팝업 등장
+
+		
+	// 	$('#asmo_fruit_popup').addClass('active');
+
+	// }else if (!$(event.target).is('#asmo_fruit_popup')) { //열매 팝업 이외의 영역 클릭 시 팝업 닫기
+
+	// 	$('#asmo_fruit_popup').removeClass('active');
+	// 	$('#layer_dim').addClass('dn');	
+
+	// }
+
+	// if( $(event.target).is('#asmo_my_point_status') ){ //코인 팝업 등장
+
+	// 	$('#asmo_coin_popup').addClass('active');
+
+	// }else if (!$(event.target).is('#asmo_coin_popup')) { //열매 팝업 이외의 영역 클릭 시 팝업 닫기
+
+	// 	$('#asmo_coin_popup').removeClass('active');
+	// 	$('#layer_dim').addClass('dn');	
+
+	// }
+
+
+
+	// if( $(event.target).is('#asmo_quest_status') ){ //코인 팝업 등장
+
+	// 	$('#asmo_quest_popup').addClass('active');
+
+	// }else if (!$(event.target).is('#asmo_quest_popup')) { //열매 팝업 이외의 영역 클릭 시 팝업 닫기
+
+
+
+	// 	$('#asmo_quest_popup').removeClass('active');
+	// 	$('#layer_dim').addClass('dn');	
+
+	// }
+
+	// if( $(event.target).is('#change_nickname') ){ //코인 팝업 등장
+
+	// 	$('#asmo_nickname_popup').addClass('active');
+
+	// }else if (!$(event.target).is('#asmo_nickname_popup')) { //열매 팝업 이외의 영역 클릭 시 팝업 닫기
+
+
+
+	// 	$('#asmo_nickname_popup').removeClass('active');
+	// 	$('#layer_dim').addClass('dn');	
+
+	// }
+
+
+
+});
+
+
+
+
+
 
 //asmo lhb 231220 랭킹 팝업 이벤트  끝
 
@@ -650,13 +770,7 @@ $('#npopClose').click(function(){
 
 
 
-//asmo lhb 231215 로그아웃 토글 이벤트
 
-$('#asmo_nav_logout').click(function(){
-	$(this).hasClass('active') ? $(this).removeClass('active') : $(this).addClass('active');
-});
-
-//asmo lhb 231215 로그아웃 토글 이벤트 끝
 
 
 
