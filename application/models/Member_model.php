@@ -199,4 +199,20 @@ class Member_model extends CB_Model
 
 		return $result;
 	}
+
+	//이름으로 회원정보 찾기
+	public function get_mem_username_list($mem_username){
+		$where = array(
+			'mem_username' => $mem_username,
+		);
+
+		$this->db->select('*');
+		$this->db->from($this->_table);
+		$this->db->where($where);
+		$qry = $this->db->get();
+		$result = $qry->result_array();
+
+		return $result;
+
+	}
 }

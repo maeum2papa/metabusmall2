@@ -61,6 +61,8 @@ class Review extends CB_Controller
 		// 이벤트가 존재하면 실행합니다
 		$view['view']['event']['before'] = Events::trigger('before', $eventname);
 
+		$this->load->model(array("Cmall_item_model","Member_model"));
+
 		/**
 		 * 페이지에 숫자가 아닌 문자가 입력되거나 1보다 작은 숫자가 입력되면 에러 페이지를 보여줍니다.
 		 */
@@ -87,6 +89,22 @@ class Review extends CB_Controller
 			$where['cmall_item.company_idx'] = $this->session->userdata['company_idx'];
 		}
 
+		if($skeyword!="" && $sfield=="mem_username"){
+			
+			$tmp = $this->Member_model->get_mem_username_list($skeyword);
+			if(count($tmp)>0){
+				$serach_mem_id = array();
+				foreach($tmp as $v){
+					$serach_mem_id[] = $v['mem_id'];
+				}
+
+				$where["cb_cmall_review.mem_id in (".implode(',',$serach_mem_id).")"] = null;
+			}else{
+				$where["cb_cmall_review.mem_id"] = ""; //일치하지 않으면 검색 되지 않게 하기 위함
+			}
+		}
+
+
 		/**
 		 * 게시판 목록에 필요한 정보를 가져옵니다.
 		 */
@@ -99,12 +117,26 @@ class Review extends CB_Controller
 		$list_num = $result['total_rows'] - ($page - 1) * $per_page;
 		if (element('list', $result)) {
 			foreach (element('list', $result) as $key => $val) {
-				$result['list'][$key]['display_name'] = display_username(
+
+				$val['display_name'] = display_username(
 					element('mem_userid', $val),
 					element('mem_nickname', $val),
 					element('mem_icon', $val)
 				);
-				$result['list'][$key]['num'] = $list_num--;
+
+				$val['num'] =  $list_num--;
+
+				unset($tmp);
+				$tmp = $this->Cmall_item_model->get_one($val['cit_id']);
+				$val['cit_key'] = $tmp['cit_key'];
+
+				unset($tmp);
+				$tmp = $this->Member_model->get_one($val['mem_id']);
+				$val['mem_username'] = $tmp['mem_username'];
+
+
+				$result['list'][$key] = $val;
+
 			}
 		}
 
@@ -128,7 +160,7 @@ class Review extends CB_Controller
 		/**
 		 * 쓰기 주소, 삭제 주소등 필요한 주소를 구합니다
 		 */
-		$search_option = array('cre_title' => '후기제목', 'cre_content' => '후기내용', 'cit_name' => '상품명', 'cit_key' => '상품코드', 'cre_datetime' => '입력일');
+		$search_option = array('cre_title' => '후기제목', 'cre_content' => '후기내용', 'cit_name' => '상품명', 'cit_key' => '상품코드', 'mem_username' => '작성자');
 		$view['view']['skeyword'] = ($sfield && array_key_exists($sfield, $search_option)) ? $skeyword : '';
 		$view['view']['search_option'] = search_option($search_option, $sfield);
 		$view['view']['listall_url'] = admin_url($this->pagedir);

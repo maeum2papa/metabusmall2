@@ -9,13 +9,13 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">후기제목</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="cre_title" value="<?php echo set_value('cre_title', element('cre_title', element('data', $view))); ?>" />
+					<input type="text" class="form-control" name="cre_title" value="<?php echo set_value('cre_title', element('cre_title', element('data', $view))); ?>" readonly/>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">평점</label>
 				<div class="col-sm-10 form-inline">
-					<select name="cre_score" class="form-control">
+					<select name="cre_score" class="form-control" readonly>
 						<option value="">평점주기</option>
 						<option value="5" <?php echo set_select('cre_score', '5', (element('cre_score', element('data', $view)) === '5' ? true : false)); ?>>&#9733;&#9733;&#9733;&#9733;&#9733; (5)</option>
 						<option value="4" <?php echo set_select('cre_score', '4', (element('cre_score', element('data', $view)) === '4' ? true : false)); ?>>&#9733;&#9733;&#9733;&#9733;&#9734; (4)</option>
@@ -29,11 +29,12 @@
 				<label class="col-sm-2 control-label">승인</label>
 				<div class="col-sm-10 form-inline">
 					<label class="radio-inline" for="cre_status_1" >
-						<input type="radio" name="cre_status" id="cre_status_1" value="1" <?php echo set_checkbox('cre_status', '1', (element('cre_status', element('data', $view)) === '1' ? true : false)); ?> /> 승인 (사용자에게 보임)
+						<input type="radio" name="cre_status" id="cre_status_1" value="1" <?php echo set_checkbox('cre_status', '1', (element('cre_status', element('data', $view)) === '1' ? true : false)); ?> disabled/> 승인 (사용자에게 보임)
 					</label>
 					<label class="radio-inline" for="cre_status_0" >
-						<input type="radio" name="cre_status" id="cre_status_0" value="0" <?php echo set_checkbox('cre_status', '0', (element('cre_status', element('data', $view)) !== '1' ? true : false)); ?> /> 미승인 (사용자에게 보이지 않음)
+						<input type="radio" name="cre_status" id="cre_status_0" value="0" <?php echo set_checkbox('cre_status', '0', (element('cre_status', element('data', $view)) !== '1' ? true : false)); ?> disabled/> 미승인 (사용자에게 보이지 않음)
 					</label>
+					<input type="hidden" name="cre_status" value="<?php element('cre_status', element('data', $view));?>">
 				</div>
 			</div>
 			<div class="form-group">
@@ -43,14 +44,16 @@
 				</div>
 			</div>
 			<div class="btn-group pull-right" role="group" aria-label="...">
-				<button type="button" class="btn btn-default btn-sm btn-history-back" >취소하기</button>
-				<button type="submit" class="btn btn-success btn-sm">저장하기</button>
+				<button type="button" class="btn btn-default btn-sm btn-history-back" >목록으로</button>
 			</div>
 		<?php echo form_close(); ?>
 	</div>
 </div>
 
 <script type="text/javascript">
+
+document.querySelector('[name="cre_content"]').setAttribute("readonly",true);
+
 //<![CDATA[
 $(function() {
 	$('#fadminwrite').validate({
