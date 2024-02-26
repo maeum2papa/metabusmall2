@@ -16,7 +16,7 @@
 		<?php if($view['data']['cor_pay_type']=='f'){?>
 			<h4>열매상품</h4>
 		<?php }else if($view['data']['cor_pay_type']=='c'){?>
-			<h4>코인상품</h4>
+			<h4>복지포인트상품</h4>
 		<?php }?>
 		<!-- asmo lhb 231221 기존 테이블 형식 ul li 형식으로 변경 -->
 		<ul class="prd-list">
@@ -71,7 +71,7 @@
 								<?php if($view['data']['cor_pay_type']=='f'){?>
 								열매
 								<?php }else if($view['data']['cor_pay_type']=='c'){?>
-									코인
+									복지포인트
 								<?php }?><?php echo number_format(element('cit_price', element('item', $result))); ?> 개
 							</div>
 							<div class="prd-total">
@@ -79,7 +79,7 @@
 								<?php if($view['data']['cor_pay_type']=='f'){?>
 								열매
 								<?php }else if($view['data']['cor_pay_type']=='c'){?>
-									코인
+									복지포인트
 								<?php }?><?php echo number_format($total_price); ?><input type="hidden" name="total_price[<?php echo element('cit_id', element('item', $result)); ?>]" value="<?php echo $total_price; ?>" /> 개
 							</div>
 						</div>
@@ -189,7 +189,7 @@
 				<?php if($view['data']['cor_pay_type']=='f'){?>
 				열매
 				<?php }else if($view['data']['cor_pay_type']=='c'){?>
-					코인
+					복지포인트
 				<?php }?> 결제합계
 			</h4>
 			<table class="table table-striped table-bordered table-hover">

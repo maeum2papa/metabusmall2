@@ -4,7 +4,7 @@
 <div id="asmo_item_detail_wrap" class="asmo_wish_wrap asmo_cart_wrap">
 
     <div class="page-header">
-        <h4>코인 내역</h4>
+        <h4>복지포인트 내역</h4>
         <div class="top_right_box">
             <a class="asmo_top_wish" href="/cmall/wishlist">찜하기목록으로</a>
             <a class="asmo_top_cart_btn" href="/cmall/cart">장바구니<em></em></a>
@@ -20,8 +20,8 @@
 			<span>구매날짜</span>
 			<span>유형</span>
 			<span>구매내역</span>
-			<span>컬래버 코인 내역</span>
-			<span>잔여 컬래버 코인</span>
+			<span>복지포인트 내역</span>
+			<span>잔여 복지포인트</span>
 		</div>
 
         <table class="asmo_fruit_table">

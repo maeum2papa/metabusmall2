@@ -642,7 +642,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 	</div>
 </div>
 
-<!-- asmo sh 231221 코인 현황 팝업 추가 -->
+<!-- asmo sh 231221 복지포인트 현황 팝업 추가 -->
 <div class="popup_layer_bg" id="coin_popup">
 	<div class="status_popup">
 		<div class="status_box_wrap">
@@ -1111,7 +1111,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 			$('body,html').css({'overflow':'hidden'});
 		});
 
-		// 코인 박스 클릭 시 코인 팝업창 띄우기
+		// 복지포인트 박스 클릭 시 복지포인트 팝업창 띄우기
 		$('.coin_box').on('click', function() {
 			$('#coin_popup').css('display', 'block');
 			$('body,html').css({'overflow':'hidden'});
@@ -1135,7 +1135,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 			$('body,html').css({'overflow':'initial'});
 		});
 
-		// 코인 팝업창 닫기
+		// 복지포인트 팝업창 닫기
 		$('#coin_popup_close').on('click', function() {
 			$('#coin_popup').css('display', 'none');
 			$('body,html').css({'overflow':'initial'});

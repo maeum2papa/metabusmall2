@@ -291,24 +291,24 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 	</div>
 </div>
 
-<!-- asmo sh 231221 코인 현황 팝업 추가 -->
+<!-- asmo sh 231221 복지포인트 현황 팝업 추가 -->
 <div class="popup_layer_bg" id="coin_popup">
 	<div class="status_popup">
 		<div class="status_box_wrap">
 			<div class="status_save_box">
 				<div class="status_total_box">
 					<div class="status_icon"><?=banner('coin')?></div>
-					<p>보유 컬래버 코인 : <span id="coin_count"><?php echo html_escape($this->member->item('mem_point')); ?></span><span>개</span></p>
+					<p>보유 복지포인트 : <span id="coin_count"><?php echo html_escape($this->member->item('mem_point')); ?></span><span>개</span></p>
 				</div>
 			</div>
 			<div class="status_save">
-				<p>사용한 컬래버 코인 : <span id="coin_used_count">4000</span>개</p>
+				<p>사용한 복지포인트 : <span id="coin_used_count">4000</span>개</p>
 			</div>
 			
 			<div class="status_save">
-				<p>총 컬래버 코인 (보유+사용) : <span id="coin_total_count">5000</span>개</p>
+				<p>총 복지포인트 (보유+사용) : <span id="coin_total_count">5000</span>개</p>
 			</div>
-			<a href="<?php echo site_url('cmall/point'); ?>">컬래버 코인 내역</a>
+			<a href="<?php echo site_url('cmall/point'); ?>">복지포인트 내역</a>
 		</div>
 		<button id="coin_popup_close">
 			<svg id="cancel_icon" data-name="cancel icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -654,7 +654,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 			$('#status_popup').css('display', 'block');
 		});
 
-		// 코인 박스 클릭 시 코인 팝업창 띄우기
+		// 복지포인트 박스 클릭 시 복지포인트 팝업창 띄우기
 		$('.coin_box').on('click', function() {
 			$('#coin_popup').css('display', 'block');
 		});
@@ -675,7 +675,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 			$('#status_popup').css('display', 'none');
 		});
 
-		// 코인 팝업창 닫기
+		// 복지포인트 팝업창 닫기
 		$('#coin_popup_close').on('click', function() {
 			$('#coin_popup').css('display', 'none');
 		});

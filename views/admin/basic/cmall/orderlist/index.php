@@ -13,7 +13,7 @@
 			<div class="btn-group btn-group-sm" role="group">
 				<a href="<?php echo admin_url('cmall/orderlist'); ?>" class="btn btn-sm <?php echo ( ! $this->input->get('cor_pay_type')) ? 'btn-success' : 'btn-default';?>">전체내역</a>
 				<a href="<?php echo admin_url('cmall/orderlist'); ?>?cor_pay_type=f" class="btn btn-sm <?php echo ($this->input->get('cor_pay_type') === 'f') ? 'btn-info' : 'btn-default';?>">열매</a>
-				<a href="<?php echo admin_url('cmall/orderlist'); ?>?cor_pay_type=c" class="btn btn-sm <?php echo ($this->input->get('cor_pay_type') === 'c') ? 'btn-info' : 'btn-default';?>">컬래버코인</a>
+				<a href="<?php echo admin_url('cmall/orderlist'); ?>?cor_pay_type=c" class="btn btn-sm <?php echo ($this->input->get('cor_pay_type') === 'c') ? 'btn-info' : 'btn-default';?>">복지포인트</a>
 			</div>
 			<?php
 			ob_start();
@@ -57,7 +57,7 @@
 						<td><?php echo element('display_name', $result); ?> / <?php echo html_escape(element('mem_realname', $result)); ?></td>
 						<td><?php echo display_datetime(element('cor_datetime', $result), 'full'); ?></td>
 						<td>
-							<?php echo ($result['cor_pay_type']=="f")?"열매":"컬래버코인"; ?>
+							<?php echo ($result['cor_pay_type']=="f")?"열매":"복지포인트"; ?>
 						</td>
 						<td><?php echo nl2br(html_escape(element('cor_content', $result))); ?></td>
 						<td class="text-right">

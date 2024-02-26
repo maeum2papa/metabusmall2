@@ -103,7 +103,7 @@
 
 		<div class="asmo_cart_common_chk asmo_coin_goods_cart">
 			<div class="all-chk">
-				<input type="checkbox" name="chkallc" id="chkallc" /> <label for="chkallc">코인상품 전체선택</label>
+				<input type="checkbox" name="chkallc" id="chkallc" /> <label for="chkallc">복지포인트상품 전체선택</label>
 			</div>
 			<button type="button" class="btn btn-outline btn-default btn-sm btn-list-delete btn-list-selected" data-list-delete-url = "<?php echo element('list_delete_url', $view); ?>" >선택상품 삭제</button>
 		</div>
@@ -161,8 +161,8 @@
 							</ul>
 							<div class="col-xs-12 col-md-3 prd-price">
 								<div><span>수량</span> <?php echo number_format($total_num); ?> 개</div>
-								<div><span>상품단가 </span> 코인 <?php echo number_format(element('cit_price', $result)); ?> 개</div>
-								<div class="prd-total"><span>합계 </span> 코인 <?php echo number_format($total_price); ?><input type="hidden" name="total_price[<?php echo element('cit_id', $result); ?>]" value="<?php echo $total_price; ?>" /> 개</div>
+								<div><span>상품단가 </span> 복지포인트 <?php echo number_format(element('cit_price', $result)); ?> 개</div>
+								<div class="prd-total"><span>합계 </span> 복지포인트 <?php echo number_format($total_price); ?><input type="hidden" name="total_price[<?php echo element('cit_id', $result); ?>]" value="<?php echo $total_price; ?>" /> 개</div>
 								<div class="cmall-option-change">
 									<button class="change_option btn btn-info btn-xs" type="button" data-cit-id="<?php echo element('cit_id', $result); ?>">옵션 / 수량 변경</button>
 								</div>
@@ -309,7 +309,7 @@ document.querySelector('.main').classList.add('asmo_m_layout');
 		}
 
 		if(fcount > 0 && ccount > 0){
-			alert('열매상품 또는 코인상품 한 종류만 선택해주세요.');
+			alert('열매상품 또는 복지포인트상품 한 종류만 선택해주세요.');
 			return;
 		}
 

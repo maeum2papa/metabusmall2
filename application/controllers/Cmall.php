@@ -1548,7 +1548,7 @@ class Cmall extends CB_Controller
                     exit;
                 }
 
-                //자사몰 상품인데 코인 결제면 차단
+                //자사몰 상품인데 복지포인트 결제면 차단
                 if($val['cit_money_type']=='c' && $cconfig['custom']['category']['company'] == $val['cca_id']){
                     alert(cmsg("3104"));
                     exit;
@@ -1791,7 +1791,7 @@ class Cmall extends CB_Controller
 			}
 			 
 
-		} elseif ($this->input->post('pay_type') === 'c') { // 코인 결제
+		} elseif ($this->input->post('pay_type') === 'c') { // 복지포인트 결제
 
 			//결제시간
 			$insertdata['cor_datetime'] = date('Y-m-d H:i:s');
@@ -1886,7 +1886,7 @@ class Cmall extends CB_Controller
             $insertdata['cor_ship_address_detail'] = $this->input->post('cor_ship_address_detail');
         }
 
-        //결제 최종 단계전 열매나 코인 사용가능한만큼 있는지 체크
+        //결제 최종 단계전 열매나 복지포인트 사용가능한만큼 있는지 체크
         if($this->input->post('pay_type') === 'f'){
             if(($total_price_sum) > $this->member->item('mem_cur_fruit')){
                 alert(cmsg("3105"));
@@ -1963,7 +1963,7 @@ class Cmall extends CB_Controller
 						'cod_status' => $tmp_oderlist_item['cod_status'],
 						'cod_fruit' => $tmp_cod_fruit,
 						'cod_company_deposit' => $tmp_cod_company_deposit,
-						'cod_point' => $tmp_cod_point, //코인
+						'cod_point' => $tmp_cod_point, //복지포인트
 						'cit_item_type' => $tmp_oderlist_item['cit_item_type'],
 						'cit_price' => $tmp_oderlist_item['cit_price'],
 						'cde_price' => $itemDetail['cde_price']
@@ -1995,7 +1995,7 @@ class Cmall extends CB_Controller
 			}
 
 
-			//코인 사용 로그 기록 cb_point
+			//복지포인트 사용 로그 기록 cb_point
 			if($this->input->post('pay_type') === 'c'){
 				
 				$this->load->library('point');
@@ -3097,7 +3097,7 @@ class Cmall extends CB_Controller
 			
 		}
 		
-		//주문의 열매와 예치금 환원, 주문의 코인 환원
+		//주문의 열매와 예치금 환원, 주문의 복지포인트 환원
 		if($order['cor_pay_type']=='f'){
 			if ( ! function_exists('fuse')) {
 				$this->load->helper('fruit');
@@ -3131,7 +3131,7 @@ class Cmall extends CB_Controller
 				//재고 복구
 				cmall_item_stock_change($v2['cit_id'],$v2['cod_count']); //함수 내부에서 재고 타입 검증
 
-				//주문 상품 사용한 열매, 예치금, 코인(포인트) 초기화
+				//주문 상품 사용한 열매, 예치금, 복지포인트(포인트) 초기화
 				$this->Cmall_order_detail_model->pay_init($v2['cod_id']);
 
 				//주문 상품 상태 변경
@@ -3226,7 +3226,7 @@ class Cmall extends CB_Controller
 	}
 
 
-	//코인(포인트) 사용 내역
+	//복지포인트(포인트) 사용 내역
 	public function point(){
 		$mem_id = $this->member->item('mem_id');
 		if(!$mem_id){
@@ -3276,11 +3276,11 @@ class Cmall extends CB_Controller
 			'use_mobile_sidebar' => 0,
 			'skin_dir' => 'bootstrap',
 			'mobile_skin_dir' => 'mobile',
-			'page_title' => "코인 사용 내역",
+			'page_title' => "복지포인트 사용 내역",
 			'meta_description' => $meta_description,
 			'meta_keywords' => $meta_keywords,
 			'meta_author' => $meta_author,
-			'page_name' => "코인 사용 내역",
+			'page_name' => "복지포인트 사용 내역",
 			);
 		
 		

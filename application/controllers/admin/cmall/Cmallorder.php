@@ -474,7 +474,7 @@ class Cmallorder extends CB_Controller
 								//재고 복구
 								cmall_item_stock_change($v2['cit_id'],$v2['cod_count']); //함수 내부에서 재고 타입 검증
 								
-								//주문 상품 사용한 열매, 예치금, 코인(포인트) 초기화
+								//주문 상품 사용한 열매, 예치금, 복지포인트(포인트) 초기화
 								$this->Cmall_order_detail_model->pay_init($v2['cod_id']);
 
 								//주문 상품 상태 변경
@@ -961,7 +961,7 @@ class Cmallorder extends CB_Controller
 					 */
 					if($order['status'] == 'order' && $change_status == 'cancel'){
 						
-						//주문의 열매와 예치금 환원, 주문의 코인 환원
+						//주문의 열매와 예치금 환원, 주문의 복지포인트 환원
 						$return_fruit = $order['cor_cash'];
 
 						fuse($order['mem_id'], $return_fruit, "주문취소 (주문번호 : ".$cor_id.")", $now, "order", $cor_id, "관리자가 주문취소");
@@ -986,7 +986,7 @@ class Cmallorder extends CB_Controller
 								//재고 복구
 								cmall_item_stock_change($v3['cit_id'],$v3['cod_count']); //함수 내부에서 재고 타입 검증
 								
-								//주문 상품 사용한 열매, 예치금, 코인(포인트) 초기화
+								//주문 상품 사용한 열매, 예치금, 복지포인트(포인트) 초기화
 								$this->Cmall_order_detail_model->pay_init($v3['cod_id']);
 								
 								//주문 상품 상태 변경
@@ -1240,7 +1240,7 @@ class Cmallorder extends CB_Controller
 								$row['cor_address'] = "";
 							}
 
-							//사용열매/코인
+							//사용열매/복지포인트
 							if($val['cor_pay_type']=="f"){
 								$row['cor_fruit_or_coin_amount'] = $v3['cod_fruit'];
 							}else{
@@ -1300,7 +1300,7 @@ class Cmallorder extends CB_Controller
 		개수
 		주문상태
 		결제수단
-		사용열매/코인
+		사용열매/복지포인트
 		실결제금액
 		*/
 

@@ -433,7 +433,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 </div>
 <!-- asmo sh 240103 공지사항 팝업 추가 끝 -->
 
-<!-- asmo lhb 231220 열매, 코인 팝업 추가  -->
+<!-- asmo lhb 231220 열매, 복지포인트 팝업 추가  -->
 <div class="asmo_cmall_main_popup_wrap" id="asmo_fruit_popup">
 	<div class="asmo_popup_close">닫기</div>
 	<div class="asmo_popup_tit">열매 현황</div>
@@ -458,7 +458,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
 		<a href="<?php echo site_url('cmall/point'); ?>">복지포인트 내역</a>
 	</div>
 </div>
-<!-- //asmo lhb 231220 열매, 코인 팝업 추가  -->
+<!-- //asmo lhb 231220 열매, 복지포인트 팝업 추가  -->
 
 
 
@@ -612,7 +612,7 @@ $('#asmo_ham_btn').click(function(){
 
 //asmo lhb 240220 햄버거 버튼 클릭 토글 이벤트 끝
 
-//asmo lhb 231220 열매, 코인 팝업 이벤트
+//asmo lhb 231220 열매, 복지포인트 팝업 이벤트
 
 
 $('.asmo_popup_close').click(function(){
@@ -622,7 +622,7 @@ $('.asmo_popup_close').click(function(){
 	$('#layer_dim').addClass('dn');
 });
 
-//asmo lhb 231220 열매, 코인 팝업 이벤트 끝
+//asmo lhb 231220 열매, 복지포인트 팝업 이벤트 끝
 
 
 
@@ -647,7 +647,7 @@ $('#asmo_my_fruit_status').click(function(){
 
 //asmo lhb 240222 열매팝업 이벤트 끝
 
-//asmo lhb 240222 코인팝업 이벤트
+//asmo lhb 240222 복지포인트팝업 이벤트
 $('#asmo_my_point_status').click(function(){
 
 
@@ -655,7 +655,7 @@ $('#asmo_my_point_status').click(function(){
 	$('#asmo_coin_popup').addClass('active');
 });
 
-//asmo lhb 240222 코인팝업 이벤트 끝
+//asmo lhb 240222 복지포인트팝업 이벤트 끝
 
 
 //asmo lhb 240222 칭호팝업 이벤트
@@ -711,7 +711,7 @@ $(document).on('click', function(event) {
 
 	// }
 
-	// if( $(event.target).is('#asmo_my_point_status') ){ //코인 팝업 등장
+	// if( $(event.target).is('#asmo_my_point_status') ){ //복지포인트 팝업 등장
 
 	// 	$('#asmo_coin_popup').addClass('active');
 
@@ -724,7 +724,7 @@ $(document).on('click', function(event) {
 
 
 
-	// if( $(event.target).is('#asmo_quest_status') ){ //코인 팝업 등장
+	// if( $(event.target).is('#asmo_quest_status') ){ //복지포인트 팝업 등장
 
 	// 	$('#asmo_quest_popup').addClass('active');
 
@@ -737,7 +737,7 @@ $(document).on('click', function(event) {
 
 	// }
 
-	// if( $(event.target).is('#change_nickname') ){ //코인 팝업 등장
+	// if( $(event.target).is('#change_nickname') ){ //복지포인트 팝업 등장
 
 	// 	$('#asmo_nickname_popup').addClass('active');
 

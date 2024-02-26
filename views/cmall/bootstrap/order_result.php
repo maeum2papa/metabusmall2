@@ -344,7 +344,7 @@ $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css
 						<?php if($view['data']['cor_pay_type']=='f'){?>
 							<h5>열매 결제합계</h5>
 						<?php }else if($view['data']['cor_pay_type']=='c'){?>
-							<h5>코인 결제상품</h5>
+							<h5>복지포인트 결제상품</h5>
 						<?php }?>
 							<ul>
 								<li>

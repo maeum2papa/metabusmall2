@@ -99,8 +99,8 @@
                             <div style="padding:5px;">날짜 : <?php echo substr($v['poi_datetime'],0,10);?></div>
                             <div style="padding:5px;">유형 : <?php echo ($v['poi_point']>0)?"획득":"차감";?></div>
                             <div style="padding:5px;">내용 : <?php echo $v['poi_content'];?></div>
-                            <div style="padding:5px;">코인내역 : <?php echo $v['poi_point'];?></div>
-                            <div style="padding:5px;">잔여코인 : <?php echo $v['poi_now_point'];?></div>
+                            <div style="padding:5px;">복지포인트내역 : <?php echo $v['poi_point'];?></div>
+                            <div style="padding:5px;">잔여복지포인트 : <?php echo $v['poi_now_point'];?></div>
                         </div>
                         <?php
                     }

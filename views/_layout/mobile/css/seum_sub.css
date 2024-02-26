@@ -3392,7 +3392,7 @@
 }
 
 
-/* 열매, 코인 팝업 */
+/* 열매, 복지포인트 팝업 */
 .asmo_cmall_main_popup_wrap  {
     position: fixed;
     width: 100%;
@@ -4702,7 +4702,7 @@
 }
 
 
-/* 수량, 단가 코인, 합계코인, 옵션수량변경버튼 */
+/* 수량, 단가 복지포인트, 합계복지포인트, 옵션수량변경버튼 */
 .asmo_cart_wrap .cart_info_box .cart_option_box .prd-price {
     display: flex;
     justify-content: space-between;
@@ -4897,7 +4897,7 @@
 
 
 
-/* *** ------ 열매내역, 코인내역 ------- *** */
+/* *** ------ 열매내역, 복지포인트내역 ------- *** */
 
 .purchase_history_wrapper {
     padding: 16px;

@@ -14,7 +14,7 @@
 				<div class="btn-group" role="group" aria-label="...">
 					<button type="button" class="btn <?php echo ( ! $this->input->get('method')) ? 'btn-success' : 'btn-default'; ?> btn-sm" onclick="fcharge_submit('');">전체</button>
 					<button type="button" class="btn <?php echo ($this->input->get('method')=="f") ? 'btn-success' : 'btn-default'; ?> btn-sm" onclick="fmethod_submit('f');">열매</button>
-					<button type="button" class="btn <?php echo ($this->input->get('method')=="c") ? 'btn-success' : 'btn-default'; ?> btn-sm" onclick="fmethod_submit('c');">컬래버코인</button>
+					<button type="button" class="btn <?php echo ($this->input->get('method')=="c") ? 'btn-success' : 'btn-default'; ?> btn-sm" onclick="fmethod_submit('c');">복지포인트</button>
 					<!-- <button type="button" class="btn <?php echo ($this->input->get('method') === 'bank') ? 'btn-success' : 'btn-default'; ?> btn-sm" onclick="fmethod_submit('bank');">무통장</button>
 					<button type="button" class="btn <?php echo ($this->input->get('method') === 'card') ? 'btn-success' : 'btn-default'; ?> btn-sm" onclick="fmethod_submit('card');">카드</button>
 					<button type="button" class="btn <?php echo ($this->input->get('method') === 'realtime') ? 'btn-success' : 'btn-default'; ?> btn-sm" onclick="fmethod_submit('realtime');">실시간</button>

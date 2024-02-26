@@ -239,7 +239,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 if(element('pay_method', $result) == 'f'){
                                     echo "열매";
                                 }else if(element('pay_method', $result) == 'c'){
-                                    echo "컬래버코인";
+                                    echo "복지포인트";
                                 }else{
                                     echo element('pay_method', $result);
                                 }

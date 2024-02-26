@@ -73,11 +73,11 @@ $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css
 		</div>
 	
 
-		<!-- asmo sh 231215 디자인 상 열매상품, 코인상품 나타내는 함수 주석 처리 -->
+		<!-- asmo sh 231215 디자인 상 열매상품, 복지포인트상품 나타내는 함수 주석 처리 -->
 		<!-- <?php if($view['data']['cor_pay_type']=='f'){?>
 			<h3>열매상품</h3>
 		<?php }else if($view['data']['cor_pay_type']=='c'){?>
-			<h3>코인상품</h3>
+			<h3>복지포인트상품</h3>
 		<?php }?> -->
 	
 		<!-- asmo sh 240222 asmo_order_box 생성 및 디자인 변경 -->
@@ -419,7 +419,7 @@ $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css
 									<?php if($view['data']['cor_pay_type']=='f'){?>
 										<strong>열매</strong>
 									<?php }else if($view['data']['cor_pay_type']=='c'){?>
-										<strong>코인</strong>
+										<strong>복지포인트</strong>
 									<?php }?>
 								</li>
 							</ul>

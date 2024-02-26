@@ -85,12 +85,12 @@
 				<div class="prd-list_wrap">
 					<p class="asmo_order_info">상품 정보</p>
 					<ul class="prd-list">
-					<!-- asmo sh 231215 디자인 상 열매상품, 코인상품 나타내는 함수 생성 -->
+					<!-- asmo sh 231215 디자인 상 열매상품, 복지포인트상품 나타내는 함수 생성 -->
 					<!-- 미노출 처리 -->
 					<!-- <?php if(element('cor_pay_type',$view)=='f'){?>
 						<h3>열매상품</h3>
 					<?php }else if(element('cor_pay_type',$view)=='c'){?>
-						<h3>코인상품</h3>
+						<h3>복지포인트상품</h3>
 					<?php }?> -->
 					<?php
 					$total_price_sum = 0;
@@ -157,7 +157,7 @@
 												if(element('cor_pay_type',$view) == 'f'){
 													echo "열매 ".number_format($total_price/element('company_coin_value', $result));
 												}else{
-													echo "코인 ".number_format($total_price);
+													echo "복지포인트 ".number_format($total_price);
 												}
 												?>
 											<input type="hidden" name="total_price[<?php echo element('cit_id', $result); ?>]" value="<?php echo $total_price; ?>" /></strong> 개</div>
@@ -269,16 +269,16 @@
 									}else if(element('cor_pay_type',$view)=='c'){
 										?>
 										<div>
-										<h5 class="market-title">코인상품 결제정보</h5>
+										<h5 class="market-title">복지포인트상품 결제정보</h5>
 										<ul>
 											<li>
-												<span class="info-tit">총 주문 코인</span>
+												<span class="info-tit">총 주문 복지포인트</span>
 												<strong><?php echo number_format($total_price_sum); ?>개</strong>
 											</li>
 											<li>
 
 											<!-- asmo sh 231215 br 및 span 태그 생성 -->
-												<span class="info-tit">보유 코인 </span> <?php echo number_format((int) $this->member->item('mem_point'));?> 개 <br>
+												<span class="info-tit">보유 복지포인트 </span> <?php echo number_format((int) $this->member->item('mem_point'));?> 개 <br>
 													<span>
 														( 최대
 														<?php
@@ -292,7 +292,7 @@
 												<?php
 													if($total_price_sum <= $this->member->item('mem_point')){
 														?>
-														<span class="info-tit">사용 코인 </span> <input type="text" name="order_coin" id="order_coin" class="form-control px100" value="<?php echo $max_c; ?>"  readonly/> 개
+														<span class="info-tit">사용 복지포인트 </span> <input type="text" name="order_coin" id="order_coin" class="form-control px100" value="<?php echo $max_c; ?>"  readonly/> 개
 														<?php
 													}
 												?>
@@ -366,7 +366,7 @@
 										</label>
 					
 										<label for="pay_type_c" >
-											<input type="radio" name="pay_type" value="c" id="pay_type_c" /> 코인
+											<input type="radio" name="pay_type" value="c" id="pay_type_c" /> 복지포인트
 										</label>
 					
 									</div>

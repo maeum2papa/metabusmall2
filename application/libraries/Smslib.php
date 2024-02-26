@@ -116,8 +116,8 @@ class Smslib extends CI_Controller
 								case '23':	// '23:인증실패,데이터오류,전송날짜오류'
 									$ssh_memo = '데이터를 다시 확인해 주시기바랍니다.';
 									break;
-								case '97':	// '97:잔여코인부족'
-									$ssh_memo = '잔여코인이 부족합니다.';
+								case '97':	// '97:잔여복지포인트부족'
+									$ssh_memo = '잔여복지포인트가 부족합니다.';
 									break;
 								case '98':	// '98:사용기간만료'
 									$ssh_memo = '사용기간이 만료되었습니다.';

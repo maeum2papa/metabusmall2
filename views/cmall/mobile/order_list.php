@@ -55,7 +55,7 @@
 							if($result['cor_pay_type']=='f'){
 								echo '열매 '.number_format((int) element('cor_total_money', $result));
 							}else{
-								echo '컬래버 코인 '.number_format((int) element('cor_total_money', $result));
+								echo '복지포인트 '.number_format((int) element('cor_total_money', $result));
 							}
 						?>개
 					</td>

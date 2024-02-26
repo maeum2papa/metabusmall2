@@ -26,7 +26,7 @@ td {text-align:center; line-height:40px; font-size:12px; color:#474747; font-fam
 			<th>주문 상태</th>
 			<th>결제수단</th>
 			<?php if($view['data']['mem_admin_flag']==1){?>
-				<th>사용열매/코인</th>
+				<th>사용열매/복지포인트</th>
 			<?php } ?>
 			<th>실결제금액</th>
 		</tr>

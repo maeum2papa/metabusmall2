@@ -19,7 +19,7 @@
 		<?php if(element('cor_pay_type',$view)=='f'){?>
 			<h4>열매상품</h4>
 		<?php }else if(element('cor_pay_type',$view)=='c'){?>
-			<h4>코인상품</h4>
+			<h4>복지포인트상품</h4>
 		<?php }?>
 		<ul class="prd-list">
 		
@@ -72,7 +72,7 @@
 											if(element('fruit_cit_price', $result)){
 												echo "열매 ".number_format(element('fruit_cit_price', $result));
 											}else{
-												echo "코인 ".number_format(element('cit_price', $result));
+												echo "복지포인트 ".number_format(element('cit_price', $result));
 											}
 										?>
 									개</div>
@@ -81,7 +81,7 @@
 										if(element('cor_pay_type',$view) == 'f'){
 											echo "열매 ".number_format($total_price);
 										}else{
-											echo "코인 ".number_format($total_price);
+											echo "복지포인트 ".number_format($total_price);
 										}
 										?>
 									<input type="hidden" name="total_price[<?php echo element('cit_id', $result); ?>]" value="<?php echo $total_price; ?>" />개</div>
@@ -248,15 +248,15 @@
 					}else if(element('cor_pay_type',$view)=='c'){
 						?>
 						<div>
-						<h5 class="market-title">코인상품 결제정보</h5>
+						<h5 class="market-title">복지포인트상품 결제정보</h5>
 						<ul>
 							<li>
-								<span class="info-tit">총 주문 코인</span>
+								<span class="info-tit">총 주문 복지포인트</span>
 								<strong><?php echo number_format($total_price_sum); ?>개</strong>
 							</li>
 							<li class="asmo_how_much">
 							<!-- asmo sh 231215 br 및 span 태그 생성 -->
-								<span class="info-tit">보유 코인 </span> 
+								<span class="info-tit">보유 복지포인트 </span> 
 								<strong>
 									<?php echo number_format((int) $this->member->item('mem_point'));?> 개<br>
 									<span>
@@ -273,7 +273,7 @@
 								if($total_price_sum <= $this->member->item('mem_point')){
 							?>
 							<li>
-								<span class="info-tit">사용 코인 </span> 
+								<span class="info-tit">사용 복지포인트 </span> 
 								<strong>
 									<input type="text" name="order_coin" id="order_coin" class="form-control px100" value="<?php echo $max_c; ?>"  readonly/> 개
 								</strong>		
@@ -282,7 +282,7 @@
 							}
 							?>
 							<li class="asmo_pay_info_final_total">
-								<span class="info-tit">결제해야 할 코인</span>
+								<span class="info-tit">결제해야 할 복지포인트</span>
 								<strong class="checked_price">
 									<span>
 									<?php
@@ -363,7 +363,7 @@
 						</label>
 	
 						<label for="pay_type_c" >
-							<input type="radio" name="pay_type" value="c" id="pay_type_c" /> 코인
+							<input type="radio" name="pay_type" value="c" id="pay_type_c" /> 복지포인트
 						</label>
 	
 					</div>
