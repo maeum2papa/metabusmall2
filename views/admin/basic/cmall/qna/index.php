@@ -1,5 +1,29 @@
 <div class="box">
 		<div class="box-table">
+
+		<form name="fsearch" id="fsearch" action="<?php echo current_full_url(); ?>" method="get">
+			<div class="box-search">
+				<div class="row">
+					<div class="col-md-8">
+						<select class="form-control" name="sfield" >
+							<?php echo element('search_option', $view); ?>
+						</select>
+						<div class="input-group">
+							<input type="text" class="form-control" name="skeyword" value="<?php echo html_escape(element('skeyword', $view)); ?>" placeholder="Search for..." />
+							<span class="input-group-btn">
+								<button class="btn btn-default btn-sm" name="search_submit" type="submit">검색</button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="row mt10 text-left">
+					<div class="col-md-6">
+						<input type="checkbox" id="search_answer" name="search_answer" value="1" <?php echo ($this->input->get("search_answer") == 1)?"checked":""; ?>> <label for="search_answer">답변하지 않은 문의만 보기​</label>
+					</div>
+				</div>
+			</div>
+		</form>
+		
 			<?php
 			echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
 			$attributes = array('class' => 'form-inline', 'name' => 'flist', 'id' => 'flist');
@@ -31,8 +55,7 @@
 								<th>일시</th>
 								<th>답변자</th>
 								<th>답변일시</th>
-								<th>답변시 이메일 / SMS 수신</th>
-								<th>수정</th>
+								<th>답변</th>
 								<th><input type="checkbox" name="chkall" id="chkall" /></th>
 							</tr>
 						</thead>
@@ -46,15 +69,11 @@
 								<td><a href="<?php echo goto_url(cmall_item_url(element('cit_key', $result))); ?>" target="_blank"><?php echo html_escape(element('cit_name', $result)); ?></a></td>
 								<td><a href="<?php echo goto_url(cmall_item_url(element('cit_key', $result))); ?>" target="_blank"><?php echo html_escape(element('cit_key', $result)); ?></a></td>
 								<td><?php echo html_escape(element('cqa_title', $result)); ?></td>
-								<td><?php echo element('display_name', $result); ?> <?php if (element('mem_userid', $result)) { ?> ( <a href="?sfield=cmall_qna.mem_id&amp;skeyword=<?php echo element('mem_id', $result); ?>"><?php echo html_escape(element('mem_userid', $result)); ?></a> ) <?php } ?></td>
+								<td><?php echo element('mem_username',$result); ?></td>
 								<td><?php echo display_datetime(element('cqa_datetime', $result), 'full'); ?></td>
-								<td><?php echo element('reply_display_name', $result) ? element('reply_display_name', $result) : '<span class="text-danger">답변하지 않음</span>'; ?></td>
+								<td><?php echo element('reply_display_name', $result) ? element('mem_username', element('reply_member', $result)) : '<span class="text-danger">답변하지 않음</span>'; ?></td>
 								<td><?php echo element('reply_display_name', $result) ? display_datetime(element('cqa_reply_datetime', $result), 'full') : ' - '; ?></td>
-								<td>
-									<?php echo element('cqa_receive_email', $result) ? '<i class="fa fa-check-square-o"></i>' : '<i class="fa fa-square-o"></i>';; ?>
-									<?php echo element('cqa_receive_sms', $result) ? '<i class="fa fa-check-square-o"></i>' : '<i class="fa fa-square-o"></i>';; ?>
-								</td>
-								<td><a href="<?php echo admin_url($this->pagedir); ?>/write/<?php echo element(element('primary_key', $view), $result); ?>?<?php echo $this->input->server('QUERY_STRING', null, ''); ?>" class="btn btn-outline btn-default btn-xs">수정</a></td>
+								<td><a href="<?php echo admin_url($this->pagedir); ?>/write/<?php echo element(element('primary_key', $view), $result); ?>?<?php echo $this->input->server('QUERY_STRING', null, ''); ?>" class="btn btn-outline btn-default btn-xs">답변</a></td>
 								<td><input type="checkbox" name="chk[]" class="list-chkbox" value="<?php echo element(element('primary_key', $view), $result); ?>" /></td>
 							</tr>
 						<?php
@@ -78,21 +97,12 @@
 			</div>
 		<?php echo form_close(); ?>
 	</div>
-	<form name="fsearch" id="fsearch" action="<?php echo current_full_url(); ?>" method="get">
-		<div class="box-search">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3">
-					<select class="form-control" name="sfield" >
-						<?php echo element('search_option', $view); ?>
-					</select>
-					<div class="input-group">
-						<input type="text" class="form-control" name="skeyword" value="<?php echo html_escape(element('skeyword', $view)); ?>" placeholder="Search for..." />
-						<span class="input-group-btn">
-							<button class="btn btn-default btn-sm" name="search_submit" type="submit">검색!</button>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
+	
 </div>
+
+
+<script>
+	document.querySelector("#search_answer").addEventListener("change",function(){
+		document.querySelector("#fsearch").submit();
+	});
+</script>

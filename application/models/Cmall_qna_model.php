@@ -30,7 +30,7 @@ class Cmall_qna_model extends CB_Model
 
 	public function get_admin_list($limit = '', $offset = '', $where = '', $like = '', $findex = '', $forder = '', $sfield = '', $skeyword = '', $sop = 'OR')
 	{
-		$select = 'cmall_qna.*, member.mem_id, member.mem_userid, member.mem_nickname, member.mem_is_admin,
+		$select = 'cmall_qna.*, member.mem_id, member.mem_userid, member.mem_nickname, member.mem_is_admin, member.mem_username,
 			member.mem_icon, cmall_item.cit_datetime, cmall_item.cit_hit, cmall_item.cit_name, cmall_item.cit_key, cmall_item.company_idx';
 		$join[] = array('table' => 'cmall_item', 'on' => 'cmall_qna.cit_id = cmall_item.cit_id', 'type' => 'inner');
 		$join[] = array('table' => 'member', 'on' => 'cmall_qna.mem_id = member.mem_id', 'type' => 'left');

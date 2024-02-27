@@ -211,7 +211,7 @@ class Member_model extends CB_Model
 		$this->db->where($where);
 		$qry = $this->db->get();
 		$result = $qry->result_array();
-
+		
 		return $result;
 
 	}
