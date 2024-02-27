@@ -25,6 +25,11 @@ class Cmall extends CB_Controller
 	 */
 	protected $helpers = array('form', 'array', 'cmall', 'dhtml_editor');
 
+	/**
+	 * 주문 상태
+	 */
+	protected $status = array("order"=>"주문확인","ready"=>"발송대기","end"=>"발송완료","cancel"=>"주문취소");
+
 	function __construct()
 	{
 		parent::__construct();
@@ -1194,6 +1199,8 @@ class Cmall extends CB_Controller
 			}
 		}
 
+		$order['status_name'] = $this->status[$order['status']];
+
 		$view['view']['data'] = $order;
 		$view['view']['orderdetail'] = $orderdetail;
 
@@ -1368,6 +1375,8 @@ class Cmall extends CB_Controller
 					break;
 			}
 		}
+
+		$order['status_name'] = $this->status[$order['status']];
 
 		$view['view']['data'] = $order;
 		$view['view']['orderdetail'] = $orderdetail;

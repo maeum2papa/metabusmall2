@@ -74,6 +74,8 @@
 
 						}elseif($result['status']=='end'){
 							echo '<span id="end">발송완료</span>';
+						}elseif($result['status']=='ready'){
+							echo '<span id="ready">발송대기</span>';
 						}
 
 						?>

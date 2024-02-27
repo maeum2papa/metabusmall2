@@ -151,7 +151,7 @@
 							<div class="order_list_total_money">
 								<?php
 									if($result['cor_pay_type']=='f'){
-										echo banner('fruit').number_format((int) element('cor_total_money', $result) / $result['company_coin_value']);
+										echo banner('fruit').number_format((int) element('cor_total_money', $result));
 									}else{
 										echo banner('coin').number_format((int) element('cor_total_money', $result));
 									}
@@ -173,6 +173,8 @@
 	
 							}elseif($result['status']=='end'){
 								echo '<span id="end">발송완료</span>';
+							}elseif($result['status']=='ready'){
+								echo '<span id="ready">발송대기</span>';
 							}
 	
 							?>

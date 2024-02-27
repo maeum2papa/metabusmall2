@@ -81,7 +81,7 @@ $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css
 
 				<!-- // asmo sh 240221 구매내역 상태​ 업데이트
 				// - 주문확인 / 발송대기 / 발송완료 -->
-				<span>발송대기</span>
+				<span><?php echo $view['data']['status_name'];?></span>
 				
 				
 			</div>
