@@ -80,6 +80,8 @@
 			$this->load->view('paymentlib/' . $this->cbconfig->item('use_payment_pg') . '/' . element('form2name', $view), $sform);
 		}
 		?>
+		<input type="hidden" name="mem_realname" value="<?php echo $this->member->item("mem_username");?>">
+		<input type="hidden" name="mem_email" value="<?php echo $this->member->item("mem_email");?>">
 		<div class="asmo_flex_box">
 			<div id="order_box">
 				<div class="prd-list_wrap">
@@ -127,7 +129,7 @@
 											?>
 												<li><i class="fa fa-angle-right" aria-hidden="true"></i> <?php echo html_escape(element('cde_title', $detail)) . ' ' . element('cct_count', $detail);?>개 (+<?php
 												if(element('cor_pay_type',$view) == 'f'){
-													echo number_format(element('cde_price', $detail)/element('company_coin_value', $result));
+													echo number_format(element('cde_price', $detail));
 												}else{
 													echo number_format(element('cde_price', $detail));
 												}
@@ -145,7 +147,7 @@
 												<p>
 													<?php
 													if(element('cor_pay_type',$view) == 'f'){
-														echo banner('fruit').number_format($total_price_sum / element('company_coin_value',$view));
+														echo banner('fruit').number_format($total_price_sum);
 													}else if(element('cor_pay_type',$view) == 'c'){
 														echo banner('coin').number_format($total_price_sum);
 													}
@@ -155,7 +157,7 @@
 											<div class="prd-total dn"><span>합계 : </span> <strong>
 												<?php
 												if(element('cor_pay_type',$view) == 'f'){
-													echo "열매 ".number_format($total_price/element('company_coin_value', $result));
+													echo "열매 ".number_format($total_price);
 												}else{
 													echo "복지포인트 ".number_format($total_price);
 												}
@@ -179,8 +181,8 @@
 					?>
 					</ul>
 				</div>
-
-				<div class="asmo_delivery_info_box">
+				
+				<div class="asmo_delivery_info_box <?php echo (element('cor_pay_type',$view)=='f')?"dn":"";?>">
 					<p class="asmo_order_info">배송 정보</p>
 					<div class="asmo_delivery_info">
 						<input type="hidden" name="unique_id" value="<?php echo element('unique_id', $view); ?>" />
@@ -202,9 +204,13 @@
 										<input type="radio" name="input_address" id="input_address_y" value="y" checked="checked" />
 										<label for="input_address_y" class="radio-inline">배송지 입력</label>
 											
-										<input type="radio" name="input_address" id="input_address_n" value="n" /> 
+										<input type="radio" name="input_address" id="input_address_n" value="n"/> 
 										<label for="input_address_n" class="radio-inline">회사로 배송</label>
 									</div>
+
+									<input type="hidden" id="company_cor_ship_zipcode" value="<?php echo $view['company_address']['company_zonecode']?>">
+									<input type="hidden" id="company_cor_ship_address" value="<?php echo $view['company_address']['company_addr']?>">
+									<input type="hidden" id="company_cor_ship_address_detail" value="<?php echo $view['company_address']['company_addr_sub']." ".$view['company_address']['company_addr_extra']?>">
 								</div>
 								
 								
@@ -238,7 +244,7 @@
 										<ul>
 											<li>
 												<span class="info-tit">총 주문 열매</span>
-												<strong><?php echo number_format($total_price_sum / element('company_coin_value',$view)); ?>개</strong>
+												<strong><?php echo number_format($total_price_sum); ?>개</strong>
 											</li>
 											<li>
 
@@ -247,17 +253,17 @@
 													<span>
 														( 최대
 														<?php
-														$max_f = min((int) $this->member->item('mem_cur_fruit') * element('company_coin_value',$view), $total_price_sum);
-														echo number_format($max_f / element('company_coin_value',$view));
+														$max_f = min((int) $this->member->item('mem_cur_fruit'), $total_price_sum);
+														echo number_format($max_f);
 														?>
 														개 까지 사용 가능 )
 													</span>
 											</li>
 											<li>
 												<?php
-													if(($total_price_sum / element('company_coin_value',$view)) <= $this->member->item('mem_cur_fruit')){
+													if(($total_price_sum) <= $this->member->item('mem_cur_fruit')){
 														?>
-														<span class="info-tit">사용 열매 </span> <input type="text" class="form-control px100" value="<?php echo $max_f / element('company_coin_value',$view); ?>"  readonly/>개
+														<span class="info-tit">사용 열매 </span> <input type="text" class="form-control px100" value="<?php echo $max_f; ?>"  readonly/>개
 														<input type="hidden" name="order_fruit" id="order_fruit" class="form-control px100" value="<?php echo $max_f; ?>" />
 														<?php
 													}
@@ -374,7 +380,7 @@
 									if ($this->cbconfig->item('use_payment_pg')) {
 										
 										if(element('cor_pay_type',$view)=='f'){
-											if(($total_price_sum / element('company_coin_value',$view)) > $this->member->item('mem_cur_fruit')){
+											if(($total_price_sum) > $this->member->item('mem_cur_fruit')){
 												?><h5><?php echo cmsg("2103");?></h5><?php
 											}else{
 												$this->load->view('paymentlib/' . $this->cbconfig->item('use_payment_pg') . '/' . element('form3name', $view), $sform);
@@ -413,7 +419,7 @@
 								<span class="checked_price">
 									<?php
 									if(element('cor_pay_type',$view) == 'f'){
-										echo number_format($total_price_sum / element('company_coin_value',$view));
+										echo number_format($total_price_sum);
 									}else{
 										echo number_format($total_price_sum);
 									}
@@ -470,6 +476,22 @@
 ?>
 
 
+<?php if(element('cor_pay_type',$view)=='f'){?>
+	<script type="text/javascript">
+
+		//열매로 아이템 구매시 가상의 휴대폰번호와 가상 주소 자동 입력
+		document.querySelector("[name='cor_ship_zipcode']").value = "000000";
+		document.querySelector("[name='cor_ship_address']").value = "-";
+		document.querySelector("[name='cor_ship_address_detail']").value = "-";
+
+		if(document.querySelector("[name='mem_phone']").value == ""){
+			document.querySelector("[name='mem_phone']").value = "010-0000-0000";
+		}
+		
+	</script>
+<?php }?>
+
+
 <script type="text/javascript">
 
 $(document).ready(function() {
@@ -489,6 +511,22 @@ $(document).on('change', 'input[name= pay_type]', function() {
 	}
 });
 //]]>
+
+document.querySelectorAll("[name='input_address']").forEach(function(element){
+	element.addEventListener("click",function(){
+		if(document.querySelector("[name='input_address']:checked").value == "y"){
+			document.querySelector("[name='cor_ship_zipcode']").value = "";
+			document.querySelector("[name='cor_ship_address']").value = "";
+			document.querySelector("[name='cor_ship_address_detail']").value = "";
+		}else{
+			document.querySelector("[name='cor_ship_zipcode']").value = document.querySelector("#company_cor_ship_zipcode").value;;
+			document.querySelector("[name='cor_ship_address']").value = document.querySelector("#company_cor_ship_address").value;
+			document.querySelector("[name='cor_ship_address_detail']").value = document.querySelector("#company_cor_ship_address_detail").value;
+		}
+	});
+});
+
+
 </script>
 
 <script type="text/javascript">

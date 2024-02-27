@@ -873,7 +873,7 @@ class Cmall extends CB_Controller
 		required_user_login();
 
 		$mem_id = (int) $this->member->item('mem_id');
-
+		
 		$view = array();
 		$view['view'] = array();
 
@@ -1016,6 +1016,12 @@ class Cmall extends CB_Controller
 		$view['view']['form2name'] = ($this->cbconfig->get_device_type() === 'mobile') ? 'mform_2' : 'form_2';
 		$view['view']['form3name'] = ($this->cbconfig->get_device_type() === 'mobile') ? 'mform_3' : 'form_3';
 		$view['view']['form4name'] = ($this->cbconfig->get_device_type() === 'mobile') ? 'mform_4' : 'form_4';
+
+		//회사주소 구하기
+		$this->load->model("Company_info_model");
+		$tmp = $this->Company_info_model->get_one($this->member->item('company_idx'));
+		$view['view']['company_address'] = $tmp;
+
 
 		// 이벤트가 존재하면 실행합니다
 		$view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
