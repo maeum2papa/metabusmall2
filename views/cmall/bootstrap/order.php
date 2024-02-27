@@ -439,7 +439,7 @@
 						<!-- //포인트일 때 -->
 		
 					</div>
-					<div class="asmo_fixed_btn_box"><button onClick="fpayment_check();" type="button" class="btn btn-order" ><span>교환하기</span></button></div>
+					<div class="asmo_fixed_btn_box"><button onClick="fpayment_submit();" type="button" class="btn btn-order" ><span>교환하기</span></button></div>
 				</div>
 			</div>
 			
@@ -493,6 +493,19 @@
 
 
 <script type="text/javascript">
+
+function fpayment_submit(){
+
+	<?php
+		if(element('cor_pay_type',$view)=='f' && ($total_price_sum) > $this->member->item('mem_cur_fruit')){
+			?>alert("<?php echo cmsg("2103");?>"); return false;<?php
+		}elseif(element('cor_pay_type',$view)=='c' && $total_price_sum > $this->member->item('mem_point')){
+			?>alert("<?php echo cmsg("2104");?>"); return false;<?php
+		}
+	?>
+
+	fpayment_check();
+}
 
 $(document).ready(function() {
 

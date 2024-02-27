@@ -51,13 +51,6 @@
 									$total_price = 0;
 									foreach (element('detail', $result) as $detail) {
 									?>
-										<li> <?php echo html_escape(element('cde_title', $detail)) . ' : ' . element('cct_count', $detail);?>개 (+<?php
-										if(element('cor_pay_type',$view) == 'f'){
-											echo number_format(element('cde_price', $detail));
-										}else{
-											echo number_format(element('cde_price', $detail));
-										}
-										?>개)</li>
 									<?php
 										$total_num += element('cct_count', $detail);
 										$total_price += ((int) element('cit_price', $result) + (int) element('cde_price', $detail)) * element('cct_count', $detail);
@@ -66,17 +59,6 @@
 									?>
 								</ul>
 								<div class="prd-price">
-									<div><span>상품수량</span> <?php echo number_format($total_num); ?> 개</div>
-									<div><span>상품단가</span>
-										<?php
-											if(element('fruit_cit_price', $result)){
-												echo "열매 ".number_format(element('fruit_cit_price', $result));
-											}else{
-												echo "복지포인트 ".number_format(element('cit_price', $result));
-											}
-										?>
-									개</div>
-									<div class="prd-total"><span>합계</span>
 										<?php
 										if(element('cor_pay_type',$view) == 'f'){
 											echo "열매 ".number_format($total_price);
@@ -139,35 +121,30 @@
 		<input type="hidden" name="unique_id" value="<?php echo element('unique_id', $view); ?>" />
 		<input type="hidden" name="total_price_sum" id="total_price_sum" value="<?php echo $total_price_sum; ?>" />
 		<input type="hidden" name="good_mny" value="0" />
-		<div class="col-xs-12 col-md-6 info-wr asmo_order_info_wrap">
+
+		<input type="hidden" name="mem_realname" value="<?php echo $this->member->item("mem_username");?>">
+		<input type="hidden" name="mem_email" value="<?php echo $this->member->item("mem_email");?>">
+
+		<div class="col-xs-12 col-md-6 info-wr asmo_order_info_wrap <?php echo (element('cor_pay_type',$view)=='f')?"dn":"";?>">
 			<div class="ord-info">
-				<h5 class="market-title">구매하시는 분</h5>
 				<div class="form-group">
-					<label class=" control-label">이름<span>*</span></label>
-					<input type="text" name="mem_realname" class="form-control" value="<?php echo $this->member->item('mem_nickname'); ?>" />
+					<label class="control-label">휴대폰<span>*</span></label>
+					<input type="text" name="mem_phone" class="form-control" value="<?php echo $this->member->item('mem_phone'); ?>" />
 				</div>
-				<div class="form-group">
-					<label class="control-label">이메일<span>*</span></label>
-					<input type="email" name="mem_email" class="form-control" value="<?php echo $this->member->item('mem_email'); ?>" />
+
+				<!-- 배송지 입력인지 회사로 배송인지 선택하기 -->
+				<div class="input_address_box">
+					<input type="radio" name="input_address" id="input_address_y" value="y" checked="checked" />
+					<label for="input_address_y" class="radio-inline">배송지 입력</label>
+						
+					<input type="radio" name="input_address" id="input_address_n" value="n"/> 
+					<label for="input_address_n" class="radio-inline">회사로 배송</label>
 				</div>
-				<?php
-					if($item_item_count == count($view['data'])){
-						?>
-						<input type="hidden" name="mem_phone" class="form-control" value="010-4321-4321" />
-						<?php
-					}else{
-						?>
-						<div class="form-group">
-							<label class="control-label">휴대폰<span>*</span></label>
-							<input type="text" name="mem_phone" class="form-control" value="<?php echo $this->member->item('mem_phone'); ?>" />
-						</div>
-						<?php
-					}
-				?>
+
+				<input type="hidden" id="company_cor_ship_zipcode" value="<?php echo $view['company_address']['company_zonecode']?>">
+				<input type="hidden" id="company_cor_ship_address" value="<?php echo $view['company_address']['company_addr']?>">
+				<input type="hidden" id="company_cor_ship_address_detail" value="<?php echo $view['company_address']['company_addr_sub']." ".$view['company_address']['company_addr_extra']?>">
 				
-				<?php
-				if(element('input_address', $view)=='y'){
-				?>
 				<div class="form-group">
 					<label class="control-label">배송지</label>
 
@@ -181,16 +158,14 @@
 					</div>
 
 				</div>
-				<?php
-					}
-				?>
+				
 				<div class="form-group">
 					<label class="control-label">주문메모</label>
 					<textarea name="cor_content" class="form-control " cols="5"></textarea>
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-md-6 info-wr asmo_order_info_wrap asmo_payment_info">
+		<div class="col-xs-12 col-md-6 info-wr asmo_order_info_wrap asmo_payment_info dn">
 			<div class="pay-info">
 				<?php
 					if(element('cor_pay_type',$view)=='f'){
@@ -421,6 +396,22 @@
 </div>
 
 
+<?php if(element('cor_pay_type',$view)=='f'){?>
+	<script type="text/javascript">
+
+		//열매로 아이템 구매시 가상의 휴대폰번호와 가상 주소 자동 입력
+		document.querySelector("[name='cor_ship_zipcode']").value = "000000";
+		document.querySelector("[name='cor_ship_address']").value = "-";
+		document.querySelector("[name='cor_ship_address_detail']").value = "-";
+
+		if(document.querySelector("[name='mem_phone']").value == ""){
+			document.querySelector("[name='mem_phone']").value = "010-0000-0000";
+		}
+		
+	</script>
+<?php }?>
+
+
 <script type="text/javascript">
 
 
@@ -429,6 +420,11 @@ document.querySelector('.main').classList.add('asmo_m_layout');
 
 //asmo lhb 231226 가짜 주문하기 버튼 클릭 이벤트
 $('#asmo_order_btn').click(function(){
+
+	if($('#show_pay_btn').length == 0){
+		alert("<?php echo (element('cor_pay_type',$view)=='f')?cmsg("2103"):cmsg("2104");?>");
+		return false;
+	}
 
 	$('#show_pay_btn button').trigger('click');
 });
@@ -443,6 +439,20 @@ $(document).on('change', 'input[name= pay_type]', function() {
 	}
 });
 //]]>
+
+document.querySelectorAll("[name='input_address']").forEach(function(element){
+	element.addEventListener("click",function(){
+		if(document.querySelector("[name='input_address']:checked").value == "y"){
+			document.querySelector("[name='cor_ship_zipcode']").value = "";
+			document.querySelector("[name='cor_ship_address']").value = "";
+			document.querySelector("[name='cor_ship_address_detail']").value = "";
+		}else{
+			document.querySelector("[name='cor_ship_zipcode']").value = document.querySelector("#company_cor_ship_zipcode").value;;
+			document.querySelector("[name='cor_ship_address']").value = document.querySelector("#company_cor_ship_address").value;
+			document.querySelector("[name='cor_ship_address_detail']").value = document.querySelector("#company_cor_ship_address_detail").value;
+		}
+	});
+});
 
 </script>
 
