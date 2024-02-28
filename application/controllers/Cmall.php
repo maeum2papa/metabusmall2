@@ -1918,17 +1918,17 @@ class Cmall extends CB_Controller
         }
 		
         //사용 예치금이 0보다 크면 로그 기록을 위한 준비
-        if($insertdata['cor_company_deposit'] > 0){
-            $order_deposit = $insertdata['cor_company_deposit'];
+        // if($insertdata['cor_company_deposit'] > 0){
+        //     $order_deposit = $insertdata['cor_company_deposit'];
 
-            //사용 예치금이 기업이 보유한것보다 많은지 확인
-			$company_deposit = camll_company_deposit($this->member->item("company_idx"));
-			if($insertdata['cor_company_deposit'] > $company_deposit){
-				alert(cmsg("3107"));
-				exit;
-			}
+        //     //사용 예치금이 기업이 보유한것보다 많은지 확인
+		// 	$company_deposit = camll_company_deposit($this->member->item("company_idx"));
+		// 	if($insertdata['cor_company_deposit'] > $company_deposit){
+		// 		alert(cmsg("3107"));
+		// 		exit;
+		// 	}
 			
-        }
+        // }
 
 		$this->load->model(array('Cmall_item_model', 'Cmall_order_model', 'Cmall_order_detail_model','Cmall_item_detail_model'));
 		$res = $this->Cmall_order_model->insert($insertdata);
@@ -1964,9 +1964,9 @@ class Cmall extends CB_Controller
 						//옵션가 있는 경우
 						if($itemDetail['cde_price'] > 0){
 							$tmp_cod_fruit += ($itemDetail['cde_price'] * $val['cct_count']);
-						}
+						} 
 
-						$tmp_cod_company_deposit = fdeposit(array($tmp_oderlist_item),$this->member->item('company_idx'));
+						// $tmp_cod_company_deposit = fdeposit(array($tmp_oderlist_item),$this->member->item('company_idx'));
 					}else{
 						$tmp_cod_point = $item['cit_price'] * $val['cct_count'];
 					}
@@ -1996,12 +1996,12 @@ class Cmall extends CB_Controller
 					$this->Cmall_cart_model->delete_where($deletewhere);
 				}
 			}
-			if ($order_deposit) {
+			// if ($order_deposit) {
 				
-				//예치금 사용 및 내역기록
-				company_depoist_use($this->member->item('mem_id'), $order_deposit*(-1), $this->member->item("mem_username")."(".$this->member->item("mem_userid").") 상품구매 (주문번호 : ".$cor_id.")", $insertdata['cor_datetime'], "order", $cor_id, "주문");
+			// 	//예치금 사용 및 내역기록
+			// 	company_depoist_use($this->member->item('mem_id'), $order_deposit*(-1), $this->member->item("mem_username")."(".$this->member->item("mem_userid").") 상품구매 (주문번호 : ".$cor_id.")", $insertdata['cor_datetime'], "order", $cor_id, "주문");
 
-			}
+			// }
 
 			//열매 사용 로그 기록 cb_fruit_log
 			if($this->input->post('pay_type') === 'f'){
