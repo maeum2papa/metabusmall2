@@ -94,10 +94,11 @@ class Cmallitem extends CB_Controller
 
 		//삭제 플래그 y 제외
 		$where['cb_cmall_item.cit_del_flag'] = "n";
-
+		
 		//기업관리자
 		if($this->session->userdata['mem_admin_flag']!=0){
 			$where['company_idx'] = $this->session->userdata['company_idx'];
+			$where["cit_item_type != 'i'"] = null;
 		}
 
 		if($this->input->get('search_datetime_start')){
@@ -137,6 +138,7 @@ class Cmallitem extends CB_Controller
 			}			
 
 			$where["cit_item_type in('".implode("','",$cit_item_types)."')"] = null;
+
 			// SQL : cit_item_type in('i')
 		}
 
