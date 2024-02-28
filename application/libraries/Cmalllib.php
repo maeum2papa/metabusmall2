@@ -26,7 +26,7 @@ class Cmalllib extends CI_Controller
 			'vbank' => '가상계좌',
 			'service' => '서비스',
 			'f' => '열매',
-			'c' => '보지포인트',
+			'c' => '복지포인트',
 		);
 
 	function __construct()
