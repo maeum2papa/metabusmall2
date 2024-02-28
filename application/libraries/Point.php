@@ -33,7 +33,7 @@ class Point extends CI_Controller
 		if ( ! $this->CI->cbconfig->item('use_point')) {
 			return false;
 		}
-
+		
 		// 포인트가 없다면 업데이트 할 필요 없음
 		$point = (int) $point;
 		if (empty($point)) {
@@ -55,14 +55,15 @@ class Point extends CI_Controller
 		}
 
 		$member = $this->CI->Member_model->get_by_memid($mem_id, 'mem_id');
-
+		
 		if ( ! element('mem_id', $member)) {
 			return false;
 		}
-
+		
 		$this->CI->load->model('Point_model');
 
 		// 이미 등록된 내역이라면 건너뜀
+		/*
 		if ($poi_type OR $poi_related_id OR $poi_action) {
 			$where = array(
 				'mem_id' => $mem_id,
@@ -76,7 +77,8 @@ class Point extends CI_Controller
 				return false;
 			}
 		}
-
+		*/
+		
 		$member = $this->CI->Member_model->get_one($mem_id);
 
 		$insertdata = array(

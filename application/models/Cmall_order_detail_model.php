@@ -125,11 +125,64 @@ class Cmall_order_detail_model extends CB_Model
 			$q = "update cb_cmall_order_detail set cod_end_datetime='".$now."' where cod_id='".$cod_id."'";
 		}else if($status=='cancel'){
 			$q = "update cb_cmall_order_detail set cod_cancel_datetime='".$now."' where cod_id='".$cod_id."'";
-		}
+		}else if($status=="ready"){
+            $q = "update cb_cmall_order_detail set cor_ready_datetime='".$now."' where cod_id='".$cod_id."'";
+        }
 
 		$this->db->query($q);
 
 	}
+
+    /**
+     * 주문한 상품들의 상태를 조회해서 주문의 상태 업데이트
+     */
+    public function set_order_status_update($cor_id){
+
+        $this->db->select('*');
+		$this->db->from("cmall_order_detail");
+
+        $where["cor_id"] = $cor_id;
+
+        $this->db->where($where);
+		$qry = $this->db->get();
+        $list = $qry->result_array();
+
+        if(count($list)>0){
+
+            $tmp_order_new_status = array(
+                'order'=>0,
+                'ready'=>0,
+                'end'=>0,
+                'cancel'=>0
+            );
+
+            foreach($list as $cod){
+                $tmp_order_new_status[$cod['cod_status']] += 1;
+            }
+
+            foreach($tmp_order_new_status as $k=>$v){
+                if($v > 0){
+                    
+                    $updatedata = array(
+                        "status"=>$k
+                    );
+
+                    if($k=='cancel'){
+                        $updatedata['cor_status'] = 0;
+                    }
+                    
+                    $where = array(
+                        'cor_id' => $cor_id
+                    );
+
+                    $this->Cmall_order_model->update('', $updatedata, $where);
+
+                    break;
+                }
+            }
+        }
+
+    }
 
 	/**
 	 * 배송대기 이후 주문 상품 개수
@@ -147,5 +200,16 @@ class Cmall_order_detail_model extends CB_Model
 		$rows = $qry->row_array();
 		
 		return $rows['rownum'];
+	}
+
+
+    public function get_admin_list($limit = '', $offset = '', $where = '', $like = '', $findex = '', $forder = '', $sfield = '', $skeyword = '', $sop = 'OR')
+	{
+		$select = 'cb_cmall_order_detail.*,cb_cmall_item.citt_id, cb_cmall_item.cit_name,cb_cmall_item.company_idx, cb_member.mem_username, cb_member.mem_position,cb_member.mem_div';
+		$join[] = array('table' => 'cb_member', 'on' => 'cb_member.mem_id = cb_cmall_order_detail.mem_id', 'type' => 'left');
+        $join[] = array('table' => 'cb_cmall_item', 'on' => 'cb_cmall_item.cit_id = cb_cmall_order_detail.cit_id', 'type' => 'left');
+        $join[] = array('table' => 'cb_cmall_order', 'on' => 'cb_cmall_order.cor_id = cb_cmall_order_detail.cor_id', 'type' => 'left');
+		$result = $this->_get_list_common($select, $join, $limit, $offset, $where, $like, $findex, $forder, $sfield, $skeyword, $sop);
+		return $result;
 	}
 }
