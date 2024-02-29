@@ -393,9 +393,9 @@ class Cmallorder extends CB_Controller
 			$cor_id = $this->input->post('cor_id');
 			$mem_id = $this->input->post('mem_id');
 			$pcase = $this->input->post('pcase');
-
+			
 			if( $pcase === 'product' ){
-				debug($this->input->post());
+				
 				$ori_ct_status = $this->input->post('ct_status');
 				$ct_status = $this->input->post('ct_status') ? cmall_get_stype_names($ori_ct_status) : '';
 				$pg_cancel = $this->input->post('pg_cancel');
@@ -493,6 +493,7 @@ class Cmallorder extends CB_Controller
 
 								$this->Cmall_order_model->update('', $updatedata, $where);
 							}
+							
 
 							 /**
 							 * 주문확인 -> 발송완료
@@ -525,9 +526,30 @@ class Cmallorder extends CB_Controller
 						foreach($oval['itemdetail'] as $k2=>$v2){
 
 							/**
-							 * 주문확인 -> 발송완료
+							 * 주문확인 -> 발송대기
 							 */
-							if($v2['cod_status'] == 'order' && $ct_status == 'end'){
+							if($v2['cod_status'] == 'order' && $ct_status == 'ready'){
+
+								if($oval["item"]['citt_id'] > 0){
+									//템플릿상품
+									$transition[$oval["item"]['company_idx']][] = array(
+										"cod" => $oval,
+										"item" => $oval["item"],
+										"order_member" => $this->Member_model->get_one($oval['mem_id']),
+										"amount" => ($oval['cod_point']*100)*(-1)
+									);
+
+								}else{
+									//자체상품
+									$this->Cmall_order_detail_model->set_status_change($v2['cod_id'],'ready',$now);
+								}
+
+							}
+
+							/**
+							 * 발송대기 -> 발송완료
+							 */
+							if($v2['cod_status'] == 'ready' && $ct_status == 'end'){
 								//cb_cmall_order_detail.cod_status = end;
 								$this->Cmall_order_detail_model->set_status_change($v2['cod_id'],'end',$now);
 							}
@@ -542,6 +564,49 @@ class Cmallorder extends CB_Controller
 						}
 					}
 
+
+					/**
+					 * 주문확인 -> 발송대기, 변경이 있으면 예치금 합산 계산
+					 */
+					if(count($transition)>0){
+
+						foreach($transition as $company_idx => $change_ready_datas){
+
+							$total_amount = 0;
+
+							$company_deposit = camll_company_deposit($company_idx);
+
+							if(count($change_ready_datas)>0){
+								foreach($change_ready_datas as $data){
+									$total_amount = $total_amount + $data['amount'];
+								}
+							}
+
+							if(($company_deposit + $total_amount) >= 0){
+								//예치금충분
+
+								foreach($change_ready_datas as $data){
+									$message = $data['order_member']["mem_username"]."(".$data['order_member']["mem_userid"].") 상품구매 (주문번호 : ".$data['cod']['cor_id'].", 주문상품 : ".$data['item']['cit_name'].")";
+									
+									//예치금사용
+									company_depoist_use($data['cod']['mem_id'], $data['amount'], $message, $now, "order", $data['cod']['cor_id'], "발송대기");
+		
+									//상태변경
+									$this->Cmall_order_detail_model->set_status_change($data['cod']['cod_id'],'ready',$now);
+								}
+
+							}else{
+								//예치금부족
+								$this->load->model("Company_info_model");
+								$company_info = $this->Company_info_model->get_one($company_idx);
+
+								alert($company_info['company_name']." 기업의 예치금이 부족합니다. (보유예치금 : ".number_format($company_deposit).")");
+							}
+
+						}
+
+					}
+
 				}
 
 				//주문 상태 업데이트
@@ -550,6 +615,7 @@ class Cmallorder extends CB_Controller
 					
 					$tmp_order_new_status = array(
 						'order'=>0,
+						'ready'=>0,
 						'end'=>0,
 						'cancel'=>0
 					);
@@ -879,8 +945,14 @@ class Cmallorder extends CB_Controller
 			}
 		}
 
+		
 		$view['view']['data'] = $order;
 		$view['view']['orderdetail'] = $orderdetail;
+		$view['view']['order_member'] = $this->Member_model->get_one($order['mem_id']);
+
+		$this->load->model(array("Company_info_model"));
+		$view['view']['company_info'] = $this->Company_info_model->get_one($order['company_idx']);
+		
 
 		/**
 		 * 어드민 레이아웃을 정의합니다

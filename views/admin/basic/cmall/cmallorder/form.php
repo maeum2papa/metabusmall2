@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+<style>
+	.dn{display:none;}
+</style>
 <script type="text/javascript" src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 
 <div class="box">
@@ -53,7 +56,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		?>
 		<li>
-			<h4 class="h2_frm">주문컨텐츠 목록</h4>
+			<h4 class="h2_frm">복지교환소 상세 주문내역</h4>
+
+			<div class="text-right"><button class="btn btn-outline btn-sm btn-history-back">목록으로</button></div>
+
+			<h5 class="mt10">주문자 정보</h5>
+			<table class="table table-bordered mt10">
+				<tbody>
+					</tr>
+
+						<?php if($this->session->userdata['mem_admin_flag']==0){?>
+						<th>기업명</th>
+						<td><?php echo $view['company_info']['company_name'];?></td>
+						<?php } ?>
+						
+						<th>소속</th>
+						<td><?php echo $view['order_member']['mem_div'];?></td>
+
+						<th>직책</th>
+						<td><?php echo $view['order_member']['mem_position'];?></td>
+
+						<th>이름</th>
+						<td><?php echo $view['order_member']['mem_username'];?></td>
+					</tr>
+					</tbody>
+			</table>
 			
 			<?php
 			$attributes = array('class' => 'frmorderform', 'name' => 'frmorderform', 'onsubmit'=> 'return form_submit(this)');
@@ -65,25 +92,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<input type="hidden" name="pcase" value="product">
 			<input type="hidden" name="pg_cancel" value="0">
 			
+			<h5 class="mt10">주문 정보</h5>
+
 			<div>
-			<table class="table table-bordered mt20">
+			<table class="table table-bordered mt10">
 				<thead>
 					<tr class="success">
 						<th>
 							<input type="checkbox" name="chkall" id="chkall" <?php echo $all_checkbox_disabled;?>>
 						</th>
-						<th>이미지</th>
-						<th>카테고리</th>
-						<th>상품명</th>
+						<th>상품분류</th>
 						<th class="text-center">상태</th>
+						<th>이미지</th>
+						<th>상품명</th>
 						<th class="text-center">총수량</th>
-						<th>판매가</th>
+						<th>교환포인트</th>
 						<th>소계</th>
 					</tr>
 				</thead>
 				<tbody>
 				<?php
-				$total_price_sum = 0;
 				$i = 0;
 					foreach (element('orderdetail', $view) as $row) {
 				?>
@@ -94,42 +122,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<input type="hidden" name="cit_id[]" value="<?php echo element('cit_id', element('item', $row)); ?>">
 						</td>
-						<td><a href="<?php echo cmall_item_url(element('cit_key', element('item', $row))); ?>" target="_blank"><img src="<?php echo thumb_url('cmallitem', element('cit_file_1', element('item', $row)), 60, 60); ?>" class="thumbnail" style="margin:0;width:60px;height:60px;" alt="<?php echo html_escape(element('cit_name', element('item', $row))); ?>" title="<?php echo html_escape(element('cit_name', element('item', $row))); ?>" /></a></td>
 						<td>
-							<?php 
-							$cca_id = cmall_item_parent_category($row['cit_id']);
-							if($custom_config['category']['basic'] == $cca_id){
-								echo "공용몰";
-							}else if($custom_config['category']['item'] == $cca_id){
-								echo "아이템몰";
-							}else if($custom_config['category']['company'] == $cca_id){
-								echo "기업몰";
-							} 
+							<?php				
+							echo ($row['item']['citt_id']>0)?"템플릿":"자체";
 							?>
 						</td>
-						<td><a href="<?php echo cmall_item_url(element('cit_key', element('item', $row))); ?>" target="_blank"><?php echo html_escape(element('cit_name', element('item', $row))); ?></a>
-							<ul class="cmall-options">
-								<?php
-								$total_num = 0;
-								$total_price = 0;
-								foreach (element('itemdetail', $row) as $detail) {
-								?>
-									<li class="clearfix mt5"><?php echo html_escape(element('cde_title', $detail)) . ' ' . element('cod_count', $detail);?>개 (+<?php echo number_format(element('cde_price', $detail)); ?>원)
-						
-									</li>
-								<?php
-								$total_num += element('cod_count', $detail);
-								$total_price += ((int) element('cit_price', element('item', $row)) + (int) element('cde_price', $detail)) * element('cod_count', $detail);
-								}
-								$total_price_sum += $total_price;
-								?>
-							</ul>
-						</td>
-						<td class="text-center"><?php echo cmall_print_stype_names(element('cod_status', $detail)); ?></td>
 						<td class="text-center">
-							<?php echo $total_num; ?>
+							<?php 
+							if($row['cod_status']=="order"){
+								echo "주문확인";
+							}elseif($row['cod_status']=="ready"){
+								echo "발송대기";
+							}elseif($row['cod_status']=="end"){
+								echo "발송완료";
+							}elseif($row['cod_status']=="cancel"){
+								echo "주문취소";
+							}
+							?>
 						</td>
-						<td><?php echo number_format(element('cit_price', element('item', $row))); ?></td>
+						<td><a href="<?php echo cmall_item_url(element('cit_key', element('item', $row))); ?>" target="_blank"><img src="<?php echo thumb_url('cmallitem', element('cit_file_1', element('item', $row)), 60, 60); ?>" class="thumbnail" style="margin:0;width:60px;height:60px;" alt="<?php echo html_escape(element('cit_name', element('item', $row))); ?>" title="<?php echo html_escape(element('cit_name', element('item', $row))); ?>" /></a></td>
+						<td><a href="<?php echo cmall_item_url(element('cit_key', element('item', $row))); ?>" target="_blank"><?php echo html_escape(element('cit_name', element('item', $row))); ?></a></td>
+						<td class="text-center">
+							<?php echo $row['cod_count']; ?>
+						</td>
+						<td><?php echo number_format($row['cod_point']); $total_price = $row['cod_point'];?></td>
 						<td><?php echo number_format($total_price); ?><input type="hidden" name="total_price[<?php echo element('cit_id', element('item', $row)); ?>]" value="<?php echo $total_price; ?>"></td>
 					</tr>
 				<?php
@@ -141,6 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			<?php 
 				$ct_status_order_disabled = '';
+				$ct_status_ready_disabled = '';
 				$ct_status_end_disabled = '';
 				$ct_status_cancel_disabled = '';
 
@@ -148,6 +165,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//주문상품 종류 수와 주문상품중 아이템인 상품 수가 일치 = 모두 취소된 것으로 버튼 비활성화
 				if($status_cancel_cnt == $cod_cnt || count($view['orderdetail']) == $item_cnt){
 					$ct_status_order_disabled = 'disabled';
+					$ct_status_ready_disabled = 'disabled';
 					$ct_status_end_disabled = 'disabled';
 					$ct_status_cancel_disabled = 'disabled';
 				}
@@ -157,6 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<input type="hidden" name="chk_cnt" value="<?php echo $i; ?>">
 					<strong>주문상품 상태 변경</strong>
 					<input type="submit" name="ct_status" value="주문확인" onclick="document.pressed=this.value" class="btn btn-sm" <?php echo $ct_status_order_disabled;?>>
+					<input type="submit" name="ct_status" value="발송대기" onclick="document.pressed=this.value" class="btn btn-sm" <?php echo $ct_status_ready_disabled;?>>
 					<input type="submit" name="ct_status" value="발송완료" onclick="document.pressed=this.value" class="btn btn-sm" <?php echo $ct_status_end_disabled;?>>
 					<input type="submit" name="ct_status" value="주문취소" onclick="document.pressed=this.value" class="btn btn-sm" <?php echo $ct_status_cancel_disabled;?>>
 				</p>
@@ -208,69 +227,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<td><?php echo element('cor_id', element('data', $view)); ?></td>
 						</tr>
 						<tr>
-							<th>결제방식</th>
+							<th>사용포인트</th>
 							<td>
-								<?php echo $this->cmalllib->get_paymethodtype(element('cor_pay_type', element('data', $view)));?>
+								<?php
+									$total_point = 0;
+									foreach($view['orderdetail'] as $orderdetail){
+										
+										$total_point += $orderdetail['cod_point'];
+									}
+									echo number_format($total_point);
+								?>
+								개
 							</td>
 						</tr>
 						<tr>
-							<th>총 주문액</th>
-							<td>
-								<?php echo number_format(element('cor_total_money', element('data', $view))); ?> 
+							<th>예치금차감금액</th>
+							<td class="text-danger">
+								<?php echo number_format($total_point*(-100))?> 원
+								<?php 
+									if($view['data']['status']=="order"){
+										echo "(대기)";
+									}elseif($view['data']['status']=="ready" || $view['data']['status']=="end"){
+										echo "(차감완료)";
+									}elseif($view['data']['status']=="cancel"){
+										echo "(취소)";
+									}
+								?>
 								
-								<?php if($view['data']['cor_pay_type']=='c'){?>
-									개
-								<?php }else{?>
-									원
-								<?php }?>
-								
-							</td>
-						</tr>
-						<tr>
-							<th>결제요청금액</th>
-							<td>
-								
-								<?php if(element('cor_cash_request', element('data', $view))){
-										echo number_format(abs(element('cor_cash_request', element('data', $view))));
-									?>
-									
-									<?php if($view['data']['cor_pay_type']=='c'){?>
-										개
-									<?php }else{?>
-										원
-									<?php }?>
-								
-								<?php }else{ ?>
-									아직 입금되지 않았습니다
-								<?php } ?>
-								
-
-							</td>
-						</tr>
-						<?php 
-							if(element('cor_pay_type', element('data', $view)) == 'f'){
-						?>
-						<tr>
-							<th>결제된 열매</th>
-							<td><?php echo number_format($view['data']['cor_cash']);?> 개</td>
-						</tr>
-						<?php
-							}
-						?>
-						<tr>
-							<th>결제된 금액</th>
-							<td>
-								<?php echo number_format(element('cor_cash', element('data', $view))); ?>
-								<?php if($view['data']['cor_pay_type']=='c'){?>
-									개
-								<?php }else{?>
-									원
-								<?php }?>
 							</td>
 						</tr>
 						<?php if (element('cor_approve_datetime', element('data', $view)) > '0000-00-00 00:00:00') { ?>
 							<tr>
-								<th>결제일시</th>
+								<th>주문일시</th>
 								<td><?php echo element('cor_approve_datetime', element('data', $view)); ?></td>
 							</tr>
 						<?php } ?>
@@ -313,7 +301,67 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 		</div>
 		<div class="col-xs-12 col-md-6 ">
-			<div class="pay-info">
+
+			<?php if($view['data']['cor_ship_zipcode']!=''){ ?>
+			<div>
+				<h5 class="mb10">배송 정보</h5>
+				<table class="table">
+					<colgroup>
+						<col class="grid_3">
+						<col>
+					</colgroup>
+					<tbody>
+					<tr>
+						<th>주문자 이름</th>
+						<td>
+							<?php echo $view['order_member']['mem_username'];?>
+						</td>
+					</tr>
+					<tr>
+						<th>연락처</th>
+						<td>
+							<?php echo $view['data']['mem_phone'];?>
+						</td>
+					</tr>
+					<tr>
+						<th>배송지</th>
+						<td>
+							
+							<table class="table">
+								<tr>
+									<th>우편번호</th>
+									<td>
+										<input type="" class="form-control per50" name="cor_ship_zipcode" value="<?php echo $view['data']['cor_ship_zipcode'];?>">
+
+										<button type="button" class="btn btn-black btn-sm" style="margin-top:0px;" onclick="win_zip('frm_orderinfo', 'cor_ship_zipcode', 'cor_ship_address', 'cor_ship_address_detail', 'cor_ship_address_detail', 'cor_ship_address4');">주소 검색</button>
+									</td>
+								</tr>
+								<tr>
+									<th>주소</th>
+									<td><input type="" class="form-control per100" name="cor_ship_address" value="<?php echo $view['data']['cor_ship_address'];?>"></td>
+								</tr>
+								<tr>
+									<th>주소상세</th>
+									<td><input type="" class="form-control per100" name="cor_ship_address_detail" value="<?php echo $view['data']['cor_ship_address_detail'];?>"></td>
+								</tr>
+							</table>
+
+						</td>
+					</tr>
+					<tr>
+						<th>주문메모</th>
+						<td>
+						<textarea class="form-control per100" rows=5 disabled><?php echo $view['data']['cor_content'];?></textarea>
+						</td>
+					</tr>
+					
+					</tbody>
+				</table>
+				<input type="hidden" name="cor_ship_address4" value="">
+			</div>
+			<?php }?>
+
+			<div class="pay-info dn">
 				<h5 class="ord_info_title mb10">결제상세정보</h5>
 				<table class="table">
 					<colgroup>
@@ -456,52 +504,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		</div>
 		
-		<div class="clearfix mb10">
-			<div class="col-xs-12 col-md-6 ">
-				<div>
-					<h5 class="mb10">주문메모</h5>
-					<textarea class="form-control per100" rows=5 disabled><?php echo $view['data']['cor_content'];?></textarea>
-				</div>
-			</div>
-			<div class="col-xs-12 col-md-6 ">
-				<?php if($view['data']['cor_ship_zipcode']!=''){ ?>
-				<div>
-					<h5 class="mb10">배송지정보</h5>
-					<table class="table">
-						<colgroup>
-							<col class="grid_3">
-							<col>
-						</colgroup>
-						<tbody>
-						<tr>
-							<th>우편번호</th>
-							<td>
-								<input type="" class="form-control per50" name="cor_ship_zipcode" value="<?php echo $view['data']['cor_ship_zipcode'];?>">
-
-								<button type="button" class="btn btn-black btn-sm" style="margin-top:0px;" onclick="win_zip('frm_orderinfo', 'cor_ship_zipcode', 'cor_ship_address', 'cor_ship_address_detail', 'cor_ship_address_detail', 'cor_ship_address4');">주소 검색</button>
-
-							</td>
-						</tr>
-						<tr>
-							<th>주소</th>
-							<td>
-								<input type="" class="form-control per100" name="cor_ship_address" value="<?php echo $view['data']['cor_ship_address'];?>">
-							</td>
-						</tr>
-						<tr>
-							<th>주소상세</th>
-							<td>
-								<input type="" class="form-control per100" name="cor_ship_address_detail" value="<?php echo $view['data']['cor_ship_address_detail'];?>">
-							</td>
-						</tr>
-						</tbody>
-					</table>
-					<input type="hidden" name="cor_ship_address4" value="">
-				</div>
-				<?php }?>
-			</div>
-			
-		</div>
+		
 		
 
 		<div class="cor_admin_memo_box">

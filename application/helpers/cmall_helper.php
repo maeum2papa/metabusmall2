@@ -64,6 +64,7 @@ if ( ! function_exists('get_cmall_key_localize')) {
 			'deposit'	=> '입금', //입금
 			'cancel'	=> '주문취소', //취소
 			'end'	=> '발송완료', //취소
+			'ready'	=> '발송대기', 
 		);
 
 		return $keys;
