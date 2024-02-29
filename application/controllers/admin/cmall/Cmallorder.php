@@ -955,6 +955,15 @@ class Cmallorder extends CB_Controller
 		
 
 		/**
+		 * 아이템상품이 포함되어 있다면 아이템 form을 표시(아이템은 열매로만 결제할 수 있음)
+		 */
+		if($order['cor_pay_type'] == "f"){
+			$view['view']['is_item'] = 1;
+		}
+		
+
+
+		/**
 		 * 어드민 레이아웃을 정의합니다
 		 */
 		$layoutconfig = array('layout' => 'layout', 'skin' => 'form');

@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		?>
 		<li>
-			<h4 class="h2_frm">복지교환소 상세 주문내역</h4>
+			<h4 class="h2_frm">아이템교환소 상세 주문내역</h4>
 
 			<div class="text-right"><button class="btn btn-outline btn-sm btn-history-back">목록으로</button></div>
 
@@ -93,7 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<input type="hidden" name="pg_cancel" value="0">
 			
 			<h5 class="mt10">주문 정보</h5>
-
+			
 			<div>
 			<table class="table table-bordered mt10">
 				<thead>
@@ -101,12 +101,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<th>
 							<input type="checkbox" name="chkall" id="chkall" <?php echo $all_checkbox_disabled;?>>
 						</th>
+						
+						<?php if($view['is_item']!=1){?>
 						<th>상품분류</th>
+						<?php } ?>
+
 						<th class="text-center">상태</th>
 						<th>이미지</th>
 						<th>상품명</th>
 						<th class="text-center">총수량</th>
-						<th>교환포인트</th>
+						<th>교환<?php echo ($view['is_item']!=1)?"포인트":"열매";?></th>
 						<th>소계</th>
 					</tr>
 				</thead>
@@ -122,11 +126,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<input type="hidden" name="cit_id[]" value="<?php echo element('cit_id', element('item', $row)); ?>">
 						</td>
+
+						<?php if($view['is_item']!=1){?>
 						<td>
 							<?php				
 							echo ($row['item']['citt_id']>0)?"템플릿":"자체";
 							?>
 						</td>
+						<?php } ?>
+
 						<td class="text-center">
 							<?php 
 							if($row['cod_status']=="order"){
@@ -145,8 +153,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td class="text-center">
 							<?php echo $row['cod_count']; ?>
 						</td>
-						<td><?php echo number_format($row['cod_point']); $total_price = $row['cod_point'];?></td>
+
+						<?php if($view['is_item']!=1){?>
+							<td><?php echo number_format($row['cod_point']); $total_price = $row['cod_point'];?></td>
+						<?php }else{ ?>
+							<td><?php echo number_format($row['cod_fruit']); $total_price = $row['cod_fruit'];?></td>
+						<?php } ?>
+
 						<td><?php echo number_format($total_price); ?><input type="hidden" name="total_price[<?php echo element('cit_id', element('item', $row)); ?>]" value="<?php echo $total_price; ?>"></td>
+						
 					</tr>
 				<?php
 				$i++;
@@ -226,6 +241,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<th>주문번호</th>
 							<td><?php echo element('cor_id', element('data', $view)); ?></td>
 						</tr>
+						<?php if($view['is_item']!=1){?>
 						<tr>
 							<th>사용포인트</th>
 							<td>
@@ -240,6 +256,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								개
 							</td>
 						</tr>
+						<?php }else{?>
+							<tr>
+							<th>사용열매</th>
+							<td>
+								<?php
+									$total_point = 0;
+									foreach($view['orderdetail'] as $orderdetail){
+										
+										$total_point += $orderdetail['cod_fruit'];
+									}
+									echo number_format($total_point);
+								?>
+								개
+							</td>
+						</tr>
+						<?php }?>
+						<?php if($view['is_item']!=1){?>
 						<tr>
 							<th>예치금차감금액</th>
 							<td class="text-danger">
@@ -256,6 +289,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								
 							</td>
 						</tr>
+						<?php }?>
 						<?php if (element('cor_approve_datetime', element('data', $view)) > '0000-00-00 00:00:00') { ?>
 							<tr>
 								<th>주문일시</th>
