@@ -157,9 +157,10 @@
 
                         <?php if($this->session->userdata['mem_admin_flag']!=0){?>
                         <th>사용포인트</th>
+						<?php }else{ ?>
+						<th>차감예치금</th>
 						<?php } ?>
-
-                        <th>차감예치금</th>
+                        
                         <th>보기</th>
 					</tr>
 				</thead>
@@ -207,83 +208,15 @@
 
                         <?php if($this->session->userdata['mem_admin_flag']!=0){?>
                         <td class="text-right"><?php echo number_format(element('cod_point', $result)); ?></td>
-                        <?php } ?>
-
+                        <?php }else{ ?>
 						<td class="text-right"><?php echo $deposit; ?></td>
+						<?php } ?>
+						
                         <td><a href="<?php echo '/admin/cmall/cmallorder/form/'. element('cor_id', $result); ?>">보기</a></td>
                         
 					</tr>
 					<?php
-					if (element('orderdetail', $result)) {
-					?>
-						<tr>
-							<td colspan="7" >
-								<div class="bg-warning">
-									<table class="table table-bordered mt20">
-										<thead>
-											<tr class="success">
-												<th>이미지</th>
-												<th>상품명</th>
-												<th class="text-center">총수량</th>
-												<th>판매가</th>
-												<th>소계</th>
-											</tr>
-										</thead>
-										<tbody>
-										<?php
-										$total_price_sum = 0;
-											foreach (element('orderdetail', $result) as $row) {
-										?>
-											<tr>
-												<td><a href="<?php echo cmall_item_url(element('cit_key', element('item', $row))); ?>"><img src="<?php echo thumb_url('cmallitem', element('cit_file_1', element('item', $row)), 60, 60); ?>" class="thumbnail" style="margin:0;width:60px;height:60px;" alt="<?php echo html_escape(element('cit_name', element('item', $row))); ?>" title="<?php echo html_escape(element('cit_name', element('item', $row))); ?>" /></a></td>
-												<td><a href="<?php echo cmall_item_url(element('cit_key', element('item', $row))); ?>"><?php echo html_escape(element('cit_name', element('item', $row))); ?></a>
-													<ul class="cmall-options">
-														<?php
-														$total_num = 0;
-														$total_price = 0;
-														foreach (element('itemdetail', $row) as $detail) {
-														?>
-															<li><?php echo html_escape(element('cde_title', $detail)) . ' ' . element('cod_count', $detail);?>개 
-															<?php 
-																if(element('cde_price', $detail)!=0){
-															?>
-															(+<?php echo number_format(element('cde_price', $detail)); ?>
-																	
-																	<?php
-																		if($result['cor_pay_type']=="c"){
-																			echo "개";
-																		}else{
-																			echo "원";
-																		}
-																	?>
-															
-															)
-															<?php
-																}
-															?>
-															</li>
-														<?php
-														$total_num += element('cod_count', $detail);
-														$total_price += ((int) element('cit_price', element('item', $row)) + (int) element('cde_price', $detail)) * element('cod_count', $detail);
-														}
-														$total_price_sum += $total_price;
-														?>
-													</ul>
-												</td>
-												<td class="text-center"><?php echo number_format($total_num); ?></td>
-												<td><?php echo number_format(element('cit_price', element('item', $row))); ?></td>
-												<td><?php echo number_format($total_price); ?><input type="hidden" name="total_price[<?php echo element('cit_id', element('item', $row)); ?>]" value="<?php echo $total_price; ?>"></td>
-											</tr>
-										<?php
-										}
-										?>
-										</tbody>
-									</table>
-								</div>
-							</td>
-						</tr>
-					<?php
-							}
+							
 						}
 					}
 					if ( ! element('list', element('data', $view))) {
@@ -307,6 +240,9 @@
 
 <script type="text/javascript">
 
+/**
+ * 선택한것 상태 변경 클릭 이벤트
+ */
 document.querySelector(".btn-status-change").addEventListener('click',function(){
 	
 	var checkboxs = document.querySelectorAll('[name="chk[]"]:checked');
@@ -352,6 +288,83 @@ document.querySelector(".btn-status-change").addEventListener('click',function()
     form.submit();
     
 
+});
+
+
+
+function export_to_excel(){
+	search_form = document.getElementById('search_form');
+
+	var form = document.createElement('form');
+	form.action = '/admin/cmall/orderlist/exportexcel'; // 폼의 액션 URL 설정
+    form.method = 'GET'; // 폼의 전송 방식 설정
+	form.enctype = 'multipart/form-data';
+
+	var search_datetime_type = document.createElement('input');
+    search_datetime_type.type = 'hidden';
+    search_datetime_type.name = 'search_datetime_type';
+    search_datetime_type.value = search_form.search_datetime_type.value;
+	form.appendChild(search_datetime_type);
+
+	var search_datetime_start = document.createElement('input');
+    search_datetime_start.type = 'hidden';
+    search_datetime_start.name = 'search_datetime_start';
+    search_datetime_start.value = search_form.search_datetime_start.value;
+	form.appendChild(search_datetime_start);
+
+	var search_datetime_end = document.createElement('input');
+    search_datetime_end.type = 'hidden';
+    search_datetime_end.name = 'search_datetime_end';
+    search_datetime_end.value = search_form.search_datetime_end.value;
+	form.appendChild(search_datetime_end);
+
+	document.querySelectorAll("[name='status[]']:checked").forEach(element=>{
+		var search_status = document.createElement('input');
+		search_status.type = 'hidden';
+		search_status.name = 'status[]';
+		search_status.value = element.value;
+		form.appendChild(search_status);
+	});
+
+	var search_order_key = document.createElement('input');
+    search_order_key.type = 'hidden';
+    search_order_key.name = 'search_order_key';
+    search_order_key.value = search_form.search_order_key.value;
+	form.appendChild(search_order_key);
+
+	var search_order_value = document.createElement('input');
+    search_order_value.type = 'hidden';
+    search_order_value.name = 'search_order_value';
+    search_order_value.value = search_form.search_order_value.value;
+	form.appendChild(search_order_value);
+
+	var cor_id = document.createElement('input');
+    cor_id.type = 'hidden';
+    cor_id.name = 'cor_id';
+    cor_id.value = search_form.cor_id.value;
+	form.appendChild(cor_id);
+
+	document.querySelectorAll("[name='company_idx[]']:checked").forEach(element=>{
+		var company_idx = document.createElement('input');
+		company_idx.type = 'hidden';
+		company_idx.name = 'company_idx[]';
+		company_idx.value = element.value;
+		form.appendChild(company_idx);
+	});
+	
+
+	document.body.appendChild(form);
+
+	form.submit();
+}
+
+/**
+ * 엑셀시트다운로드 클릭 이벤트
+ */
+document.querySelectorAll('.export_to_excel').forEach(element=>{
+	element.addEventListener("click",function(){
+		export_to_excel();
+	});
 });
 
 </script>

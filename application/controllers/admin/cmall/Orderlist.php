@@ -484,4 +484,145 @@ class Orderlist extends CB_Controller
 		}
 	}
 
+
+
+	/**
+	 * 엑셀시트다운로드
+	 */
+	public function exportexcel(){
+
+		$this->load->model(array("Company_info_model","Member_model","Cmall_order_model","Cmall_item_model"));
+
+		$where["cb_cmall_item.cit_item_type != 'i'"] = null;
+
+		if($this->session->userdata['mem_admin_flag']!=0){
+			//기업관리자
+			$where['cb_cmall_item.company_idx'] = $this->session->userdata['company_idx'];
+		}
+
+		if ($this->input->get('cod_pay_type')) {
+			$where['cb_cmall_order_detail.cod_pay_type'] = $this->input->get('cod_pay_type');
+		}
+
+		if($this->input->get("citt_id_use") == 1){
+			$where['citt_id > 0'] = null;
+		}elseif($this->input->get("citt_id_use") == "0"){
+			$where['citt_id = 0'] = null;
+		}
+
+		if($this->session->userdata['mem_admin_flag']==0){
+			//슈퍼관리자 : 템틀릿 상품만 보기
+			$where['citt_id > 0'] = null;
+		}
+
+
+
+
+		if($this->input->get("cor_id")!=""){
+			$where['cb_cmall_order_detail.cor_id'] = $this->input->get("cor_id");
+		}
+
+		if($this->input->get("search_datetime_type")=="cor_datetime"){
+			$search_datetime_type = "cb_cmall_order.cor_datetime";
+		}
+
+		if($this->input->get("search_datetime_type")=="cor_ready_datetime"){
+			$search_datetime_type = "cb_cmall_order_detail.cor_ready_datetime";
+		}
+
+		if($this->input->get("search_datetime_type")=="cor_end_datetime"){
+			$search_datetime_type = "cb_cmall_order_detail.cod_end_datetime";
+		}
+
+		if($this->input->get("search_datetime_type")=="cor_cancel_datetime"){
+			$search_datetime_type = "cb_cmall_order_detail.cod_cancel_datetime";
+		}
+
+		if($this->input->get("search_datetime_start")!="" && $search_datetime_type){
+			$where[$search_datetime_type." >= '".$this->input->get("search_datetime_start")." 00:00:00'"] = null;
+		}
+
+		if($this->input->get("search_datetime_end")!="" && $search_datetime_type){
+			$where[$search_datetime_type." <= '".$this->input->get("search_datetime_end")." 23:59:59'"] = null;
+		}
+
+		if(count($this->input->get("status")) > 0){
+			$where["cb_cmall_order_detail.cod_status in ('".implode("','",$this->input->get("status"))."')"] = null;
+		}
+
+
+
+
+		if($this->input->get("search_order_key")=="mem_phone"){
+			$search_order_key = "cb_cmall_order.mem_phone";
+		}
+
+		if($this->input->get("search_order_key")=="mem_email"){
+			$search_order_key = "cb_cmall_order.mem_email";
+		}
+
+		if($this->input->get("search_order_key")=="mem_realname"){
+			$search_order_key = "cb_cmall_order.mem_realname";
+		}
+		
+		if($this->input->get("search_order_value")!=""){
+			$where[$search_order_key] = $this->input->get("search_order_value");
+		}
+
+
+		if(count($this->input->get('company_idx')) > 0){
+			$where["cb_cmall_item.company_idx in ('".implode("','",$this->input->get("company_idx"))."')"] = null;
+		}
+
+		$findex = 'cod_approve_datetime';
+		$forder = 'desc';
+		$sfield = $this->input->get('sfield', null, '');
+		$skeyword = $this->input->get('skeyword', null, '');
+		
+		$result = $this->{$this->modelname}
+			->get_admin_list(9999999999999, 0, $where, '', $findex, $forder, $sfield, $skeyword);
+
+		if(count($result['list'])>0){
+			foreach($result['list'] as $k=>$v){
+
+				unset($tmp);
+				$tmp = $this->Company_info_model->get_one($v['company_idx']);
+				$v['company_name'] = $tmp['company_name'];
+
+
+				unset($tmp);
+				$tmp = $this->Member_model->get_one($v['mem_id']);
+				$v['mem_div'] = $tmp['mem_div'];
+				$v['mem_position'] = $tmp['mem_position'];
+				$v['mem_username'] = $tmp['mem_username'];
+				
+
+				unset($tmp);
+				$tmp = $this->Cmall_order_model->get_one($v['cor_id']);
+				$v['mem_phone'] = $tmp['mem_phone'];
+				$v['cor_ship_zipcode'] = $tmp['cor_ship_zipcode'];
+				$v['cor_ship_address'] = $tmp['cor_ship_address'];
+				$v['cor_ship_address_detail'] = $tmp['cor_ship_address_detail'];
+
+
+				unset($tmp);
+				$tmp = $this->Cmall_item_model->get_one($v['cit_id']);
+				$v['cit_name'] = $tmp['cit_name'];
+
+				
+				$v['status_name'] = $this->status[$v['cod_status']];
+
+				$result['list'][$k] = $v;
+			}
+		}
+		
+		$view['view']['data']['list'] = $result['list'];
+		$view['view']['data']['mem_admin_flag'] = $this->session->userdata['mem_admin_flag'];
+
+		header('Content-type: application/vnd.ms-excel');
+		header('Content-Disposition: attachment; filename=주문내역_' . cdate('Y_m_d') . '.xls');
+		echo $this->load->view('admin/' . ADMIN_SKIN . '/' . $this->pagedir . '/excel', $view, true);
+
+	}
+
 }
