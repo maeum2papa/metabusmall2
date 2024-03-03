@@ -87,6 +87,7 @@ class Review extends CB_Controller
 
 		if($this->session->userdata['mem_admin_flag'] != 0){
 			$where['cmall_item.company_idx'] = $this->session->userdata['company_idx'];
+			$where["cmall_item.cit_item_type != 'i'"] = null;
 		}
 
 		if($skeyword!="" && $sfield=="mem_username"){
