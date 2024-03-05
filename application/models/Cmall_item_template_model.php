@@ -97,7 +97,7 @@ class Cmall_item_template_model extends CB_Model
 	/**
 	 * 노출상태변경
 	 */
-	public function update($change_citt_status = 0, $citt_id = 0)
+	public function status_update($change_citt_status = 0, $citt_id = 0)
 	{
 
 		if ($citt_id > 0) {

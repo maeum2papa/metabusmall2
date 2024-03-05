@@ -83,6 +83,7 @@
                             <th>노출여부</th>
                             <th>상품종류</th>
 							<th>사용현황</th>
+							<th>수정</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -101,6 +102,7 @@
                             <td><?php echo element('citt_status', $result)?></td>
                             <td><?php echo element('citt_ship_type', $result)?></td>
                             <td><a href="<?php echo admin_url($this->pagedir); ?>/status/<?php echo element('citt_id', $result)?>" target="_blank"><?php echo element('citt_use_count', $result)?></a></td>
+							<td><a href="<?php echo admin_url($this->pagedir); ?>/write/<?php echo element('citt_id', $result); ?>" class="btn btn-outline btn-default btn-xs">수정</a></td>
 						</tr>
 					<?php
 						}

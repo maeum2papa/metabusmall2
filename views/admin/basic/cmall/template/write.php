@@ -123,8 +123,18 @@ jQuery(function($) {
 			citt_name: 'required',
 			citt_deposit: { required:true, number:true },
 			citt_content : {<?php echo ($this->cbconfig->item('use_cmall_product_dhtml')) ? 'required_' . $this->cbconfig->item('cmall_product_editor_type') : 'required'; ?> : true },
-			citt_mobile_content : {<?php echo ($this->cbconfig->item('use_cmall_product_dhtml')) ? 'required_' . $this->cbconfig->item('cmall_product_editor_type') : 'required'; ?> : true }
-		}
+			// citt_mobile_content : {<?php echo ($this->cbconfig->item('use_cmall_product_dhtml')) ? 'required_' . $this->cbconfig->item('cmall_product_editor_type') : 'required'; ?> : true }
+		},
+		submitHandler: function (form) {
+
+			if(!oEditors.getById["citt_mobile_content"].getContents() || oEditors.getById["citt_mobile_content"].getContents() == "<p><br></p>"){
+				document.querySelector("#citt_mobile_content").value = "";
+			}else{
+				document.querySelector("#citt_mobile_content").value = oEditors.getById["citt_mobile_content"].getContents();
+			}
+
+			form.submit();
+		},
 	});
 });
 </script>

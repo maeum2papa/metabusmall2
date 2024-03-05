@@ -351,7 +351,7 @@ class Template extends CB_Controller
             
              
             if ($pid) {
-
+				
                 $updatedata = $formdata;
                 $updatedata["citt_updated_datetime"] = cdate('Y-m-d H:i:s');
                 $this->{$this->modelname}->update($pid,$updatedata);
@@ -364,7 +364,7 @@ class Template extends CB_Controller
 
             }
             
-            if ($this->input->post($pid)) {
+            if ($pid) {
 				redirect(current_url(), 'refresh');
 			} else {
 				$param =& $this->querystring;
@@ -412,7 +412,7 @@ class Template extends CB_Controller
 			$this->load->model("Cmall_item_model");
 
 			foreach($this->input->post("chk") as $k=>$v){
-				$this->{$this->modelname}->update($this->input->post("change_citt_status"),$v);
+				$this->{$this->modelname}->status_update($this->input->post("change_citt_status"),$v);
 
 				if($this->input->post("change_citt_status") == '0'){
 					$this->Cmall_item_model->change_cit_stauts($v,$this->input->post("change_citt_status"));
