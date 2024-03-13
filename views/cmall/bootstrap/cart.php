@@ -38,7 +38,7 @@
 						<img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/fruit.svg" alt="fruit">
 					</div>
 					<div class="status_info">
-						<span id="fruit_count"><?php echo html_escape($this->member->item('mem_cur_fruit')); ?> 개</span>
+						<span id="fruit_count"><?php echo number_format(html_escape($this->member->item('mem_cur_fruit'))); ?> 개</span>
 					</div>
 				</div>
 
@@ -47,7 +47,7 @@
 						<img src="<?php echo element('layout_skin_url', $layout); ?>/seum_img/point.svg" alt="point">
 					</div>
 					<div class="status_info">
-						<span id="coin_count"><?php echo html_escape($this->member->item('mem_point')); ?> 개</span>
+						<span id="coin_count"><?php echo number_format(html_escape($this->member->item('mem_point'))); ?> 개</span>
 					</div>
 				</div>
 			</div>
@@ -410,6 +410,20 @@ function page_load(){
 	}
 
 	function item_sum(){
+
+		console.log("item_sum");
+
+		fruit_checked = document.querySelectorAll(".f-area .list-chkbox:checked").length;
+		conin_checked = document.querySelectorAll(".c-area .list-chkbox:checked").length;
+		
+		if(fruit_checked > 0){
+			document.querySelector(".asmo_cmall_fixed_box p").innerHTML = "필요한 열매 합계";
+			document.querySelector(".asmo_cmall_fixed_box .cb_banner").src = "/uploads/banner/2024/02/2fa3930b352e8b9d5d91304dfefa95b6.svg";
+		}else if(conin_checked > 0){
+			document.querySelector(".asmo_cmall_fixed_box p").innerHTML = "필요한 포인트 합계";
+			document.querySelector(".asmo_cmall_fixed_box .cb_banner").src = "/uploads/banner/2024/02/b2601ad33be115825a72e649f76ad90a.svg";
+		}
+
 		var sum = 0;
 		document.querySelectorAll(".list-chkbox:checked").forEach(element => {
 			sum += parseInt(document.querySelector("[name='total_price["+element.value+"]']").value);
@@ -443,7 +457,6 @@ function page_load(){
 	}
 
 	function fc_input_checked_update(){
-
 		if(document.querySelectorAll(".f-area [name='chk[]']:not(:disabled)").length == 
 		document.querySelectorAll(".f-area [name='chk[]']:checked").length){
 			document.querySelector("#chkallf").checked = true;
@@ -482,12 +495,24 @@ function page_load(){
 
 	document.querySelectorAll(".f-area [name='chk[]']").forEach(element => {
 		element.addEventListener("change",function(){
+			if(document.querySelectorAll(".c-area [name='chk[]']:checked").length > 0){
+				document.querySelectorAll(".c-area [name='chk[]']:checked").forEach(coin_element => {
+					coin_element.checked = false;
+				});
+			}
+
 			fc_input_checked_update();
 		});
 	});
 
 	document.querySelectorAll(".c-area [name='chk[]']").forEach(element => {
 		element.addEventListener("change",function(){
+			if(document.querySelectorAll(".f-area [name='chk[]']:checked").length > 0){
+				document.querySelectorAll(".f-area [name='chk[]']:checked").forEach(fruit_element => {
+					fruit_element.checked = false;
+				});
+			}
+
 			fc_input_checked_update();
 		});
 	});
